@@ -61,7 +61,7 @@
 
   <!-- Contact -->
   <text x="35" y="225" font-family="'Inter', Arial, sans-serif" font-weight="500" font-size="10" fill="#a0a5b0">info@avitsolutions.tech</text>
-  <text x="35" y="245" font-family="'Inter', Arial, sans-serif" font-weight="500" font-size="10" fill="#a0a5b0">+1 (555) 000-0000</text>
+  <text x="35" y="245" font-family="'Inter', Arial, sans-serif" font-weight="500" font-size="10" fill="#a0a5b0">support@avitsolutions.tech</text>
   <text x="35" y="265" font-family="'Inter', Arial, sans-serif" font-weight="500" font-size="10" fill="#a0a5b0">avitsolutions.tech</text>
 
   <!-- Domain on bottom right -->

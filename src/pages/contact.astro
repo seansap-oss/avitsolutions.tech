@@ -27,7 +27,7 @@ import Layout from '../layouts/Layout.astro';
               </div>
               <div class="form-group">
                 <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required placeholder="you@example.com" />
+                <input type="email" id="email" name="email" required placeholder="you@domain.com" />
               </div>
             </div>
             <div class="form-group">
@@ -75,12 +75,12 @@ import Layout from '../layouts/Layout.astro';
             <h3>Let's Talk</h3>
             <p>Prefer to reach us directly? Here's how.</p>
             <div class="contact-detail">
-              <span class="contact-label">Email</span>
+              <span class="contact-label">General Inquiries</span>
               <a href="mailto:info@avitsolutions.tech">info@avitsolutions.tech</a>
             </div>
             <div class="contact-detail">
-              <span class="contact-label">Phone</span>
-              <a href="tel:+15550000000">+1 (555) 000-0000</a>
+              <span class="contact-label">Support</span>
+              <a href="mailto:support@avitsolutions.tech">support@avitsolutions.tech</a>
             </div>
             <div class="contact-detail">
               <span class="contact-label">Founder</span>
@@ -328,7 +328,7 @@ import Layout from '../layouts/Layout.astro';
         success.style.display = 'block';
       }
     } catch {
-      form.innerHTML = '<p style="color: #ff6b6b; text-align: center;">Something went wrong. Please email us directly at info@avitsolutions.tech</p>';
+      form.innerHTML = '<p style="color: #ff6b6b; text-align: center;">Something went wrong. Please email us directly at <a href="mailto:info@avitsolutions.tech" style="color: #00E5FF;">info@avitsolutions.tech</a></p>';
     }
   });
 </script>

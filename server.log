@@ -1,0 +1,23 @@
+
+> avitsolutions.tech@0.0.1 dev
+> astro dev --host
+
+[vite] connected.
+[2m03:27:53[22m [34m[types][39m Generated [2m1ms[22m
+[42m[1m astro [22m[49m [32mv6.4.4[39m [2mready in[22m 1432 [2mms[22m
+[2m┃[22m Local    [36mhttp://localhost:4321/[39m
+[2m┃[22m Network  [36mhttp://100.96.2.89:4321/[39m
+           [36mhttp://192.168.1.11:4321/[39m
+[2m03:27:53[22m [32mwatching for file changes...[39m
+[2m03:28:04[22m [34m[200][39m / [2m35ms[22m
+[2m03:28:17[22m [34m[200][39m /projects [2m11ms[22m
+[2m03:28:49[22m [34m[200][39m /projects [2m8ms[22m
+[2m03:28:50[22m [34m[200][39m /about [2m13ms[22m
+[2m03:29:25[22m [34m[200][39m / [2m8ms[22m
+[2m03:29:29[22m [34m[200][39m /projects [2m4ms[22m
+[2m03:29:31[22m [34m[200][39m /it-solutions [2m11ms[22m
+[2m03:29:32[22m [34m[200][39m / [2m5ms[22m
+[2m03:32:00[22m [34m[watch][39m src/components/Hero.astro
+[2m03:32:00[22m [34m[200][39m / [2m22ms[22m
+
+C:\Users\sonys\OneDrive\Documents\Open code\cafe UI\avitsolutions.tech>
