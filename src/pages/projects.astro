@@ -1,0 +1,309 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import CTASection from '../components/CTASection.astro';
+---
+
+<Layout>
+  <section class="section page-hero">
+    <div class="container" style="text-align: center;">
+      <div class="section-label">Portfolio</div>
+      <h1 class="section-title" style="font-size: clamp(2.5rem, 5vw, 3.5rem);">
+        Our Projects
+      </h1>
+      <p class="section-subtitle" style="margin: 0 auto 0;">
+        Real projects. Real results. See how we've helped organizations across sectors.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="filter-bar glass" id="filterBar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="corporate">Corporate</button>
+        <button class="filter-btn" data-filter="residential">Residential</button>
+        <button class="filter-btn" data-filter="government">Government</button>
+        <button class="filter-btn" data-filter="software">Software</button>
+      </div>
+
+      <div class="projects-grid" id="projectsGrid">
+        <div class="project-item" data-category="corporate">
+          <a href="/projects/corporate-hq" class="project-card-link">
+            <div class="project-image">
+              <div class="project-placeholder" style="background: linear-gradient(135deg, #1a1d24, #0d1117);">
+                <span style="font-size: 3rem; opacity: 0.3;">🏢</span>
+              </div>
+              <div class="project-hover"><span>View Case Study</span></div>
+            </div>
+            <div class="project-meta">
+              <span class="project-tag">Corporate</span>
+              <h3>TechCorp Global HQ</h3>
+              <p>12-floor corporate AV integration with boardrooms, training spaces, and a 200-seat auditorium.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-item" data-category="residential">
+          <a href="/projects/smart-home" class="project-card-link">
+            <div class="project-image">
+              <div class="project-placeholder" style="background: linear-gradient(135deg, #1a2430, #0d1117);">
+                <span style="font-size: 3rem; opacity: 0.3;">🏠</span>
+              </div>
+              <div class="project-hover"><span>View Case Study</span></div>
+            </div>
+            <div class="project-meta">
+              <span class="project-tag">Residential</span>
+              <h3>Oceanview Smart Residence</h3>
+              <p>Full home automation with distributed audio, 4K theater, lighting control, and motorized shading.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-item" data-category="government">
+          <a href="/projects/gov-building" class="project-card-link">
+            <div class="project-image">
+              <div class="project-placeholder" style="background: linear-gradient(135deg, #1a1d2e, #0d1117);">
+                <span style="font-size: 3rem; opacity: 0.3;">🏛️</span>
+              </div>
+              <div class="project-hover"><span>View Case Study</span></div>
+            </div>
+            <div class="project-meta">
+              <span class="project-tag">Government</span>
+              <h3>City Hall Council Chambers</h3>
+              <p>Secure AV with voting integration, live streaming, and classified communications capability.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-item" data-category="software">
+          <a href="#" class="project-card-link">
+            <div class="project-image">
+              <div class="project-placeholder" style="background: linear-gradient(135deg, #1a2a1d, #0d1117);">
+                <span style="font-size: 3rem; opacity: 0.3;">📱</span>
+              </div>
+              <div class="project-hover"><span>Coming Soon</span></div>
+            </div>
+            <div class="project-meta">
+              <span class="project-tag">Software</span>
+              <h3>Retail Inventory App</h3>
+              <p>Custom inventory management and analytics platform for a retail chain with 50+ locations.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-item" data-category="corporate">
+          <a href="#" class="project-card-link">
+            <div class="project-image">
+              <div class="project-placeholder" style="background: linear-gradient(135deg, #241a1d, #0d1117);">
+                <span style="font-size: 3rem; opacity: 0.3;">🎤</span>
+              </div>
+              <div class="project-hover"><span>Coming Soon</span></div>
+            </div>
+            <div class="project-meta">
+              <span class="project-tag">Corporate</span>
+              <h3>Innovation Center Auditorium</h3>
+              <p>State-of-the-art auditorium with immersive audio, 4K projection, and live streaming capability.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-item" data-category="residential">
+          <a href="#" class="project-card-link">
+            <div class="project-image">
+              <div class="project-placeholder" style="background: linear-gradient(135deg, #2a1a24, #0d1117);">
+                <span style="font-size: 3rem; opacity: 0.3;">🎵</span>
+              </div>
+              <div class="project-hover"><span>Coming Soon</span></div>
+            </div>
+            <div class="project-meta">
+              <span class="project-tag">Residential</span>
+              <h3>Penthouse Audio Visual</h3>
+              <p>Distributed audio, ambient lighting, and automated blinds across a 4,000 sq ft penthouse.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Start Your Project"
+    subtitle="Ready to create something exceptional? Let's talk about your next project."
+    ctaText="Get in Touch"
+    ctaLink="/contact"
+  />
+</Layout>
+
+<style>
+  .page-hero {
+    padding-bottom: 2rem;
+  }
+
+  .filter-bar {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 50px;
+    margin-bottom: 2.5rem;
+    width: fit-content;
+    border: 1px solid var(--glass-border);
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 0.5rem 1.25rem;
+    border-radius: 50px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .filter-btn:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .filter-btn.active {
+    background: var(--accent);
+    color: var(--bg-primary);
+    font-weight: 600;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-item {
+    transition: all var(--transition-base);
+  }
+
+  .project-item.hidden {
+    display: none;
+  }
+
+  .project-card-link {
+    display: block;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-base);
+    text-decoration: none;
+    color: var(--text-primary);
+  }
+
+  .project-card-link:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-dim);
+  }
+
+  .project-image {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+  }
+
+  .project-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transition-slow);
+  }
+
+  .project-card-link:hover .project-placeholder {
+    transform: scale(1.05);
+  }
+
+  .project-hover {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+
+  .project-card-link:hover .project-hover {
+    opacity: 1;
+  }
+
+  .project-hover span {
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    background: var(--accent);
+    color: var(--bg-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .project-meta {
+    padding: 1.25rem;
+  }
+
+  .project-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.4rem;
+  }
+
+  .project-meta h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+  }
+
+  .project-meta p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 480px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .filter-bar {
+      border-radius: var(--radius-lg);
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projects = document.querySelectorAll('.project-item');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+
+      projects.forEach(project => {
+        if (filter === 'all' || project.dataset.category === filter) {
+          project.classList.remove('hidden');
+        } else {
+          project.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>

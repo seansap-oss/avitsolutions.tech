@@ -1,0 +1,240 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTASection from '../components/CTASection.astro';
+---
+
+<Layout>
+  <section class="section page-hero">
+    <div class="container" style="text-align: center;">
+      <div class="section-label">IT Solutions</div>
+      <h1 class="section-title" style="font-size: clamp(2.5rem, 5vw, 3.5rem);">
+        Custom Software & Mobile Apps
+      </h1>
+      <p class="section-subtitle" style="margin: 0 auto 0;">
+        Purpose-built software that streamlines operations, engages users, and scales with your business.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="service-block glass" style="margin-bottom: 2rem;">
+        <div class="service-grid">
+          <div class="service-content">
+            <span class="section-label">Custom Software</span>
+            <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.2rem);">Built for Your Business</h2>
+            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+              Off-the-shelf software never fits perfectly. We build custom applications that match your exact workflows, integrate with your existing systems, and evolve with your needs.
+            </p>
+            <ul class="service-list">
+              <li>Business process automation</li>
+              <li>Data dashboards & visualization</li>
+              <li>Inventory & asset management</li>
+              <li>CRM & ERP integrations</li>
+              <li>API development & third-party integrations</li>
+              <li>Cloud-native applications (AWS, Azure, GCP)</li>
+              <li>Legacy system modernisation</li>
+            </ul>
+          </div>
+          <div class="service-visual">
+            <div class="service-placeholder" style="background: linear-gradient(135deg, #1a1d24, #0d1117);">
+              <span style="font-size: 4rem; opacity: 0.3;">💻</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-block glass">
+        <div class="service-grid reverse">
+          <div class="service-content">
+            <span class="section-label">Mobile Apps</span>
+            <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.2rem);">Native & Cross-Platform Apps</h2>
+            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+              From concept to App Store, we design and develop mobile applications that deliver exceptional user experiences on iOS and Android.
+            </p>
+            <ul class="service-list">
+              <li>iOS (Swift) & Android (Kotlin) native apps</li>
+              <li>Cross-platform (React Native, Flutter)</li>
+              <li>UI/UX design & prototyping</li>
+              <li>Push notifications & real-time features</li>
+              <li>Payment gateway integration</li>
+              <li>Location-based services & mapping</li>
+              <li>App Store optimization & submission</li>
+            </ul>
+          </div>
+          <div class="service-visual">
+            <div class="service-placeholder" style="background: linear-gradient(135deg, #1a2430, #0d1117);">
+              <span style="font-size: 4rem; opacity: 0.3;">📱</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-label">Our Stack</div>
+      <h2 class="section-title">Technologies We Use</h2>
+      <p class="section-subtitle" style="margin-bottom: 3rem;">
+        Modern tools and frameworks for reliable, scalable software delivery.
+      </p>
+      <div class="stack-grid">
+        <div class="stack-item glass">
+          <span class="stack-icon">⚛️</span>
+          <span class="stack-name">React / Next.js</span>
+        </div>
+        <div class="stack-item glass">
+          <span class="stack-icon">🟦</span>
+          <span class="stack-name">Node.js</span>
+        </div>
+        <div class="stack-item glass">
+          <span class="stack-icon">🐍</span>
+          <span class="stack-name">Python / Django</span>
+        </div>
+        <div class="stack-item glass">
+          <span class="stack-icon">🍎</span>
+          <span class="stack-name">Swift / iOS</span>
+        </div>
+        <div class="stack-item glass">
+          <span class="stack-icon">🤖</span>
+          <span class="stack-name">Kotlin / Android</span>
+        </div>
+        <div class="stack-item glass">
+          <span class="stack-icon">⚡</span>
+          <span class="stack-name">Flutter</span>
+        </div>
+        <div class="stack-item glass">
+          <span class="stack-icon">🗄️</span>
+          <span class="stack-name">PostgreSQL / MongoDB</span>
+        </div>
+        <div class="stack-item glass">
+          <span class="stack-icon">☁️</span>
+          <span class="stack-name">AWS / Azure</span>
+        </div>
+        <div class="stack-item glass">
+          <span class="stack-icon">🔷</span>
+          <span class="stack-name">TypeScript</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Need Custom Software?"
+    subtitle="Tell us about your idea. We'll build it from the ground up."
+    ctaText="Discuss Your Project"
+    ctaLink="/contact"
+  />
+</Layout>
+
+<style>
+  .page-hero {
+    padding-bottom: 2rem;
+  }
+
+  .service-block {
+    padding: 3rem;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--glass-border);
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .service-grid.reverse {
+    direction: rtl;
+  }
+
+  .service-grid.reverse > * {
+    direction: ltr;
+  }
+
+  .service-list {
+    list-style: none;
+    color: var(--text-secondary);
+    line-height: 2;
+  }
+
+  .service-list li {
+    position: relative;
+    padding-left: 1.25rem;
+  }
+
+  .service-list li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .service-visual {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .service-placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+  }
+
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+
+  .stack-item {
+    padding: 1.5rem 1rem;
+    border-radius: var(--radius-md);
+    text-align: center;
+    border: 1px solid var(--glass-border);
+    transition: all var(--transition-base);
+  }
+
+  .stack-item:hover {
+    border-color: var(--accent-dim);
+    transform: translateY(-2px);
+  }
+
+  .stack-icon {
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .stack-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 768px) {
+    .service-block {
+      padding: 2rem;
+    }
+
+    .service-grid, .service-grid.reverse {
+      grid-template-columns: 1fr;
+      direction: ltr;
+    }
+
+    .service-grid.reverse > * {
+      direction: ltr;
+    }
+
+    .service-visual {
+      order: -1;
+    }
+  }
+</style>

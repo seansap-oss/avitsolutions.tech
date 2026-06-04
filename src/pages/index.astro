@@ -1,0 +1,174 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import BentoGrid from '../components/BentoGrid.astro';
+import StatsCounter from '../components/StatsCounter.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import TestimonialCarousel from '../components/TestimonialCarousel.astro';
+import CTASection from '../components/CTASection.astro';
+---
+
+<Layout>
+  <Hero
+    title="AV + IT Integration, From Design to Completion"
+    subtitle="We deliver end-to-end audiovisual integration and custom software solutions for corporate, residential, and government projects."
+    ctaText="Start Your Project"
+    ctaLink="/contact"
+    secondaryText="View Our Work"
+    secondaryLink="/projects"
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Our Services</div>
+      <h2 class="section-title">What We Build</h2>
+      <p class="section-subtitle" style="margin-bottom: 3rem;">
+        From boardrooms to smart homes, from government facilities to mobile apps — we handle the full lifecycle.
+      </p>
+      <BentoGrid
+        columns={3}
+        items={[
+          {
+            icon: '🏢',
+            title: 'Corporate AV',
+            description: 'Boardrooms, conference halls, huddle rooms, digital signage, and unified communications.',
+            link: '/av-solutions#corporate',
+            span: 1,
+          },
+          {
+            icon: '🏠',
+            title: 'Residential AV',
+            description: 'Home theaters, whole-home audio, smart lighting, automation, and shading systems.',
+            link: '/av-solutions#residential',
+            span: 1,
+          },
+          {
+            icon: '🏛️',
+            title: 'Government AV',
+            description: 'Secure command centers, council chambers, emergency response systems, and classified integrations.',
+            link: '/av-solutions#government',
+            span: 1,
+          },
+          {
+            icon: '💻',
+            title: 'Custom Software',
+            description: 'Tailored business applications, dashboards, data visualization, and workflow automation.',
+            link: '/it-solutions',
+            span: 2,
+          },
+          {
+            icon: '📱',
+            title: 'Mobile Apps',
+            description: 'Native and cross-platform mobile applications for iOS and Android, built for performance and scale.',
+            link: '/it-solutions',
+            span: 1,
+          },
+        ]}
+      />
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-label">By the Numbers</div>
+      <h2 class="section-title">Our Impact</h2>
+      <p class="section-subtitle" style="margin-bottom: 3rem;">
+        Years of experience delivering mission-critical AV and IT solutions.
+      </p>
+      <StatsCounter
+        stats={[
+          { value: 50, label: 'Projects Delivered', suffix: '+' },
+          { value: 100, label: 'Happy Clients', suffix: '+' },
+          { value: 200, label: 'Installations', suffix: '+' },
+          { value: 10, label: 'Years Experience', suffix: '+' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Featured Projects</div>
+      <h2 class="section-title">Recent Work</h2>
+      <p class="section-subtitle" style="margin-bottom: 3rem;">
+        From corporate headquarters to smart residences — see what we've delivered.
+      </p>
+      <ProjectCard
+        projects={[
+          {
+            title: 'TechCorp HQ',
+            tag: 'Corporate',
+            description: 'Complete AV integration for a 12-floor corporate headquarters including boardrooms, training rooms, and a 200-seat auditorium.',
+            link: '/projects/corporate-hq',
+            icon: '🏢',
+            color1: '#1a1d24',
+            color2: '#0a0b0c',
+          },
+          {
+            title: 'Oceanview Residence',
+            tag: 'Residential',
+            description: 'Full smart home automation with distributed audio, 4K home theater, lighting control, and motorized shading.',
+            link: '/projects/smart-home',
+            icon: '🏠',
+            color1: '#1a2430',
+            color2: '#0a0b0c',
+          },
+          {
+            title: 'City Hall Chambers',
+            tag: 'Government',
+            description: 'Secure AV system for city council chambers with voting integration, live streaming, and classified communications.',
+            link: '/projects/gov-building',
+            icon: '🏛️',
+            color1: '#1a1d2e',
+            color2: '#0a0b0c',
+          },
+        ]}
+      />
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-label">Testimonials</div>
+      <h2 class="section-title">Trusted by Clients</h2>
+      <p class="section-subtitle" style="margin-bottom: 3rem;">
+        Hear from the organizations we've partnered with.
+      </p>
+      <TestimonialCarousel
+        testimonials={[
+          {
+            text: 'AVIT Solutions transformed our boardroom experience. The integration of AV with our existing IT infrastructure was seamless. Highly professional team.',
+            name: 'Sarah Chen',
+            role: 'CTO, TechCorp International',
+            stars: 5,
+          },
+          {
+            text: 'Our smart home system exceeded expectations. Every detail was considered — from the lighting scenes to the hidden speaker installation. Flawless execution.',
+            name: 'James Mitchell',
+            role: 'Homeowner, Oceanview Residence',
+            stars: 5,
+          },
+          {
+            text: 'The government-grade security and reliability of the system they installed for our council chambers has been outstanding. Mission-critical AV you can depend on.',
+            name: 'David Okonkwo',
+            role: 'Director of Operations, Metro City Council',
+            stars: 5,
+          },
+          {
+            text: 'They built our custom inventory management app from scratch. On time, on budget, and the team is always responsive to support requests.',
+            name: 'Priya Sharma',
+            role: 'COO, RetailChain Ltd.',
+            stars: 5,
+          },
+        ]}
+      />
+    </div>
+  </section>
+
+  <CTASection
+    title="Ready to Integrate?"
+    subtitle="Let's discuss your project. From initial design to final installation and beyond — we're with you every step."
+    ctaText="Schedule a Consultation"
+    ctaLink="/contact"
+  />
+</Layout>

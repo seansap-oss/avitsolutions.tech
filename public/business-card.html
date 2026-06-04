@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AVIT Solutions — Business Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #050607;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Inter', -apple-system, sans-serif;
+      padding: 2rem;
+    }
+    .card-container {
+      position: relative;
+      width: 612px;
+      max-width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    }
+    .card-container svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .card-label {
+      color: #6b7280;
+      font-size: 0.8rem;
+      margin-top: 1.5rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .instructions {
+      color: #4b5563;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+      text-align: center;
+      line-height: 1.6;
+    }
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.5rem;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+    }
+    .btn-primary {
+      background: #00E5FF;
+      color: #0a0b0c;
+    }
+    .btn-primary:hover {
+      background: #33eaff;
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      background: #1a1d24;
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .btn-secondary:hover {
+      background: #2a2d34;
+      transform: translateY(-1px);
+    }
+    @media print {
+      body { background: white; padding: 0; }
+      .card-container {
+        box-shadow: none;
+        width: 3.5in;
+        margin: 0.5in auto;
+      }
+      .card-label, .instructions, .btn-group { display: none; }
+    }
+    @media (max-width: 660px) {
+      .card-container { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card-container">
+    <img src="/business-card.svg" alt="AVIT Solutions Business Card — Tonny Gapam, Founder & CEO" />
+  </div>
+  <p class="card-label">AVIT Solutions — Business Card</p>
+  <p class="instructions">
+    Tonny Gapam · Founder & CEO<br/>
+    Print at 3.5" × 2.1" (standard business card size)
+  </p>
+  <div class="btn-group">
+    <button class="btn btn-primary" onclick="window.print()">🖨️ Print Card</button>
+    <a class="btn btn-secondary" href="/business-card.svg" download>⬇️ Download SVG</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,194 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTASection from '../../components/CTASection.astro';
+---
+
+<Layout>
+  <section class="section" style="padding-bottom: 0;">
+    <div class="container">
+      <a href="/projects" class="back-link">← Back to Projects</a>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 2rem;">
+    <div class="container">
+      <span class="section-label" style="margin-bottom: 0.5rem;">Corporate</span>
+      <h1 class="section-title" style="font-size: clamp(2.2rem, 4vw, 3rem);">TechCorp Global HQ</h1>
+      <p class="section-subtitle" style="margin-bottom: 3rem;">Complete AV integration for a 12-floor corporate headquarters.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="project-hero-img" style="background: linear-gradient(135deg, #1a1d24, #0d1117);">
+        <span style="font-size: 5rem; opacity: 0.2;">🏢</span>
+      </div>
+
+      <div class="project-detail-grid">
+        <div class="project-detail-main">
+          <h2>Overview</h2>
+          <p>TechCorp International engaged AVIT Solutions to design and implement a comprehensive AV system for their new 12-floor global headquarters. The project encompassed everything from executive boardrooms to a 200-seat auditorium, requiring seamless integration with their existing Microsoft Teams and Zoom infrastructure.</p>
+
+          <h2>Scope</h2>
+          <ul>
+            <li>12 executive boardrooms with wireless presentation and 4K video conferencing</li>
+            <li>24 huddle rooms with plug-and-play collaboration systems</li>
+            <li>200-seat auditorium with immersive audio, laser projection, and live streaming</li>
+            <li>Digital signage network across all floors and lobby</li>
+            <li>Unified communication integration (Teams, Zoom, Webex)</li>
+            <li>Centralized AV control and monitoring system</li>
+          </ul>
+
+          <h2>Outcome</h2>
+          <p>The system was delivered on schedule and under budget. TechCorp reported a 40% reduction in meeting setup time and significantly higher user adoption compared to their previous system. The auditorium has become a flagship space for company all-hands and client events.</p>
+        </div>
+        <div class="project-detail-side">
+          <div class="detail-card glass">
+            <h3>Project Details</h3>
+            <div class="detail-row"><span>Client</span><span>TechCorp International</span></div>
+            <div class="detail-row"><span>Industry</span><span>Enterprise Technology</span></div>
+            <div class="detail-row"><span>Duration</span><span>6 months</span></div>
+            <div class="detail-row"><span>Budget</span><span>$500K+</span></div>
+            <div class="detail-row"><span>Status</span><span style="color: var(--accent);">Completed</span></div>
+          </div>
+          <div class="detail-card glass">
+            <h3>Technologies</h3>
+            <div class="tech-tags">
+              <span>Crestron</span><span>Shure</span><span>Epson</span><span>Microsoft Teams</span><span>Zoom Rooms</span><span>Biamp</span><span>Samsung</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Ready for a Corporate AV Upgrade?"
+    subtitle="Let's design a system that transforms your workplace."
+    ctaText="Contact Us"
+    ctaLink="/contact"
+  />
+</Layout>
+
+<style>
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+  }
+
+  .back-link:hover { color: var(--accent); }
+
+  .project-hero-img {
+    width: 100%;
+    height: 400px;
+    border-radius: var(--radius-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+
+  .project-detail-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .project-detail-main h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 2rem 0 1rem;
+  }
+
+  .project-detail-main h2:first-child { margin-top: 0; }
+
+  .project-detail-main p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-detail-main ul {
+    list-style: none;
+    color: var(--text-secondary);
+    line-height: 2;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-detail-main ul li {
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .project-detail-main ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .detail-card {
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border);
+    margin-bottom: 1rem;
+  }
+
+  .detail-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+  }
+
+  .detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.9rem;
+  }
+
+  .detail-row:last-child { border-bottom: none; }
+
+  .detail-row span:first-child {
+    color: var(--text-tertiary);
+  }
+
+  .detail-row span:last-child {
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tech-tags span {
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .project-detail-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .project-hero-img {
+      height: 250px;
+    }
+  }
+</style>

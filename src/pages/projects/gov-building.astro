@@ -1,0 +1,188 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTASection from '../../components/CTASection.astro';
+---
+
+<Layout>
+  <section class="section" style="padding-bottom: 0;">
+    <div class="container">
+      <a href="/projects" class="back-link">← Back to Projects</a>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 2rem;">
+    <div class="container">
+      <span class="section-label" style="margin-bottom: 0.5rem;">Government</span>
+      <h1 class="section-title" style="font-size: clamp(2.2rem, 4vw, 3rem);">City Hall Council Chambers</h1>
+      <p class="section-subtitle" style="margin-bottom: 3rem;">Secure AV system with voting integration, live streaming, and classified communications.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="project-hero-img" style="background: linear-gradient(135deg, #1a1d2e, #0d1117);">
+        <span style="font-size: 5rem; opacity: 0.2;">🏛️</span>
+      </div>
+
+      <div class="project-detail-grid">
+        <div class="project-detail-main">
+          <h2>Overview</h2>
+          <p>The Metro City Council required a complete AV overhaul of their historic council chambers. The system needed to support public meetings with live broadcast, secure executive sessions, electronic voting, and full accessibility compliance — all while preserving the aesthetic integrity of the heritage-listed room.</p>
+
+          <h2>Scope</h2>
+          <ul>
+            <li>Council member microphones with automatic camera tracking and speaker identification</li>
+            <li>Electronic voting system integrated with legislative records management</li>
+            <li>HD PTZ cameras with automated director for live broadcast and archive</li>
+            <li>Secure audio processing for closed-session executive meetings</li>
+            <li>Public address system with room-combining for overflow crowds</li>
+            <li>Assistive listening system (hearing loop) for accessibility compliance</li>
+            <li>Live captioning and translation feeds for multilingual meetings</li>
+          </ul>
+
+          <h2>Outcome</h2>
+          <p>The new system has dramatically improved meeting efficiency and public engagement. Council meetings now stream live with 4K quality and automated captioning. The secure executive mode ensures classified discussions remain protected. The heritage chamber maintains its original appearance with all technology discreetly integrated.</p>
+        </div>
+        <div class="project-detail-side">
+          <div class="detail-card glass">
+            <h3>Project Details</h3>
+            <div class="detail-row"><span>Client</span><span>Metro City Council</span></div>
+            <div class="detail-row"><span>Sector</span><span>Government / Municipal</span></div>
+            <div class="detail-row"><span>Duration</span><span>5 months</span></div>
+            <div class="detail-row"><span>Budget</span><span>$500K+</span></div>
+            <div class="detail-row"><span>Status</span><span style="color: var(--accent);">Completed</span></div>
+          </div>
+          <div class="detail-card glass">
+            <h3>Technologies</h3>
+            <div class="tech-tags">
+              <span>Televic</span><span>Panasonic</span><span>Biamp</span><span>QSC</span><span>Shure</span><span>Haivision</span><span>Bosch</span><span>Kramer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Need Secure Government AV?"
+    subtitle="We understand the unique requirements of public sector integration."
+    ctaText="Contact Our Team"
+    ctaLink="/contact"
+  />
+</Layout>
+
+<style>
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+  }
+
+  .back-link:hover { color: var(--accent); }
+
+  .project-hero-img {
+    width: 100%;
+    height: 400px;
+    border-radius: var(--radius-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+
+  .project-detail-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .project-detail-main h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 2rem 0 1rem;
+  }
+
+  .project-detail-main h2:first-child { margin-top: 0; }
+
+  .project-detail-main p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-detail-main ul {
+    list-style: none;
+    color: var(--text-secondary);
+    line-height: 2;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-detail-main ul li {
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .project-detail-main ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .detail-card {
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border);
+    margin-bottom: 1rem;
+  }
+
+  .detail-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+  }
+
+  .detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.9rem;
+  }
+
+  .detail-row:last-child { border-bottom: none; }
+
+  .detail-row span:first-child { color: var(--text-tertiary); }
+
+  .detail-row span:last-child {
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tech-tags span {
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .project-detail-grid { grid-template-columns: 1fr; }
+    .project-hero-img { height: 250px; }
+  }
+</style>

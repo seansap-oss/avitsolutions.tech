@@ -1,0 +1,216 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTASection from '../components/CTASection.astro';
+---
+
+<Layout>
+  <section class="section page-hero">
+    <div class="container" style="text-align: center;">
+      <div class="section-label">About</div>
+      <h1 class="section-title" style="font-size: clamp(2.5rem, 5vw, 3.5rem);">
+        Bridging AV & IT
+      </h1>
+      <p class="section-subtitle" style="margin: 0 auto 0;">
+        We are a team of audiovisual engineers and software developers who believe great technology should just work.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content">
+          <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.2rem);">
+            Founded by <span class="gradient-text">Tonny Gapam</span>
+          </h2>
+          <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+            AVIT Solutions was founded on a simple belief: audiovisual technology and information technology should
+            never be treated as separate disciplines. When AV and IT are integrated from the ground up, systems are
+            more reliable, easier to manage, and deliver a better experience.
+          </p>
+          <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+            With over a decade of experience spanning corporate AV integration, residential smart home automation,
+            government-grade secure systems, and custom software development, we bring a unique cross-disciplinary
+            perspective to every project.
+          </p>
+          <p style="color: var(--text-secondary); line-height: 1.8;">
+            Whether we're designing a boardroom system, engineering a smart home, building a secure government
+            communication platform, or developing a mobile app — our approach is the same: understand the mission,
+            design the right solution, and deliver it with excellence.
+          </p>
+        </div>
+        <div class="about-visual">
+          <div class="about-card glass">
+            <div class="about-avatar">
+              <span>TG</span>
+            </div>
+            <h3>Tonny Gapam</h3>
+            <span class="about-role">Founder & CEO</span>
+            <p>AV + IT integration specialist. Builder of systems that matter.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-label">Values</div>
+      <h2 class="section-title">How We Work</h2>
+      <p class="section-subtitle" style="margin-bottom: 3rem;">
+        Principles that guide every project and partnership.
+      </p>
+      <div class="values-grid">
+        <div class="value-card">
+          <span class="value-number">01</span>
+          <h3>Design-Led Engineering</h3>
+          <p>Great systems start with great design. We take time to understand before we build.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-number">02</span>
+          <h3>AV + IT Unity</h3>
+          <p>No silos. Our cross-disciplinary team ensures AV and IT work as one system.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-number">03</span>
+          <h3>End-to-End Ownership</h3>
+          <p>From first sketch to final sign-off and beyond — we own the outcome.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-number">04</span>
+          <h3>Security First</h3>
+          <p>Especially for government and enterprise — security is never an afterthought.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-number">05</span>
+          <h3>Future-Proof Systems</h3>
+          <p>We build for today and design for tomorrow. Scalable, upgradable, enduring.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-number">06</span>
+          <h3>White-Glove Service</h3>
+          <p>Every client deserves a premium experience. From proposal to support, we deliver.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Work With Us"
+    subtitle="Have a project in mind? Let's talk about how we can help."
+    ctaText="Get in Touch"
+    ctaLink="/contact"
+  />
+</Layout>
+
+<style>
+  .page-hero {
+    padding-bottom: 2rem;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-card {
+    padding: 3rem 2rem;
+    border-radius: var(--radius-xl);
+    text-align: center;
+    border: 1px solid var(--glass-border);
+  }
+
+  .about-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), #4d8aff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--bg-primary);
+    margin: 0 auto 1.25rem;
+  }
+
+  .about-card h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .about-role {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .about-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .value-card {
+    padding: 2rem;
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-base);
+  }
+
+  .value-card:hover {
+    border-color: var(--accent-dim);
+    transform: translateY(-2px);
+  }
+
+  .value-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+    opacity: 0.3;
+    line-height: 1;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .value-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .value-card p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .values-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

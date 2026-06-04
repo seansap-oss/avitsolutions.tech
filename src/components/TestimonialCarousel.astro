@@ -1,0 +1,84 @@
+---
+const { testimonials } = Astro.props;
+---
+
+<div class="testimonial-carousel">
+  {testimonials.map((t) => (
+    <div class="testimonial-card glass">
+      <div class="testimonial-stars">{'★'.repeat(t.stars || 5)}</div>
+      <p class="testimonial-text">"{t.text}"</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">{t.name.charAt(0)}</div>
+        <div>
+          <p class="testimonial-name">{t.name}</p>
+          <p class="testimonial-role">{t.role}</p>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .testimonial-carousel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .testimonial-card {
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border);
+    transition: all var(--transition-base);
+  }
+
+  .testimonial-card:hover {
+    border-color: var(--accent-dim);
+    transform: translateY(-2px);
+  }
+
+  .testimonial-stars {
+    color: #fbbf24;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+
+  .testimonial-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .testimonial-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), #4d8aff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--bg-primary);
+    flex-shrink: 0;
+  }
+
+  .testimonial-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .testimonial-role {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+  }
+</style>

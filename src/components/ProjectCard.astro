@@ -1,0 +1,127 @@
+---
+const { projects } = Astro.props;
+---
+
+<div class="projects-scroll">
+  {projects.map((project) => (
+    <a href={project.link} class="project-card">
+      <div class="project-image">
+        <div class="project-placeholder" style={`background: linear-gradient(135deg, ${project.color1 || '#1a1d24'}, ${project.color2 || '#0a0b0c'})`}>
+          <span class="project-icon">{project.icon || '🔷'}</span>
+        </div>
+        <div class="project-overlay">
+          <span class="project-view">View Project</span>
+        </div>
+      </div>
+      <div class="project-info">
+        <span class="project-tag">{project.tag}</span>
+        <h3 class="project-name">{project.title}</h3>
+        <p class="project-desc">{project.description}</p>
+      </div>
+    </a>
+  ))}
+</div>
+
+<style>
+  .projects-scroll {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-base);
+    text-decoration: none;
+    color: var(--text-primary);
+    cursor: pointer;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-dim);
+  }
+
+  .project-image {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+  }
+
+  .project-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transition-slow);
+  }
+
+  .project-card:hover .project-placeholder {
+    transform: scale(1.05);
+  }
+
+  .project-icon {
+    font-size: 3rem;
+    opacity: 0.6;
+  }
+
+  .project-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+
+  .project-card:hover .project-overlay {
+    opacity: 1;
+  }
+
+  .project-view {
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    background: var(--accent);
+    color: var(--bg-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .project-info {
+    padding: 1.25rem;
+  }
+
+  .project-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+  }
+
+  .project-desc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 480px) {
+    .projects-scroll {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
