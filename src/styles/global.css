@@ -311,6 +311,100 @@ a:hover {
   color: var(--accent-dim);
 }
 
+[data-theme="light"] .hero-bg {
+  background:
+    radial-gradient(ellipse 70% 50% at 30% 40%, rgba(0, 151, 167, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 60%, rgba(77, 138, 255, 0.06) 0%, transparent 50%),
+    linear-gradient(180deg, #e8f4f8 0%, #f0f4f8 30%, #e2ecf4 70%, #f8f9fa 100%) !important;
+}
+
+[data-theme="light"] .hero-grid-overlay {
+  background-image:
+    linear-gradient(rgba(0, 151, 167, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 151, 167, 0.04) 1px, transparent 1px) !important;
+}
+
+[data-theme="light"] .hero-glow-1 {
+  background: radial-gradient(circle, rgba(0, 151, 167, 0.12) 0%, transparent 70%) !important;
+}
+
+[data-theme="light"] .hero-glow-2 {
+  background: radial-gradient(circle, rgba(77, 138, 255, 0.1) 0%, transparent 70%) !important;
+}
+
+[data-theme="light"] .hero-title {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .hero-badge {
+  background: rgba(255, 255, 255, 0.6) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .nav-link {
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] .nav-link:hover {
+  color: var(--text-primary);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .nav-cta {
+  background: var(--accent) !important;
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .nav-cta:hover {
+  background: var(--accent-dim) !important;
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+[data-theme="light"] .nav-wrapper.scrolled {
+  background: rgba(255, 255, 255, 0.85);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .theme-toggle {
+  border-color: rgba(0, 0, 0, 0.1);
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] .theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .theme-toggle .icon-sun { display: block; }
+[data-theme="light"] .theme-toggle .icon-moon { display: none; }
+
+[data-theme="light"] .footer-logo .logo-a,
+[data-theme="light"] .footer-logo .logo-v,
+[data-theme="light"] .footer-logo .logo-t {
+  color: #111827 !important;
+}
+
+[data-theme="light"] .project-card {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+[data-theme="light"] .value-card {
+  background: var(--bg-primary);
+  border-color: var(--border-color);
+}
+
+[data-theme="light"] .cert-card {
+  background: var(--bg-primary);
+  border-color: var(--border-color);
+}
+
+[data-theme="light"] .stack-item {
+  background: var(--bg-primary);
+  border-color: var(--border-color);
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
