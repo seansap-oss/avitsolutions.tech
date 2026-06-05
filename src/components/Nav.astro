@@ -5,7 +5,8 @@
 <header class="nav-wrapper" id="navbar">
   <div class="container nav-inner">
     <a href="/" class="logo" aria-label="AVIT Solutions Home">
-      <img src="/logo.svg" alt="AvITSolutions" width="290" height="60" class="logo-img" />
+      <span class="logo-mark">A</span>
+      <span class="logo-text">AVIT<span class="logo-accent">Solutions</span></span>
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="/" class="nav-link">Home</a>
@@ -51,14 +52,34 @@
   .logo {
     display: flex;
     align-items: center;
+    gap: 0.6rem;
     text-decoration: none;
-    line-height: 0;
+    color: var(--text-primary);
+    font-weight: 700;
+    font-size: 1.25rem;
   }
 
-  .logo-img {
-    height: 44px;
-    width: auto;
-    display: block;
+  .logo-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    background: linear-gradient(135deg, var(--accent), #4d8aff);
+    color: var(--bg-primary);
+    font-weight: 900;
+    font-size: 1.2rem;
+  }
+
+  .logo-text {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .logo-accent {
+    color: var(--accent);
+    font-weight: 600;
   }
 
   .nav-links {
