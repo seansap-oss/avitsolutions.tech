@@ -7,7 +7,7 @@ const { projects } = Astro.props;
     <a href={project.link} class="project-card">
       <div class="project-image">
         {project.image ? (
-          <img src={project.image} alt={project.title} class="project-img" loading="lazy" decoding="async" />
+          <img src={project.image} alt={project.title} class="project-img" loading="lazy" decoding="async" data-image-key={project.key} />
         ) : (
           <div class="project-placeholder" style={`background: linear-gradient(135deg, ${project.color1 || '#1a1d24'}, ${project.color2 || '#0a0b0c'})`}>
             <span class="project-icon">{project.icon || '🔷'}</span>

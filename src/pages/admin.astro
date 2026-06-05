@@ -1,0 +1,308 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <section class="section page-hero">
+    <div class="container" style="text-align: center;">
+      <div class="section-label">Admin</div>
+      <h1 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem);">
+        Image Manager
+      </h1>
+      <p class="section-subtitle" style="margin: 0 auto 0;">
+        Paste new image URLs for any slot. Changes save to your browser and persist until cleared.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div id="adminApp"></div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+const STORAGE_KEY = 'avit-custom-images';
+
+const groups = [
+  {
+    name: 'AV Solutions',
+    items: [
+      { key: 'av-business', label: 'Business', default: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop&q=80' },
+      { key: 'av-government', label: 'Government', default: 'https://images.unsplash.com/photo-1577412647305-991150c7d163?w=800&h=600&fit=crop&q=80' },
+      { key: 'av-education', label: 'Education', default: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&h=600&fit=crop&q=80' },
+      { key: 'av-healthcare', label: 'Healthcare', default: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop&q=80' },
+      { key: 'av-entertainment', label: 'Entertainment', default: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop&q=80' },
+      { key: 'av-hospitality', label: 'Hospitality', default: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop&q=80' },
+    ],
+  },
+  {
+    name: 'IT Solutions',
+    items: [
+      { key: 'it-mobile-apps', label: 'Mobile Apps', default: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop&q=80' },
+      { key: 'it-hybrid-software', label: 'Hybrid Software', default: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop&q=80' },
+      { key: 'it-erp', label: 'Custom ERP', default: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&q=80' },
+      { key: 'it-ai-ecommerce', label: 'AI for Business', default: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop&q=80' },
+      { key: 'it-warehouse', label: 'Warehouse', default: 'https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&h=600&fit=crop&q=80' },
+      { key: 'it-digital-signage', label: 'Digital Signage', default: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=600&fit=crop&q=80' },
+    ],
+  },
+  {
+    name: 'Project Case Studies',
+    items: [
+      { key: 'project-corporate-hq', label: 'Corporate HQ', default: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=600&fit=crop&q=80' },
+      { key: 'project-smart-home', label: 'Smart Home', default: 'https://images.pexels.com/photos/8583821/pexels-photo-8583821.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600' },
+      { key: 'project-gov-building', label: 'Government Chambers', default: 'https://images.unsplash.com/photo-1577412647305-991150c7d163?w=1200&h=600&fit=crop&q=80' },
+    ],
+  },
+  {
+    name: 'About Page',
+    items: [
+      { key: 'about-hero', label: 'Hero / Team', default: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&h=500&fit=crop&q=80' },
+      { key: 'cert-amx', label: 'AMX Certification', default: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=300&fit=crop&q=80' },
+      { key: 'cert-crestron', label: 'Crestron Certification', default: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=300&fit=crop&q=80' },
+      { key: 'cert-extron', label: 'Extron Certification', default: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=400&h=300&fit=crop&q=80' },
+    ],
+  },
+];
+
+function loadSaved() {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+  } catch {
+    return {};
+  }
+}
+
+function saveAll(data) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function getUrl(item, data) {
+  return data[item.key] || item.default;
+}
+
+function render() {
+  const data = loadSaved();
+  const app = document.getElementById('adminApp');
+  if (!app) return;
+
+  let html = '';
+
+  for (const group of groups) {
+    html += `<div class="admin-group">
+      <h2 class="admin-group-title">${group.name}</h2>
+      <div class="admin-grid">`;
+
+    for (const item of group.items) {
+      const url = getUrl(item, data);
+      const isCustom = item.key in data;
+      html += `<div class="admin-card glass" data-key="${item.key}">
+        <div class="admin-preview">
+          <img src="${url}" alt="${item.label}" loading="lazy" onerror="this.style.display='none'" />
+        </div>
+        <div class="admin-info">
+          <strong>${item.label}</strong>
+          <span class="admin-key">${item.key}</span>
+        </div>
+        <input type="text" class="admin-input" value="${url}" placeholder="Paste image URL..." />
+        <div class="admin-actions">
+          <button class="admin-btn admin-btn-save">Save</button>
+          <span class="admin-badge ${isCustom ? '' : 'admin-badge-default'}">${isCustom ? 'Custom' : 'Default'}</span>
+        </div>
+      </div>`;
+    }
+
+    html += `</div></div>`;
+  }
+
+  html += `<div class="admin-footer">
+    <button class="admin-btn admin-btn-reset-all" id="resetAll">Reset All to Defaults</button>
+    <p class="admin-note">Changes are stored in your browser (localStorage). Persist until cleared.</p>
+  </div>`;
+
+  app.innerHTML = html;
+
+  for (const card of document.querySelectorAll('.admin-card')) {
+    const key = card.dataset.key;
+    const input = card.querySelector('.admin-input');
+    const saveBtn = card.querySelector('.admin-btn-save');
+    const badge = card.querySelector('.admin-badge');
+
+    saveBtn.addEventListener('click', () => {
+      const url = input.value.trim();
+      if (!url) return;
+      const data = loadSaved();
+      data[key] = url;
+      saveAll(data);
+      card.querySelector('.admin-preview img').src = url;
+      badge.textContent = 'Custom';
+      badge.className = 'admin-badge';
+    });
+  }
+
+  const resetAllBtn = document.getElementById('resetAll');
+  if (resetAllBtn) {
+    resetAllBtn.addEventListener('click', () => {
+      if (confirm('Reset all images to defaults?')) {
+        localStorage.removeItem(STORAGE_KEY);
+        render();
+      }
+    });
+  }
+}
+
+render();
+</script>
+
+<style>
+  .page-hero {
+    padding-bottom: 2rem;
+  }
+
+  .admin-group {
+    margin-bottom: 2.5rem;
+  }
+
+  .admin-group-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1rem;
+  }
+
+  .admin-card {
+    padding: 1rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border);
+  }
+
+  .admin-preview {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+    background: var(--bg-tertiary);
+  }
+
+  .admin-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .admin-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.9rem;
+  }
+
+  .admin-key {
+    font-size: 0.7rem;
+    color: var(--text-tertiary);
+    font-family: monospace;
+  }
+
+  .admin-input {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 0.8rem;
+    font-family: monospace;
+    margin-bottom: 0.6rem;
+    box-sizing: border-box;
+  }
+
+  .admin-input:focus {
+    outline: none;
+    border-color: var(--accent-dim);
+  }
+
+  .admin-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .admin-btn {
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius-sm);
+    border: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .admin-btn-save {
+    background: var(--accent);
+    color: var(--bg-primary);
+  }
+
+  .admin-btn-save:hover {
+    opacity: 0.85;
+  }
+
+  .admin-btn-reset-all {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+  }
+
+  .admin-btn-reset-all:hover {
+    border-color: #ff4444;
+    color: #ff4444;
+  }
+
+  .admin-badge {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    background: rgba(0, 229, 255, 0.15);
+    color: var(--accent);
+    margin-left: auto;
+  }
+
+  .admin-badge-default {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-tertiary);
+  }
+
+  .admin-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 2rem 0 4rem;
+  }
+
+  .admin-note {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    margin: 0;
+  }
+
+  @media (max-width: 480px) {
+    .admin-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -22,6 +22,31 @@ import Footer from '../components/Footer.astro';
         document.documentElement.setAttribute('data-theme', theme);
       })();
     </script>
+    <script is:inline>
+      (function() {
+        try {
+          var data = JSON.parse(localStorage.getItem('avit-custom-images'));
+          if (data) {
+            var keys = Object.keys(data);
+            if (keys.length) {
+              var run = function() {
+                keys.forEach(function(key) {
+                  var imgs = document.querySelectorAll('img[data-image-key="' + key + '"]');
+                  for (var i = 0; i < imgs.length; i++) {
+                    imgs[i].src = data[key];
+                  }
+                });
+              };
+              if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', run);
+              } else {
+                run();
+              }
+            }
+          }
+        } catch(e) {}
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />

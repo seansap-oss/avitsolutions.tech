@@ -4,13 +4,19 @@ interface Props {
   alt: string;
   caption?: string;
   class?: string;
+  key?: string;
 }
 
-const { src, alt, caption, class: className = '' } = Astro.props;
+const { src, alt, caption, class: className = '', key } = Astro.props;
+const dataAttr = key ? `data-image-key="${key}"` : '';
 ---
 
 <div class:list={['image-card', className]}>
-  <img src={src} alt={alt} loading="lazy" decoding="async" />
+  {key ? (
+    <img src={src} alt={alt} loading="lazy" decoding="async" data-image-key={key} />
+  ) : (
+    <img src={src} alt={alt} loading="lazy" decoding="async" />
+  )}
   <div class="image-overlay"></div>
   {caption && <span class="image-caption">{caption}</span>}
 </div>
