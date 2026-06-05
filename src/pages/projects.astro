@@ -25,6 +25,7 @@ import CTASection from '../components/CTASection.astro';
         <button class="filter-btn" data-filter="residential">Residential</button>
         <button class="filter-btn" data-filter="government">Government</button>
         <button class="filter-btn" data-filter="software">Software</button>
+        <button class="filter-btn" data-filter="mobile">Mobile App</button>
       </div>
 
       <div class="projects-grid" id="projectsGrid">
@@ -88,6 +89,22 @@ import CTASection from '../components/CTASection.astro';
               <span class="project-tag">Software</span>
               <h3>Retail Inventory App</h3>
               <p>Custom inventory management and analytics platform for a retail chain with 50+ locations.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-item" data-category="mobile">
+          <a href="#" class="project-card-link">
+            <div class="project-image">
+              <div class="project-placeholder" style="background: linear-gradient(135deg, #1a1d2e, #0d1117);">
+                <span style="font-size: 3rem; opacity: 0.3;">📲</span>
+              </div>
+              <div class="project-hover"><span>Coming Soon</span></div>
+            </div>
+            <div class="project-meta">
+              <span class="project-tag">Mobile App</span>
+              <h3>Field Service Mobile App</h3>
+              <p>Cross-platform mobile application for field technicians with real-time job tracking and reporting.</p>
             </div>
           </a>
         </div>
@@ -323,20 +340,36 @@ import CTASection from '../components/CTASection.astro';
   const filterBtns = document.querySelectorAll('.filter-btn');
   const projects = document.querySelectorAll('.project-item');
 
+  const hashToFilter = {
+    '#software': 'software',
+    '#mobile-apps': 'mobile',
+    '#corporate': 'corporate',
+    '#residential': 'residential',
+    '#government': 'government',
+  };
+
+  function applyFilter(filter) {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    const target = document.querySelector(`.filter-btn[data-filter="${filter}"]`);
+    if (target) target.classList.add('active');
+
+    projects.forEach(project => {
+      if (filter === 'all' || project.dataset.category === filter) {
+        project.classList.remove('hidden');
+      } else {
+        project.classList.add('hidden');
+      }
+    });
+  }
+
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const filter = btn.dataset.filter;
-
-      projects.forEach(project => {
-        if (filter === 'all' || project.dataset.category === filter) {
-          project.classList.remove('hidden');
-        } else {
-          project.classList.add('hidden');
-        }
-      });
+      applyFilter(btn.dataset.filter);
     });
   });
+
+  const hash = window.location.hash;
+  if (hash && hashToFilter[hash]) {
+    applyFilter(hashToFilter[hash]);
+  }
 </script>
