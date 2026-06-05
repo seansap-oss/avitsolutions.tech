@@ -6,9 +6,13 @@ const { projects } = Astro.props;
   {projects.map((project) => (
     <a href={project.link} class="project-card">
       <div class="project-image">
-        <div class="project-placeholder" style={`background: linear-gradient(135deg, ${project.color1 || '#1a1d24'}, ${project.color2 || '#0a0b0c'})`}>
-          <span class="project-icon">{project.icon || '🔷'}</span>
-        </div>
+        {project.image ? (
+          <img src={project.image} alt={project.title} class="project-img" loading="lazy" decoding="async" />
+        ) : (
+          <div class="project-placeholder" style={`background: linear-gradient(135deg, ${project.color1 || '#1a1d24'}, ${project.color2 || '#0a0b0c'})`}>
+            <span class="project-icon">{project.icon || '🔷'}</span>
+          </div>
+        )}
         <div class="project-overlay">
           <span class="project-view">View Project</span>
         </div>
@@ -60,7 +64,16 @@ const { projects } = Astro.props;
     transition: transform var(--transition-slow);
   }
 
-  .project-card:hover .project-placeholder {
+  .project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition-slow);
+  }
+
+  .project-card:hover .project-placeholder,
+  .project-card:hover .project-img {
     transform: scale(1.05);
   }
 
