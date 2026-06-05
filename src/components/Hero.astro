@@ -255,6 +255,36 @@ const { title1, title2, subtitle, ctaText, ctaLink, secondaryText, secondaryLink
     }
   }
 
+  [data-theme="light"] .hero-bg {
+    background:
+      radial-gradient(ellipse 70% 50% at 30% 40%, rgba(0, 151, 167, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 80% 60%, rgba(77, 138, 255, 0.06) 0%, transparent 50%),
+      linear-gradient(180deg, #e8f4f8 0%, #f0f4f8 30%, #e2ecf4 70%, #f8f9fa 100%);
+  }
+
+  [data-theme="light"] .hero-grid-overlay {
+    background-image:
+      linear-gradient(rgba(0, 151, 167, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 151, 167, 0.04) 1px, transparent 1px);
+  }
+
+  [data-theme="light"] .hero-glow-1 {
+    background: radial-gradient(circle, rgba(0, 151, 167, 0.1) 0%, transparent 70%);
+  }
+
+  [data-theme="light"] .hero-glow-2 {
+    background: radial-gradient(circle, rgba(77, 138, 255, 0.08) 0%, transparent 70%);
+  }
+
+  [data-theme="light"] .hero-title {
+    color: var(--text-primary);
+  }
+
+  [data-theme="light"] .hero-badge {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(0, 0, 0, 0.08);
+  }
+
   @media (max-width: 480px) {
     .hero {
       padding: 4rem 0 2rem;
