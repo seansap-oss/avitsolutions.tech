@@ -5,6 +5,7 @@
 <header class="nav-wrapper" id="navbar">
   <div class="container nav-inner">
     <a href="/" class="logo" aria-label="AvITSolutions Home">
+      <img src="/logo-mark.svg" alt="" width="36" height="36" class="logo-mark-img" />
       <span class="logo-text"><span class="logo-a">A</span><span class="logo-v">v</span><span class="logo-i">I</span><span class="logo-t">T</span><span class="logo-accent">Solutions</span></span>
     </a>
     <nav class="nav-links" id="navLinks">
@@ -51,10 +52,16 @@
   .logo {
     display: flex;
     align-items: center;
+    gap: 0.65rem;
     text-decoration: none;
     color: var(--text-primary);
     font-weight: 700;
     font-size: 1.25rem;
+  }
+
+  .logo-mark-img {
+    display: block;
+    flex-shrink: 0;
   }
 
   .logo-text {
