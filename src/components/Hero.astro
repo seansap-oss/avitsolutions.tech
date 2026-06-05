@@ -355,7 +355,7 @@ const { title1, title2, subtitle, ctaText, ctaLink, secondaryText, secondaryLink
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
         this.size = Math.random() * 17 + 10;
-        this.alpha = (Math.random() * 0.3 + 0.35) * 0.95;
+        this.alpha = (Math.random() * 0.3 + 0.35) * 0.95 * 0.95;
         this.hueShift = Math.random() * 360;
         this.life = Math.random() * 300 + 200;
         this.maxLife = this.life;
@@ -544,7 +544,7 @@ const { title1, title2, subtitle, ctaText, ctaLink, secondaryText, secondaryLink
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < 130) {
-            const alpha = (1 - dist / 130) * 0.2 * 0.95;
+            const alpha = (1 - dist / 130) * 0.2 * 0.95 * 0.95;
             const hue = ((a.hue || 180) + (b.hue || 180)) / 2 + Math.sin(t + i) * 30;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -564,7 +564,7 @@ const { title1, title2, subtitle, ctaText, ctaLink, secondaryText, secondaryLink
       for (let wave = 0; wave < 3; wave++) {
         const offset = wave * 100 + t * 30;
         const hue = (wave * 120 + t * 20) % 360;
-        ctx.strokeStyle = `hsla(${hue}, 80%, 60%, ${0.08 * 0.95})`;
+        ctx.strokeStyle = `hsla(${hue}, 80%, 60%, ${0.08 * 0.95 * 0.95})`;
         ctx.beginPath();
         for (let x = 0; x < canvas.width; x += 3) {
           const y = canvas.height * 0.5 + Math.sin((x + offset) * 0.008) * 40 + Math.sin((x + offset) * 0.02) * 20;
