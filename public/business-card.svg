@@ -9,10 +9,6 @@
       <stop offset="0%" stop-color="#00E5FF"/>
       <stop offset="100%" stop-color="#4d8aff"/>
     </linearGradient>
-    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00E5FF"/>
-      <stop offset="100%" stop-color="#007BFF"/>
-    </linearGradient>
     <filter id="glow">
       <feGaussianBlur stdDeviation="3" result="blur"/>
       <feMerge>
@@ -37,16 +33,15 @@
   <!-- Decorative line -->
   <line x1="35" y1="330" x2="577" y2="330" stroke="rgba(0,229,255,0.3)" stroke-width="1"/>
 
-  <!-- Logo Mark -->
-  <rect x="35" y="35" width="42" height="42" rx="8" fill="url(#logoGrad)"/>
-  <text x="56" y="63" font-family="Arial, sans-serif" font-weight="900" font-size="22" fill="#0a0b0c" text-anchor="middle">A</text>
-
-  <!-- Company Name -->
-  <text x="90" y="55" font-family="'Inter', Arial, sans-serif" font-weight="800" font-size="18" fill="#ffffff">AVIT</text>
-  <text x="90" y="73" font-family="'Inter', Arial, sans-serif" font-weight="600" font-size="13" fill="#00E5FF">Solutions</text>
+  <!-- Logo: AvIT Solutions -->
+  <text x="35" y="58" font-family="'Inter', Arial, sans-serif" font-weight="800" font-size="20" fill="#ffffff" letter-spacing="-0.02em">A</text>
+  <text x="52" y="58" font-family="'Inter', Arial, sans-serif" font-weight="500" font-size="20" fill="#ffffff" letter-spacing="-0.02em">v</text>
+  <text x="66" y="58" font-family="'Inter', Arial, sans-serif" font-weight="800" font-size="20" fill="#FF3366" letter-spacing="-0.02em">I</text>
+  <text x="78" y="58" font-family="'Inter', Arial, sans-serif" font-weight="800" font-size="20" fill="#ffffff" letter-spacing="-0.02em">T</text>
+  <text x="94" y="58" font-family="'Inter', Arial, sans-serif" font-weight="600" font-size="20" fill="#00E5FF" letter-spacing="-0.02em">Solutions</text>
 
   <!-- Tagline -->
-  <text x="35" y="115" font-family="'Inter', Arial, sans-serif" font-weight="400" font-size="10" fill="#6b7280" letter-spacing="1.5" text-transform="uppercase">
+  <text x="35" y="100" font-family="'Inter', Arial, sans-serif" font-weight="400" font-size="10" fill="#6b7280" letter-spacing="1.5">
     AV INTEGRATIONS &amp; IT SOFTWARE APP DEVELOPMENT
   </text>
 
