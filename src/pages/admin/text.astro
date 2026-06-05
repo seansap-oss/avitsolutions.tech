@@ -1,0 +1,584 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout>
+  <section class="section page-hero">
+    <div class="container" style="text-align: center;">
+      <div class="admin-tabs">
+        <a href="/admin" class="admin-tab">Images</a>
+        <a href="/admin/text" class="admin-tab active">Text</a>
+      </div>
+      <div class="section-label">Admin</div>
+      <h1 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem);">
+        Text Manager
+      </h1>
+      <p class="section-subtitle" style="margin: 0 auto 0;">
+        Edit any text on the site. Use the toolbar to format with bold, italic, font size, and color.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div id="loginScreen">
+        <div class="login-card glass">
+          <div class="login-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h2 class="login-title">Enter Password</h2>
+          <p class="login-desc">This area is restricted. Enter the admin password to manage text.</p>
+          <form id="loginForm" class="login-form">
+            <input type="password" id="loginPassword" class="login-input" placeholder="Admin password" autocomplete="off" />
+            <button type="submit" class="login-btn">Unlock</button>
+            <p id="loginError" class="login-error"></p>
+          </form>
+        </div>
+      </div>
+      <div id="adminApp" style="display: none;"></div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+const STORAGE_KEY = 'avit-custom-texts';
+const ADMIN_PW_HASH = 'YXZpdDIwMjQ=';
+const AUTH_KEY = 'avit-admin-auth';
+
+(function init() {
+  if (sessionStorage.getItem(AUTH_KEY)) {
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('adminApp').style.display = '';
+  }
+  document.getElementById('loginForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var pw = document.getElementById('loginPassword').value;
+    if (btoa(pw) === ADMIN_PW_HASH) {
+      sessionStorage.setItem(AUTH_KEY, '1');
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('adminApp').style.display = '';
+      render();
+    } else {
+      document.getElementById('loginError').textContent = 'Incorrect password. Try again.';
+    }
+  });
+})();
+
+const groups = [
+  {
+    name: 'Homepage',
+    items: [
+      { key: 'hero-title-1', label: 'Hero Title Line 1', html: 'AV + IT Integration' },
+      { key: 'hero-title-2', label: 'Hero Title Line 2', html: 'From Design to Completion' },
+      { key: 'section-av-title', label: 'AV Solutions Section Title', html: 'Audiovisual Solutions' },
+      { key: 'section-av-subtitle', label: 'AV Solutions Section Subtitle', html: 'Industry-specific audiovisual systems designed, integrated, and supported by certified professionals.' },
+      { key: 'section-it-title', label: 'IT Solutions Section Title', html: 'IT & Software Solutions' },
+      { key: 'section-it-subtitle', label: 'IT Solutions Section Subtitle', html: 'Custom software, AI, and automation built for modern businesses.' },
+      { key: 'section-projects-title', label: 'Featured Projects Title', html: 'Featured Projects' },
+      { key: 'section-projects-subtitle', label: 'Featured Projects Subtitle', html: 'From corporate headquarters to smart residences — see what we\'ve delivered.' },
+    ],
+  },
+  {
+    name: 'AV Solutions',
+    items: [
+      { key: 'av-page-title', label: 'Page Title', html: 'AV Solutions' },
+      { key: 'av-page-subtitle', label: 'Page Subtitle', html: 'Industry-specific audiovisual systems designed, integrated, and supported by certified professionals.' },
+      { key: 'av-business-title', label: 'Business Title', html: 'Enterprise Boardroom & Meeting Room AV' },
+      { key: 'av-business-text', label: 'Business Description', html: 'We design and integrate professional AV systems for corporate environments — from small meeting rooms to large boardrooms and executive spaces.' },
+      { key: 'av-government-title', label: 'Government Title', html: 'Secure, Reliable, Certified AV for Public Sector' },
+      { key: 'av-government-text', label: 'Government Description', html: 'We deliver AV and communication systems that meet the highest standards of security, redundancy, and compliance.' },
+      { key: 'av-education-title', label: 'Education Title', html: 'Smart Classrooms & Campus AV Solutions' },
+      { key: 'av-education-text', label: 'Education Description', html: 'Transform learning environments with interactive AV technology that engages students and empowers educators.' },
+      { key: 'av-healthcare-title', label: 'Healthcare Title', html: 'AV Systems for Medical & Healthcare Environments' },
+      { key: 'av-healthcare-text', label: 'Healthcare Description', html: 'Purpose-built AV solutions for healthcare — from telemedicine and surgical video to patient entertainment.' },
+      { key: 'av-entertainment-title', label: 'Entertainment Title', html: 'Immersive AV for Venues & Events' },
+      { key: 'av-entertainment-text', label: 'Entertainment Description', html: 'Create unforgettable experiences with high-impact AV systems for entertainment venues, event spaces, and cultural institutions.' },
+      { key: 'av-hospitality-title', label: 'Hospitality Title', html: 'Elevated Guest Experiences Through AV' },
+      { key: 'av-hospitality-text', label: 'Hospitality Description', html: 'Impress guests and streamline operations with elegant AV systems for hotels, resorts, restaurants, and event venues.' },
+    ],
+  },
+  {
+    name: 'IT Solutions',
+    items: [
+      { key: 'it-page-title', label: 'Page Title', html: 'IT & Software Solutions' },
+      { key: 'it-page-subtitle', label: 'Page Subtitle', html: 'Custom software, AI, and automation solutions built for modern business needs.' },
+      { key: 'it-mobile-title', label: 'Mobile Apps Title', html: 'Android and iOS App Development' },
+      { key: 'it-mobile-text', label: 'Mobile Apps Description', html: 'Native and cross-platform mobile applications for iOS and Android — from concept to App Store deployment.' },
+      { key: 'it-hybrid-title', label: 'Hybrid Software Title', html: 'Hybrid Software and App' },
+      { key: 'it-hybrid-text', label: 'Hybrid Software Description', html: 'One codebase, every platform. We build hybrid applications that run natively on iOS, Android, and the web.' },
+      { key: 'it-erp-title', label: 'ERP Title', html: 'Custom Business ERP Development' },
+      { key: 'it-erp-text', label: 'ERP Description', html: 'Off-the-shelf ERP never fits perfectly. We build custom enterprise resource planning systems that match your exact workflows.' },
+      { key: 'it-ai-title', label: 'AI Solutions Title', html: 'AI for Ecommerce and Businesses' },
+      { key: 'it-ai-text', label: 'AI Solutions Description', html: 'Leverage artificial intelligence to automate decisions, personalise customer experiences, and unlock insights from your data.' },
+      { key: 'it-warehouse-title', label: 'Warehouse Title', html: 'Warehouse Automation' },
+      { key: 'it-warehouse-text', label: 'Warehouse Description', html: 'Automate warehouse operations with intelligent software that optimises picking, packing, and shipping.' },
+      { key: 'it-digital-title', label: 'Digital Signage Title', html: 'Digital Signage with Custom Interface' },
+      { key: 'it-digital-text', label: 'Digital Signage Description', html: 'Powerful digital signage platforms with custom content management interfaces. Control what displays, when, and where.' },
+    ],
+  },
+  {
+    name: 'About',
+    items: [
+      { key: 'about-page-title', label: 'Page Title', html: 'About AVIT Solutions' },
+      { key: 'about-page-subtitle', label: 'Page Subtitle', html: '17+ years of audiovisual integration and IT software development expertise.' },
+      { key: 'about-founder-name', label: 'Founder Name', html: 'Tonny Gapam' },
+      { key: 'about-founder-role', label: 'Founder Role', html: 'Founder & CEO' },
+      { key: 'about-founder-bio', label: 'Founder Bio', html: '17+ year AV/IT consultant · AMX, Crestron & Extron certified · Australia-based' },
+    ],
+  },
+  {
+    name: 'Projects',
+    items: [
+      { key: 'projects-page-title', label: 'Page Title', html: 'Our Projects' },
+      { key: 'projects-page-subtitle', label: 'Page Subtitle', html: 'Real projects. Real results. See how we\'ve helped organizations across sectors.' },
+    ],
+  },
+  {
+    name: 'Contact',
+    items: [
+      { key: 'contact-page-title', label: 'Page Title', html: 'Let\'s Talk About Your Next Project' },
+      { key: 'contact-page-subtitle', label: 'Page Subtitle', html: 'Ready to transform your space or build something new? Get in touch and we\'ll take it from there.' },
+    ],
+  },
+];
+
+function loadSaved() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+  catch { return {}; }
+}
+
+function saveAll(data) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function getHtml(item, data) {
+  return data[item.key] || item.html;
+}
+
+function render() {
+  const data = loadSaved();
+  const app = document.getElementById('adminApp');
+  if (!app) return;
+
+  let html = '';
+
+  for (const group of groups) {
+    html += `<div class="admin-group">
+      <h2 class="admin-group-title">${group.name}</h2>
+      <div class="admin-grid">`;
+
+    for (const item of group.items) {
+      const val = getHtml(item, data);
+      const isCustom = item.key in data;
+      html += `<div class="admin-card glass" data-key="${item.key}">
+        <div class="admin-info">
+          <strong>${item.label}</strong>
+          <span class="admin-key">${item.key}</span>
+        </div>
+        <div class="text-preview">${val}</div>
+        <div class="tb">
+          <button class="tb-btn" data-cmd="bold" title="Bold"><b>B</b></button>
+          <button class="tb-btn" data-cmd="italic" title="Italic"><i>I</i></button>
+          <span class="tb-sep"></span>
+          <select class="tb-select" data-cmd="fontSize">
+            <option value="3">Normal</option>
+            <option value="1">Small</option>
+            <option value="4">Large</option>
+            <option value="5">X-Large</option>
+          </select>
+          <span class="tb-sep"></span>
+          <input type="color" class="tb-color" data-cmd="foreColor" value="#00b8d4" title="Text Color" />
+          <span class="tb-sep"></span>
+          <button class="tb-btn" data-cmd="removeFormat" title="Clear formatting"><span style="font-size:0.8rem;">✕</span></button>
+        </div>
+        <div class="text-editor" contenteditable="true">${val}</div>
+        <div class="admin-actions">
+          <button class="admin-btn admin-btn-save">Save</button>
+          <span class="admin-badge ${isCustom ? '' : 'admin-badge-default'}">${isCustom ? 'Custom' : 'Default'}</span>
+        </div>
+      </div>`;
+    }
+
+    html += `</div></div>`;
+  }
+
+  html += `<div class="admin-footer">
+    <button class="admin-btn admin-btn-reset-all" id="resetAll">Reset All to Defaults</button>
+    <p class="admin-note">Changes stored in your browser (localStorage). Persist until cleared.</p>
+  </div>`;
+
+  app.innerHTML = html;
+
+  document.querySelectorAll('.admin-card').forEach(function (card) {
+    var key = card.dataset.key;
+    var editor = card.querySelector('.text-editor');
+    var preview = card.querySelector('.text-preview');
+    var saveBtn = card.querySelector('.admin-btn-save');
+    var badge = card.querySelector('.admin-badge');
+
+    function updatePreview() {
+      preview.innerHTML = editor.innerHTML;
+    }
+
+    function save() {
+      var data = loadSaved();
+      data[key] = editor.innerHTML;
+      saveAll(data);
+      updatePreview();
+      badge.textContent = 'Custom';
+      badge.className = 'admin-badge';
+    }
+
+    saveBtn.addEventListener('click', save);
+
+    editor.addEventListener('keydown', function (e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+        e.preventDefault();
+        save();
+      }
+    });
+
+    card.querySelectorAll('.tb-btn').forEach(function (btn) {
+      btn.addEventListener('mousedown', function (e) {
+        e.preventDefault();
+        editor.focus();
+        document.execCommand(btn.dataset.cmd, false, null);
+      });
+    });
+
+    card.querySelectorAll('.tb-select').forEach(function (sel) {
+      sel.addEventListener('change', function () {
+        editor.focus();
+        document.execCommand(sel.dataset.cmd, false, sel.value);
+        sel.selectedIndex = 0;
+      });
+    });
+
+    card.querySelectorAll('.tb-color').forEach(function (picker) {
+      picker.addEventListener('input', function () {
+        editor.focus();
+        document.execCommand(picker.dataset.cmd, false, picker.value);
+      });
+    });
+  });
+
+  document.getElementById('resetAll').addEventListener('click', function () {
+    if (confirm('Reset all text to defaults?')) {
+      localStorage.removeItem(STORAGE_KEY);
+      render();
+    }
+  });
+}
+
+if (sessionStorage.getItem(AUTH_KEY)) { render(); }
+</script>
+
+<style>
+  .page-hero { padding-bottom: 2rem; }
+
+  .admin-tabs {
+    display: flex;
+    gap: 0.25rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .admin-tab {
+    padding: 0.4rem 1.25rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-fast);
+  }
+
+  .admin-tab:hover {
+    color: var(--text-primary);
+    border-color: var(--accent-dim);
+  }
+
+  .admin-tab.active {
+    background: var(--accent);
+    color: var(--bg-primary);
+    border-color: var(--accent);
+  }
+
+  #loginScreen {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0 4rem;
+  }
+
+  .login-card {
+    max-width: 420px;
+    width: 100%;
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border);
+    text-align: center;
+  }
+
+  .login-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: var(--accent);
+    opacity: 0.7;
+  }
+
+  .login-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .login-desc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .login-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .login-input:focus {
+    outline: none;
+    border-color: var(--accent-dim);
+  }
+
+  .login-btn {
+    padding: 0.75rem;
+    border-radius: var(--radius-sm);
+    border: none;
+    background: var(--accent);
+    color: var(--bg-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .login-btn:hover { opacity: 0.85; }
+
+  .login-error {
+    font-size: 0.85rem;
+    color: #ff4444;
+    margin: 0;
+    min-height: 1.2em;
+  }
+
+  .admin-group { margin-bottom: 2.5rem; }
+
+  .admin-group-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 1rem;
+  }
+
+  .admin-card {
+    padding: 1rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border);
+  }
+
+  .admin-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .admin-key {
+    font-size: 0.7rem;
+    color: var(--text-tertiary);
+    font-family: monospace;
+  }
+
+  .text-preview {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    padding: 0.4rem 0.6rem;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.5rem;
+    max-height: 2.4em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .tb {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.35rem;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    flex-wrap: wrap;
+  }
+
+  .tb-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 4px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .tb-btn:hover {
+    background: rgba(255,255,255,0.08);
+    color: var(--text-primary);
+  }
+
+  .tb-sep {
+    width: 1px;
+    height: 20px;
+    background: var(--border-color);
+    margin: 0 0.2rem;
+  }
+
+  .tb-select {
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 0.75rem;
+    cursor: pointer;
+  }
+
+  .tb-color {
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background: none;
+  }
+
+  .tb-color::-webkit-color-swatch-wrapper { padding: 2px; }
+  .tb-color::-webkit-color-swatch { border-radius: 3px; border: 1px solid var(--border-color); }
+
+  .text-editor {
+    min-height: 80px;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    outline: none;
+    overflow-y: auto;
+  }
+
+  .text-editor:focus { border-color: var(--accent-dim); }
+
+  .admin-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.6rem;
+  }
+
+  .admin-btn {
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius-sm);
+    border: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .admin-btn-save {
+    background: var(--accent);
+    color: var(--bg-primary);
+  }
+
+  .admin-btn-save:hover { opacity: 0.85; }
+
+  .admin-btn-reset-all {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+  }
+
+  .admin-btn-reset-all:hover {
+    border-color: #ff4444;
+    color: #ff4444;
+  }
+
+  .admin-badge {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    background: rgba(0, 229, 255, 0.15);
+    color: var(--accent);
+    margin-left: auto;
+  }
+
+  .admin-badge-default {
+    background: rgba(255,255,255,0.06);
+    color: var(--text-tertiary);
+  }
+
+  .admin-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 2rem 0 4rem;
+  }
+
+  .admin-note {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .admin-grid { grid-template-columns: 1fr; }
+  }
+</style>

@@ -5,6 +5,10 @@ import Layout from '../layouts/Layout.astro';
 <Layout>
   <section class="section page-hero">
     <div class="container" style="text-align: center;">
+      <div class="admin-tabs">
+        <a href="/admin" class="admin-tab active">Images</a>
+        <a href="/admin/text" class="admin-tab">Text</a>
+      </div>
       <div class="section-label">Admin</div>
       <h1 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem);">
         Image Manager
@@ -258,6 +262,35 @@ if (sessionStorage.getItem(AUTH_KEY)) { render(); }
 <style>
   .page-hero {
     padding-bottom: 2rem;
+  }
+
+  .admin-tabs {
+    display: flex;
+    gap: 0.25rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .admin-tab {
+    padding: 0.4rem 1.25rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-fast);
+  }
+
+  .admin-tab:hover {
+    color: var(--text-primary);
+    border-color: var(--accent-dim);
+  }
+
+  .admin-tab.active {
+    background: var(--accent);
+    color: var(--bg-primary);
+    border-color: var(--accent);
   }
 
   #loginScreen {
