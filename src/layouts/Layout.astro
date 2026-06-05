@@ -15,6 +15,13 @@ import Footer from '../components/Footer.astro';
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="description" content="AVIT Solutions — Audiovisual Integration & IT Software Development. From design to completion, we deliver AV solutions for corporate, residential, and government projects." />
     <meta name="theme-color" content="#0a0b0c" />
+    <script is:inline>
+      (function() {
+        var saved = localStorage.getItem('avit-theme');
+        var theme = saved || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
