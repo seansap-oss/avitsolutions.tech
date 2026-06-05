@@ -38,6 +38,7 @@ const { title1, title2, subtitle, ctaText, ctaLink, secondaryText, secondaryLink
   .hero {
     position: relative;
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -220,7 +221,7 @@ const { title1, title2, subtitle, ctaText, ctaLink, secondaryText, secondaryLink
 
   @media (max-width: 768px) {
     .hero {
-      padding: 5rem 0 3rem;
+      padding: 4.5rem 0 2.5rem;
       min-height: 100vh;
       min-height: 100dvh;
     }
@@ -228,12 +229,26 @@ const { title1, title2, subtitle, ctaText, ctaLink, secondaryText, secondaryLink
     .hero-scroll-indicator { display: none; }
     .hero-grid-overlay { background-size: 40px 40px; }
     .hero-glow-1, .hero-glow-2 {
-      width: 300px;
-      height: 300px;
+      width: 250px;
+      height: 250px;
     }
     .hero-badge {
       font-size: 0.7rem;
       padding: 0.35rem 0.85rem;
+      margin-bottom: 1.25rem;
+    }
+    .hero-title {
+      font-size: clamp(2rem, 8vw, 3rem);
+      margin-bottom: 1rem;
+    }
+    .hero-title-2 {
+      font-size: clamp(1.75rem, 7vw, 2.8rem);
+      margin-bottom: 1rem;
+    }
+    .hero-subtitle {
+      font-size: 0.95rem;
+      margin-bottom: 1.75rem;
+      line-height: 1.6;
     }
     .hero-actions {
       gap: 0.75rem;
@@ -242,10 +257,28 @@ const { title1, title2, subtitle, ctaText, ctaLink, secondaryText, secondaryLink
 
   @media (max-width: 480px) {
     .hero {
-      padding: 4.5rem 0 2.5rem;
+      padding: 4rem 0 2rem;
     }
     .hero-content {
       max-width: 100%;
+    }
+    .hero-badge {
+      font-size: 0.65rem;
+      padding: 0.3rem 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-size: clamp(1.75rem, 8vw, 2.5rem);
+      margin-bottom: 0.75rem;
+    }
+    .hero-title-2 {
+      font-size: clamp(1.5rem, 7vw, 2.2rem);
+      margin-bottom: 0.75rem;
+    }
+    .hero-subtitle {
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
     }
     .hero-actions {
       flex-direction: column;
@@ -255,9 +288,7 @@ const { title1, title2, subtitle, ctaText, ctaLink, secondaryText, secondaryLink
     .hero-actions .btn {
       width: 100%;
       justify-content: center;
-    }
-    .hero-title {
-      letter-spacing: -0.02em;
+      min-height: 48px;
     }
   }
 </style>

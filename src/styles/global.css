@@ -108,39 +108,46 @@ a:hover {
   max-width: var(--container-narrow);
 }
 
-.section {
-  padding: 3.5rem 0;
-}
-
-@media (min-width: 640px) {
   .section {
-    padding: 5rem 0;
+    padding: 3.5rem 0;
   }
-}
 
-@media (min-width: 768px) {
-  .section {
-    padding: 7rem 0;
+  @media (min-width: 640px) {
+    .section {
+      padding: 5rem 0;
+    }
   }
-}
 
-@media (min-width: 1024px) {
-  .section {
-    padding: 9rem 0;
+  @media (min-width: 768px) {
+    .section {
+      padding: 7rem 0;
+    }
   }
-}
 
-.section-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1rem;
-}
+  @media (min-width: 1024px) {
+    .section {
+      padding: 9rem 0;
+    }
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-label {
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+  }
 
 .section-label::before {
   content: '';
