@@ -19,7 +19,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="container">
       <div class="contact-grid">
         <div class="contact-form-wrapper glass">
-          <form class="contact-form" id="contactForm" netlify>
+          <form class="contact-form" id="contactForm" action="https://formspree.io/f/mlgkdwen" method="POST">
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Full Name</label>
@@ -321,11 +321,16 @@ import Layout from '../layouts/Layout.astro';
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = new FormData(form);
+    const btn = form.querySelector('.form-submit');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
     try {
-      const resp = await fetch('/', { method: 'POST', body: data });
-      if (resp.ok || resp.redirected) {
+      const resp = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+      if (resp.ok) {
         form.style.display = 'none';
         success.style.display = 'block';
+      } else {
+        throw new Error('Form submission failed');
       }
     } catch {
       form.innerHTML = '<p style="color: #ff6b6b; text-align: center;">Something went wrong. Please email us directly at <a href="mailto:info@avitsolutions.tech" style="color: #00E5FF;">info@avitsolutions.tech</a></p>';
