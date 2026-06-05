@@ -247,14 +247,21 @@ import CTASection from '../components/CTASection.astro';
     display: none;
   }
 
+  @media (max-width: 1024px) {
+    .process-track {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
   @media (max-width: 768px) {
     .service-block {
-      padding: 2rem;
+      padding: 2rem 1.5rem;
     }
 
     .service-grid, .service-grid.reverse {
       grid-template-columns: 1fr;
       direction: ltr;
+      gap: 1.5rem;
     }
 
     .service-grid.reverse > * {
@@ -265,9 +272,23 @@ import CTASection from '../components/CTASection.astro';
       order: -1;
     }
 
+    .service-list {
+      line-height: 1.85;
+    }
+
     .process-track {
       grid-template-columns: 1fr;
       gap: 1rem;
+    }
+
+    .process-step {
+      padding: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .service-block {
+      padding: 1.5rem 1.25rem;
     }
   }
 </style>

@@ -81,4 +81,17 @@ const { testimonials } = Astro.props;
     font-size: 0.8rem;
     color: var(--text-tertiary);
   }
+
+  @media (max-width: 640px) {
+    .testimonial-carousel {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .testimonial-card {
+      padding: 1.5rem;
+    }
+    .testimonial-text {
+      font-size: 0.9rem;
+    }
+  }
 </style>

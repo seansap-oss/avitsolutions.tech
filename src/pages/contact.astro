@@ -302,6 +302,7 @@ import Layout from '../layouts/Layout.astro';
   @media (max-width: 768px) {
     .contact-grid {
       grid-template-columns: 1fr;
+      gap: 1.5rem;
     }
 
     .form-row {
@@ -310,6 +311,26 @@ import Layout from '../layouts/Layout.astro';
 
     .contact-form-wrapper {
       padding: 1.5rem;
+    }
+
+    .contact-card {
+      padding: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .contact-form-wrapper {
+      padding: 1.25rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-size: 16px;
+      min-height: 44px;
+    }
+    .form-submit {
+      width: 100%;
+      justify-content: center;
     }
   }
 </style>

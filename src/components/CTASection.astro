@@ -60,4 +60,24 @@ const { title, subtitle, ctaText, ctaLink } = Astro.props;
     font-size: 1.05rem;
     padding: 1rem 2.5rem;
   }
+
+  @media (max-width: 768px) {
+    .cta-section {
+      padding: 2.5rem 0;
+    }
+    .cta-inner {
+      padding: 2.5rem 1.5rem;
+    }
+    .cta-glow {
+      width: 280px;
+      height: 280px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .cta-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
 </style>

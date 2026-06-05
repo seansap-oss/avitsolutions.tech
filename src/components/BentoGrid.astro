@@ -82,9 +82,28 @@ const { items, columns = 3 } = Astro.props;
     letter-spacing: 0.06em;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
+    .bento-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
     .bento-grid {
       grid-template-columns: 1fr;
+      gap: 0.85rem;
+    }
+    .bento-card {
+      padding: 1.5rem;
+    }
+    .bento-icon {
+      font-size: 1.75rem;
+    }
+    .bento-title {
+      font-size: 1.05rem;
+    }
+    .bento-desc {
+      font-size: 0.85rem;
     }
   }
 </style>

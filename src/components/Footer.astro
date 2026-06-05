@@ -137,15 +137,31 @@
   }
 
   @media (max-width: 768px) {
+    .footer {
+      padding: 3rem 0 1.5rem;
+    }
     .footer-grid {
       grid-template-columns: 1fr 1fr;
       gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .footer-tagline {
+      max-width: 100%;
+    }
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+      gap: 0.5rem;
     }
   }
 
   @media (max-width: 480px) {
     .footer-grid {
       grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .footer-heading {
+      margin-bottom: 0.85rem;
     }
   }
 </style>

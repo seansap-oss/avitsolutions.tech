@@ -219,10 +219,46 @@ const { title1, title2, subtitle, ctaText, ctaLink, secondaryText, secondaryLink
   }
 
   @media (max-width: 768px) {
-    .hero { padding: 5rem 0 3rem; }
+    .hero {
+      padding: 5rem 0 3rem;
+      min-height: 100vh;
+      min-height: 100dvh;
+    }
     .hero-accent-line { display: none; }
     .hero-scroll-indicator { display: none; }
     .hero-grid-overlay { background-size: 40px 40px; }
+    .hero-glow-1, .hero-glow-2 {
+      width: 300px;
+      height: 300px;
+    }
+    .hero-badge {
+      font-size: 0.7rem;
+      padding: 0.35rem 0.85rem;
+    }
+    .hero-actions {
+      gap: 0.75rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero {
+      padding: 4.5rem 0 2.5rem;
+    }
+    .hero-content {
+      max-width: 100%;
+    }
+    .hero-actions {
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+    }
+    .hero-actions .btn {
+      width: 100%;
+      justify-content: center;
+    }
+    .hero-title {
+      letter-spacing: -0.02em;
+    }
   }
 </style>
 
@@ -264,7 +300,11 @@ const { title1, title2, subtitle, ctaText, ctaLink, secondaryText, secondaryLink
 
     function getCounts() {
       const area = canvas.width * canvas.height;
-      totalCount = Math.min(Math.floor(area / 5000), 140);
+      const isMobile = window.innerWidth < 768;
+      const isTablet = window.innerWidth < 1024 && window.innerWidth >= 768;
+      const divisor = isMobile ? 14000 : isTablet ? 8000 : 5000;
+      const cap = isMobile ? 50 : isTablet ? 90 : 140;
+      totalCount = Math.min(Math.floor(area / divisor), cap);
       return {
         notes: Math.floor(totalCount * 0.2),
         binary: Math.floor(totalCount * 0.25),

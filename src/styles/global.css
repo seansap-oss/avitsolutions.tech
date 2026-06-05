@@ -36,6 +36,8 @@ html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: var(--accent-dim) var(--bg-primary);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -46,6 +48,20 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  min-height: 100vh;
+  min-height: 100dvh;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg, canvas {
+  max-width: 100%;
+}
+
+input, select, textarea, button {
+  font: inherit;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 ::selection {
@@ -73,7 +89,19 @@ a:hover {
   width: 100%;
   max-width: var(--container);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 2rem;
+  }
 }
 
 .container-narrow {
@@ -81,7 +109,13 @@ a:hover {
 }
 
 .section {
-  padding: 5rem 0;
+  padding: 3.5rem 0;
+}
+
+@media (min-width: 640px) {
+  .section {
+    padding: 5rem 0;
+  }
 }
 
 @media (min-width: 768px) {
@@ -116,15 +150,17 @@ a:hover {
 }
 
 .section-title {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.75rem, 5vw, 3rem);
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.02em;
   margin-bottom: 1.25rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .section-subtitle {
-  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  font-size: clamp(0.95rem, 2vw, 1.125rem);
   color: var(--text-secondary);
   max-width: 600px;
   line-height: 1.7;
@@ -256,5 +292,22 @@ a:hover {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn {
+    padding: 0.85rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .container {
+    padding: 0 1rem;
+  }
+  .btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.85rem;
   }
 }

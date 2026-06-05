@@ -294,18 +294,26 @@ import CTASection from '../components/CTASection.astro';
 
     .values-grid {
       grid-template-columns: 1fr 1fr;
+      gap: 1rem;
     }
   }
 
   @media (max-width: 768px) {
     .certs-grid {
       grid-template-columns: 1fr;
+      gap: 1rem;
     }
   }
 
   @media (max-width: 480px) {
     .values-grid {
       grid-template-columns: 1fr;
+    }
+    .about-card {
+      padding: 2rem 1.5rem;
+    }
+    .cert-card {
+      padding: 2rem 1.5rem;
     }
   }
 </style>
