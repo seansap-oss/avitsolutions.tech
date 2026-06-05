@@ -335,7 +335,7 @@ const { title1, title2, subtitle, ctaText, ctaLink, secondaryText, secondaryLink
       const isTablet = window.innerWidth < 1024 && window.innerWidth >= 768;
       const divisor = isMobile ? 14000 : isTablet ? 8000 : 5000;
       const cap = isMobile ? 50 : isTablet ? 90 : 140;
-      totalCount = Math.min(Math.floor(area / divisor), cap);
+      totalCount = Math.min(Math.floor(area / divisor), cap) * 0.9;
       return {
         notes: Math.floor(totalCount * 0.2),
         binary: Math.floor(totalCount * 0.25),
