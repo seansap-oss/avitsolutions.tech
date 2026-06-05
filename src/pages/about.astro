@@ -11,7 +11,7 @@ import CTASection from '../components/CTASection.astro';
         Bridging AV & IT
       </h1>
       <p class="section-subtitle" style="margin: 0 auto 0;">
-        We are a team of audiovisual engineers and software developers who believe great technology should just work.
+        Backed by AV/IT consultants with over 20 years of industry experience, we design, integrate, and support systems that perform.
       </p>
     </div>
   </section>
@@ -29,14 +29,21 @@ import CTASection from '../components/CTASection.astro';
             more reliable, easier to manage, and deliver a better experience.
           </p>
           <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
-            With over a decade of experience spanning corporate AV integration, residential smart home automation,
-            government-grade secure systems, and custom software development, we bring a unique cross-disciplinary
-            perspective to every project.
+            Our practice is backed by senior AV/IT consultants with over <strong style="color: var(--text-primary);">20 years</strong> of industry experience,
+            based primarily in <strong style="color: var(--text-primary);">Australia</strong>. We hold certifications across the leading control and
+            signal processing platforms — including <strong style="color: var(--accent);">AMX</strong>, <strong style="color: var(--accent);">Crestron</strong>, and <strong style="color: var(--accent);">Extron</strong> — ensuring every
+            design meets manufacturer-grade standards for performance, reliability, and scalability.
+          </p>
+          <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+            Our portfolio spans corporate boardrooms and large-scale government facilities, luxury residential
+            smart homes, and mission-critical communication platforms. On the IT side, we deliver custom software
+            and mobile applications built for real-world impact. Every project benefits from decades of cross-disciplinary
+            knowledge — AV, networking, software, and cybersecurity — integrated into a single, cohesive approach.
           </p>
           <p style="color: var(--text-secondary); line-height: 1.8;">
-            Whether we're designing a boardroom system, engineering a smart home, building a secure government
-            communication platform, or developing a mobile app — our approach is the same: understand the mission,
-            design the right solution, and deliver it with excellence.
+            Whether we're commissioning a 20-zone video wall, automating a waterfront estate, securing a government
+            comms platform, or building a mobile app from scratch — our process is the same: understand the mission,
+            engineer the right solution, and deliver with uncompromising quality.
           </p>
         </div>
         <div class="about-visual">
@@ -46,7 +53,7 @@ import CTASection from '../components/CTASection.astro';
             </div>
             <h3>Tonny Gapam</h3>
             <span class="about-role">Founder & CEO</span>
-            <p>AV + IT integration specialist. Builder of systems that matter.</p>
+            <p>20+ year AV/IT consultant · AMX, Crestron & Extron certified · Australia-based</p>
           </div>
         </div>
       </div>
@@ -90,6 +97,45 @@ import CTASection from '../components/CTASection.astro';
           <span class="value-number">06</span>
           <h3>White-Glove Service</h3>
           <p>Every client deserves a premium experience. From proposal to support, we deliver.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-tertiary);">
+    <div class="container">
+      <div class="section-label">Certifications</div>
+      <h2 class="section-title">Industry-Standard Credentials</h2>
+      <p class="section-subtitle" style="margin-bottom: 3rem;">
+        Our team holds manufacturer certifications across the leading AV control and signal processing platforms.
+      </p>
+      <div class="certs-grid">
+        <div class="cert-card">
+          <div class="cert-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3>AMX Certified</h3>
+          <p>Advanced control system design, programming, and integration for enterprise AV environments.</p>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3>Crestron Certified</h3>
+          <p>Enterprise-grade automation, room scheduling, and AV-over-IP solutions for commercial and government clients.</p>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <h3>Extron Certified</h3>
+          <p>Signal processing, distribution, and control systems engineered for mission-critical reliability.</p>
         </div>
       </div>
     </div>
@@ -197,6 +243,49 @@ import CTASection from '../components/CTASection.astro';
     line-height: 1.6;
   }
 
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .cert-card {
+    padding: 2.5rem 2rem;
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    text-align: center;
+    transition: all var(--transition-base);
+  }
+
+  .cert-card:hover {
+    border-color: var(--accent-dim);
+    transform: translateY(-2px);
+  }
+
+  .cert-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(0, 229, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+  }
+
+  .cert-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .cert-card p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
   @media (max-width: 768px) {
     .about-grid {
       grid-template-columns: 1fr;
@@ -205,6 +294,12 @@ import CTASection from '../components/CTASection.astro';
 
     .values-grid {
       grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .certs-grid {
+      grid-template-columns: 1fr;
     }
   }
 
