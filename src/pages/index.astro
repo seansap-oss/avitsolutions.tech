@@ -76,6 +76,63 @@ import CTASection from '../components/CTASection.astro';
     </div>
   </section>
 
+  <section class="section">
+    <div class="container">
+      <div class="section-label">IT Services</div>
+      <h2 class="section-title">Software & Apps</h2>
+      <p class="section-subtitle" style="margin-bottom: 3rem;">
+        Custom-built software that streamlines operations, engages users, and scales with your business.
+      </p>
+      <BentoGrid
+        columns={3}
+        items={[
+          {
+            icon: '📱',
+            title: 'Mobile Apps',
+            description: 'Android & iOS native and cross-platform apps built for performance and scale.',
+            link: '/it-solutions#mobile-apps',
+            span: 1,
+          },
+          {
+            icon: '⚡',
+            title: 'Hybrid Software',
+            description: 'One codebase, every platform. React Native & Flutter development.',
+            link: '/it-solutions#hybrid-software',
+            span: 1,
+          },
+          {
+            icon: '🏢',
+            title: 'Custom ERP',
+            description: 'Enterprise resource planning systems tailored to your exact workflows.',
+            link: '/it-solutions#erp',
+            span: 1,
+          },
+          {
+            icon: '🤖',
+            title: 'AI for Business',
+            description: 'Recommendation engines, chatbots, predictive analytics, and smart automation.',
+            link: '/it-solutions#ai-ecommerce',
+            span: 1,
+          },
+          {
+            icon: '📦',
+            title: 'Warehouse Automation',
+            description: 'WMS, barcode/RFID, order management, and inventory optimisation.',
+            link: '/it-solutions#warehouse',
+            span: 1,
+          },
+          {
+            icon: '🖥️',
+            title: 'Digital Signage',
+            description: 'Custom CMS, content scheduling, interactive displays, and fleet management.',
+            link: '/it-solutions#digital-signage',
+            span: 1,
+          },
+        ]}
+      />
+    </div>
+  </section>
+
   <section class="section" style="background: var(--bg-secondary);">
     <div class="container">
       <div class="section-label">By the Numbers</div>
