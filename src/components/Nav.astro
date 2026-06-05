@@ -10,7 +10,20 @@
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="/" class="nav-link">Home</a>
-      <a href="/av-solutions" class="nav-link">AV Solutions</a>
+      <div class="nav-dropdown">
+        <a href="/av-solutions" class="nav-link nav-dropdown-trigger">
+          AV Solutions
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav-dropdown-menu">
+          <a href="/av-solutions#business" class="nav-dropdown-item">Business</a>
+          <a href="/av-solutions#government" class="nav-dropdown-item">Government</a>
+          <a href="/av-solutions#education" class="nav-dropdown-item">Education</a>
+          <a href="/av-solutions#healthcare" class="nav-dropdown-item">Healthcare</a>
+          <a href="/av-solutions#entertainment" class="nav-dropdown-item">Entertainment</a>
+          <a href="/av-solutions#hospitality" class="nav-dropdown-item">Hospitality</a>
+        </div>
+      </div>
       <a href="/it-solutions" class="nav-link">IT Solutions</a>
       <a href="/projects" class="nav-link">Projects</a>
       <a href="/about" class="nav-link">About</a>
@@ -145,36 +158,62 @@
     transform: translateY(-1px);
   }
 
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 4px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-    z-index: 1001;
+  .nav-dropdown {
+    position: relative;
   }
 
-  .hamburger span {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: var(--text-primary);
-    border-radius: 2px;
-    transition: all var(--transition-base);
+  .nav-dropdown-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
   }
 
-  .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(4px, 4px);
+  .nav-dropdown-trigger svg {
+    transition: transform var(--transition-fast);
   }
 
-  .hamburger.active span:nth-child(2) {
+  .nav-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 180px;
+    background: var(--bg-primary);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: 0.5rem;
     opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: all var(--transition-fast);
+    z-index: 100;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
   }
 
-  .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(4px, -4px);
+  .nav-dropdown:hover .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-dropdown:hover .nav-dropdown-trigger svg {
+    transform: rotate(180deg);
+  }
+
+  .nav-dropdown-item {
+    display: block;
+    padding: 0.6rem 0.85rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+  }
+
+  .nav-dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
   }
 
   @media (max-width: 768px) {
@@ -223,6 +262,34 @@
       left: 1rem;
       right: auto;
       width: 2rem;
+    }
+
+    .nav-dropdown {
+      width: 100%;
+    }
+
+    .nav-dropdown-menu {
+      position: static;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      box-shadow: none;
+      background: transparent;
+      border: none;
+      padding: 0 0 0 1rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .nav-dropdown.open .nav-dropdown-menu {
+      max-height: 400px;
+      padding: 0.25rem 0 0.5rem 1rem;
+    }
+
+    .nav-dropdown-item {
+      padding: 0.6rem 0.85rem;
+      font-size: 0.9rem;
     }
 
     .nav-cta {
@@ -298,5 +365,16 @@
     if (window.innerWidth > 768) {
       closeMenu();
     }
+  });
+
+  const dropdowns = document.querySelectorAll('.nav-dropdown');
+  dropdowns.forEach(dropdown => {
+    const trigger = dropdown.querySelector('.nav-dropdown-trigger');
+    trigger.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        dropdown.classList.toggle('open');
+      }
+    });
   });
 </script>
