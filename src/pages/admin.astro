@@ -10,7 +10,7 @@ import Layout from '../layouts/Layout.astro';
         Image Manager
       </h1>
       <p class="section-subtitle" style="margin: 0 auto 0;">
-        Paste new image URLs for any slot. Changes save to your browser and persist until cleared.
+        Upload images from your computer or paste any URL. Changes save to your browser and persist until cleared.
       </p>
     </div>
   </section>
@@ -106,7 +106,14 @@ function render() {
           <strong>${item.label}</strong>
           <span class="admin-key">${item.key}</span>
         </div>
-        <input type="text" class="admin-input" value="${url}" placeholder="Paste image URL..." />
+        <div class="admin-input-row">
+          <input type="text" class="admin-input" value="${url}" placeholder="Paste image URL..." />
+          <label class="admin-btn admin-btn-upload">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Upload
+            <input type="file" accept="image/*" class="admin-file-input" />
+          </label>
+        </div>
         <div class="admin-actions">
           <button class="admin-btn admin-btn-save">Save</button>
           <span class="admin-badge ${isCustom ? '' : 'admin-badge-default'}">${isCustom ? 'Custom' : 'Default'}</span>
@@ -129,16 +136,53 @@ function render() {
     const input = card.querySelector('.admin-input');
     const saveBtn = card.querySelector('.admin-btn-save');
     const badge = card.querySelector('.admin-badge');
+    const fileInput = card.querySelector('.admin-file-input');
 
-    saveBtn.addEventListener('click', () => {
-      const url = input.value.trim();
-      if (!url) return;
+    function setCustom(url) {
       const data = loadSaved();
       data[key] = url;
       saveAll(data);
       card.querySelector('.admin-preview img').src = url;
+      card.querySelector('.admin-preview img').style.display = '';
       badge.textContent = 'Custom';
       badge.className = 'admin-badge';
+    }
+
+    saveBtn.addEventListener('click', () => {
+      const url = input.value.trim();
+      if (!url) return;
+      setCustom(url);
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        saveBtn.click();
+      }
+    });
+
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files[0];
+      if (!file) return;
+      if (!file.type.startsWith('image/')) {
+        alert('Please select an image file.');
+        return;
+      }
+      if (file.size > 5 * 1024 * 1024) {
+        alert('Image is too large. Max 5MB. Compress and try again.');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const dataUrl = e.target.result;
+        input.value = dataUrl;
+        setCustom(dataUrl);
+        fileInput.value = '';
+      };
+      reader.onerror = function () {
+        alert('Failed to read file. Try again.');
+      };
+      reader.readAsDataURL(file);
     });
   }
 
@@ -216,7 +260,7 @@ render();
   }
 
   .admin-input {
-    width: 100%;
+    flex: 1;
     padding: 0.5rem 0.75rem;
     border-radius: var(--radius-sm);
     border: 1px solid var(--border-color);
@@ -224,13 +268,44 @@ render();
     color: var(--text-primary);
     font-size: 0.8rem;
     font-family: monospace;
-    margin-bottom: 0.6rem;
-    box-sizing: border-box;
+    min-width: 0;
   }
 
   .admin-input:focus {
     outline: none;
     border-color: var(--accent-dim);
+  }
+
+  .admin-input-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+    align-items: stretch;
+  }
+
+  .admin-btn-upload {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all var(--transition-fast);
+  }
+
+  .admin-btn-upload:hover {
+    border-color: var(--accent-dim);
+    color: var(--accent);
+  }
+
+  .admin-file-input {
+    display: none;
   }
 
   .admin-actions {
