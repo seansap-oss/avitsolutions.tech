@@ -10,7 +10,7 @@ import Layout from '../layouts/Layout.astro';
         Image Manager
       </h1>
       <p class="section-subtitle" style="margin: 0 auto 0;">
-        Upload images from your computer or paste any URL. Changes save to your browser and persist until cleared.
+        Upload images from your computer (auto-resized to 1200px) or paste any URL. Changes save to your browser.
       </p>
     </div>
   </section>
@@ -168,16 +168,35 @@ function render() {
         alert('Please select an image file.');
         return;
       }
-      if (file.size > 5 * 1024 * 1024) {
-        alert('Image is too large. Max 5MB. Compress and try again.');
+      if (file.size > 20 * 1024 * 1024) {
+        alert('Image is too large. Max 20MB.');
         return;
       }
       const reader = new FileReader();
       reader.onload = function (e) {
-        const dataUrl = e.target.result;
-        input.value = dataUrl;
-        setCustom(dataUrl);
-        fileInput.value = '';
+        const img = new Image();
+        img.onload = function () {
+          const MAX_W = 1200;
+          let w = img.width;
+          let h = img.height;
+          if (w > MAX_W) {
+            h = Math.round(h * MAX_W / w);
+            w = MAX_W;
+          }
+          const canvas = document.createElement('canvas');
+          canvas.width = w;
+          canvas.height = h;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, w, h);
+          const resized = canvas.toDataURL('image/jpeg', 0.85);
+          input.value = resized;
+          setCustom(resized);
+          fileInput.value = '';
+        };
+        img.onerror = function () {
+          alert('Failed to process image. Try another file.');
+        };
+        img.src = e.target.result;
       };
       reader.onerror = function () {
         alert('Failed to read file. Try again.');
