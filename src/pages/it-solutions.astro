@@ -1,382 +1,402 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ImageCard from '../components/ImageCard.astro';
 import CTASection from '../components/CTASection.astro';
+
+const digitalServices = [
+  {
+    id: 'mobile-apps',
+    label: 'Mobile Apps',
+    title: 'Android, iOS, and WebView apps that feel simple for real users.',
+    text: 'Mobile experiences for communities, businesses, schools, service teams, and local platforms — built with clean navigation, fast loading, and practical admin control.',
+    outputs: ['Android APK direction', 'Responsive mobile UX', 'Push-ready architecture', 'Profile and account flows', 'Offline-friendly layouts'],
+    icon: '▱',
+  },
+  {
+    id: 'hybrid-software',
+    label: 'Hybrid Software',
+    title: 'One platform that can work as a website, app, and admin system.',
+    text: 'For many businesses, the best system is not only an app or only a website. It is a shared platform with role-based dashboards, data, forms, workflows, and mobile access.',
+    outputs: ['React / Astro frontends', 'Capacitor app packaging', 'Admin portals', 'Member directories', 'Realtime data flows'],
+    icon: '◇',
+  },
+  {
+    id: 'erp',
+    label: 'Business ERP',
+    title: 'Custom ERP and workflow systems made around the business, not the other way around.',
+    text: 'Reception, billing, lab, inventory, attendance, orders, approvals, reports, and dashboards can be built as focused modules instead of forcing a generic ERP.',
+    outputs: ['Role-based dashboards', 'Daily reports', 'Billing and records', 'Inventory workflows', 'Approval systems'],
+    icon: '▦',
+  },
+  {
+    id: 'ai-ecommerce',
+    label: 'AI + Ecommerce',
+    title: 'Smart ecommerce, shop catalogues, and AI-assisted content systems.',
+    text: 'Product catalogues, gallery shops, UPI/GPay-ready flows, content drafting, recommendations, and shop owner tools for local businesses moving online.',
+    outputs: ['Shop pages', 'Product admin', 'AI content drafts', 'Category filters', 'Payment-link flows'],
+    icon: '✦',
+  },
+  {
+    id: 'warehouse',
+    label: 'Warehouse Automation',
+    title: 'Inventory, stock, dispatch, and warehouse visibility without unnecessary complexity.',
+    text: 'Lightweight warehouse software can track items, reduce paperwork, connect sales and stock, and create reports that owners can understand immediately.',
+    outputs: ['Stock records', 'Barcode-ready flows', 'Dispatch tracking', 'Purchase entries', 'Owner dashboard'],
+    icon: '▤',
+  },
+  {
+    id: 'digital-signage',
+    label: 'Digital Signage',
+    title: 'Custom signage interfaces connected to AV displays and business content.',
+    text: 'Digital signage works best when the screen, player, content schedule, admin control, and physical display location are designed together.',
+    outputs: ['Screen layouts', 'Media library', 'Schedule control', 'Retail display UI', 'AV display integration'],
+    icon: '◫',
+  },
+];
+
+const productExamples = [
+  { name: 'Community Platform', details: 'News, chat, classifieds, admin, member features, and mobile app path.' },
+  { name: 'Clinic System', details: 'Reception, lab, manager controls, billing rules, and LAN-friendly workflow.' },
+  { name: 'Cafe KDS', details: 'Mobile ordering, counter approval, kitchen display, rewards, and owner console.' },
+  { name: 'Business Directory', details: 'Member profiles, calendar, notices, approval queue, and admin tools.' },
+];
+
+const buildStages = [
+  ['01', 'UX Map', 'Define who uses the system, what they click, what they need to see first, and what should be hidden.'],
+  ['02', 'Data + Roles', 'Plan users, permissions, records, approvals, dashboards, and admin control before building UI.'],
+  ['03', 'Frontend Build', 'Create fast, mobile-first screens with a premium interface and clear feedback on every action.'],
+  ['04', 'Backend Connection', 'Connect databases, authentication, file uploads, realtime updates, and deployment.'],
+  ['05', 'Test + Deploy', 'Test locally, build production, deploy to GitHub/Vercel or package to Android where needed.'],
+];
 ---
 
 <Layout>
-  <section class="section page-hero">
-    <div class="container" style="text-align: center;">
-      <div class="section-label">IT Solutions</div>
-      <h1 class="section-title" style="font-size: clamp(2.5rem, 5vw, 3.5rem);" data-text-key="it-page-title">
-        IT & Software Solutions
-      </h1>
-      <p class="section-subtitle" style="margin: 0 auto 0;" data-text-key="it-page-subtitle">
-        Custom software, AI, and automation solutions built for modern business needs.
-      </p>
-    </div>
-  </section>
-
-  <section id="mobile-apps" class="section" style="padding-top: 0;">
-    <div class="container">
-      <div class="service-block glass" style="margin-bottom: 2rem;">
-        <div class="service-grid">
-          <div class="service-content">
-            <span class="section-label">Mobile Apps</span>
-            <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.2rem);" data-text-key="it-mobile-title">Android & iOS App Development</h2>
-            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;" data-text-key="it-mobile-text">
-              From concept to App Store, we design and develop mobile applications that deliver exceptional user experiences on iOS and Android.
-            </p>
-            <ul class="service-list">
-              <li>iOS (Swift) & Android (Kotlin) native apps</li>
-              <li>Cross-platform (React Native, Flutter)</li>
-              <li>UI/UX design & prototyping</li>
-              <li>Push notifications & real-time features</li>
-              <li>Payment gateway integration</li>
-              <li>Location-based services & mapping</li>
-              <li>App Store optimization & submission</li>
-            </ul>
-          </div>
-          <div class="service-visual">
-            <ImageCard
-              key="it-mobile-apps"
-              src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop&q=80"
-              alt="Mobile app development — Android and iOS interfaces on modern smartphones"
-              caption="Android & iOS Development"
-            />
-          </div>
+  <section class="it-hero">
+    <div class="it-noise"></div>
+    <div class="container it-hero-grid">
+      <div class="it-hero-copy">
+        <div class="services-kicker">IT Solutions</div>
+        <h1>Software that connects the business, the user, and the physical space.</h1>
+        <p>
+          AVIT Solutions builds websites, apps, admin panels, dashboards, automation tools, and business systems with the same discipline used in AV integration: clean signal flow, clear control, and reliable handover.
+        </p>
+        <div class="hero-actions">
+          <a href="/contact" class="btn btn-primary">Start a Software Project</a>
+          <a href="/projects#software" class="btn btn-secondary">View Software Work</a>
         </div>
       </div>
-
-      <div id="hybrid-software" class="service-block glass" style="margin-bottom: 2rem;">
-        <div class="service-grid reverse">
-          <div class="service-content">
-            <span class="section-label">Hybrid Software</span>
-            <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.2rem);" data-text-key="it-hybrid-title">Hybrid Software and App</h2>
-            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;" data-text-key="it-hybrid-text">
-              One codebase, every platform. We build hybrid applications that run natively on iOS, Android, and the web — reducing development time and cost while maximizing reach.
-            </p>
-            <ul class="service-list">
-              <li>React Native & Flutter development</li>
-              <li>PWA (Progressive Web Apps)</li>
-              <li>Shared business logic across platforms</li>
-              <li>Native module integration when needed</li>
-              <li>Offline-first architecture</li>
-              <li>Cross-platform UI/UX design</li>
-              <li>CI/CD for multi-platform deployment</li>
-            </ul>
-          </div>
-          <div class="service-visual">
-            <ImageCard
-              key="it-hybrid-software"
-              src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop&q=80"
-              alt="Cross-platform hybrid software development — code on multiple devices"
-              caption="React Native & Flutter"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div id="erp" class="service-block glass" style="margin-bottom: 2rem;">
-        <div class="service-grid">
-          <div class="service-content">
-            <span class="section-label">ERP</span>
-            <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.2rem);" data-text-key="it-erp-title">Custom Business ERP Development</h2>
-            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;" data-text-key="it-erp-text">
-              Off-the-shelf ERP never fits perfectly. We build custom enterprise resource planning systems that match your exact workflows, integrate with your existing tools, and scale with your growth.
-            </p>
-            <ul class="service-list">
-              <li>Finance & accounting modules</li>
-              <li>Inventory & supply chain management</li>
-              <li>HR & payroll systems</li>
-              <li>Purchase order & procurement workflows</li>
-              <li>Real-time reporting & dashboards</li>
-              <li>Multi-location & multi-currency support</li>
-              <li>API integration with existing systems</li>
-            </ul>
-          </div>
-          <div class="service-visual">
-            <ImageCard
-              key="it-erp"
-              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&q=80"
-              alt="Enterprise ERP dashboard with analytics and reporting on screen"
-              caption="Custom ERP Systems"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div id="ai-ecommerce" class="service-block glass" style="margin-bottom: 2rem;">
-        <div class="service-grid reverse">
-          <div class="service-content">
-            <span class="section-label">AI Solutions</span>
-            <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.2rem);" data-text-key="it-ai-title">AI for Ecommerce and Businesses</h2>
-            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;" data-text-key="it-ai-text">
-              Leverage artificial intelligence to automate decisions, personalise customer experiences, and unlock insights from your data. From recommendation engines to predictive analytics.
-            </p>
-            <ul class="service-list">
-              <li>Product recommendation engines</li>
-              <li>Dynamic pricing algorithms</li>
-              <li>Customer behaviour prediction</li>
-              <li>Chatbots & virtual assistants</li>
-              <li>Fraud detection & prevention</li>
-              <li>Inventory demand forecasting</li>
-              <li>Natural language processing (NLP)</li>
-            </ul>
-          </div>
-          <div class="service-visual">
-            <ImageCard
-              key="it-ai-ecommerce"
-              src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop&q=80"
-              alt="Artificial intelligence visualization — neural networks and data analytics"
-              caption="AI & Machine Learning"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div id="warehouse" class="service-block glass" style="margin-bottom: 2rem;">
-        <div class="service-grid">
-          <div class="service-content">
-            <span class="section-label">Warehouse</span>
-            <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.2rem);" data-text-key="it-warehouse-title">Warehouse Automation</h2>
-            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;" data-text-key="it-warehouse-text">
-              Automate warehouse operations with intelligent software that optimises picking, packing, and shipping. Reduce errors, cut costs, and scale without adding headcount.
-            </p>
-            <ul class="service-list">
-              <li>Warehouse Management Systems (WMS)</li>
-              <li>Barcode & RFID scanning solutions</li>
-              <li>Inventory tracking & cycle counting</li>
-              <li>Order management & fulfilment</li>
-              <li>Pick path optimisation</li>
-              <li>Integration with shipping providers</li>
-              <li>Real-time stock visibility</li>
-            </ul>
-          </div>
-          <div class="service-visual">
-            <ImageCard
-              key="it-warehouse"
-              src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&h=600&fit=crop&q=80"
-              alt="Warehouse automation — automated picking, barcode scanning, and inventory management"
-              caption="Warehouse Automation"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div id="digital-signage" class="service-block glass">
-        <div class="service-grid reverse">
-          <div class="service-content">
-            <span class="section-label">Digital Signage</span>
-            <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.2rem);" data-text-key="it-digital-title">Digital Signage with Custom Interface</h2>
-            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;" data-text-key="it-digital-text">
-              Powerful digital signage platforms with custom content management interfaces. Control what displays, when, and where — from a single screen to thousands.
-            </p>
-            <ul class="service-list">
-              <li>Custom CMS for content management</li>
-              <li>Real-time content scheduling</li>
-              <li>Multi-zone & template layouts</li>
-              <li>Weather, news & social media feeds</li>
-              <li>Interactive touchscreen displays</li>
-              <li>Centralised fleet management</li>
-              <li>Analytics & viewer engagement tracking</li>
-            </ul>
-          </div>
-          <div class="service-visual">
-            <ImageCard
-              key="it-digital-signage"
-              src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=600&fit=crop&q=80"
-              alt="Digital signage displays in a modern commercial environment"
-              caption="Digital Signage Solutions"
-            />
-          </div>
+      <div class="product-console" aria-label="Software system visual">
+        <div class="console-top"><span></span><span></span><span></span></div>
+        <div class="console-title">AVIT OPERATIONS UI</div>
+        <div class="console-grid">
+          <div class="console-card large"><strong>Dashboard</strong><i></i><i></i><i></i></div>
+          <div class="console-card"><strong>Admin</strong><em>Live</em></div>
+          <div class="console-card"><strong>Mobile</strong><em>APK</em></div>
+          <div class="console-card wide"><strong>Workflow</strong><i></i><i></i></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section" style="background: var(--bg-secondary);">
+  <section class="digital-system section">
     <div class="container">
-      <div class="section-label">Our Stack</div>
-      <h2 class="section-title">Technologies We Use</h2>
-      <p class="section-subtitle" style="margin-bottom: 3rem;">
-        Modern tools and frameworks for reliable, scalable software delivery.
-      </p>
-      <div class="stack-grid">
-        <div class="stack-item glass">
-          <span class="stack-icon">⚛️</span>
-          <span class="stack-name">React / Next.js</span>
+      <div class="matrix-head">
+        <div>
+          <div class="section-label">Digital Services</div>
+          <h2 class="section-title">Websites, apps, dashboards, and automation — designed as one system.</h2>
         </div>
-        <div class="stack-item glass">
-          <span class="stack-icon">🟦</span>
-          <span class="stack-name">Node.js</span>
-        </div>
-        <div class="stack-item glass">
-          <span class="stack-icon">🐍</span>
-          <span class="stack-name">Python / Django</span>
-        </div>
-        <div class="stack-item glass">
-          <span class="stack-icon">🍎</span>
-          <span class="stack-name">Swift / iOS</span>
-        </div>
-        <div class="stack-item glass">
-          <span class="stack-icon">🤖</span>
-          <span class="stack-name">Kotlin / Android</span>
-        </div>
-        <div class="stack-item glass">
-          <span class="stack-icon">⚡</span>
-          <span class="stack-name">Flutter</span>
-        </div>
-        <div class="stack-item glass">
-          <span class="stack-icon">🗄️</span>
-          <span class="stack-name">PostgreSQL / MongoDB</span>
-        </div>
-        <div class="stack-item glass">
-          <span class="stack-icon">☁️</span>
-          <span class="stack-name">AWS / Azure</span>
-        </div>
-        <div class="stack-item glass">
-          <span class="stack-icon">🔷</span>
-          <span class="stack-name">TypeScript</span>
-        </div>
+        <p>
+          The goal is not to build random pages. The goal is to create a working product: users can sign in, admins can manage, owners can see reports, and the system can grow phase by phase.
+        </p>
+      </div>
+
+      <div class="digital-grid">
+        {digitalServices.map((service) => (
+          <article id={service.id} class="digital-card">
+            <div class="digital-icon">{service.icon}</div>
+            <span>{service.label}</span>
+            <h3>{service.title}</h3>
+            <p>{service.text}</p>
+            <div class="output-list">
+              {service.outputs.map((item) => <b>{item}</b>)}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="product-section section">
+    <div class="container product-layout">
+      <div>
+        <div class="section-label">Product Thinking</div>
+        <h2 class="section-title">Built like software, not just designed like a website.</h2>
+        <p class="section-subtitle">
+          A good business platform needs structure: modules, users, permissions, status feedback, dashboards, forms, records, reports, and future upgrade planning.
+        </p>
+      </div>
+      <div class="example-list">
+        {productExamples.map((example) => (
+          <article>
+            <h3>{example.name}</h3>
+            <p>{example.details}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="build-pipeline section">
+    <div class="container">
+      <div class="section-label">Build Pipeline</div>
+      <h2 class="section-title">A clear development process from idea to deployment.</h2>
+      <div class="pipeline-track">
+        {buildStages.map(([no, title, text]) => (
+          <article class="pipeline-step">
+            <span>{no}</span>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </article>
+        ))}
       </div>
     </div>
   </section>
 
   <CTASection
-    title="Need Custom Software?"
-    subtitle="Tell us about your idea. We'll build it from the ground up."
-    ctaText="Discuss Your Project"
+    title="Need a website, app, dashboard, or business system?"
+    subtitle="Tell us your workflow. We will turn it into a clean digital product that can start simple and grow into a full platform."
+    ctaText="Plan a Software Build"
     ctaLink="/contact"
   />
 </Layout>
 
 <style>
-  .page-hero {
-    padding-bottom: 2rem;
+  .it-hero {
+    position: relative;
+    padding: 9rem 0 6rem;
+    min-height: 78vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 78% 32%, rgba(168, 85, 247, 0.28), transparent 24rem),
+      radial-gradient(circle at 22% 18%, rgba(0, 184, 212, 0.22), transparent 23rem),
+      linear-gradient(130deg, #06080d 0%, #0b0e17 52%, #050607 100%);
   }
 
-  .service-block {
-    padding: 3rem;
-    border-radius: var(--radius-xl);
-    border: 1px solid var(--glass-border);
+  .it-noise {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 54px 54px;
+    mask-image: radial-gradient(circle at 50% 40%, black, transparent 74%);
+    opacity: 0.55;
   }
 
-  .service-grid {
+  .it-hero-grid {
+    position: relative;
+    z-index: 2;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 0.92fr 1.08fr;
     gap: 3rem;
     align-items: center;
   }
 
-  .service-grid.reverse {
-    direction: rtl;
+  .services-kicker {
+    display: inline-flex;
+    padding: 0.5rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid rgba(80, 217, 255, 0.28);
+    background: rgba(80, 217, 255, 0.08);
+    color: #69dfff;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.75rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
   }
 
-  .service-grid.reverse > * {
-    direction: ltr;
+  .it-hero h1 {
+    font-size: clamp(2.7rem, 6.5vw, 6.2rem);
+    line-height: 0.94;
+    letter-spacing: -0.07em;
+    margin-bottom: 1.5rem;
   }
 
-  .service-list {
-    list-style: none;
-    color: var(--text-secondary);
-    line-height: 2;
+  .it-hero p {
+    color: rgba(235, 244, 255, 0.72);
+    font-size: clamp(1rem, 1.55vw, 1.22rem);
+    line-height: 1.75;
+    max-width: 650px;
+    margin-bottom: 2rem;
   }
 
-  .service-list li {
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .product-console {
     position: relative;
-    padding-left: 1.25rem;
-  }
-
-  .service-list li::before {
-    content: '›';
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-    font-weight: 700;
-    font-size: 1.1rem;
-  }
-
-  .service-visual {
-    border-radius: var(--radius-lg);
+    min-height: 520px;
+    border-radius: 34px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.026)),
+      radial-gradient(circle at 60% 30%, rgba(80,217,255,0.16), transparent 18rem);
+    box-shadow: 0 40px 120px rgba(0,0,0,0.36);
+    backdrop-filter: blur(26px);
+    padding: 1.2rem;
     overflow: hidden;
   }
 
-  .service-placeholder {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--radius-lg);
+  .product-console::after {
+    content: '';
+    position: absolute;
+    inset: auto -10% -20% -10%;
+    height: 45%;
+    background: radial-gradient(ellipse, rgba(80, 217, 255, 0.24), transparent 70%);
   }
 
-  .stack-grid {
+  .console-top { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .console-top span { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.22); }
+  .console-title { color: #69dfff; font-size: 0.74rem; letter-spacing: 0.18em; font-weight: 900; margin-bottom: 1rem; }
+  .console-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 1rem; }
+
+  .console-card {
+    position: relative;
+    min-height: 150px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 24px;
+    background: rgba(0,0,0,0.26);
+    padding: 1rem;
+    overflow: hidden;
+  }
+
+  .console-card.large { min-height: 310px; grid-row: span 2; }
+  .console-card.wide { grid-column: span 2; min-height: 120px; }
+  .console-card strong { position: relative; z-index: 2; display: block; margin-bottom: 1rem; }
+  .console-card em { position: absolute; right: 1rem; bottom: 1rem; color: #69dfff; font-style: normal; font-weight: 900; }
+  .console-card i { display: block; height: 12px; margin: 0.7rem 0; border-radius: 999px; background: rgba(255,255,255,0.12); }
+  .console-card i:nth-child(2) { width: 86%; }
+  .console-card i:nth-child(3) { width: 58%; }
+  .console-card i:nth-child(4) { width: 72%; }
+
+  .matrix-head,
+  .product-layout {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 3rem;
+    align-items: end;
+    margin-bottom: 2.5rem;
+  }
+  .matrix-head > p { color: var(--text-secondary); line-height: 1.7; }
+
+  .digital-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
   }
 
-  .stack-item {
-    padding: 1.5rem 1rem;
-    border-radius: var(--radius-md);
-    text-align: center;
-    border: 1px solid var(--glass-border);
-    transition: all var(--transition-base);
+  .digital-card {
+    position: relative;
+    min-height: 390px;
+    padding: 1.35rem;
+    border-radius: 28px;
+    border: 1px solid rgba(255,255,255,0.09);
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.024));
+    overflow: hidden;
+    transition: transform 220ms ease, border-color 220ms ease;
   }
 
-  .stack-item:hover {
-    border-color: var(--accent-dim);
-    transform: translateY(-2px);
+  .digital-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(80,217,255,0.3);
   }
 
-  .stack-icon {
-    font-size: 1.5rem;
-    display: block;
-    margin-bottom: 0.5rem;
+  .digital-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 18px;
+    display: grid;
+    place-items: center;
+    background: rgba(80, 217, 255, 0.1);
+    border: 1px solid rgba(80, 217, 255, 0.18);
+    color: #69dfff;
+    font-size: 1.55rem;
+    margin-bottom: 1.2rem;
   }
 
-  .stack-name {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text-secondary);
+  .digital-card span {
+    color: #69dfff;
+    font-size: 0.72rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+  .digital-card h3 { font-size: 1.35rem; line-height: 1.16; margin: 0.75rem 0 0.85rem; letter-spacing: -0.03em; }
+  .digital-card p { color: var(--text-secondary); line-height: 1.65; font-size: 0.94rem; }
+
+  .output-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.1rem;
+  }
+  .output-list b {
+    font-size: 0.75rem;
+    color: rgba(235,244,255,0.78);
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.045);
+    padding: 0.38rem 0.55rem;
+    border-radius: 999px;
+    font-weight: 700;
   }
 
-  @media (max-width: 768px) {
-    .service-block {
-      padding: 2rem 1.5rem;
-    }
+  .product-section { background: rgba(255,255,255,0.018); }
+  .example-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .example-list article {
+    padding: 1.25rem;
+    border-radius: 24px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.075);
+  }
+  .example-list h3 { margin-bottom: 0.5rem; }
+  .example-list p { color: var(--text-secondary); line-height: 1.6; }
 
-    .service-grid, .service-grid.reverse {
-      grid-template-columns: 1fr;
-      direction: ltr;
-      gap: 1.5rem;
-    }
+  .pipeline-track {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-top: 2.4rem;
+  }
+  .pipeline-step {
+    padding: 1.2rem;
+    min-height: 230px;
+    border-radius: 26px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.04);
+  }
+  .pipeline-step span { color: #69dfff; font-weight: 900; letter-spacing: 0.14em; font-size: 0.75rem; }
+  .pipeline-step h3 { margin: 1rem 0 0.7rem; font-size: 1.12rem; }
+  .pipeline-step p { color: var(--text-secondary); line-height: 1.6; font-size: 0.9rem; }
 
-    .service-grid.reverse > * {
-      direction: ltr;
-    }
-
-    .service-visual {
-      order: -1;
-    }
-
-    .stack-grid {
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-      gap: 0.75rem;
-    }
-
-    .stack-item {
-      padding: 1.25rem 0.75rem;
-    }
+  @media (max-width: 1050px) {
+    .it-hero-grid,
+    .matrix-head,
+    .product-layout { grid-template-columns: 1fr; }
+    .digital-grid { grid-template-columns: repeat(2, 1fr); }
+    .pipeline-track { grid-template-columns: repeat(2, 1fr); }
   }
 
-  @media (max-width: 480px) {
-    .service-block {
-      padding: 1.5rem 1.25rem;
-    }
-    .stack-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+  @media (max-width: 640px) {
+    .it-hero { padding: 7.5rem 0 3.5rem; }
+    .it-hero h1 { font-size: clamp(2.4rem, 14vw, 4.3rem); }
+    .hero-actions .btn { width: 100%; justify-content: center; }
+    .product-console { min-height: 410px; border-radius: 26px; }
+    .console-grid { grid-template-columns: 1fr; }
+    .console-card.large, .console-card.wide { grid-column: auto; grid-row: auto; min-height: 130px; }
+    .digital-grid,
+    .example-list,
+    .pipeline-track { grid-template-columns: 1fr; }
   }
 </style>

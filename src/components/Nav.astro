@@ -71,6 +71,7 @@
     </button>
   </div>
 </header>
+<div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
 
 <style>
   .nav-wrapper {
@@ -402,68 +403,357 @@
       gap: 0.5rem;
     }
   }
+
+
+  /* Phase 9: mobile navigation and responsive polish */
+  .nav-wrapper {
+    will-change: transform, background, border-color;
+  }
+
+  .nav-wrapper.nav-hidden {
+    transform: translateY(-110%);
+  }
+
+  .nav-link.active {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.055);
+  }
+
+  .nav-link.active::after {
+    transform: scaleX(1);
+  }
+
+  .nav-dropdown-menu::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -12px;
+    height: 12px;
+  }
+
+  .nav-dropdown-menu {
+    top: calc(100% + 0.55rem);
+  }
+
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-dropdown:hover .nav-dropdown-trigger svg,
+  .nav-dropdown:focus-within .nav-dropdown-trigger svg {
+    transform: rotate(180deg);
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--glass-border);
+    border-radius: 999px;
+    cursor: pointer;
+    padding: 0;
+    color: var(--text-primary);
+    position: relative;
+    z-index: 1002;
+    transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .hamburger span {
+    width: 18px;
+    height: 2px;
+    border-radius: 99px;
+    background: currentColor;
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .nav-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 998;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-base), visibility var(--transition-base);
+  }
+
+  .nav-backdrop.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @media (max-width: 1080px) and (min-width: 769px) {
+    .nav-link {
+      padding-inline: 0.68rem;
+      font-size: 0.82rem;
+    }
+
+    .nav-cta {
+      padding-inline: 1rem;
+    }
+
+    .logo {
+      font-size: 1.05rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .nav-wrapper {
+      padding: max(0.55rem, env(safe-area-inset-top)) 0 0.55rem;
+      background: linear-gradient(180deg, rgba(10, 11, 12, 0.86), rgba(10, 11, 12, 0.54));
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.045);
+    }
+
+    .nav-inner {
+      min-height: 48px;
+    }
+
+    .logo {
+      max-width: calc(100vw - 92px);
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .logo-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav-links {
+      right: 0;
+      transform: translateX(105%);
+      width: min(88vw, 370px);
+      max-width: 370px;
+      padding: calc(5.25rem + env(safe-area-inset-top)) 1.05rem calc(1.35rem + env(safe-area-inset-bottom));
+      transition: transform var(--transition-base);
+      box-shadow: -24px 0 80px rgba(0, 0, 0, 0.54);
+    }
+
+    .nav-links.open {
+      right: 0;
+      transform: translateX(0);
+    }
+
+    .nav-links::after {
+      content: 'AV • IT • Software • Control';
+      position: absolute;
+      top: calc(4.25rem + env(safe-area-inset-top));
+      left: 1.5rem;
+      right: 1.5rem;
+      color: var(--accent);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.72;
+    }
+
+    .nav-link {
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.025);
+      border-radius: 16px;
+      padding: 0.95rem 1rem;
+      min-height: 48px;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      border-color: rgba(0, 184, 212, 0.26);
+      background: rgba(0, 184, 212, 0.08);
+    }
+
+    .nav-link::after { display: none; }
+
+    .nav-dropdown-trigger {
+      justify-content: space-between;
+    }
+
+    .nav-dropdown-trigger svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .nav-dropdown.open .nav-dropdown-trigger svg {
+      transform: rotate(180deg);
+    }
+
+    .nav-dropdown-menu {
+      margin-top: 0.35rem;
+      padding-left: 0;
+    }
+
+    .nav-dropdown.open .nav-dropdown-menu {
+      max-height: 520px;
+      padding: 0.35rem 0 0.25rem;
+    }
+
+    .nav-dropdown-item {
+      border-left: 1px solid rgba(0, 184, 212, 0.24);
+      margin-left: 0.8rem;
+      white-space: normal;
+      line-height: 1.35;
+    }
+
+    .nav-admin {
+      justify-content: center;
+      width: 48%;
+      display: inline-flex;
+      margin-right: 2%;
+    }
+
+    .theme-toggle {
+      border-radius: 16px;
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .hamburger {
+      display: flex;
+    }
+
+    .hamburger:hover,
+    .hamburger.active {
+      border-color: rgba(0, 184, 212, 0.35);
+      background: rgba(0, 184, 212, 0.08);
+    }
+  }
+
+  @media (max-width: 420px) {
+    .nav-links {
+      width: 100vw;
+      max-width: none;
+      border-left: none;
+    }
+
+    .logo-accent {
+      display: inline;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav-wrapper,
+    .nav-links,
+    .nav-backdrop,
+    .hamburger span,
+    .nav-dropdown-menu {
+      transition: none !important;
+    }
+  }
+
 </style>
 
 <script>
   const navbar = document.getElementById('navbar');
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
+  const navBackdrop = document.getElementById('navBackdrop');
+  const dropdowns = document.querySelectorAll('.nav-dropdown');
+  const themeToggle = document.getElementById('themeToggle');
+  const html = document.documentElement;
 
-  let lastScroll = 0;
+  let lastScroll = window.scrollY;
+  let ticking = false;
+
+  function updateNavbar() {
+    const currentScroll = window.scrollY;
+    navbar.classList.toggle('scrolled', currentScroll > 50);
+
+    const isMenuOpen = navLinks.classList.contains('open');
+    const scrollingDown = currentScroll > lastScroll && currentScroll > 260;
+    navbar.classList.toggle('nav-hidden', scrollingDown && !isMenuOpen);
+
+    lastScroll = Math.max(currentScroll, 0);
+    ticking = false;
+  }
 
   window.addEventListener('scroll', () => {
-    const currentScroll = window.scrollY;
-    if (currentScroll > 50) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
+    if (!ticking) {
+      window.requestAnimationFrame(updateNavbar);
+      ticking = true;
     }
-    lastScroll = currentScroll;
-  });
+  }, { passive: true });
 
   function closeMenu() {
     hamburger.classList.remove('active');
     navLinks.classList.remove('open');
+    navBackdrop.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('menu-open');
+    dropdowns.forEach(dropdown => dropdown.classList.remove('open'));
   }
 
   function openMenu() {
     hamburger.classList.add('active');
     navLinks.classList.add('open');
+    navBackdrop.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
     document.body.classList.add('menu-open');
+    navbar.classList.remove('nav-hidden');
   }
 
+  hamburger.setAttribute('aria-expanded', 'false');
+  hamburger.setAttribute('aria-controls', 'navLinks');
+
   hamburger.addEventListener('click', () => {
-    if (navLinks.classList.contains('open')) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
+    navLinks.classList.contains('open') ? closeMenu() : openMenu();
+  });
+
+  navBackdrop.addEventListener('click', closeMenu);
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMenu();
   });
 
   navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', closeMenu);
-  });
+    link.addEventListener('click', (event) => {
+      const isMobile = window.innerWidth <= 768;
+      const parentDropdown = link.closest('.nav-dropdown');
+      const isTrigger = link.classList.contains('nav-dropdown-trigger');
 
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) {
-      closeMenu();
-    }
-  });
-
-  const dropdowns = document.querySelectorAll('.nav-dropdown');
-  dropdowns.forEach(dropdown => {
-    const trigger = dropdown.querySelector('.nav-dropdown-trigger');
-    trigger.addEventListener('click', (e) => {
-      if (window.innerWidth <= 768) {
-        e.preventDefault();
-        dropdown.classList.toggle('open');
+      if (isMobile && parentDropdown && isTrigger) {
+        event.preventDefault();
+        dropdowns.forEach(dropdown => {
+          if (dropdown !== parentDropdown) dropdown.classList.remove('open');
+        });
+        parentDropdown.classList.toggle('open');
+        return;
       }
+
+      closeMenu();
     });
   });
 
-  const themeToggle = document.getElementById('themeToggle');
-  const html = document.documentElement;
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) closeMenu();
+  });
+
+  function setActiveLinks() {
+    const pathname = window.location.pathname.replace(/\/$/, '') || '/';
+    navLinks.querySelectorAll('a[href]').forEach(link => {
+      const href = new URL(link.getAttribute('href'), window.location.origin).pathname.replace(/\/$/, '') || '/';
+      const isActive = href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(`${href}/`);
+      link.classList.toggle('active', isActive && link.classList.contains('nav-link'));
+    });
+  }
 
   function setTheme(theme) {
     html.setAttribute('data-theme', theme);
@@ -471,7 +761,10 @@
   }
 
   themeToggle.addEventListener('click', () => {
-    const current = html.getAttribute('data-theme');
+    const current = html.getAttribute('data-theme') || 'dark';
     setTheme(current === 'dark' ? 'light' : 'dark');
   });
+
+  setActiveLinks();
+  updateNavbar();
 </script>

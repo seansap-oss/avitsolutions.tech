@@ -4,19 +4,19 @@ import Hero from '../components/Hero.astro';
 import CTASection from '../components/CTASection.astro';
 
 const serviceTiles = [
-  { icon: '▣', title: 'AV Integration', text: 'Boardrooms, auditoriums, classrooms, displays, audio, projection, and control systems engineered as one complete experience.' },
-  { icon: '◉', title: 'Video Conferencing', text: 'Crystal-clear Teams, Zoom, and hybrid meeting spaces with reliable cameras, DSP audio, microphones, and room control.' },
-  { icon: '⌂', title: 'Smart Classrooms', text: 'Teaching spaces with projector/LED systems, lecture capture, wireless presentation, and simple teacher-first controls.' },
-  { icon: '⚙', title: 'Control Systems', text: 'Crestron, AMX, Extron-style logic, touch panel UX, lighting, screens, DSP, VC, and automation workflows.' },
-  { icon: '⟐', title: 'IT & Networking', text: 'AV-over-IP, switching, VLAN-aware design, device management, structured cabling, and resilient infrastructure.' },
-  { icon: '</>', title: 'Custom Software', text: 'Websites, mobile apps, dashboards, admin panels, ERP-style tools, and interfaces built around real business operations.' },
+  { icon: '▣', title: 'AV Integration', href: '/av-solutions', text: 'Boardrooms, auditoriums, classrooms, displays, audio, projection, and control systems engineered as one complete experience.' },
+  { icon: '◉', title: 'Video Conferencing', href: '/av-solutions#business', text: 'Crystal-clear Teams, Zoom, and hybrid meeting spaces with reliable cameras, DSP audio, microphones, and room control.' },
+  { icon: '⌂', title: 'Smart Classrooms', href: '/av-solutions#education', text: 'Teaching spaces with projector/LED systems, lecture capture, wireless presentation, and simple teacher-first controls.' },
+  { icon: '⚙', title: 'Control Systems', href: '/av-solutions#business', text: 'Crestron, AMX, Extron-style logic, touch panel UX, lighting, screens, DSP, VC, and automation workflows.' },
+  { icon: '⟐', title: 'IT & Networking', href: '/it-solutions', text: 'AV-over-IP, switching, VLAN-aware design, device management, structured cabling, and resilient infrastructure.' },
+  { icon: '</>', title: 'Custom Software', href: '/it-solutions#hybrid-software', text: 'Websites, mobile apps, dashboards, admin panels, ERP-style tools, and interfaces built around real business operations.' },
 ];
 
 const projectCards = [
-  { type: 'AV SYSTEM', title: 'Executive Boardroom Experience', meta: 'Corporate meeting rooms · control UX · VC audio', image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=900&h=650&fit=crop&q=80' },
-  { type: 'EDUCATION', title: 'Smart Classroom Deployment', meta: 'Projection · microphones · lecture-ready control', image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&h=650&fit=crop&q=80' },
-  { type: 'SOFTWARE', title: 'Local Business Platforms', meta: 'Web apps · mobile apps · admin dashboards', image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=900&h=650&fit=crop&q=80' },
-  { type: 'SIGNAGE', title: 'Digital Display Networks', meta: 'CMS · scheduling · retail and public displays', image: 'https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=900&h=650&fit=crop&q=80' },
+  { type: 'WEBSITE + BRAND', title: 'AVIT Solutions Portfolio', meta: 'Cinematic portfolio · Astro · premium UI/UX', image: '/portfolio-media/avit-portfolio-hero.svg', href: '/projects' },
+  { type: 'NEWS PLATFORM', title: 'BUZZTOWN Community', meta: 'Local news · chat UX · classifieds · admin tools', image: '/portfolio-media/buzztown-hero.svg', href: '/projects/buzztown' },
+  { type: 'BUSINESS APP', title: 'AMBI Member Platform', meta: 'Directory · calendar · notice board · mobile direction', image: '/portfolio-media/ambi-hero.svg', href: '/projects/ambi' },
+  { type: 'SOFTWARE SYSTEM', title: 'Clinic + Business Tools', meta: 'LAN software · dashboards · workflow automation', image: '/portfolio-media/clinic-system-hero.svg', href: '/projects/clinic-system' },
 ];
 
 const credentials = [
@@ -69,11 +69,12 @@ const credentials = [
       </div>
       <div class="service-grid">
         {serviceTiles.map((item) => (
-          <article class="service-tile">
+          <a class="service-tile" href={item.href}>
             <div class="service-icon">{item.icon}</div>
             <h3>{item.title}</h3>
             <p>{item.text}</p>
-          </article>
+            <span class="tile-link">Explore service →</span>
+          </a>
         ))}
       </div>
     </div>
@@ -102,14 +103,14 @@ const credentials = [
           <div class="section-label">Selected Direction</div>
           <h2 class="section-title">Real Projects. Real Impact.</h2>
           <p class="section-subtitle">
-            This section is prepared for your actual website designs, AV projects, software builds, and mobile apps. We will replace placeholders with your approved portfolio items.
+            A cleaner preview of the project studio: websites, apps, AV systems, dashboards, and business tools. Each selected card can now open into a case-study style detail page.
           </p>
         </div>
         <a href="/projects" class="text-link">View all projects →</a>
       </div>
       <div class="project-rail">
         {projectCards.map((project) => (
-          <article class="premium-project-card">
+          <a class="premium-project-card" href={project.href}>
             <img src={project.image} alt="" loading="lazy" />
             <div class="project-overlay"></div>
             <div class="project-content">
@@ -118,7 +119,7 @@ const credentials = [
               <p>{project.meta}</p>
             </div>
             <div class="project-arrow">→</div>
-          </article>
+          </a>
         ))}
       </div>
     </div>
@@ -363,6 +364,9 @@ const credentials = [
   }
 
   .premium-project-card {
+    display: block;
+    color: white;
+    text-decoration: none;
     position: relative;
     min-height: 360px;
     overflow: hidden;
@@ -506,5 +510,18 @@ const credentials = [
     .showcase-head {
       display: block;
     }
+  }
+
+  .service-tile {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .tile-link {
+    display: inline-flex;
+    margin-top: 1rem;
+    color: #69dfff;
+    font-size: 0.8rem;
+    font-weight: 800;
   }
 </style>

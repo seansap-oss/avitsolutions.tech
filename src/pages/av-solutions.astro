@@ -1,391 +1,475 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ImageCard from '../components/ImageCard.astro';
 import CTASection from '../components/CTASection.astro';
+
+const avServices = [
+  {
+    id: 'business',
+    eyebrow: 'Corporate & Business',
+    title: 'Boardrooms, meeting rooms, and executive AV that people can actually use.',
+    summary: 'Clean communication spaces with display, camera, audio, switching, control, and support designed together from day one.',
+    visual: 'Boardroom',
+    accent: 'blue',
+    for: ['Corporate offices', 'Meeting rooms', 'Training rooms', 'Executive suites'],
+    solves: ['Confusing remotes and cables', 'Poor microphone pickup', 'Unreliable video calls', 'Hard-to-support room systems'],
+    stack: ['Teams / Zoom rooms', 'DSP audio', 'Touch-panel control', 'Wireless presentation', 'Room scheduling'],
+  },
+  {
+    id: 'government',
+    eyebrow: 'Government & Public Sector',
+    title: 'Reliable AV and control rooms for serious operational environments.',
+    summary: 'Systems designed around uptime, documentation, clear operation, and long-term maintainability for public and mission-focused spaces.',
+    visual: 'Control Room',
+    accent: 'cyan',
+    for: ['Council chambers', 'Command rooms', 'Briefing rooms', 'Public facilities'],
+    solves: ['Complex multi-source routing', 'Operator confusion', 'Poor visibility', 'Weak documentation'],
+    stack: ['Video walls', 'Matrix switching', 'Control logic', 'PA systems', 'Redundant signal paths'],
+  },
+  {
+    id: 'education',
+    eyebrow: 'Education',
+    title: 'Smart classrooms and lecture theatres built for teachers first.',
+    summary: 'Teaching spaces that combine projection, display, audio, lecture capture, simple control, and remote learning support.',
+    visual: 'Smart Classroom',
+    accent: 'purple',
+    for: ['Schools', 'Colleges', 'Universities', 'Training centres'],
+    solves: ['Teachers wasting class time', 'Bad classroom audio', 'Messy source selection', 'Hard hybrid teaching'],
+    stack: ['Projectors / LED displays', 'Wireless microphones', 'Lecture capture', 'Interactive display', 'Simple wall panels'],
+  },
+  {
+    id: 'healthcare',
+    eyebrow: 'Healthcare',
+    title: 'Clear communication and display systems for healthcare spaces.',
+    summary: 'AV for consultation, training, waiting areas, collaboration rooms, and medical communication environments where reliability matters.',
+    visual: 'Clinical AV',
+    accent: 'green',
+    for: ['Clinics', 'Hospitals', 'Training labs', 'Waiting areas'],
+    solves: ['Poor teleconsultation quality', 'Noisy rooms', 'Weak patient information display', 'Difficult staff communication'],
+    stack: ['Telemedicine displays', 'Ceiling speakers', 'Wireless presentation', 'Digital signage', 'Paging integration'],
+  },
+  {
+    id: 'entertainment',
+    eyebrow: 'Entertainment & Venues',
+    title: 'Immersive screens, sound, lighting, and show-control experiences.',
+    summary: 'High-impact spaces for stages, auditoriums, museums, events, restaurants, and venues that need atmosphere and reliability.',
+    visual: 'Immersive Venue',
+    accent: 'pink',
+    for: ['Auditoriums', 'Museums', 'Event venues', 'Performance spaces'],
+    solves: ['Flat presentation impact', 'Weak sound coverage', 'Hard show operation', 'Unplanned signal flow'],
+    stack: ['LED walls', 'Projection', 'Stage audio', 'Lighting control', 'Show presets'],
+  },
+  {
+    id: 'hospitality',
+    eyebrow: 'Hospitality & Residential',
+    title: 'Premium AV, control, and automation for guest experiences.',
+    summary: 'Elegant technology for hotels, cafés, restaurants, premium homes, and retail spaces where the system should feel invisible until needed.',
+    visual: 'Guest Experience',
+    accent: 'gold',
+    for: ['Hotels', 'Restaurants', 'Retail spaces', 'Premium homes'],
+    solves: ['Inconsistent guest experience', 'Manual switching', 'Poor background music zoning', 'Unreliable signage'],
+    stack: ['Multi-zone audio', 'Lighting scenes', 'Digital signage', 'Control panels', 'Automation schedules'],
+  },
+];
+
+const workflow = [
+  { no: '01', title: 'Discovery', text: 'We map the room, user behaviour, cable paths, signal flow, network requirements, budget, and support expectation.' },
+  { no: '02', title: 'System Design', text: 'We produce a practical system concept covering displays, audio, VC, control, networking, power, and future upgrade paths.' },
+  { no: '03', title: 'Integration', text: 'Hardware, programming, cable management, configuration, and UI logic are implemented as one complete system.' },
+  { no: '04', title: 'Commissioning', text: 'Every button, source, microphone, speaker zone, display, and user workflow is tested before handover.' },
+];
 ---
 
 <Layout>
-  <section class="section page-hero">
-    <div class="container" style="text-align: center;">
-      <div class="section-label">AV Solutions</div>
-      <h1 class="section-title" style="font-size: clamp(2.5rem, 5vw, 3.5rem);" data-text-key="av-page-title">
-        Audiovisual Integration
-      </h1>
-      <p class="section-subtitle" style="margin: 0 auto 0;" data-text-key="av-page-subtitle">
-        From concept to commissioning — we design, supply, install, and support AV systems for any environment.
+  <section class="services-hero av-hero">
+    <div class="services-bg-grid"></div>
+    <div class="container services-hero-inner">
+      <div class="services-kicker">AV Solutions</div>
+      <h1>Professional audiovisual systems, engineered from design to completion.</h1>
+      <p>
+        We build AV spaces where the display, audio, camera, control, network, and user interface feel like one reliable system — not separate pieces fighting each other.
       </p>
-    </div>
-  </section>
-
-  <section id="business" class="section" style="padding-top: 0;">
-    <div class="container">
-      <div class="service-block glass" style="margin-bottom: 2rem;">
-        <div class="service-grid">
-          <div class="service-content">
-            <span class="section-label">Business</span>
-            <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.2rem);" data-text-key="av-business-title">Enterprise-Grade AV for the Modern Workplace</h2>
-            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;" data-text-key="av-business-text">
-              We design and install AV systems that empower collaboration, impress clients, and streamline operations. Every solution is engineered to integrate seamlessly with existing IT infrastructure.
-            </p>
-            <ul class="service-list">
-              <li>Boardrooms & executive conference rooms</li>
-              <li>Huddle rooms & flexible meeting spaces</li>
-              <li>Auditoriums & town hall spaces</li>
-              <li>Digital signage & wayfinding</li>
-              <li>Unified communications (Teams, Zoom, Webex)</li>
-              <li>Video walls & projection systems</li>
-              <li>Wireless presentation & BYOD</li>
-            </ul>
-          </div>
-          <div class="service-visual">
-            <ImageCard
-              key="av-business"
-              src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop&q=80"
-              alt="Modern corporate boardroom with AV screens and conferencing equipment"
-              caption="Enterprise Boardroom AV"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div id="government" class="service-block glass" style="margin-bottom: 2rem;">
-        <div class="service-grid reverse">
-          <div class="service-content">
-            <span class="section-label">Government</span>
-            <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.2rem);" data-text-key="av-government-title">Secure, Reliable, Certified AV for Public Sector</h2>
-            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;" data-text-key="av-government-text">
-              We deliver AV and communication systems that meet the highest standards of security, redundancy, and compliance. Built for mission-critical government environments.
-            </p>
-            <ul class="service-list">
-              <li>Council chambers & legislative halls</li>
-              <li>Emergency operations centers</li>
-              <li>Command & control rooms</li>
-              <li>Classified briefing facilities</li>
-              <li>Secure video conferencing (SIPR/NIPR)</li>
-              <li>Public address & emergency notification</li>
-              <li>Redundant AV infrastructure</li>
-            </ul>
-          </div>
-          <div class="service-visual">
-            <ImageCard
-              key="av-government"
-              src="https://images.unsplash.com/photo-1577412647305-991150c7d163?w=800&h=600&fit=crop&q=80"
-              alt="Government council chamber with voting panels and secure AV systems"
-              caption="Secure Council Chambers"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div id="education" class="service-block glass" style="margin-bottom: 2rem;">
-        <div class="service-grid">
-          <div class="service-content">
-            <span class="section-label">Education</span>
-            <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.2rem);" data-text-key="av-education-title">Smart Classrooms & Campus AV Solutions</h2>
-            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;" data-text-key="av-education-text">
-              Transform learning environments with interactive AV technology that engages students and empowers educators. From lecture halls to hybrid classrooms, we build systems that enhance education.
-            </p>
-            <ul class="service-list">
-              <li>Smart classrooms & interactive displays</li>
-              <li>Lecture capture & streaming systems</li>
-              <li>Hybrid/remote learning AV</li>
-              <li>Campus-wide digital signage</li>
-              <li>Library & study space AV</li>
-              <li>Multi-zone audio distribution</li>
-              <li>Centralized AV management</li>
-            </ul>
-          </div>
-          <div class="service-visual">
-            <ImageCard
-              key="av-education"
-              src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&h=600&fit=crop&q=80"
-              alt="Smart classroom with interactive display, projector, and AV equipment for hybrid learning"
-              caption="Smart Classroom AV"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div id="healthcare" class="service-block glass" style="margin-bottom: 2rem;">
-        <div class="service-grid reverse">
-          <div class="service-content">
-            <span class="section-label">Healthcare</span>
-            <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.2rem);" data-text-key="av-healthcare-title">AV Systems for Medical & Healthcare Environments</h2>
-            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;" data-text-key="av-healthcare-text">
-              Purpose-built AV solutions for healthcare — from telemedicine and surgical video to patient entertainment and staff communication. Designed for reliability in clinical environments.
-            </p>
-            <ul class="service-list">
-              <li>Telemedicine & video conferencing</li>
-              <li>Surgical video routing & recording</li>
-              <li>Patient room entertainment systems</li>
-              <li>Staff communication & paging</li>
-              <li>Medical training & simulation AV</li>
-              <li>Waiting room digital signage</li>
-              <li>Wayfinding & information displays</li>
-            </ul>
-          </div>
-          <div class="service-visual">
-            <ImageCard
-              key="av-healthcare"
-              src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop&q=80"
-              alt="Telemedicine video consultation — doctor on screen with medical equipment"
-              caption="Healthcare Telemedicine AV"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div id="entertainment" class="service-block glass" style="margin-bottom: 2rem;">
-        <div class="service-grid">
-          <div class="service-content">
-            <span class="section-label">Entertainment</span>
-            <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.2rem);" data-text-key="av-entertainment-title">Immersive AV for Venues & Events</h2>
-            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;" data-text-key="av-entertainment-text">
-              Create unforgettable experiences with high-impact AV systems for entertainment venues, event spaces, and cultural institutions. From intimate clubs to large-scale venues.
-            </p>
-            <ul class="service-list">
-              <li>Concert & live event sound systems</li>
-              <li>LED video walls & projection mapping</li>
-              <li>Theater & performing arts AV</li>
-              <li>Nightclub & bar audio systems</li>
-              <li>Exhibition & museum interactive displays</li>
-              <li>Outdoor festival & event rigs</li>
-              <li>Lighting control & show automation</li>
-            </ul>
-          </div>
-          <div class="service-visual">
-            <ImageCard
-              key="av-entertainment"
-              src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop&q=80"
-              alt="Live concert venue with stage lighting, LED walls, and professional sound system"
-              caption="Concert & Event Venue AV"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div id="hospitality" class="service-block glass">
-        <div class="service-grid reverse">
-          <div class="service-content">
-            <span class="section-label">Hospitality</span>
-            <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.2rem);" data-text-key="av-hospitality-title">Elevated Guest Experiences Through AV</h2>
-            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;" data-text-key="av-hospitality-text">
-              Impress guests and streamline operations with elegant AV systems for hotels, resorts, restaurants, and event venues. Technology that enhances, never intrudes.
-            </p>
-            <ul class="service-list">
-              <li>Hotel guest room entertainment</li>
-              <li>Conference & ballroom AV systems</li>
-              <li>Restaurant & bar audio/visual</li>
-              <li>Pool & outdoor entertainment</li>
-              <li>Lobby & reception digital displays</li>
-              <li>Background music distribution</li>
-              <li>Centralized control & management</li>
-            </ul>
-          </div>
-          <div class="service-visual">
-            <ImageCard
-              key="av-hospitality"
-              src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop&q=80"
-              alt="Luxury hotel lobby with digital displays, ambient audio, and conference AV systems"
-              caption="Hotel & Hospitality AV"
-            />
-          </div>
-        </div>
+      <div class="hero-actions">
+        <a href="/contact" class="btn btn-primary">Plan an AV Project</a>
+        <a href="/projects" class="btn btn-secondary">View Project Studio</a>
       </div>
     </div>
   </section>
 
-  <section class="section" style="background: var(--bg-secondary);">
-    <div class="container">
-      <div class="section-label">Our Process</div>
-      <h2 class="section-title">From Design to Completion</h2>
-      <p class="section-subtitle" style="margin-bottom: 3rem;">
-        A proven methodology that ensures every project is delivered on time, on budget, and beyond expectations.
-      </p>
+  <section class="service-command section">
+    <div class="container command-grid">
+      <div class="command-copy">
+        <div class="section-label">Service System</div>
+        <h2 class="section-title">Not just equipment. Complete room logic.</h2>
+        <p class="section-subtitle">
+          A professional AV system succeeds when the person using the room does not need to understand the technology behind it. That is the design standard for every AVIT Solutions project.
+        </p>
+      </div>
+      <div class="command-panel">
+        <div class="panel-row"><span>Display</span><strong>LED · Projection · Touch</strong></div>
+        <div class="panel-row"><span>Audio</span><strong>DSP · Mics · Speakers</strong></div>
+        <div class="panel-row"><span>Control</span><strong>Touch UI · Relay · Logic</strong></div>
+        <div class="panel-row"><span>Network</span><strong>AV-over-IP · VLAN-aware</strong></div>
+        <div class="panel-row"><span>Support</span><strong>Commissioning · Handover</strong></div>
+      </div>
+    </div>
+  </section>
 
-      <div class="process-track">
-        <div class="process-step">
-          <div class="process-number">01</div>
-          <h3>Discovery & Design</h3>
-          <p>We learn your goals, map requirements, and create a detailed system design and scope of work.</p>
+  <section class="service-matrix section" style="padding-top: 0;">
+    <div class="container">
+      <div class="matrix-head">
+        <div>
+          <div class="section-label">AV Environments</div>
+          <h2 class="section-title">Solutions by space and purpose.</h2>
         </div>
-        <div class="process-connector"></div>
-        <div class="process-step">
-          <div class="process-number">02</div>
-          <h3>Engineering & Procurement</h3>
-          <p>We engineer the solution, source all equipment from trusted manufacturers, and pre-configure systems.</p>
+        <p>
+          Each environment has different users, risks, acoustics, source requirements, and maintenance needs. The service cards below are written like real project scopes, not generic marketing text.
+        </p>
+      </div>
+
+      <div class="service-stack">
+        {avServices.map((service) => (
+          <article id={service.id} class={`service-system-card ${service.accent}`}>
+            <div class="service-visual-block">
+              <div class="visual-grid"></div>
+              <div class="screen-frame">
+                <span>{service.visual}</span>
+                <div class="screen-lines"><i></i><i></i><i></i></div>
+              </div>
+              <div class="floating-chip chip-one">AV</div>
+              <div class="floating-chip chip-two">CTRL</div>
+              <div class="floating-chip chip-three">IP</div>
+            </div>
+            <div class="service-body">
+              <span class="service-eyebrow">{service.eyebrow}</span>
+              <h3>{service.title}</h3>
+              <p>{service.summary}</p>
+              <div class="scope-grid">
+                <div>
+                  <h4>Best for</h4>
+                  <ul>{service.for.map((item) => <li>{item}</li>)}</ul>
+                </div>
+                <div>
+                  <h4>Solves</h4>
+                  <ul>{service.solves.map((item) => <li>{item}</li>)}</ul>
+                </div>
+                <div>
+                  <h4>Typical stack</h4>
+                  <ul>{service.stack.map((item) => <li>{item}</li>)}</ul>
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="workflow-section section">
+    <div class="container">
+      <div class="matrix-head">
+        <div>
+          <div class="section-label">Delivery Method</div>
+          <h2 class="section-title">A clean process from survey to support.</h2>
         </div>
-        <div class="process-connector"></div>
-        <div class="process-step">
-          <div class="process-number">03</div>
-          <h3>Installation & Integration</h3>
-          <p>Professional on-site installation with minimal disruption. Full integration with your existing IT environment.</p>
-        </div>
-        <div class="process-connector"></div>
-        <div class="process-step">
-          <div class="process-number">04</div>
-          <h3>Commissioning & Support</h3>
-          <p>Thorough testing, staff training, and ongoing support to ensure your system performs flawlessly.</p>
-        </div>
+      </div>
+      <div class="workflow-grid">
+        {workflow.map((step) => (
+          <article class="workflow-card">
+            <span>{step.no}</span>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </article>
+        ))}
       </div>
     </div>
   </section>
 
   <CTASection
-    title="Design Your AV System"
-    subtitle="Tell us about your space and needs. We'll design a solution that fits."
-    ctaText="Start Your AV Project"
+    title="Have a room, hall, classroom, or venue to upgrade?"
+    subtitle="Tell us what needs to be displayed, heard, controlled, recorded, or automated. We will convert it into a practical AV system plan."
+    ctaText="Start an AV Project"
     ctaLink="/contact"
   />
 </Layout>
 
 <style>
-  .page-hero {
-    padding-bottom: 2rem;
+  .services-hero {
+    position: relative;
+    min-height: 74vh;
+    display: flex;
+    align-items: center;
+    padding: 9rem 0 5rem;
+    overflow: hidden;
+    background:
+      linear-gradient(90deg, rgba(6,8,13,0.98), rgba(6,8,13,0.74) 44%, rgba(6,8,13,0.92)),
+      radial-gradient(circle at 78% 42%, rgba(79, 70, 229, 0.35), transparent 26rem),
+      radial-gradient(circle at 12% 20%, rgba(0, 184, 212, 0.22), transparent 24rem),
+      #07090d;
   }
 
-  .service-block {
-    padding: 3rem;
-    border-radius: var(--radius-xl);
-    border: 1px solid var(--glass-border);
+  .services-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(120deg, transparent 0 52%, rgba(96, 165, 250, 0.1) 52.2% 52.5%, transparent 52.7%),
+      radial-gradient(circle at 75% 46%, rgba(255,255,255,0.08), transparent 1px),
+      radial-gradient(circle at 82% 58%, rgba(0,184,212,0.12), transparent 2px);
+    pointer-events: none;
   }
 
-  .service-grid {
+  .services-bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 58px 58px;
+    mask-image: radial-gradient(circle at 55% 45%, black, transparent 72%);
+    opacity: 0.55;
+  }
+
+  .services-hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 860px;
+  }
+
+  .services-kicker {
+    display: inline-flex;
+    padding: 0.5rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid rgba(80, 217, 255, 0.28);
+    background: rgba(80, 217, 255, 0.08);
+    color: #69dfff;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.75rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+  }
+
+  .services-hero h1 {
+    font-size: clamp(2.7rem, 7vw, 6.6rem);
+    line-height: 0.94;
+    letter-spacing: -0.07em;
+    max-width: 930px;
+    margin-bottom: 1.5rem;
+  }
+
+  .services-hero p {
+    color: rgba(235, 244, 255, 0.72);
+    font-size: clamp(1rem, 1.65vw, 1.28rem);
+    line-height: 1.75;
+    max-width: 670px;
+    margin-bottom: 2rem;
+  }
+
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .command-grid,
+  .matrix-head {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 0.95fr 1.05fr;
     gap: 3rem;
     align-items: center;
   }
 
-  .service-grid.reverse {
-    direction: rtl;
+  .command-panel {
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 30px;
+    padding: 1rem;
+    background: linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0.025));
+    box-shadow: 0 30px 90px rgba(0,0,0,0.28);
   }
 
-  .service-grid.reverse > * {
-    direction: ltr;
+  .panel-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
   }
 
-  .service-list {
-    list-style: none;
-    color: var(--text-secondary);
-    line-height: 2;
+  .panel-row:last-child { border-bottom: 0; }
+  .panel-row span { color: rgba(226, 237, 248, 0.58); }
+  .panel-row strong { color: white; text-align: right; }
+
+  .matrix-head { margin-bottom: 2.3rem; align-items: end; }
+  .matrix-head > p { color: var(--text-secondary); line-height: 1.7; max-width: 620px; }
+
+  .service-stack { display: grid; gap: 1.25rem; }
+
+  .service-system-card {
+    display: grid;
+    grid-template-columns: 0.72fr 1.28fr;
+    min-height: 430px;
+    border: 1px solid rgba(255,255,255,0.095);
+    border-radius: 34px;
+    overflow: hidden;
+    background: linear-gradient(140deg, rgba(255,255,255,0.07), rgba(255,255,255,0.025));
+    box-shadow: 0 35px 100px rgba(0,0,0,0.22);
   }
 
-  .service-list li {
+  .service-visual-block {
     position: relative;
-    padding-left: 1.25rem;
-  }
-
-  .service-list li::before {
-    content: '›';
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-    font-weight: 700;
-    font-size: 1.1rem;
-  }
-
-  .service-visual {
-    border-radius: var(--radius-lg);
+    min-height: 100%;
+    background:
+      radial-gradient(circle at 50% 40%, rgba(0,184,212,0.23), transparent 15rem),
+      linear-gradient(145deg, rgba(10,14,24,0.92), rgba(20,24,36,0.94));
     overflow: hidden;
   }
 
-  .service-placeholder {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--radius-lg);
+  .visual-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 42px 42px;
+    transform: perspective(700px) rotateX(62deg) translateY(-10%);
+    transform-origin: center;
+    opacity: 0.48;
   }
 
-  .process-track {
+  .screen-frame {
+    position: absolute;
+    inset: 22% 12%;
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.16);
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    align-items: start;
+    place-items: center;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.08), transparent),
+      radial-gradient(circle at 55% 40%, rgba(255,255,255,0.11), transparent 8rem);
+    box-shadow: inset 0 0 50px rgba(255,255,255,0.05), 0 30px 70px rgba(0,0,0,0.36);
   }
 
-  .process-step {
-    padding: 2rem;
-    background: var(--bg-secondary);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-color);
-    transition: all var(--transition-base);
+  .screen-frame span {
+    font-size: clamp(1.6rem, 4vw, 3.2rem);
+    font-weight: 900;
+    letter-spacing: -0.06em;
+    text-align: center;
+    opacity: 0.92;
   }
 
-  .process-step:hover {
-    border-color: var(--accent-dim);
-    transform: translateY(-2px);
+  .screen-lines {
+    position: absolute;
+    bottom: 22px;
+    left: 22px;
+    right: 22px;
+    display: grid;
+    gap: 0.5rem;
   }
 
-  .process-number {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--accent);
-    opacity: 0.4;
+  .screen-lines i {
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.12);
+  }
+
+  .screen-lines i:nth-child(1) { width: 80%; }
+  .screen-lines i:nth-child(2) { width: 54%; }
+  .screen-lines i:nth-child(3) { width: 66%; }
+
+  .floating-chip {
+    position: absolute;
+    padding: 0.55rem 0.75rem;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.13);
+    background: rgba(0,0,0,0.42);
+    backdrop-filter: blur(18px);
+    font-size: 0.75rem;
+    font-weight: 900;
+    color: white;
+    box-shadow: 0 16px 50px rgba(0,0,0,0.24);
+  }
+
+  .chip-one { top: 17%; left: 12%; }
+  .chip-two { top: 12%; right: 13%; }
+  .chip-three { bottom: 14%; right: 18%; }
+
+  .service-body { padding: clamp(1.5rem, 4vw, 3rem); }
+  .service-eyebrow {
+    display: inline-block;
+    color: #69dfff;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 900;
+    margin-bottom: 0.9rem;
+  }
+
+  .service-body h3 {
+    font-size: clamp(1.7rem, 4vw, 3.25rem);
     line-height: 1;
+    letter-spacing: -0.055em;
+    max-width: 760px;
     margin-bottom: 1rem;
   }
 
-  .process-step h3 {
-    font-size: 1.05rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+  .service-body p { color: var(--text-secondary); line-height: 1.75; max-width: 760px; }
+
+  .scope-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1.7rem;
   }
 
-  .process-step p {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
+  .scope-grid > div {
+    padding: 1rem;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.06);
   }
 
-  .process-connector {
-    display: none;
+  .scope-grid h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.92);
+    margin-bottom: 0.8rem;
   }
 
-  @media (max-width: 1024px) {
-    .process-track {
-      grid-template-columns: repeat(2, 1fr);
-    }
+  .scope-grid ul { list-style: none; display: grid; gap: 0.55rem; }
+  .scope-grid li { color: rgba(226,237,248,0.68); font-size: 0.9rem; line-height: 1.35; }
+  .scope-grid li::before { content: '•'; color: #69dfff; margin-right: 0.5rem; }
+
+  .service-system-card.purple .service-visual-block { background: radial-gradient(circle at 50% 40%, rgba(168,85,247,0.32), transparent 15rem), linear-gradient(145deg, rgba(10,14,24,0.92), rgba(20,24,36,0.94)); }
+  .service-system-card.green .service-visual-block { background: radial-gradient(circle at 50% 40%, rgba(34,197,94,0.25), transparent 15rem), linear-gradient(145deg, rgba(10,14,24,0.92), rgba(20,24,36,0.94)); }
+  .service-system-card.pink .service-visual-block { background: radial-gradient(circle at 50% 40%, rgba(236,72,153,0.25), transparent 15rem), linear-gradient(145deg, rgba(10,14,24,0.92), rgba(20,24,36,0.94)); }
+  .service-system-card.gold .service-visual-block { background: radial-gradient(circle at 50% 40%, rgba(245,158,11,0.24), transparent 15rem), linear-gradient(145deg, rgba(10,14,24,0.92), rgba(20,24,36,0.94)); }
+
+  .workflow-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .workflow-card {
+    padding: 1.35rem;
+    min-height: 230px;
+    border-radius: 26px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.045);
+  }
+  .workflow-card span { color: #69dfff; font-size: 0.8rem; font-weight: 900; letter-spacing: 0.14em; }
+  .workflow-card h3 { font-size: 1.2rem; margin: 1.1rem 0 0.7rem; }
+  .workflow-card p { color: var(--text-secondary); line-height: 1.65; font-size: 0.93rem; }
+
+  @media (max-width: 960px) {
+    .command-grid,
+    .matrix-head,
+    .service-system-card { grid-template-columns: 1fr; }
+    .service-visual-block { min-height: 340px; }
+    .scope-grid { grid-template-columns: 1fr; }
+    .workflow-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
-  @media (max-width: 768px) {
-    .service-block {
-      padding: 2rem 1.5rem;
-    }
-
-    .service-grid, .service-grid.reverse {
-      grid-template-columns: 1fr;
-      direction: ltr;
-      gap: 1.5rem;
-    }
-
-    .service-grid.reverse > * {
-      direction: ltr;
-    }
-
-    .service-visual {
-      order: -1;
-    }
-
-    .service-list {
-      line-height: 1.85;
-    }
-
-    .process-track {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-
-    .process-step {
-      padding: 1.5rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .service-block {
-      padding: 1.5rem 1.25rem;
-    }
+  @media (max-width: 620px) {
+    .services-hero { min-height: auto; padding: 7.5rem 0 3.5rem; }
+    .services-hero h1 { font-size: clamp(2.4rem, 15vw, 4.4rem); }
+    .hero-actions .btn { width: 100%; justify-content: center; }
+    .service-system-card { border-radius: 24px; }
+    .service-visual-block { min-height: 270px; }
+    .workflow-grid { grid-template-columns: 1fr; }
+    .panel-row { flex-direction: column; }
+    .panel-row strong { text-align: left; }
   }
 </style>

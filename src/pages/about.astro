@@ -1,349 +1,648 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ImageCard from '../components/ImageCard.astro';
 import CTASection from '../components/CTASection.astro';
+
+const disciplines = [
+  { label: 'Control', value: 'Crestron · AMX · Extron', note: 'Room logic, UI flows, presets, automation, relays, touch panels, and user-first control.' },
+  { label: 'Networked AV', value: 'AV-over-IP · Cisco-level networking', note: 'Signal paths designed with IP discipline, VLAN thinking, addressing, and serviceability.' },
+  { label: 'Audio + VC', value: 'DSP · Mics · Cameras · Teams Rooms', note: 'Boardrooms, classrooms, lecture theatres, and collaboration spaces engineered for clarity.' },
+  { label: 'Software', value: 'Web · Mobile · Admin systems', note: 'Custom portals, dashboards, community platforms, and operational tools that extend the AV layer.' },
+];
+
+const timeline = [
+  { year: '2008+', title: 'AV foundation', copy: 'Formal audiovisual training, installation discipline, site standards, rack work, projection, display, cabling, and commissioning.' },
+  { year: '2011+', title: 'Enterprise field delivery', copy: 'Service, support, commissioning, and project work across corporate, education, healthcare, events, and public venue environments.' },
+  { year: '2012+', title: 'Control systems', copy: 'Manufacturer training and hands-on programming across AMX, Crestron, Extron, touch panels, source routing, and room automation.' },
+  { year: '2017+', title: 'Networked collaboration', copy: 'AV/IT convergence: Cisco-style infrastructure thinking, video conferencing, DSP, multi-room support, and campus-scale reliability.' },
+  { year: '2023+', title: 'Software product layer', copy: 'Full-stack websites, mobile apps, admin panels, ERP-style workflows, AI-assisted tooling, and custom interfaces for real businesses.' },
+  { year: 'Now', title: 'AVIT Solutions', copy: 'A combined AV, IT, UI/UX, and software studio built for clients who want one partner from hardware to interface.' },
+];
+
+const credentials = [
+  'Crestron DigitalMedia / design background',
+  'AMX ACE installer and programming foundation',
+  'Extron XTP and professional AV systems exposure',
+  'Q-SYS / audio DSP workflow understanding',
+  'Cisco networking fundamentals at CCNA level',
+  'Hikvision CCTV and security system experience',
+  'Photoshop, UI/UX design, and front-end product design',
+  '15+ years across service, projects, support, and commissioning',
+];
+
+const sectors = [
+  'Corporate boardrooms',
+  'Smart classrooms',
+  'Lecture theatres',
+  'Healthcare facilities',
+  'Public venues',
+  'Retail signage',
+  'Government-style environments',
+  'Residential automation',
+];
+
+const principles = [
+  { n: '01', title: 'Engineer the invisible', copy: 'A great room feels simple because the hard work is hidden: network, audio, routing, control, and fail-safe logic.' },
+  { n: '02', title: 'UI is part of the system', copy: 'The touch panel, website, admin console, and mobile app are not decoration. They decide whether people can actually use the technology.' },
+  { n: '03', title: 'Design for the technician too', copy: 'Documentation, labels, signal flow, predictable logic, and remote support matter after the handover.' },
+  { n: '04', title: 'Be honest about experience', copy: 'We present professional background and industry exposure clearly, without implying direct client ownership where work came through previous employers.' },
+];
 ---
 
 <Layout>
-  <section class="section page-hero">
-    <div class="container" style="text-align: center;">
-      <div class="section-label">About</div>
-      <h1 class="section-title" style="font-size: clamp(2.5rem, 5vw, 3.5rem);" data-text-key="about-page-title">
-        Bridging AV & IT
-      </h1>
-      <p class="section-subtitle" style="margin: 0 auto 0;" data-text-key="about-page-subtitle">
-        Backed by AV/IT consultants with over 20 years of industry experience, we design, integrate, and support systems that perform.
-      </p>
+  <section class="founder-hero section">
+    <div class="founder-orbit founder-orbit-a"></div>
+    <div class="founder-orbit founder-orbit-b"></div>
+
+    <div class="container founder-hero-grid">
+      <div class="founder-copy reveal-up">
+        <div class="section-label">About AVIT Solutions</div>
+        <h1 class="founder-title" data-text-key="about-page-title">
+          Built by an AV engineer who also designs the interface.
+        </h1>
+        <p class="founder-lead" data-text-key="about-page-subtitle">
+          AVIT Solutions brings together audiovisual engineering, networking, UI/UX design, and custom software development — so the room, the rack, the network, and the screen interface feel like one complete system.
+        </p>
+        <div class="founder-actions">
+          <a class="btn btn-primary magnetic" href="/projects">View Case Studies</a>
+          <a class="btn btn-secondary magnetic" href="/contact">Start a Project</a>
+        </div>
+      </div>
+
+      <div class="founder-console reveal-up" aria-label="Founder capability console">
+        <div class="console-topbar">
+          <span></span><span></span><span></span>
+          <strong>AVIT_ENGINEERING_PROFILE</strong>
+        </div>
+        <div class="console-stage">
+          <div class="console-ring"></div>
+          <div class="console-core">
+            <span>AV</span>
+            <small>IT</small>
+          </div>
+          <div class="console-beam beam-one"></div>
+          <div class="console-beam beam-two"></div>
+          <div class="console-node node-a">DSP</div>
+          <div class="console-node node-b">UX</div>
+          <div class="console-node node-c">IP</div>
+          <div class="console-node node-d">CTRL</div>
+        </div>
+        <div class="console-metrics">
+          <div><strong>15+</strong><span>Years field experience</span></div>
+          <div><strong>4</strong><span>Core disciplines</span></div>
+          <div><strong>1</strong><span>Integrated delivery mindset</span></div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section" style="padding-top: 0;">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-content">
-          <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.2rem);">
-            <span class="gradient-text">Who We Are</span>
-          </h2>
-          <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
-            AVIT Solutions is a specialist AV/IT integration firm founded on a core principle: audiovisual technology
-            and information technology should never be treated as separate disciplines. When AV and IT are integrated
-            from the ground up, systems are more reliable, easier to manage, and deliver a better experience.
-          </p>
-          <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
-            With over <strong style="color: var(--text-primary);">15 years of industry experience</strong>, our team brings deep expertise across the full
-            project lifecycle — from design and programming to installation and commissioning. We are certified across the
-            leading control and signal processing platforms, including <strong style="color: var(--accent);">AMX</strong>, <strong style="color: var(--accent);">Crestron</strong>,
-            and <strong style="color: var(--accent);">Extron</strong>, ensuring every deployment meets manufacturer-grade standards for performance,
-            reliability, and scalability.
-          </p>
-          <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
-            Our technical capabilities extend to high-end audio DSP systems such as <strong style="color: var(--accent);">QSC</strong> bi-amp configurations
-            and <strong style="color: var(--accent);">ClearOne</strong> conferencing solutions. We have delivered enterprise-grade video conferencing
-            environments powered by <strong style="color: var(--accent);">Cisco</strong> and <strong style="color: var(--accent);">Polycom</strong>, supporting seamless collaboration
-            for corporate and government clients alike.
-          </p>
-          <p style="color: var(--text-secondary); line-height: 1.8;">
-            Our portfolio spans corporate boardrooms, large-scale government facilities, luxury residential smart homes,
-            and mission-critical communication platforms. We have had the privilege of working alongside Germany's
-            leading automotive facility integrators, contributing AV/IT solutions to projects of the highest international
-            standard. Whether commissioning a multi-zone video wall, automating a premium estate, or securing a
-            government comms platform — our process is the same: understand the mission, engineer the right solution,
-            and deliver with uncompromising quality.
-          </p>
+  <section class="authority-band">
+    <div class="container authority-strip reveal-up">
+      <span>AV Integration</span>
+      <span>Control Systems</span>
+      <span>Networking</span>
+      <span>DSP Audio</span>
+      <span>UI/UX</span>
+      <span>Web + Mobile Apps</span>
+      <span>Admin Platforms</span>
+    </div>
+  </section>
+
+  <section class="section founder-story-section">
+    <div class="container story-grid">
+      <div class="story-sticky reveal-up">
+        <div class="section-label">Founder Authority</div>
+        <h2 class="section-title story-title">Not a normal portfolio. A systems mindset.</h2>
+        <p class="story-intro">
+          Most AV companies stop at hardware. Most web studios stop at screens. AVIT Solutions is built in the gap between both.
+        </p>
+      </div>
+      <div class="story-body reveal-up">
+        <p>
+          The foundation comes from more than <strong>15 years of AV and IT field work</strong>: service calls, rack rooms, projector installs, commissioning, control programming, user support, and live environments where the system has to work when people walk into the room.
+        </p>
+        <p>
+          That background now extends into <strong>custom software and interface design</strong>: websites, mobile apps, admin portals, business dashboards, community platforms, and workflow tools. The goal is not to make technology look complicated. The goal is to make complex systems feel calm, reliable, and easy to control.
+        </p>
+        <p>
+          AVIT Solutions can speak to the equipment side and the software side in the same conversation: microphones, DSP, cameras, displays, control processors, network design, user interface, admin workflow, and the final client experience.
+        </p>
+        <div class="safe-note">
+          <strong>Experience note:</strong> Some enterprise and public-sector exposure was delivered through previous employers and integration partners. AVIT Solutions presents this as professional experience, not as direct client endorsement or direct brand ownership.
         </div>
-        <div class="about-visual">
-          <div class="about-card glass">
-            <div class="about-avatar">
-              <span>AV</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section discipline-section">
+    <div class="container">
+      <div class="section-label">Capability Stack</div>
+      <h2 class="section-title">Four disciplines, one delivery language.</h2>
+      <p class="section-subtitle">This is what makes AVIT different from a standard website studio or a standard AV contractor.</p>
+      <div class="discipline-grid reveal-up">
+        {disciplines.map((item) => (
+          <article class="discipline-card tilt-card">
+            <span>{item.label}</span>
+            <h3>{item.value}</h3>
+            <p>{item.note}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section timeline-section">
+    <div class="container timeline-layout">
+      <div class="timeline-heading reveal-up">
+        <div class="section-label">Journey</div>
+        <h2 class="section-title">From field engineering to product design.</h2>
+        <p class="section-subtitle">A career path shaped by practical installation work, support pressure, control logic, and modern software delivery.</p>
+      </div>
+      <div class="timeline-rail reveal-up">
+        {timeline.map((item) => (
+          <article class="timeline-item">
+            <div class="timeline-year">{item.year}</div>
+            <div class="timeline-card tilt-card">
+              <h3>{item.title}</h3>
+              <p>{item.copy}</p>
             </div>
-            <h3>AVIT Solutions</h3>
-            <span class="about-role">AV/IT Integration Specialists</span>
-            <p>15+ years experience · AMX, Crestron & Extron certified · Australia-based</p>
-          </div>
-          <div style="margin-top: 1.5rem;">
-            <ImageCard
-              key="about-hero"
-              src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&h=500&fit=crop&q=80"
-              alt="AVIT Solutions team working on audiovisual integration and control systems"
-              caption="Our Integration Team at Work"
-            />
-          </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section proof-section">
+    <div class="container proof-grid">
+      <div class="proof-panel reveal-up">
+        <div class="section-label">Technical Proof</div>
+        <h2>Credentials and working exposure.</h2>
+        <div class="credential-list">
+          {credentials.map((item) => <span>{item}</span>)}
+        </div>
+      </div>
+      <div class="proof-panel reveal-up">
+        <div class="section-label">Environment Exposure</div>
+        <h2>Built for real spaces, not just slides.</h2>
+        <div class="sector-cloud">
+          {sectors.map((item) => <span>{item}</span>)}
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section" style="background: var(--bg-secondary);">
+  <section class="section principles-section">
     <div class="container">
-      <div class="section-label">Values</div>
-      <h2 class="section-title">How We Work</h2>
-      <p class="section-subtitle" style="margin-bottom: 3rem;">
-        Principles that guide every project and partnership.
-      </p>
-      <div class="values-grid">
-        <div class="value-card">
-          <span class="value-number">01</span>
-          <h3>Design-Led Engineering</h3>
-          <p>Great systems start with great design. We take time to understand before we build.</p>
-        </div>
-        <div class="value-card">
-          <span class="value-number">02</span>
-          <h3>AV + IT Unity</h3>
-          <p>No silos. Our cross-disciplinary team ensures AV and IT work as one system.</p>
-        </div>
-        <div class="value-card">
-          <span class="value-number">03</span>
-          <h3>End-to-End Ownership</h3>
-          <p>From first sketch to final sign-off and beyond — we own the outcome.</p>
-        </div>
-        <div class="value-card">
-          <span class="value-number">04</span>
-          <h3>Security First</h3>
-          <p>Especially for government and enterprise — security is never an afterthought.</p>
-        </div>
-        <div class="value-card">
-          <span class="value-number">05</span>
-          <h3>Future-Proof Systems</h3>
-          <p>We build for today and design for tomorrow. Scalable, upgradable, enduring.</p>
-        </div>
-        <div class="value-card">
-          <span class="value-number">06</span>
-          <h3>White-Glove Service</h3>
-          <p>Every client deserves a premium experience. From proposal to support, we deliver.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" style="background: var(--bg-tertiary);">
-    <div class="container">
-      <div class="section-label">Certifications</div>
-      <h2 class="section-title">Industry-Standard Credentials</h2>
-      <p class="section-subtitle" style="margin-bottom: 3rem;">
-        Our team holds manufacturer certifications across the leading AV control and signal processing platforms.
-      </p>
-      <div class="certs-grid">
-        <div class="cert-card">
-          <div class="cert-image">
-            <ImageCard
-              key="cert-amx"
-              src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=300&fit=crop&q=80"
-              alt="AMX control system programming and integration"
-            />
-          </div>
-          <h3>AMX Certified</h3>
-          <p>Advanced control system design, programming, and integration for enterprise AV environments.</p>
-        </div>
-        <div class="cert-card">
-          <div class="cert-image">
-            <ImageCard
-              key="cert-crestron"
-              src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=300&fit=crop&q=80"
-              alt="Crestron automation and room scheduling systems"
-            />
-          </div>
-          <h3>Crestron Certified</h3>
-          <p>Enterprise-grade automation, room scheduling, and AV-over-IP solutions for commercial and government clients.</p>
-        </div>
-        <div class="cert-card">
-          <div class="cert-image">
-            <ImageCard
-              key="cert-extron"
-              src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=400&h=300&fit=crop&q=80"
-              alt="Extron signal processing and distribution systems"
-            />
-          </div>
-          <h3>Extron Certified</h3>
-          <p>Signal processing, distribution, and control systems engineered for mission-critical reliability.</p>
-        </div>
+      <div class="section-label">Working Principles</div>
+      <h2 class="section-title">How AVIT Solutions thinks.</h2>
+      <div class="principles-grid reveal-up">
+        {principles.map((item) => (
+          <article class="principle-card tilt-card">
+            <span>{item.n}</span>
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
       </div>
     </div>
   </section>
 
   <CTASection
-    title="Work With Us"
-    subtitle="Have a project in mind? Let's talk about how we can help."
-    ctaText="Get in Touch"
+    title="Need a room, platform, or system that feels properly engineered?"
+    subtitle="Tell us what you want to build. We can help shape the AV scope, software workflow, interface direction, and delivery plan."
+    ctaText="Start a Project"
     ctaLink="/contact"
   />
 </Layout>
 
 <style>
-  .page-hero {
-    padding-bottom: 2rem;
+  .founder-hero {
+    position: relative;
+    overflow: hidden;
+    padding-top: clamp(5rem, 10vw, 9rem);
+    padding-bottom: clamp(4rem, 8vw, 8rem);
+    background:
+      radial-gradient(circle at 15% 10%, rgba(0, 184, 212, 0.18), transparent 34%),
+      radial-gradient(circle at 80% 20%, rgba(98, 68, 255, 0.16), transparent 32%),
+      linear-gradient(180deg, var(--bg-primary), var(--bg-secondary));
   }
 
-  .about-grid {
+  .founder-orbit {
+    position: absolute;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 999px;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  .founder-orbit-a {
+    width: 520px;
+    height: 520px;
+    right: -180px;
+    top: 8%;
+    animation: slow-spin 34s linear infinite;
+  }
+
+  .founder-orbit-b {
+    width: 380px;
+    height: 380px;
+    left: -170px;
+    bottom: -120px;
+    animation: slow-spin 42s linear infinite reverse;
+  }
+
+  @keyframes slow-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .founder-hero-grid {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 4rem;
-    align-items: start;
+    grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+    position: relative;
+    z-index: 1;
   }
 
-  .about-card {
-    padding: 3rem 2rem;
-    border-radius: var(--radius-xl);
-    text-align: center;
-    border: 1px solid var(--glass-border);
+  .founder-title {
+    font-size: clamp(2.8rem, 7vw, 6.8rem);
+    line-height: 0.92;
+    letter-spacing: -0.08em;
+    max-width: 870px;
+    margin-bottom: 1.5rem;
   }
 
-  .about-avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), #4d8aff);
+  .founder-lead {
+    max-width: 720px;
+    color: var(--text-secondary);
+    font-size: clamp(1rem, 1.7vw, 1.25rem);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .founder-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .founder-console {
+    border: 1px solid rgba(255,255,255,0.1);
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.025));
+    border-radius: 30px;
+    box-shadow: 0 30px 90px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.12);
+    overflow: hidden;
+    min-height: 560px;
+  }
+
+  .console-topbar {
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--bg-primary);
-    margin: 0 auto 1.25rem;
+    gap: 0.55rem;
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    color: var(--text-tertiary);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
   }
 
-  .about-card h3 {
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 0.25rem;
-  }
-
-  .about-role {
-    display: block;
-    font-size: 0.85rem;
-    color: var(--accent);
-    font-weight: 600;
-    margin-bottom: 1rem;
-  }
-
-  .about-card p {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-  }
-
-  .values-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-
-  .value-card {
-    padding: 2rem;
-    background: var(--bg-primary);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-color);
-    transition: all var(--transition-base);
-  }
-
-  .value-card:hover {
-    border-color: var(--accent-dim);
-    transform: translateY(-2px);
-  }
-
-  .value-number {
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--accent);
-    opacity: 0.3;
-    line-height: 1;
-    display: block;
-    margin-bottom: 1rem;
-  }
-
-  .value-card h3 {
-    font-size: 1.05rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
-
-  .value-card p {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-  }
-
-  .certs-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-
-  .cert-card {
-    padding: 2.5rem 2rem;
-    background: var(--bg-primary);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-color);
-    text-align: center;
-    transition: all var(--transition-base);
-  }
-
-  .cert-card:hover {
-    border-color: var(--accent-dim);
-    transform: translateY(-2px);
-  }
-
-  .cert-icon {
-    width: 64px;
-    height: 64px;
+  .console-topbar span {
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background: rgba(0, 229, 255, 0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.25rem;
+    background: rgba(255,255,255,0.28);
   }
 
-  .cert-card h3 {
-    font-size: 1.05rem;
+  .console-topbar strong {
+    margin-left: auto;
+    font-size: 0.65rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    color: var(--accent);
   }
 
-  .cert-card p {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-  }
-
-  .cert-image {
-    margin-bottom: 1.25rem;
-    border-radius: var(--radius-md);
+  .console-stage {
+    position: relative;
+    height: 390px;
+    display: grid;
+    place-items: center;
+    background:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 34px 34px;
     overflow: hidden;
   }
 
-  .cert-image :global(.image-card) {
-    aspect-ratio: 4 / 3;
-    border: none;
+  .console-stage::after {
+    content: '';
+    position: absolute;
+    inset: 14%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 184, 212, 0.18), transparent 60%);
+    filter: blur(20px);
   }
 
-  @media (max-width: 768px) {
-    .about-grid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-
-    .values-grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
+  .console-ring {
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    border: 1px dashed rgba(0, 184, 212, 0.38);
+    animation: slow-spin 22s linear infinite;
   }
 
-  @media (max-width: 768px) {
-    .certs-grid {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
+  .console-core {
+    position: relative;
+    z-index: 2;
+    width: 150px;
+    height: 150px;
+    border-radius: 36px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, rgba(0,184,212,0.98), rgba(91,115,255,0.82));
+    color: #061014;
+    font-weight: 950;
+    font-size: 3.3rem;
+    letter-spacing: -0.12em;
+    box-shadow: 0 0 60px rgba(0,184,212,0.28);
   }
 
-  @media (max-width: 480px) {
-    .values-grid {
-      grid-template-columns: 1fr;
-    }
-    .about-card {
-      padding: 2rem 1.5rem;
-    }
-    .cert-card {
-      padding: 2rem 1.5rem;
-    }
+  .console-core small {
+    position: absolute;
+    right: 22px;
+    bottom: 18px;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+  }
+
+  .console-beam {
+    position: absolute;
+    height: 1px;
+    width: 72%;
+    background: linear-gradient(90deg, transparent, rgba(0,184,212,0.72), transparent);
+    z-index: 1;
+  }
+
+  .beam-one { transform: rotate(28deg); }
+  .beam-two { transform: rotate(-31deg); }
+
+  .console-node {
+    position: absolute;
+    z-index: 3;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    background: rgba(10, 11, 12, 0.72);
+    backdrop-filter: blur(14px);
+    color: var(--text-primary);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+  }
+
+  .node-a { top: 20%; left: 15%; }
+  .node-b { top: 23%; right: 12%; }
+  .node-c { bottom: 22%; left: 18%; }
+  .node-d { bottom: 18%; right: 14%; }
+
+  .console-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .console-metrics div {
+    padding: 1.35rem 1rem;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .console-metrics div:last-child { border-right: 0; }
+  .console-metrics strong { display:block; font-size: 1.65rem; line-height:1; color: var(--accent); }
+  .console-metrics span { display:block; color: var(--text-secondary); font-size: 0.78rem; line-height:1.35; margin-top:0.45rem; }
+
+  .authority-band {
+    padding: 0 0 2.5rem;
+    background: var(--bg-secondary);
+  }
+
+  .authority-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+
+  .authority-strip span,
+  .sector-cloud span,
+  .credential-list span {
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.045);
+    border-radius: 999px;
+    color: var(--text-secondary);
+  }
+
+  .authority-strip span {
+    padding: 0.8rem 1rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: 0.75fr 1.25fr;
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+  }
+
+  .story-sticky { position: sticky; top: 110px; }
+  .story-title { text-align: left; margin-bottom: 1.25rem; }
+  .story-intro { color: var(--text-secondary); line-height: 1.8; font-size: 1.05rem; }
+
+  .story-body {
+    color: var(--text-secondary);
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    line-height: 1.9;
+  }
+
+  .story-body p { margin-bottom: 1.35rem; }
+  .story-body strong { color: var(--text-primary); }
+
+  .safe-note {
+    padding: 1.35rem;
+    border-radius: 20px;
+    background: rgba(0,184,212,0.08);
+    border: 1px solid rgba(0,184,212,0.18);
+    color: var(--text-secondary);
+  }
+
+  .safe-note strong { color: var(--accent); }
+
+  .discipline-section,
+  .principles-section { background: var(--bg-secondary); }
+
+  .discipline-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .discipline-card,
+  .principle-card,
+  .timeline-card,
+  .proof-panel {
+    border: 1px solid rgba(255,255,255,0.08);
+    background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.025));
+    border-radius: 24px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+
+  .discipline-card {
+    padding: 1.5rem;
+    min-height: 260px;
+  }
+
+  .discipline-card span,
+  .principle-card span {
+    display: inline-flex;
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .discipline-card h3,
+  .principle-card h3,
+  .timeline-card h3 {
+    font-size: 1.08rem;
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+  }
+
+  .discipline-card p,
+  .principle-card p,
+  .timeline-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .timeline-section {
+    background:
+      radial-gradient(circle at 20% 20%, rgba(0,184,212,0.1), transparent 34%),
+      var(--bg-primary);
+  }
+
+  .timeline-layout {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+
+  .timeline-heading .section-title,
+  .timeline-heading .section-subtitle { text-align: left; margin-left: 0; }
+
+  .timeline-rail {
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  .timeline-rail::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 1px;
+    background: linear-gradient(var(--accent), rgba(255,255,255,0.08));
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -1.74rem;
+    top: 1.1rem;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 22px rgba(0,184,212,0.8);
+  }
+
+  .timeline-year {
+    color: var(--accent);
+    font-weight: 900;
+    font-size: 0.85rem;
+    padding-top: 1rem;
+  }
+
+  .timeline-card { padding: 1.25rem; }
+
+  .proof-section { background: var(--bg-tertiary); }
+
+  .proof-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .proof-panel { padding: clamp(1.5rem, 3vw, 2.5rem); }
+  .proof-panel h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); line-height: 1.05; letter-spacing: -0.05em; margin-bottom: 1.5rem; }
+
+  .credential-list,
+  .sector-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+  }
+
+  .credential-list span,
+  .sector-cloud span {
+    padding: 0.7rem 0.9rem;
+    font-size: 0.82rem;
+  }
+
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .principle-card { padding: 1.5rem; min-height: 245px; }
+
+  @media (max-width: 1060px) {
+    .founder-hero-grid,
+    .story-grid,
+    .timeline-layout,
+    .proof-grid { grid-template-columns: 1fr; }
+    .story-sticky { position: static; }
+    .discipline-grid,
+    .principles-grid { grid-template-columns: repeat(2, 1fr); }
+    .founder-console { min-height: auto; }
+  }
+
+  @media (max-width: 640px) {
+    .founder-hero { padding-top: 4rem; }
+    .founder-title { font-size: clamp(2.5rem, 16vw, 4rem); }
+    .founder-actions { flex-direction: column; }
+    .founder-actions .btn { width: 100%; justify-content: center; }
+    .console-stage { height: 330px; }
+    .console-metrics { grid-template-columns: 1fr; }
+    .console-metrics div { border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .console-metrics div:last-child { border-bottom: 0; }
+    .discipline-grid,
+    .principles-grid { grid-template-columns: 1fr; }
+    .timeline-item { grid-template-columns: 1fr; gap: 0.25rem; }
+    .timeline-year { padding-top: 0; }
   }
 </style>

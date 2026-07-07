@@ -1,338 +1,677 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ProjectCard from '../components/ProjectCard.astro';
 import CTASection from '../components/CTASection.astro';
+
+const portfolioItems = [
+  {
+    category: 'websites software',
+    eyebrow: 'WEBSITE + BRAND SYSTEM',
+    title: 'AVIT Solutions Portfolio',
+    thumbnail: '/portfolio-media/avit-portfolio-hero.svg',
+    subtitle: 'A cinematic AV + IT identity system designed to show professional engineering, UX, and software capability in one place.',
+    status: 'Live build',
+    year: '2026',
+    stack: ['Astro', 'UI/UX', 'Motion', 'Portfolio CMS-ready'],
+    visual: 'linear-gradient(135deg, rgba(75,223,255,.32), rgba(137,82,255,.36) 48%, rgba(8,12,22,.92))',
+    icon: '◇',
+    link: '/',
+  },
+  {
+    category: 'websites community software',
+    eyebrow: 'NEWS + COMMUNITY PLATFORM',
+    title: 'BUZZTOWN',
+    thumbnail: '/portfolio-media/buzztown-hero.svg',
+    subtitle: 'Youth-focused local news, community chat, classifieds, admin workflow, and Android WebView direction for NE India.',
+    status: 'Product build',
+    year: '2026',
+    stack: ['Supabase', 'Chat UX', 'AdminPro', 'Android-ready'],
+    visual: 'linear-gradient(135deg, rgba(255,46,99,.30), rgba(16,16,18,.88) 55%, rgba(64,255,122,.18))',
+    icon: 'BT',
+    link: '/projects/buzztown',
+  },
+  {
+    category: 'software mobile business',
+    eyebrow: 'BUSINESS ASSOCIATION APP',
+    title: 'AMBI Platform',
+    thumbnail: '/portfolio-media/ambi-hero.svg',
+    subtitle: 'Member directory, calendar, notice board, admin approvals, event workflows, and future Android/iOS app structure.',
+    status: 'Product build',
+    year: '2026',
+    stack: ['Directory', 'Calendar', 'Supabase', 'Mobile app'],
+    visual: 'linear-gradient(135deg, rgba(45,255,190,.25), rgba(10,17,28,.92) 55%, rgba(105,74,255,.28))',
+    icon: 'A',
+    link: '/projects/ambi',
+  },
+  {
+    category: 'software business automation',
+    eyebrow: 'OPERATIONS DASHBOARD',
+    title: 'SyncStation',
+    thumbnail: '/portfolio-media/syncstation-hero.svg',
+    subtitle: 'A modular business control center concept for reports, modules, dashboards, reliable build tracking, and operational workflows.',
+    status: 'In progress',
+    year: '2026',
+    stack: ['Dashboard', 'Reports', 'Modules', 'Admin UX'],
+    visual: 'linear-gradient(135deg, rgba(43,119,255,.28), rgba(8,11,20,.94) 58%, rgba(100,255,218,.18))',
+    icon: 'SS',
+    link: '/projects/syncstation',
+  },
+  {
+    category: 'software business',
+    eyebrow: 'CLINIC LAN SOFTWARE',
+    title: 'Clinic Reception + Lab System',
+    thumbnail: '/portfolio-media/clinic-system-hero.svg',
+    subtitle: 'Local network workflow for reception, lab, reports, manager settings, daily closing rules, and payment controls.',
+    status: 'Local app',
+    year: '2026',
+    stack: ['LAN workflow', 'Billing', 'Lab reports', 'Manager controls'],
+    visual: 'linear-gradient(135deg, rgba(255,198,86,.22), rgba(9,12,20,.95) 55%, rgba(75,223,255,.20))',
+    icon: '+',
+    link: '/projects/clinic-system',
+  },
+  {
+    category: 'software business mobile',
+    eyebrow: 'CAFE ORDERING SYSTEM',
+    title: 'Brews & Bites / KDS',
+    thumbnail: '/portfolio-media/brews-bites-hero.svg',
+    subtitle: 'Mobile ordering, counter workspace, kitchen display, owner console, QR approval, loyalty, and realtime order state.',
+    status: 'Prototype',
+    year: '2026',
+    stack: ['KDS', 'Counter POS', 'Realtime', 'Loyalty'],
+    visual: 'linear-gradient(135deg, rgba(189,117,64,.32), rgba(9,9,13,.92) 50%, rgba(255,98,0,.20))',
+    icon: '☕',
+    link: '/projects/brews-bites',
+  },
+  {
+    category: 'websites design',
+    eyebrow: 'MUSEUM EXPERIENCE SITE',
+    title: 'WWII Museum Website',
+    thumbnail: '/portfolio-media/wwii-museum-hero.svg',
+    subtitle: 'Retro-inspired visual storytelling, gallery movement, owner profile links, and content-first museum landing experience.',
+    status: 'Website design',
+    year: '2026',
+    stack: ['Storytelling', 'Gallery', 'Retro UI', 'Responsive'],
+    visual: 'linear-gradient(135deg, rgba(166,132,86,.30), rgba(13,12,10,.95) 52%, rgba(224,214,178,.15))',
+    icon: 'Ⅱ',
+    link: '/projects/wwii-museum',
+  },
+  {
+    category: 'websites business',
+    eyebrow: 'ECOMMERCE + GALLERY',
+    title: 'Gaaiso Shop + Gallery',
+    thumbnail: '/portfolio-media/gaaiso-shop-hero.svg',
+    subtitle: 'Photography-led gallery with shop categories, price reveal, courier choices, UPI/GPay direction, and admin-editable products.',
+    status: 'Website build',
+    year: '2026',
+    stack: ['Gallery', 'Shop UX', 'Payments', 'Admin-ready'],
+    visual: 'linear-gradient(135deg, rgba(255,84,160,.22), rgba(9,12,20,.93) 50%, rgba(93,216,255,.18))',
+    icon: 'G',
+    link: '/projects/gaaiso-shop',
+  },
+  {
+    category: 'av automation',
+    eyebrow: 'AV CONTROL CONCEPT',
+    title: 'Affordable Lecture Theatre Kit',
+    thumbnail: '/portfolio-media/lecture-theatre-kit-hero.svg',
+    subtitle: 'Low-cost AV control direction for schools and colleges: projector, screen, DSP, lighting, camera, wireless mics, and tablet UI.',
+    status: 'Concept system',
+    year: '2026',
+    stack: ['AV control', 'DSP', 'Tablet UI', 'Education'],
+    visual: 'linear-gradient(135deg, rgba(115,95,255,.27), rgba(7,10,18,.94) 54%, rgba(63,224,255,.18))',
+    icon: 'AV',
+    link: '/projects/lecture-theatre-kit',
+  },
+  {
+    category: 'software mobile government',
+    eyebrow: 'COMMAND WORKFLOW APP',
+    title: 'CommandTrack',
+    thumbnail: '/portfolio-media/commandtrack-hero.svg',
+    subtitle: 'Police/security force app direction with patrol grids, incident logs, handover, GPS, media uploads, and control room workflow.',
+    status: 'Concept product',
+    year: '2026',
+    stack: ['Mobile UX', 'Control room', 'Reports', 'GPS workflow'],
+    visual: 'linear-gradient(135deg, rgba(64,142,255,.28), rgba(6,10,18,.95) 56%, rgba(255,66,86,.18))',
+    icon: 'CT',
+    link: '/projects/commandtrack',
+  },
+];
+
+const capabilityBands = [
+  'AV integration',
+  'Control UX',
+  'Admin panels',
+  'Mobile apps',
+  'Realtime systems',
+  'Dashboards',
+  'Portfolio websites',
+  'Business workflow tools',
+];
 ---
 
 <Layout>
-  <section class="section page-hero">
-    <div class="container" style="text-align: center;">
-      <div class="section-label">Portfolio</div>
-      <h1 class="section-title" style="font-size: clamp(2.5rem, 5vw, 3.5rem);" data-text-key="projects-page-title">
-        Our Projects
-      </h1>
-      <p class="section-subtitle" style="margin: 0 auto 0;" data-text-key="projects-page-subtitle">
-        Real projects. Real results. See how we've helped organizations across sectors.
+  <section class="portfolio-hero">
+    <div class="portfolio-grid-bg" aria-hidden="true"></div>
+    <div class="container portfolio-hero-inner">
+      <div class="portfolio-copy">
+        <div class="section-label">Projects Studio</div>
+        <h1>Built like a portfolio. Presented like a product lab.</h1>
+        <p>
+          A curated project wall for AV systems, websites, mobile apps, admin panels, local business tools, and control-system ideas. This section now connects to case-study pages that can grow with your real screenshots, AV install photos, UX screens, and build notes.
+        </p>
+      </div>
+      <div class="portfolio-panel" aria-label="Portfolio summary">
+        <div class="panel-orbit"></div>
+        <div class="panel-line"><span>Focus</span><strong>AV + IT + Software</strong></div>
+        <div class="panel-line"><span>Style</span><strong>Premium UX portfolio</strong></div>
+        <div class="panel-line"><span>Proof</span><strong>Projects, not client logos</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio-filters-wrap">
+    <div class="container">
+      <div class="filter-bar" id="filterBar" aria-label="Project filters">
+        <button class="filter-btn active" data-filter="all">All Work</button>
+        <button class="filter-btn" data-filter="websites">Websites</button>
+        <button class="filter-btn" data-filter="software">Software</button>
+        <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
+        <button class="filter-btn" data-filter="av">AV Systems</button>
+        <button class="filter-btn" data-filter="business">Business Tools</button>
+        <button class="filter-btn" data-filter="automation">Automation</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio-section section">
+    <div class="container">
+      <div class="portfolio-layout">
+        <aside class="portfolio-sidebar">
+          <div class="sticky-card">
+            <div class="section-label">Capability Map</div>
+            <h2>One portfolio for physical spaces and digital products.</h2>
+            <p>
+              The goal is to make visitors understand your rare combination: AV engineering, networking, control logic, UI/UX, and full-stack product building.
+            </p>
+            <div class="capability-list">
+              {capabilityBands.map((item) => <span>{item}</span>)}
+            </div>
+          </div>
+        </aside>
+
+        <div class="project-wall" id="projectsGrid">
+          {portfolioItems.map((project, index) => (
+            <article class="portfolio-card project-item" data-category={project.category} style={`--card-bg: ${project.visual}; --delay: ${index * 45}ms`}>
+              <a href={project.link} class="portfolio-card-link" aria-label={`Open ${project.title}`}>
+                <div class="card-visual media-card-visual">
+                  <img src={project.thumbnail} alt={`${project.title} portfolio preview`} loading="lazy" />
+                  <div class="card-grid"></div>
+                  <div class="card-icon">{project.icon}</div>
+                  <div class="card-scan"></div>
+                </div>
+                <div class="card-body">
+                  <div class="card-topline">
+                    <span>{project.eyebrow}</span>
+                    <em>{project.year}</em>
+                  </div>
+                  <h3>{project.title}</h3>
+                  <p>{project.subtitle}</p>
+                  <div class="stack-row">
+                    {project.stack.map((tag) => <span>{tag}</span>)}
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <span>{project.status}</span>
+                  <strong>Open case study →</strong>
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="legal-proof section">
+    <div class="container proof-grid">
+      <div>
+        <div class="section-label">Credibility without risk</div>
+        <h2>We show expertise without misusing past employer client logos.</h2>
+      </div>
+      <p>
+        This project system is intentionally built around capabilities, sectors, and owned portfolio work. Past experience can be described honestly in your profile, while the project wall focuses on what AVIT Solutions can design, build, and support.
       </p>
     </div>
   </section>
 
-  <section class="section" style="padding-top: 0;">
-    <div class="container">
-      <div class="filter-bar glass" id="filterBar">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="corporate">Corporate</button>
-        <button class="filter-btn" data-filter="residential">Residential</button>
-        <button class="filter-btn" data-filter="government">Government</button>
-        <button class="filter-btn" data-filter="software">Software</button>
-        <button class="filter-btn" data-filter="mobile">Mobile App</button>
-      </div>
-
-      <div class="projects-grid" id="projectsGrid">
-        <div class="project-item" data-category="corporate">
-          <a href="/projects/corporate-hq" class="project-card-link">
-            <div class="project-image">
-              <div class="project-placeholder" style="background: linear-gradient(135deg, #1a1d24, #0d1117);">
-                <span style="font-size: 3rem; opacity: 0.3;">🏢</span>
-              </div>
-              <div class="project-hover"><span>View Case Study</span></div>
-            </div>
-            <div class="project-meta">
-              <span class="project-tag">Corporate</span>
-              <h3>TechCorp Global HQ</h3>
-              <p>12-floor corporate AV integration with boardrooms, training spaces, and a 200-seat auditorium.</p>
-            </div>
-          </a>
-        </div>
-
-        <div class="project-item" data-category="residential">
-          <a href="/projects/smart-home" class="project-card-link">
-            <div class="project-image">
-              <div class="project-placeholder" style="background: linear-gradient(135deg, #1a2430, #0d1117);">
-                <span style="font-size: 3rem; opacity: 0.3;">🏠</span>
-              </div>
-              <div class="project-hover"><span>View Case Study</span></div>
-            </div>
-            <div class="project-meta">
-              <span class="project-tag">Residential</span>
-              <h3>Oceanview Smart Residence</h3>
-              <p>Full home automation with distributed audio, 4K theater, lighting control, and motorized shading.</p>
-            </div>
-          </a>
-        </div>
-
-        <div class="project-item" data-category="government">
-          <a href="/projects/gov-building" class="project-card-link">
-            <div class="project-image">
-              <div class="project-placeholder" style="background: linear-gradient(135deg, #1a1d2e, #0d1117);">
-                <span style="font-size: 3rem; opacity: 0.3;">🏛️</span>
-              </div>
-              <div class="project-hover"><span>View Case Study</span></div>
-            </div>
-            <div class="project-meta">
-              <span class="project-tag">Government</span>
-              <h3>City Hall Council Chambers</h3>
-              <p>Secure AV with voting integration, live streaming, and classified communications capability.</p>
-            </div>
-          </a>
-        </div>
-
-        <div class="project-item" data-category="software">
-          <a href="#" class="project-card-link">
-            <div class="project-image">
-              <div class="project-placeholder" style="background: linear-gradient(135deg, #1a2a1d, #0d1117);">
-                <span style="font-size: 3rem; opacity: 0.3;">📱</span>
-              </div>
-              <div class="project-hover"><span>Coming Soon</span></div>
-            </div>
-            <div class="project-meta">
-              <span class="project-tag">Software</span>
-              <h3>Retail Inventory App</h3>
-              <p>Custom inventory management and analytics platform for a retail chain with 50+ locations.</p>
-            </div>
-          </a>
-        </div>
-
-        <div class="project-item" data-category="mobile">
-          <a href="#" class="project-card-link">
-            <div class="project-image">
-              <div class="project-placeholder" style="background: linear-gradient(135deg, #1a1d2e, #0d1117);">
-                <span style="font-size: 3rem; opacity: 0.3;">📲</span>
-              </div>
-              <div class="project-hover"><span>Coming Soon</span></div>
-            </div>
-            <div class="project-meta">
-              <span class="project-tag">Mobile App</span>
-              <h3>Field Service Mobile App</h3>
-              <p>Cross-platform mobile application for field technicians with real-time job tracking and reporting.</p>
-            </div>
-          </a>
-        </div>
-
-        <div class="project-item" data-category="corporate">
-          <a href="#" class="project-card-link">
-            <div class="project-image">
-              <div class="project-placeholder" style="background: linear-gradient(135deg, #241a1d, #0d1117);">
-                <span style="font-size: 3rem; opacity: 0.3;">🎤</span>
-              </div>
-              <div class="project-hover"><span>Coming Soon</span></div>
-            </div>
-            <div class="project-meta">
-              <span class="project-tag">Corporate</span>
-              <h3>Innovation Center Auditorium</h3>
-              <p>State-of-the-art auditorium with immersive audio, 4K projection, and live streaming capability.</p>
-            </div>
-          </a>
-        </div>
-
-        <div class="project-item" data-category="residential">
-          <a href="#" class="project-card-link">
-            <div class="project-image">
-              <div class="project-placeholder" style="background: linear-gradient(135deg, #2a1a24, #0d1117);">
-                <span style="font-size: 3rem; opacity: 0.3;">🎵</span>
-              </div>
-              <div class="project-hover"><span>Coming Soon</span></div>
-            </div>
-            <div class="project-meta">
-              <span class="project-tag">Residential</span>
-              <h3>Penthouse Audio Visual</h3>
-              <p>Distributed audio, ambient lighting, and automated blinds across a 4,000 sq ft penthouse.</p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <CTASection
-    title="Start Your Project"
-    subtitle="Ready to create something exceptional? Let's talk about your next project."
-    ctaText="Get in Touch"
+    title="Project Case Studies Are Now Ready"
+    subtitle="Open any project card to view a structured case study. Next we can replace placeholders with real screenshots, install photos, and diagrams."
+    ctaText="Start a Project"
     ctaLink="/contact"
   />
 </Layout>
 
 <style>
-  .page-hero {
-    padding-bottom: 2rem;
+  :global(body) {
+    background:
+      radial-gradient(circle at 82% 10%, rgba(124, 89, 255, 0.13), transparent 32rem),
+      radial-gradient(circle at 12% 5%, rgba(48, 221, 255, 0.10), transparent 30rem),
+      #03060b;
+  }
+
+  .portfolio-hero {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(7rem, 12vw, 10rem) 0 clamp(3.5rem, 7vw, 6rem);
+    border-bottom: 1px solid rgba(255,255,255,.07);
+  }
+
+  .portfolio-grid-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(rgba(72, 211, 255, .055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(72, 211, 255, .055) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(circle at 50% 36%, black, transparent 72%);
+    opacity: .65;
+  }
+
+  .portfolio-hero::before,
+  .portfolio-hero::after {
+    content: '';
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(16px);
+    opacity: .65;
+    pointer-events: none;
+  }
+
+  .portfolio-hero::before {
+    width: 44vw;
+    height: 44vw;
+    right: -12vw;
+    top: -18vw;
+    background: radial-gradient(circle, rgba(102,80,255,.34), transparent 62%);
+  }
+
+  .portfolio-hero::after {
+    width: 35vw;
+    height: 35vw;
+    left: -12vw;
+    bottom: -18vw;
+    background: radial-gradient(circle, rgba(38,211,255,.22), transparent 65%);
+  }
+
+  .portfolio-hero-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: center;
+  }
+
+  .portfolio-copy h1 {
+    max-width: 980px;
+    margin: .6rem 0 1.25rem;
+    font-size: clamp(3rem, 7.2vw, 7rem);
+    line-height: .92;
+    letter-spacing: -.075em;
+  }
+
+  .portfolio-copy p {
+    max-width: 760px;
+    color: rgba(235,245,255,.70);
+    font-size: clamp(1rem, 1.4vw, 1.25rem);
+    line-height: 1.75;
+  }
+
+  .portfolio-panel {
+    position: relative;
+    overflow: hidden;
+    padding: 1.2rem;
+    min-height: 380px;
+    border-radius: 36px;
+    border: 1px solid rgba(255,255,255,.10);
+    background:
+      radial-gradient(circle at 70% 20%, rgba(125,89,255,.26), transparent 34%),
+      linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.022));
+    box-shadow: 0 35px 100px rgba(0,0,0,.36), inset 0 0 0 1px rgba(255,255,255,.04);
+    backdrop-filter: blur(24px);
+  }
+
+  .panel-orbit {
+    height: 190px;
+    margin-bottom: 1rem;
+    border-radius: 30px;
+    background:
+      radial-gradient(circle at 50% 50%, rgba(71,221,255,.36), transparent 11%),
+      repeating-radial-gradient(circle at 50% 50%, rgba(126,95,255,.34) 0 2px, transparent 2px 26px),
+      linear-gradient(135deg, rgba(44, 221, 255, .12), rgba(125, 89, 255, .12));
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
+    animation: pulsePanel 4s ease-in-out infinite;
+  }
+
+  @keyframes pulsePanel {
+    0%, 100% { filter: hue-rotate(0deg) brightness(1); }
+    50% { filter: hue-rotate(18deg) brightness(1.15); }
+  }
+
+  .panel-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem .2rem;
+    border-top: 1px solid rgba(255,255,255,.08);
+  }
+
+  .panel-line span {
+    color: rgba(235,245,255,.54);
+    font-size: .82rem;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    font-weight: 800;
+  }
+
+  .panel-line strong {
+    text-align: right;
+    color: white;
+  }
+
+  .portfolio-filters-wrap {
+    position: sticky;
+    top: 72px;
+    z-index: 20;
+    padding: .85rem 0;
+    background: rgba(3,6,11,.72);
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    backdrop-filter: blur(18px);
   }
 
   .filter-bar {
     display: flex;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    border-radius: 50px;
-    margin-bottom: 2.5rem;
-    width: fit-content;
-    border: 1px solid var(--glass-border);
-    flex-wrap: wrap;
+    gap: .55rem;
+    overflow-x: auto;
+    scrollbar-width: none;
   }
+
+  .filter-bar::-webkit-scrollbar { display: none; }
 
   .filter-btn {
-    padding: 0.5rem 1.25rem;
-    border-radius: 50px;
-    border: none;
-    background: transparent;
-    color: var(--text-secondary);
-    font-family: var(--font-sans);
-    font-size: 0.875rem;
-    font-weight: 500;
+    flex: 0 0 auto;
+    padding: .78rem 1.1rem;
+    border: 1px solid rgba(255,255,255,.09);
+    border-radius: 999px;
+    background: rgba(255,255,255,.04);
+    color: rgba(236,245,255,.72);
+    font: inherit;
+    font-size: .86rem;
+    font-weight: 800;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: transform .22s ease, background .22s ease, border-color .22s ease, color .22s ease;
   }
 
-  .filter-btn:hover {
-    color: var(--text-primary);
-    background: rgba(255, 255, 255, 0.05);
-  }
-
+  .filter-btn:hover,
   .filter-btn.active {
-    background: var(--accent);
-    color: var(--bg-primary);
-    font-weight: 600;
+    transform: translateY(-2px);
+    color: #031018;
+    border-color: transparent;
+    background: linear-gradient(135deg, #48dcff, #8c65ff);
   }
 
-  .projects-grid {
+  .portfolio-section { padding-top: clamp(3rem, 6vw, 5rem); }
+
+  .portfolio-layout {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: minmax(250px, .34fr) minmax(0, 1fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: start;
   }
 
-  .project-item {
-    transition: all var(--transition-base);
+  .sticky-card {
+    position: sticky;
+    top: 160px;
+    padding: 1.35rem;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,.09);
+    background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.018));
+    box-shadow: 0 30px 90px rgba(0,0,0,.22);
   }
 
-  .project-item.hidden {
-    display: none;
+  .sticky-card h2 {
+    margin: .8rem 0 1rem;
+    font-size: clamp(1.45rem, 2.5vw, 2.35rem);
+    line-height: 1.04;
+    letter-spacing: -.05em;
   }
 
-  .project-card-link {
-    display: block;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    transition: all var(--transition-base);
-    text-decoration: none;
-    color: var(--text-primary);
+  .sticky-card p {
+    color: rgba(235,245,255,.64);
+    line-height: 1.7;
   }
 
-  .project-card-link:hover {
-    transform: translateY(-4px);
-    border-color: var(--accent-dim);
-  }
-
-  .project-image {
-    position: relative;
-    aspect-ratio: 16 / 10;
-    overflow: hidden;
-  }
-
-  .project-placeholder {
-    width: 100%;
-    height: 100%;
+  .capability-list {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform var(--transition-slow);
+    flex-wrap: wrap;
+    gap: .55rem;
+    margin-top: 1.25rem;
   }
 
-  .project-card-link:hover .project-placeholder {
-    transform: scale(1.05);
+  .capability-list span {
+    padding: .58rem .72rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.08);
+    color: rgba(236,245,255,.72);
+    font-size: .78rem;
+    font-weight: 700;
   }
 
-  .project-hover {
+  .project-wall {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .portfolio-card {
+    animation: cardIn .55s ease both;
+    animation-delay: var(--delay);
+  }
+
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .portfolio-card.hidden { display: none; }
+
+  .portfolio-card-link {
+    position: relative;
+    display: grid;
+    min-height: 520px;
+    grid-template-rows: 1fr auto auto;
+    overflow: hidden;
+    border-radius: 34px;
+    border: 1px solid rgba(255,255,255,.10);
+    background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.018));
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 30px 80px rgba(0,0,0,.24);
+    transition: transform .34s ease, border-color .34s ease, box-shadow .34s ease;
+  }
+
+  .portfolio-card-link:hover {
+    transform: translateY(-10px);
+    border-color: rgba(96,220,255,.36);
+    box-shadow: 0 45px 110px rgba(0,0,0,.34), 0 0 42px rgba(94, 216, 255, .08);
+  }
+
+  .card-visual {
+    position: relative;
+    min-height: 235px;
+    overflow: hidden;
+    background: var(--card-bg);
+  }
+
+  .card-visual::before {
+    content: '';
+    position: absolute;
+    inset: -40%;
+    background: conic-gradient(from 180deg, transparent, rgba(255,255,255,.20), transparent 28%);
+    animation: rotateGlow 8s linear infinite;
+    opacity: .40;
+  }
+
+  @keyframes rotateGlow { to { transform: rotate(1turn); } }
+
+  .card-grid {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background:
+      linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+    background-size: 34px 34px;
+    mask-image: radial-gradient(circle at 50% 50%, black, transparent 72%);
+  }
+
+  .card-icon {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: clamp(3.5rem, 8vw, 6rem);
+    font-weight: 950;
+    letter-spacing: -.08em;
+    color: rgba(255,255,255,.90);
+    text-shadow: 0 0 38px rgba(79, 221, 255, .32);
+  }
+
+  .card-scan {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    top: 26%;
+    background: linear-gradient(90deg, transparent, rgba(108,231,255,.95), transparent);
+    animation: scan 3.4s ease-in-out infinite;
+  }
+
+  @keyframes scan {
+    0%,100% { transform: translateY(-40px); opacity: 0; }
+    45%,65% { opacity: 1; }
+    80% { transform: translateY(170px); opacity: 0; }
+  }
+
+  .card-body { padding: 1.35rem; }
+
+  .card-topline,
+  .card-footer {
     display: flex;
     align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity var(--transition-base);
+    justify-content: space-between;
+    gap: 1rem;
   }
 
-  .project-card-link:hover .project-hover {
-    opacity: 1;
+  .card-topline span {
+    color: #5ce7ff;
+    font-size: .68rem;
+    letter-spacing: .15em;
+    font-weight: 900;
   }
 
-  .project-hover span {
-    padding: 0.6rem 1.5rem;
-    border-radius: 50px;
-    background: var(--accent);
-    color: var(--bg-primary);
-    font-weight: 600;
-    font-size: 0.9rem;
+  .card-topline em {
+    color: rgba(235,245,255,.48);
+    font-style: normal;
+    font-size: .8rem;
+    font-weight: 800;
   }
 
-  .project-meta {
-    padding: 1.25rem;
+  .card-body h3 {
+    margin: .7rem 0 .65rem;
+    font-size: clamp(1.45rem, 2.8vw, 2.05rem);
+    line-height: 1;
+    letter-spacing: -.05em;
   }
 
-  .project-tag {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 0.4rem;
+  .card-body p {
+    min-height: 84px;
+    color: rgba(235,245,255,.66);
+    line-height: 1.62;
   }
 
-  .project-meta h3 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 0.35rem;
+  .stack-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-top: 1.1rem;
   }
 
-  .project-meta p {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    line-height: 1.5;
+  .stack-row span {
+    padding: .45rem .6rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,.055);
+    border: 1px solid rgba(255,255,255,.08);
+    color: rgba(236,245,255,.72);
+    font-size: .72rem;
+    font-weight: 800;
   }
 
-  @media (max-width: 1024px) {
-    .projects-grid {
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.25rem;
-    }
+  .card-footer {
+    padding: 1rem 1.35rem 1.25rem;
+    border-top: 1px solid rgba(255,255,255,.08);
   }
 
-  @media (max-width: 640px) {
-    .filter-bar {
-      width: 100%;
-      overflow-x: auto;
-      flex-wrap: nowrap;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      border-radius: var(--radius-lg);
-      padding: 0.4rem;
-    }
-    .filter-bar::-webkit-scrollbar {
-      display: none;
-    }
-    .filter-btn {
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .projects-grid {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
+  .card-footer span {
+    color: rgba(236,245,255,.54);
+    font-size: .82rem;
+    font-weight: 800;
   }
 
-  @media (max-width: 480px) {
-    .projects-grid {
-      grid-template-columns: 1fr;
-    }
+  .card-footer strong {
+    color: white;
+    font-size: .88rem;
+  }
 
-    .project-meta h3 {
-      font-size: 1rem;
-    }
+  .legal-proof {
+    border-top: 1px solid rgba(255,255,255,.06);
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    background: linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,.01));
+  }
 
-    .project-meta p {
-      font-size: 0.85rem;
-    }
+  .proof-grid {
+    display: grid;
+    grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+    gap: clamp(1.5rem, 5vw, 5rem);
+    align-items: center;
+  }
+
+  .proof-grid h2 {
+    margin-top: .6rem;
+    font-size: clamp(1.8rem, 4vw, 3.6rem);
+    line-height: .98;
+    letter-spacing: -.06em;
+  }
+
+  .proof-grid p {
+    color: rgba(235,245,255,.66);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  @media (max-width: 1050px) {
+    .portfolio-hero-inner,
+    .portfolio-layout,
+    .proof-grid { grid-template-columns: 1fr; }
+    .portfolio-panel { min-height: auto; }
+    .sticky-card { position: relative; top: auto; }
+  }
+
+  @media (max-width: 760px) {
+    .portfolio-filters-wrap { top: 64px; }
+    .project-wall { grid-template-columns: 1fr; }
+    .portfolio-card-link { min-height: 480px; border-radius: 28px; }
+    .card-body p { min-height: auto; }
+    .portfolio-copy h1 { font-size: clamp(2.7rem, 16vw, 4.6rem); }
   }
 </style>
 
@@ -341,30 +680,29 @@ import CTASection from '../components/CTASection.astro';
   const projects = document.querySelectorAll('.project-item');
 
   const hashToFilter = {
+    '#websites': 'websites',
     '#software': 'software',
     '#mobile-apps': 'mobile',
-    '#corporate': 'corporate',
-    '#residential': 'residential',
-    '#government': 'government',
+    '#av-systems': 'av',
+    '#business-tools': 'business',
+    '#automation': 'automation',
   };
 
   function applyFilter(filter) {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    const target = document.querySelector(`.filter-btn[data-filter="${filter}"]`);
-    if (target) target.classList.add('active');
+    filterBtns.forEach((btn) => btn.classList.toggle('active', btn.dataset.filter === filter));
 
-    projects.forEach(project => {
-      if (filter === 'all' || project.dataset.category === filter) {
-        project.classList.remove('hidden');
-      } else {
-        project.classList.add('hidden');
-      }
+    projects.forEach((project) => {
+      const categories = project.dataset.category || '';
+      const show = filter === 'all' || categories.split(' ').includes(filter);
+      project.classList.toggle('hidden', !show);
     });
   }
 
-  filterBtns.forEach(btn => {
+  filterBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
-      applyFilter(btn.dataset.filter);
+      const filter = btn.dataset.filter || 'all';
+      applyFilter(filter);
+      history.replaceState(null, '', filter === 'all' ? window.location.pathname : `#${filter}`);
     });
   });
 

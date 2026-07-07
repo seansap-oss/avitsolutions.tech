@@ -470,3 +470,82 @@ a:hover {
     font-size: 0.85rem;
   }
 }
+
+/* Phase 9: responsive final polish */
+html.menu-lock,
+body.menu-open {
+  overscroll-behavior: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+
+  main {
+    overflow-x: clip;
+  }
+
+  .section {
+    padding-top: 4.25rem;
+    padding-bottom: 4.25rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 11vw, 3.2rem);
+    letter-spacing: -0.045em;
+  }
+
+  .section-subtitle {
+    max-width: 100%;
+  }
+
+  .btn {
+    min-height: 48px;
+    justify-content: center;
+    padding-inline: 1.2rem;
+  }
+
+  .btn + .btn {
+    margin-top: 0.65rem;
+  }
+
+  .grid,
+  [class*="grid"] {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+  }
+}
+
+@supports (padding: max(0px)) {
+  @media (max-width: 768px) {
+    .container {
+      padding-left: max(1rem, env(safe-area-inset-left));
+      padding-right: max(1rem, env(safe-area-inset-right));
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+}

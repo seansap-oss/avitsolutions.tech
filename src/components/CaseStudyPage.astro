@@ -1,0 +1,604 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTASection from './CTASection.astro';
+
+const { project } = Astro.props;
+
+const mediaItems = project.media ?? [
+  { type: 'main', label: 'Hero / Main Screen', src: '', caption: 'Hero / Main Screen' },
+  { type: 'support', label: 'Admin / Control', src: '', caption: 'Admin / Control' },
+  { type: 'support', label: 'Mobile UX', src: '', caption: 'Mobile UX' },
+];
+const mainMedia = mediaItems[0];
+const supportMedia = mediaItems.slice(1);
+---
+
+<Layout>
+  <div class="case-wrap" style={`--case-bg: ${project.gradient}; --case-accent: ${project.accent}`}>
+  <section class="case-hero">
+    <div class="case-grid-bg" aria-hidden="true"></div>
+    <div class="container case-hero-inner">
+      <div class="case-copy">
+        <a href="/projects" class="back-link">← Back to Projects</a>
+        <div class="section-label">{project.eyebrow}</div>
+        <h1>{project.title}</h1>
+        <p>{project.subtitle}</p>
+        <div class="case-meta-row">
+          <span>{project.sector}</span>
+          <span>{project.category}</span>
+          <span>{project.status}</span>
+          <span>{project.year}</span>
+        </div>
+      </div>
+      <div class="case-device media-device" aria-label={`${project.title} visual preview`}>
+        <div class="device-toolbar"><span></span><span></span><span></span><strong>{mainMedia.label}</strong></div>
+        <div class="media-screen">
+          <img src={mainMedia.src} alt={`${project.title} ${mainMedia.label}`} loading="eager" />
+          <div class="media-glass">
+            <span>Portfolio media system</span>
+            <strong>{project.title}</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-metrics">
+    <div class="container metrics-grid">
+      {project.metrics.map((metric) => (
+        <div class="metric-card">
+          <span>{metric[0]}</span>
+          <strong>{metric[1]}</strong>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="case-content section">
+    <div class="container case-layout">
+      <aside class="case-sidebar">
+        <div class="case-sticky">
+          <div class="section-label">Case Study</div>
+          <h2>Project snapshot</h2>
+          <dl>
+            <div><dt>Sector</dt><dd>{project.sector}</dd></div>
+            <div><dt>Category</dt><dd>{project.category}</dd></div>
+            <div><dt>Status</dt><dd>{project.status}</dd></div>
+            <div><dt>Year</dt><dd>{project.year}</dd></div>
+          </dl>
+          <a href="/contact" class="btn btn-primary sidebar-cta">Discuss Similar Project</a>
+        </div>
+      </aside>
+
+      <div class="case-main">
+        <article class="case-section-card reveal-card">
+          <span class="case-number">01</span>
+          <h2>Overview</h2>
+          <p>{project.overview}</p>
+        </article>
+
+        <article class="case-section-card reveal-card">
+          <span class="case-number">02</span>
+          <h2>Problem</h2>
+          <p>{project.problem}</p>
+        </article>
+
+        <article class="case-section-card reveal-card">
+          <span class="case-number">03</span>
+          <h2>Solution</h2>
+          <p>{project.solution}</p>
+        </article>
+
+        <article class="case-section-card reveal-card wide-card">
+          <span class="case-number">04</span>
+          <h2>Features Built / Planned</h2>
+          <div class="feature-grid">
+            {project.features.map((feature) => <span>{feature}</span>)}
+          </div>
+        </article>
+
+        <article class="case-section-card reveal-card wide-card">
+          <span class="case-number">05</span>
+          <h2>Technology + Capability</h2>
+          <div class="stack-grid">
+            {project.stack.map((tag) => <span>{tag}</span>)}
+          </div>
+        </article>
+
+        <article class="case-section-card reveal-card wide-card">
+          <span class="case-number">06</span>
+          <h2>Next Upgrade Plan</h2>
+          <ul class="next-list">
+            {project.next.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-gallery section">
+    <div class="container">
+      <div class="gallery-head">
+        <div>
+          <div class="section-label">Portfolio Media</div>
+          <h2>Visual evidence system ready for real screenshots and AV photos.</h2>
+        </div>
+        <p>Phase Seven adds structured media slots to every case study. The current visuals are clean branded placeholders, ready to be replaced with project screenshots, installation photos, wiring diagrams, UI mockups, and mobile captures.</p>
+      </div>
+      <div class="gallery-grid media-gallery-grid">
+        <figure class="gallery-card media-card large">
+          <img src={mainMedia.src} alt={`${project.title} ${mainMedia.label}`} loading="lazy" />
+          <figcaption><strong>{mainMedia.label}</strong><span>{mainMedia.caption}</span></figcaption>
+        </figure>
+        {supportMedia.map((item) => (
+          <figure class="gallery-card media-card">
+            <img src={item.src} alt={`${project.title} ${item.label}`} loading="lazy" />
+            <figcaption><strong>{item.label}</strong><span>{item.caption}</span></figcaption>
+          </figure>
+        ))}
+      </div>
+      <div class="media-note">
+        <strong>Next replacement rule:</strong>
+        <span>Use real screenshots at 1400×900 for hero media and 900×700 for support media. Keep names consistent inside <code>public/portfolio-media</code> so the case-study data remains simple.</span>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Ready to Turn This Into a Full Project Page?"
+    subtitle="Send screenshots, photos, or notes, and we can turn this case-study structure into a polished portfolio presentation."
+    ctaText="Contact AVIT Solutions"
+    ctaLink="/contact"
+  />
+  </div>
+</Layout>
+
+<style>
+  :global(body) {
+    background:
+      radial-gradient(circle at 82% 8%, color-mix(in srgb, var(--case-accent, #00b8d4) 18%, transparent), transparent 30rem),
+      radial-gradient(circle at 14% 4%, rgba(76, 218, 255, .08), transparent 30rem),
+      #03060b;
+  }
+
+  .case-hero {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(7rem, 12vw, 10rem) 0 clamp(3rem, 7vw, 6rem);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+
+  .case-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--case-bg);
+    opacity: .34;
+    mask-image: linear-gradient(90deg, black, transparent 78%);
+  }
+
+  .case-grid-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+    background-size: 58px 58px;
+    mask-image: radial-gradient(circle at 50% 40%, black, transparent 76%);
+  }
+
+  .case-hero-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: center;
+  }
+
+  .back-link {
+    display: inline-flex;
+    margin-bottom: 1.2rem;
+    color: rgba(235,245,255,.62);
+    font-size: .9rem;
+    font-weight: 800;
+  }
+
+  .case-copy h1 {
+    max-width: 980px;
+    margin: .55rem 0 1rem;
+    font-size: clamp(3rem, 7.8vw, 7.5rem);
+    line-height: .9;
+    letter-spacing: -.08em;
+  }
+
+  .case-copy p {
+    max-width: 760px;
+    color: rgba(235,245,255,.72);
+    font-size: clamp(1rem, 1.45vw, 1.26rem);
+    line-height: 1.78;
+  }
+
+  .case-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .65rem;
+    margin-top: 1.6rem;
+  }
+
+  .case-meta-row span {
+    padding: .72rem .9rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,.055);
+    border: 1px solid rgba(255,255,255,.10);
+    color: rgba(245,250,255,.78);
+    font-size: .82rem;
+    font-weight: 800;
+  }
+
+  .case-device {
+    position: relative;
+    overflow: hidden;
+    border-radius: 36px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.025));
+    box-shadow: 0 42px 130px rgba(0,0,0,.42), inset 0 0 0 1px rgba(255,255,255,.045);
+    backdrop-filter: blur(24px);
+    min-height: 430px;
+  }
+
+  .device-toolbar {
+    display: flex;
+    gap: .5rem;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .device-toolbar span { width: 10px; height: 10px; border-radius: 999px; background: rgba(255,255,255,.28); }
+
+  .device-screen {
+    position: relative;
+    min-height: 382px;
+    padding: 2rem;
+    background: var(--case-bg);
+    isolation: isolate;
+  }
+
+  .device-screen::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 50% 38%, rgba(255,255,255,.22), transparent 10%),
+      repeating-radial-gradient(circle at 50% 46%, rgba(255,255,255,.20) 0 1px, transparent 1px 28px);
+    opacity: .5;
+    animation: devicePulse 4s ease-in-out infinite;
+  }
+
+  @keyframes devicePulse { 50% { filter: hue-rotate(22deg) brightness(1.14); transform: scale(1.02); } }
+
+  .screen-orbit {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    top: 50%;
+    left: 50%;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.22);
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 40px color-mix(in srgb, var(--case-accent) 35%, transparent);
+  }
+
+  .screen-title {
+    position: relative;
+    z-index: 1;
+    max-width: 420px;
+    font-size: clamp(2rem, 4vw, 4rem);
+    line-height: .94;
+    letter-spacing: -.06em;
+    font-weight: 900;
+    color: white;
+    text-shadow: 0 12px 40px rgba(0,0,0,.38);
+  }
+
+  .screen-lines {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: .75rem;
+    max-width: 360px;
+    margin-top: 2rem;
+  }
+  .screen-lines i { height: 10px; border-radius: 999px; background: rgba(255,255,255,.24); }
+  .screen-lines i:nth-child(2) { width: 82%; }
+  .screen-lines i:nth-child(3) { width: 62%; }
+  .screen-lines i:nth-child(4) { width: 74%; }
+
+  .screen-chips {
+    position: absolute;
+    left: 2rem;
+    right: 2rem;
+    bottom: 2rem;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .55rem;
+  }
+  .screen-chips span {
+    padding: .55rem .72rem;
+    border-radius: 999px;
+    background: rgba(0,0,0,.35);
+    border: 1px solid rgba(255,255,255,.14);
+    color: rgba(255,255,255,.85);
+    font-size: .78rem;
+    font-weight: 800;
+  }
+
+
+
+  .device-toolbar strong {
+    margin-left: auto;
+    color: rgba(245,250,255,.58);
+    font-size: .78rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .media-device {
+    min-height: auto;
+  }
+
+  .media-screen {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 14 / 9;
+    background: #05070d;
+  }
+
+  .media-screen img,
+  .media-card img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transform: scale(1.005);
+  }
+
+  .media-screen::after,
+  .media-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 45%, rgba(0,0,0,.56));
+    pointer-events: none;
+  }
+
+  .media-glass {
+    position: absolute;
+    left: 1.15rem;
+    right: 1.15rem;
+    bottom: 1.15rem;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    padding: .85rem 1rem;
+    border-radius: 22px;
+    background: rgba(0,0,0,.42);
+    border: 1px solid rgba(255,255,255,.14);
+    backdrop-filter: blur(18px);
+  }
+
+  .media-glass span {
+    color: rgba(235,245,255,.58);
+    font-size: .78rem;
+    font-weight: 850;
+    letter-spacing: .11em;
+    text-transform: uppercase;
+  }
+
+  .media-glass strong {
+    color: white;
+    font-size: .95rem;
+  }
+
+  .case-metrics {
+    position: relative;
+    z-index: 2;
+    margin-top: -2.2rem;
+  }
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .9rem;
+  }
+  .metric-card {
+    padding: 1.2rem;
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(10,12,18,.78);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 18px 70px rgba(0,0,0,.26);
+  }
+  .metric-card span {
+    display: block;
+    color: var(--case-accent);
+    font-size: .75rem;
+    font-weight: 900;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  .metric-card strong {
+    display: block;
+    margin-top: .35rem;
+    color: white;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    line-height: 1.1;
+  }
+
+  .case-layout {
+    display: grid;
+    grid-template-columns: minmax(250px, .33fr) minmax(0, 1fr);
+    gap: clamp(1.4rem, 4vw, 3rem);
+    align-items: start;
+  }
+  .case-sticky {
+    position: sticky;
+    top: 150px;
+    padding: 1.3rem;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,.09);
+    background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+    box-shadow: 0 30px 90px rgba(0,0,0,.22);
+  }
+  .case-sticky h2 { margin: .75rem 0 1rem; font-size: 2rem; letter-spacing: -.05em; }
+  .case-sticky dl { display: grid; gap: .9rem; margin-bottom: 1.2rem; }
+  .case-sticky div { padding-bottom: .8rem; border-bottom: 1px solid rgba(255,255,255,.08); }
+  .case-sticky dt { color: rgba(235,245,255,.48); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 900; }
+  .case-sticky dd { margin-top: .2rem; color: white; font-weight: 800; }
+  .sidebar-cta { width: 100%; justify-content: center; padding-left: 1rem; padding-right: 1rem; }
+
+  .case-main {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .case-section-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 310px;
+    padding: clamp(1.35rem, 3vw, 2rem);
+    border-radius: 32px;
+    border: 1px solid rgba(255,255,255,.10);
+    background: linear-gradient(180deg, rgba(255,255,255,.062), rgba(255,255,255,.022));
+    box-shadow: 0 26px 80px rgba(0,0,0,.18);
+  }
+  .case-section-card::before {
+    content: '';
+    position: absolute;
+    inset: auto -10% -35% auto;
+    width: 220px;
+    height: 220px;
+    border-radius: 999px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--case-accent) 24%, transparent), transparent 70%);
+    pointer-events: none;
+  }
+  .wide-card { grid-column: 1 / -1; min-height: auto; }
+  .case-number { color: var(--case-accent); font-size: .8rem; font-weight: 950; letter-spacing: .16em; }
+  .case-section-card h2 { margin: .65rem 0 1rem; font-size: clamp(1.5rem, 3vw, 2.45rem); line-height: 1.04; letter-spacing: -.055em; }
+  .case-section-card p { color: rgba(235,245,255,.68); font-size: 1.02rem; line-height: 1.75; }
+
+  .feature-grid, .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .7rem;
+  }
+  .feature-grid span, .stack-grid span {
+    padding: .9rem 1rem;
+    border-radius: 18px;
+    background: rgba(255,255,255,.045);
+    border: 1px solid rgba(255,255,255,.08);
+    color: rgba(245,250,255,.82);
+    font-weight: 750;
+  }
+  .stack-grid span { color: var(--case-accent); }
+
+  .next-list { display: grid; gap: .8rem; list-style: none; }
+  .next-list li {
+    position: relative;
+    padding: .95rem 1rem .95rem 2.4rem;
+    border-radius: 18px;
+    background: rgba(255,255,255,.045);
+    border: 1px solid rgba(255,255,255,.08);
+    color: rgba(235,245,255,.72);
+  }
+  .next-list li::before { content: '→'; position: absolute; left: 1rem; color: var(--case-accent); font-weight: 900; }
+
+  .case-gallery { padding-top: 0; }
+  .gallery-head {
+    display: grid;
+    grid-template-columns: minmax(0, .9fr) minmax(280px, .55fr);
+    gap: 2rem;
+    align-items: end;
+    margin-bottom: 1.4rem;
+  }
+  .gallery-head h2 { font-size: clamp(2rem, 4vw, 4rem); line-height: .98; letter-spacing: -.065em; }
+  .gallery-head p { color: rgba(235,245,255,.62); line-height: 1.7; }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1.4fr .8fr;
+    grid-auto-rows: 220px;
+    gap: 1rem;
+  }
+  .gallery-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,.10);
+    background:
+      var(--case-bg),
+      linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.04), 0 28px 90px rgba(0,0,0,.22);
+  }
+  .gallery-card.large { grid-row: span 2; }
+
+  .media-card figcaption {
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 2;
+    display: grid;
+    gap: .35rem;
+    padding: .85rem .95rem;
+    border-radius: 20px;
+    background: rgba(0,0,0,.48);
+    border: 1px solid rgba(255,255,255,.12);
+    backdrop-filter: blur(18px);
+  }
+
+  .media-card figcaption strong {
+    color: white;
+    font-size: .9rem;
+  }
+
+  .media-card figcaption span {
+    color: rgba(235,245,255,.62);
+    font-size: .8rem;
+    line-height: 1.35;
+  }
+
+  .media-note {
+    display: flex;
+    gap: .9rem;
+    align-items: flex-start;
+    margin-top: 1rem;
+    padding: 1rem 1.1rem;
+    border-radius: 22px;
+    border: 1px solid rgba(255,255,255,.09);
+    background: rgba(255,255,255,.04);
+    color: rgba(235,245,255,.64);
+    line-height: 1.6;
+  }
+
+  .media-note strong { color: var(--case-accent); white-space: nowrap; }
+  .media-note code { color: white; }
+
+  .reveal-card { animation: revealUp .7s ease both; }
+  @keyframes revealUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 980px) {
+    .case-hero-inner, .case-layout, .gallery-head { grid-template-columns: 1fr; }
+    .case-device { min-height: 360px; }
+    .case-sidebar { display: none; }
+  }
+  @media (max-width: 760px) {
+    .metrics-grid, .case-main, .feature-grid, .stack-grid, .gallery-grid { grid-template-columns: 1fr; }
+    .case-section-card { min-height: auto; }
+    .gallery-card.large { grid-row: auto; }
+    .case-copy h1 { font-size: clamp(2.7rem, 15vw, 5rem); }
+    .case-device { border-radius: 26px; }
+    .device-screen { padding: 1.25rem; }
+    .screen-chips { left: 1.25rem; right: 1.25rem; bottom: 1.25rem; }
+  }
+</style>

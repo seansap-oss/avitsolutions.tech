@@ -3,105 +3,236 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-  <section class="section page-hero">
-    <div class="container" style="text-align: center;">
-      <div class="section-label">Contact</div>
-      <h1 class="section-title" style="font-size: clamp(2.5rem, 5vw, 3.5rem);" data-text-key="contact-page-title">
-        Start Your Project
-      </h1>
-      <p class="section-subtitle" style="margin: 0 auto 0;" data-text-key="contact-page-subtitle">
-        Tell us about your needs and we'll get back to you within 24 hours.
-      </p>
+  <section class="contact-hero">
+    <div class="contact-orbit" aria-hidden="true">
+      <span class="orbit-ring ring-one"></span>
+      <span class="orbit-ring ring-two"></span>
+      <span class="orbit-dot dot-one"></span>
+      <span class="orbit-dot dot-two"></span>
+      <span class="orbit-label label-one">DSP</span>
+      <span class="orbit-label label-two">UI</span>
+      <span class="orbit-label label-three">AVoIP</span>
+    </div>
+
+    <div class="container contact-hero-grid">
+      <div class="contact-copy">
+        <div class="section-label">Start a Project</div>
+        <h1 class="contact-title" data-text-key="contact-page-title">
+          Tell us what you want to <span>control, connect, automate or launch.</span>
+        </h1>
+        <p class="contact-lede" data-text-key="contact-page-subtitle">
+          Use the project intake below to brief AVIT Solutions properly. It is built for AV rooms, websites, mobile apps, custom software, automation systems and hybrid AV + IT projects.
+        </p>
+        <div class="contact-hero-actions">
+          <a href="#project-intake" class="btn btn-primary">Build My Brief</a>
+          <a href="mailto:info@avitsolutions.tech" class="btn btn-secondary">Email Directly</a>
+        </div>
+      </div>
+
+      <div class="response-panel glass">
+        <span class="panel-kicker">Response Flow</span>
+        <h2>From inquiry to clear scope.</h2>
+        <div class="response-timeline">
+          <div class="timeline-item active">
+            <span>01</span>
+            <div>
+              <strong>Project brief received</strong>
+              <p>Requirements, site type, urgency and budget are captured clearly.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span>02</span>
+            <div>
+              <strong>Discovery call</strong>
+              <p>We clarify workflow, user experience, integration points and timeline.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span>03</span>
+            <div>
+              <strong>Solution direction</strong>
+              <p>You receive a practical next-step plan, not vague sales language.</p>
+            </div>
+          </div>
+        </div>
+        <div class="panel-note">
+          <span></span>
+          Replies usually within 24 hours for serious project enquiries.
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section" style="padding-top: 0;">
+  <section class="section intake-section" id="project-intake">
     <div class="container">
-      <div class="contact-grid">
+      <div class="intake-shell">
+        <aside class="intake-sidebar glass">
+          <div class="sidebar-header">
+            <span class="section-label">Project Type</span>
+            <h2>Choose your build lane.</h2>
+            <p>The form adapts as you select the type of project. This makes the inquiry sharper and easier to quote.</p>
+          </div>
+
+          <div class="lane-buttons" role="tablist" aria-label="Project type shortcuts">
+            <button type="button" class="lane-button active" data-lane="av">AV Integration</button>
+            <button type="button" class="lane-button" data-lane="software">Software / App</button>
+            <button type="button" class="lane-button" data-lane="website">Website / Ecommerce</button>
+            <button type="button" class="lane-button" data-lane="automation">Automation / Control</button>
+          </div>
+
+          <div class="scope-preview" id="scopePreview">
+            <span>Suggested scope</span>
+            <ul>
+              <li>Room type and system purpose</li>
+              <li>Displays, audio, cameras and control</li>
+              <li>Network and cabling conditions</li>
+              <li>Timeline and installation constraints</li>
+            </ul>
+          </div>
+        </aside>
+
         <div class="contact-form-wrapper glass">
           <form class="contact-form" id="contactForm" action="https://formspree.io/f/mlgkdwen" method="POST">
+            <input type="hidden" name="selected_lane" id="selectedLane" value="AV Integration" />
+            <input type="hidden" name="brief_summary" id="briefSummary" value="" />
+
+            <div class="form-topline">
+              <div>
+                <span class="section-label">Inquiry Form</span>
+                <h2>Project Intake</h2>
+              </div>
+              <div class="form-status" id="formStatus">Ready</div>
+            </div>
+
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" required placeholder="Your name" />
+                <input type="text" id="name" name="name" required placeholder="Your name" autocomplete="name" />
               </div>
               <div class="form-group">
                 <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required placeholder="you@domain.com" />
+                <input type="email" id="email" name="email" required placeholder="you@domain.com" autocomplete="email" />
               </div>
             </div>
-            <div class="form-group">
-              <label for="projectType">Project Type</label>
-              <select id="projectType" name="projectType" required>
-                <option value="">Select your project type</option>
-                <option value="corporate">Corporate AV</option>
-                <option value="residential">Residential AV</option>
-                <option value="government">Government AV</option>
-                <option value="software">Custom Software</option>
-                <option value="mobile">Mobile App</option>
-                <option value="other">Other</option>
-              </select>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Phone / WhatsApp</label>
+                <input type="tel" id="phone" name="phone" placeholder="Optional, but useful for urgent work" autocomplete="tel" />
+              </div>
+              <div class="form-group">
+                <label for="location">Project Location</label>
+                <input type="text" id="location" name="location" placeholder="City / site location" autocomplete="address-level2" />
+              </div>
             </div>
-            <div class="form-group">
-              <label for="budget">Budget Range</label>
-              <select id="budget" name="budget">
-                <option value="">Select (optional)</option>
-                <option value="under-10k">Under $10,000</option>
-                <option value="10k-50k">$10,000 – $50,000</option>
-                <option value="50k-100k">$50,000 – $100,000</option>
-                <option value="100k-500k">$100,000 – $500,000</option>
-                <option value="500k-plus">$500,000+</option>
-              </select>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="projectType">Project Type</label>
+                <select id="projectType" name="projectType" required>
+                  <option value="AV Integration">AV Integration</option>
+                  <option value="Video Conferencing Room">Video Conferencing Room</option>
+                  <option value="Smart Classroom / Lecture Theatre">Smart Classroom / Lecture Theatre</option>
+                  <option value="Control System / Automation">Control System / Automation</option>
+                  <option value="Custom Software / ERP">Custom Software / ERP</option>
+                  <option value="Mobile App">Mobile App</option>
+                  <option value="Website / Ecommerce">Website / Ecommerce</option>
+                  <option value="Digital Signage / Display System">Digital Signage / Display System</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="timeline">Timeline</label>
+                <select id="timeline" name="timeline">
+                  <option value="Flexible">Flexible</option>
+                  <option value="Urgent - within 2 weeks">Urgent — within 2 weeks</option>
+                  <option value="1 month">1 month</option>
+                  <option value="2-3 months">2–3 months</option>
+                  <option value="Planning stage">Planning stage</option>
+                </select>
+              </div>
             </div>
+
             <div class="form-group">
-              <label for="message">Tell Us About Your Project</label>
-              <textarea id="message" name="message" rows="5" required placeholder="Describe your project, timeline, and any specific requirements..."></textarea>
+              <label>What do you need included?</label>
+              <div class="check-grid">
+                <label><input type="checkbox" name="scope" value="Design consultation" /> <span>Design consultation</span></label>
+                <label><input type="checkbox" name="scope" value="Hardware recommendation" /> <span>Hardware recommendation</span></label>
+                <label><input type="checkbox" name="scope" value="UI/UX design" /> <span>UI/UX design</span></label>
+                <label><input type="checkbox" name="scope" value="Programming" /> <span>Programming</span></label>
+                <label><input type="checkbox" name="scope" value="Installation / commissioning" /> <span>Installation / commissioning</span></label>
+                <label><input type="checkbox" name="scope" value="Support / maintenance" /> <span>Support / maintenance</span></label>
+              </div>
             </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="budget">Budget Range</label>
+                <select id="budget" name="budget">
+                  <option value="Not decided">Not decided yet</option>
+                  <option value="Starter / low budget">Starter / low budget</option>
+                  <option value="Mid-range professional">Mid-range professional</option>
+                  <option value="Premium / enterprise">Premium / enterprise</option>
+                  <option value="Need phased approach">Need phased approach</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="contactMethod">Preferred Contact</label>
+                <select id="contactMethod" name="contactMethod">
+                  <option value="Email">Email</option>
+                  <option value="Phone / WhatsApp">Phone / WhatsApp</option>
+                  <option value="Video call">Video call</option>
+                  <option value="Site visit discussion">Site visit discussion</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Tell us about your project</label>
+              <textarea id="message" name="message" rows="6" required placeholder="Example: We need a meeting room with 2 displays, wireless presentation, ceiling speakers, camera, table microphones, simple touch control and future Teams support..."></textarea>
+            </div>
+
+            <div class="brief-card" id="briefCard">
+              <span>Live brief summary</span>
+              <p id="briefText">AV Integration enquiry • Flexible timeline • Budget not decided yet</p>
+            </div>
+
             <button type="submit" class="btn btn-primary form-submit">
-              Send Inquiry
+              Send Project Brief
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
               </svg>
             </button>
           </form>
+
           <div class="form-success" id="formSuccess">
-            <span style="font-size: 3rem; display: block; margin-bottom: 1rem;">✓</span>
-            <h3>Thank You!</h3>
-            <p>We've received your inquiry and will get back to you within 24 hours.</p>
+            <span class="success-mark">✓</span>
+            <h3>Project brief received.</h3>
+            <p>Thank you. AVIT Solutions will review your inquiry and reply with the next step.</p>
+            <a class="btn btn-secondary" href="/projects">View Case Studies</a>
           </div>
         </div>
-        <div class="contact-info">
-          <div class="contact-card glass">
-            <h3>Let's Talk</h3>
-            <p>Prefer to reach us directly? Here's how.</p>
-            <div class="contact-detail">
-              <span class="contact-label">General Inquiries</span>
-              <a href="mailto:info@avitsolutions.tech">info@avitsolutions.tech</a>
-            </div>
-            <div class="contact-detail">
-              <span class="contact-label">Support</span>
-              <a href="mailto:support@avitsolutions.tech">support@avitsolutions.tech</a>
-            </div>
-            <div class="contact-detail">
-              <span class="contact-label">Founder</span>
-              <span style="color: var(--text-secondary);">Tonny Gapam — Founder & CEO</span>
-            </div>
-          </div>
-          <div class="contact-card glass">
-            <h3>What to Expect</h3>
-            <div class="expect-step">
-              <span class="expect-number">1</span>
-              <p>We review your inquiry and schedule a discovery call.</p>
-            </div>
-            <div class="expect-step">
-              <span class="expect-number">2</span>
-              <p>We discuss requirements, timeline, and budget.</p>
-            </div>
-            <div class="expect-step">
-              <span class="expect-number">3</span>
-              <p>We propose a tailored solution and scope of work.</p>
-            </div>
-          </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-confidence">
+    <div class="container">
+      <div class="confidence-grid">
+        <div class="confidence-card glass">
+          <span>01</span>
+          <h3>AV-first thinking</h3>
+          <p>Signal flow, control logic, user behavior, cable paths, audio quality and long-term serviceability are considered from the start.</p>
+        </div>
+        <div class="confidence-card glass">
+          <span>02</span>
+          <h3>Software-aware delivery</h3>
+          <p>Websites, mobile apps, dashboards, admin tools and custom workflows are planned like real products, not just decorative pages.</p>
+        </div>
+        <div class="confidence-card glass">
+          <span>03</span>
+          <h3>Practical phased builds</h3>
+          <p>If budget is tight, the work can be broken into sensible stages so the first version is useful and future upgrades are not wasted.</p>
         </div>
       </div>
     </div>
@@ -109,27 +240,347 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-  .page-hero {
-    padding-bottom: 2rem;
+  :global(body) {
+    background:
+      radial-gradient(circle at 20% 0%, rgba(0, 184, 212, 0.14), transparent 30rem),
+      radial-gradient(circle at 88% 18%, rgba(83, 91, 255, 0.12), transparent 28rem),
+      var(--bg-primary);
   }
 
-  .contact-grid {
+  .contact-hero {
+    position: relative;
+    padding: clamp(7rem, 12vw, 11rem) 0 4rem;
+    overflow: hidden;
+  }
+
+  .contact-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(circle at 50% 25%, black, transparent 72%);
+    pointer-events: none;
+  }
+
+  .contact-hero-grid {
+    position: relative;
+    z-index: 2;
     display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 2rem;
+    grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.75fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .contact-title {
+    font-size: clamp(2.65rem, 7vw, 6.25rem);
+    line-height: 0.92;
+    letter-spacing: -0.07em;
+    max-width: 920px;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-title span {
+    display: block;
+    color: var(--accent);
+    text-shadow: 0 0 28px rgba(0, 184, 212, 0.24);
+  }
+
+  .contact-lede {
+    max-width: 720px;
+    color: var(--text-secondary);
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.75;
+  }
+
+  .contact-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-secondary {
+    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-primary);
+  }
+
+  .btn-secondary:hover {
+    border-color: rgba(0, 184, 212, 0.5);
+    background: rgba(0, 184, 212, 0.08);
+    color: var(--text-primary);
+  }
+
+  .contact-orbit {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.72;
+  }
+
+  .orbit-ring {
+    position: absolute;
+    border: 1px solid rgba(0, 184, 212, 0.18);
+    border-radius: 999px;
+    transform: rotate(-16deg);
+  }
+
+  .ring-one {
+    width: 520px;
+    height: 180px;
+    right: -120px;
+    top: 140px;
+    animation: orbitFloat 9s ease-in-out infinite;
+  }
+
+  .ring-two {
+    width: 420px;
+    height: 140px;
+    left: -130px;
+    bottom: 30px;
+    animation: orbitFloat 11s ease-in-out infinite reverse;
+  }
+
+  .orbit-dot,
+  .orbit-label {
+    position: absolute;
+    border: 1px solid rgba(0, 184, 212, 0.28);
+    background: rgba(10, 11, 12, 0.62);
+    box-shadow: 0 0 26px rgba(0, 184, 212, 0.16);
+    backdrop-filter: blur(10px);
+  }
+
+  .orbit-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .dot-one { right: 15%; top: 22%; animation: pulseDot 2.7s ease-in-out infinite; }
+  .dot-two { left: 11%; bottom: 22%; animation: pulseDot 3.1s ease-in-out infinite; }
+
+  .orbit-label {
+    padding: 0.55rem 0.75rem;
+    border-radius: 999px;
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+  }
+
+  .label-one { right: 10%; top: 36%; animation: drift 7s ease-in-out infinite; }
+  .label-two { left: 7%; top: 30%; animation: drift 8s ease-in-out infinite reverse; }
+  .label-three { right: 36%; bottom: 10%; animation: drift 9s ease-in-out infinite; }
+
+  @keyframes orbitFloat {
+    0%, 100% { transform: rotate(-16deg) translate3d(0, 0, 0); }
+    50% { transform: rotate(-10deg) translate3d(0, -18px, 0); }
+  }
+
+  @keyframes pulseDot {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.8); opacity: 1; }
+  }
+
+  @keyframes drift {
+    0%, 100% { transform: translate3d(0, 0, 0); }
+    50% { transform: translate3d(12px, -16px, 0); }
+  }
+
+  .response-panel {
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    padding: clamp(1.5rem, 3vw, 2rem);
+    box-shadow: 0 28px 80px rgba(0,0,0,0.36);
+  }
+
+  .panel-kicker,
+  .scope-preview span,
+  .brief-card span {
+    display: block;
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .response-panel h2 {
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+  }
+
+  .response-timeline {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: rgba(255,255,255,0.025);
+  }
+
+  .timeline-item.active {
+    border-color: rgba(0, 184, 212, 0.36);
+    background: rgba(0, 184, 212, 0.06);
+  }
+
+  .timeline-item span {
+    color: var(--accent);
+    font-weight: 900;
+    font-size: 0.78rem;
+  }
+
+  .timeline-item strong {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-item p,
+  .panel-note,
+  .sidebar-header p,
+  .scope-preview li,
+  .confidence-card p {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .panel-note {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-top: 1.25rem;
+  }
+
+  .panel-note span {
+    width: 10px;
+    height: 10px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: #39ff88;
+    box-shadow: 0 0 18px rgba(57,255,136,0.6);
+  }
+
+  .intake-section {
+    padding-top: 3rem;
+  }
+
+  .intake-shell {
+    display: grid;
+    grid-template-columns: 0.78fr 1.22fr;
+    gap: 1.5rem;
     align-items: start;
   }
 
-  .contact-form-wrapper {
-    padding: 2.5rem;
-    border-radius: var(--radius-xl);
+  .intake-sidebar,
+  .contact-form-wrapper,
+  .confidence-card {
     border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+  }
+
+  .intake-sidebar {
+    padding: clamp(1.35rem, 3vw, 2rem);
+    position: sticky;
+    top: 6rem;
+  }
+
+  .sidebar-header h2,
+  .form-topline h2 {
+    font-size: clamp(1.6rem, 3vw, 2.35rem);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    margin-bottom: 1rem;
+  }
+
+  .lane-buttons {
+    display: grid;
+    gap: 0.7rem;
+    margin: 1.75rem 0;
+  }
+
+  .lane-button {
+    width: 100%;
+    padding: 0.95rem 1rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-color);
+    background: rgba(255,255,255,0.03);
+    color: var(--text-secondary);
+    font-weight: 750;
+    cursor: pointer;
+    text-align: left;
+    transition: all var(--transition-base);
+  }
+
+  .lane-button.active,
+  .lane-button:hover {
+    color: var(--bg-primary);
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: translateX(5px);
+  }
+
+  .scope-preview {
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: rgba(255,255,255,0.026);
+  }
+
+  .scope-preview ul {
+    list-style: none;
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .scope-preview li::before {
+    content: '•';
+    color: var(--accent);
+    margin-right: 0.5rem;
+  }
+
+  .contact-form-wrapper {
+    padding: clamp(1.25rem, 3vw, 2.25rem);
+    overflow: hidden;
   }
 
   .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1.15rem;
+  }
+
+  .form-topline {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 0.25rem;
+  }
+
+  .form-status {
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 184, 212, 0.22);
+    background: rgba(0, 184, 212, 0.08);
+    color: var(--accent);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
   }
 
   .form-row {
@@ -141,25 +592,26 @@ import Layout from '../layouts/Layout.astro';
   .form-group {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.45rem;
   }
 
   .form-group label {
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-size: 0.86rem;
+    font-weight: 700;
     color: var(--text-secondary);
   }
 
   .form-group input,
   .form-group select,
   .form-group textarea {
-    padding: 0.75rem 1rem;
+    width: 100%;
+    padding: 0.9rem 1rem;
     border-radius: var(--radius-sm);
     border: 1px solid var(--border-color);
-    background: var(--bg-tertiary);
+    background: rgba(255,255,255,0.045);
     color: var(--text-primary);
     font-family: var(--font-sans);
-    font-size: 0.95rem;
+    font-size: 0.96rem;
     transition: all var(--transition-fast);
     outline: none;
   }
@@ -167,8 +619,9 @@ import Layout from '../layouts/Layout.astro';
   .form-group input:focus,
   .form-group select:focus,
   .form-group textarea:focus {
-    border-color: var(--accent-dim);
+    border-color: rgba(0, 184, 212, 0.58);
     box-shadow: 0 0 0 3px var(--accent-glow);
+    background: rgba(0, 184, 212, 0.04);
   }
 
   .form-group input::placeholder,
@@ -178,175 +631,307 @@ import Layout from '../layouts/Layout.astro';
 
   .form-group select {
     cursor: pointer;
-    appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a0a5b0' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 1rem center;
-    padding-right: 2.5rem;
+    padding-right: 2.6rem;
   }
 
   .form-group textarea {
     resize: vertical;
-    min-height: 120px;
+    min-height: 148px;
+  }
+
+  .check-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .check-grid label {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.82rem 0.9rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    background: rgba(255,255,255,0.03);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .check-grid label:hover,
+  .check-grid label:has(input:checked) {
+    border-color: rgba(0, 184, 212, 0.45);
+    background: rgba(0, 184, 212, 0.07);
+  }
+
+  .check-grid input {
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    border-radius: 6px;
+    flex: 0 0 auto;
+  }
+
+  .check-grid input:checked {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: inset 0 0 0 4px var(--bg-primary);
+  }
+
+  .check-grid span {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  .brief-card {
+    padding: 1rem;
+    border: 1px solid rgba(0, 184, 212, 0.22);
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, rgba(0, 184, 212, 0.09), rgba(255,255,255,0.025));
+  }
+
+  .brief-card p {
+    color: var(--text-primary);
+    font-weight: 650;
+    line-height: 1.55;
   }
 
   .form-submit {
     width: fit-content;
-    padding: 0.9rem 2.5rem;
+    padding: 1rem 2.5rem;
     font-size: 1rem;
+  }
+
+  .form-submit:disabled {
+    opacity: 0.66;
+    cursor: wait;
+    transform: none;
   }
 
   .form-success {
     display: none;
     text-align: center;
-    padding: 3rem 1rem;
+    padding: 3.5rem 1rem;
+  }
+
+  .success-mark {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    background: var(--accent);
+    color: var(--bg-primary);
+    font-size: 2.5rem;
+    font-weight: 900;
+    box-shadow: 0 0 40px rgba(0, 184, 212, 0.35);
   }
 
   .form-success h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.75rem;
+    font-weight: 800;
     margin-bottom: 0.5rem;
+    letter-spacing: -0.04em;
   }
 
   .form-success p {
     color: var(--text-secondary);
+    margin: 0 auto 1.5rem;
+    max-width: 440px;
   }
 
-  .contact-info {
-    display: flex;
-    flex-direction: column;
+  .contact-confidence {
+    padding-top: 0;
+  }
+
+  .confidence-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
   }
 
-  .contact-card {
-    padding: 2rem;
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--glass-border);
+  .confidence-card {
+    padding: 1.5rem;
   }
 
-  .contact-card h3 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
-
-  .contact-card > p {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
-  }
-
-  .contact-detail {
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--border-color);
-  }
-
-  .contact-detail:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-  }
-
-  .contact-label {
-    display: block;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--text-tertiary);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 0.25rem;
-  }
-
-  .contact-detail a {
+  .confidence-card span {
     color: var(--accent);
-    text-decoration: none;
-    font-weight: 500;
+    font-weight: 900;
+    font-size: 0.82rem;
   }
 
-  .contact-detail a:hover {
-    color: var(--text-primary);
+  .confidence-card h3 {
+    margin: 0.75rem 0 0.5rem;
+    font-size: 1.12rem;
+    letter-spacing: -0.03em;
   }
 
-  .expect-step {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
-    align-items: flex-start;
-  }
+  @media (max-width: 1024px) {
+    .contact-hero-grid,
+    .intake-shell {
+      grid-template-columns: 1fr;
+    }
 
-  .expect-step:last-child {
-    margin-bottom: 0;
-  }
-
-  .expect-number {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: var(--accent);
-    color: var(--bg-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-
-  .expect-step p {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    line-height: 1.5;
+    .intake-sidebar {
+      position: relative;
+      top: auto;
+    }
   }
 
   @media (max-width: 768px) {
-    .contact-grid {
+    .contact-hero {
+      padding-top: 6.5rem;
+    }
+
+    .contact-title {
+      letter-spacing: -0.055em;
+    }
+
+    .form-row,
+    .check-grid,
+    .confidence-grid {
       grid-template-columns: 1fr;
-      gap: 1.5rem;
     }
 
-    .form-row {
-      grid-template-columns: 1fr;
+    .form-topline {
+      flex-direction: column;
     }
 
-    .contact-form-wrapper {
-      padding: 1.5rem;
-    }
-
-    .contact-card {
-      padding: 1.5rem;
+    .response-panel {
+      display: none;
     }
   }
 
   @media (max-width: 480px) {
-    .contact-form-wrapper {
-      padding: 1.25rem;
+    .contact-hero-actions,
+    .form-submit {
+      width: 100%;
     }
+
+    .contact-hero-actions .btn,
+    .form-submit {
+      justify-content: center;
+    }
+
+    .contact-form-wrapper,
+    .intake-sidebar {
+      border-radius: var(--radius-lg);
+    }
+
     .form-group input,
     .form-group select,
     .form-group textarea {
       font-size: 16px;
-      min-height: 44px;
-    }
-    .form-submit {
-      width: 100%;
-      justify-content: center;
+      min-height: 46px;
     }
   }
 </style>
 
 <script>
+  const laneData = {
+    av: {
+      label: 'AV Integration',
+      projectType: 'AV Integration',
+      scope: [
+        'Room type and system purpose',
+        'Displays, audio, cameras and control',
+        'Network and cabling conditions',
+        'Timeline and installation constraints'
+      ]
+    },
+    software: {
+      label: 'Software / App',
+      projectType: 'Custom Software / ERP',
+      scope: [
+        'Users, roles and approval workflow',
+        'Admin dashboard and reporting needs',
+        'Database, hosting and login requirements',
+        'Mobile, desktop or hybrid delivery plan'
+      ]
+    },
+    website: {
+      label: 'Website / Ecommerce',
+      projectType: 'Website / Ecommerce',
+      scope: [
+        'Brand direction and page structure',
+        'Portfolio, shop, gallery or booking flow',
+        'Admin update requirements',
+        'SEO, hosting and launch timeline'
+      ]
+    },
+    automation: {
+      label: 'Automation / Control',
+      projectType: 'Control System / Automation',
+      scope: [
+        'Devices to control and user interface type',
+        'Relay, IP, serial, IR or API control paths',
+        'Schedules, scenes and fail-safe behavior',
+        'Remote support and documentation needs'
+      ]
+    }
+  };
+
+  const buttons = document.querySelectorAll('.lane-button');
+  const selectedLane = document.getElementById('selectedLane');
+  const projectType = document.getElementById('projectType');
+  const timeline = document.getElementById('timeline');
+  const budget = document.getElementById('budget');
+  const scopePreview = document.getElementById('scopePreview');
+  const briefText = document.getElementById('briefText');
+  const briefSummary = document.getElementById('briefSummary');
+  const formStatus = document.getElementById('formStatus');
+
+  function updateBrief() {
+    const checks = Array.from(document.querySelectorAll('input[name="scope"]:checked')).map((item) => item.value);
+    const summary = `${projectType.value || 'Project'} enquiry • ${timeline.value || 'Flexible timeline'} • ${budget.value || 'Budget not decided'}${checks.length ? ' • Includes: ' + checks.join(', ') : ''}`;
+    briefText.textContent = summary;
+    briefSummary.value = summary;
+    formStatus.textContent = checks.length ? `${checks.length} Selected` : 'Ready';
+  }
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const lane = laneData[button.dataset.lane];
+      buttons.forEach((item) => item.classList.remove('active'));
+      button.classList.add('active');
+      selectedLane.value = lane.label;
+      projectType.value = lane.projectType;
+      scopePreview.innerHTML = `<span>Suggested scope</span><ul>${lane.scope.map((item) => `<li>${item}</li>`).join('')}</ul>`;
+      updateBrief();
+    });
+  });
+
+  document.querySelectorAll('#contactForm input, #contactForm select, #contactForm textarea').forEach((field) => {
+    field.addEventListener('input', updateBrief);
+    field.addEventListener('change', updateBrief);
+  });
+
+  updateBrief();
+
   const form = document.getElementById('contactForm');
   const success = document.getElementById('formSuccess');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    updateBrief();
     const data = new FormData(form);
     const btn = form.querySelector('.form-submit');
+    const original = btn.innerHTML;
     btn.disabled = true;
-    btn.textContent = 'Sending...';
+    btn.textContent = 'Sending brief...';
+    formStatus.textContent = 'Sending';
+
     try {
-      const resp = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+      const resp = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' }
+      });
+
       if (resp.ok) {
         form.style.display = 'none';
         success.style.display = 'block';
@@ -354,7 +939,12 @@ import Layout from '../layouts/Layout.astro';
         throw new Error('Form submission failed');
       }
     } catch {
-      form.innerHTML = '<p style="color: #ff6b6b; text-align: center;">Something went wrong. Please email us directly at <a href="mailto:info@avitsolutions.tech" style="color: #00E5FF;">info@avitsolutions.tech</a></p>';
+      btn.disabled = false;
+      btn.innerHTML = original;
+      formStatus.textContent = 'Email Directly';
+      const mailSubject = encodeURIComponent('AVIT Solutions Project Inquiry');
+      const mailBody = encodeURIComponent(`Project Brief:\n${briefSummary.value}\n\nPlease describe your project here.`);
+      window.location.href = `mailto:info@avitsolutions.tech?subject=${mailSubject}&body=${mailBody}`;
     }
   });
 </script>
