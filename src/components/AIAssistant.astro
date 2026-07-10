@@ -1,0 +1,247 @@
+---
+const currentPath = Astro.url.pathname;
+const hiddenForAdmin = currentPath.startsWith('/admin');
+---
+
+{!hiddenForAdmin && (
+  <aside class="ai-assistant" data-ai-assistant>
+    <button class="ai-launcher" type="button" aria-label="Open AviT Solutions AI Assistance" aria-expanded="false" aria-controls="avit-ai-panel">
+      <span class="ai-launcher-orb" aria-hidden="true">
+        <svg viewBox="0 0 24 24" role="img"><path d="M12 2a7 7 0 0 0-7 7v1.1A4 4 0 0 0 3 13.6V16a4 4 0 0 0 4 4h1.2a2.8 2.8 0 0 0 2.6 1.8h2.4a2.8 2.8 0 0 0 2.6-1.8H17a4 4 0 0 0 4-4v-2.4a4 4 0 0 0-2-3.5V9a7 7 0 0 0-7-7Zm-5 9V9a5 5 0 0 1 10 0v2h.1a2 2 0 0 1 1.9 2v3a2 2 0 0 1-2 2h-2.8l-.4 1.1a.8.8 0 0 1-.8.7h-2a.8.8 0 0 1-.8-.7L9.8 18H7a2 2 0 0 1-2-2v-3a2 2 0 0 1 1.9-2H7Zm2 2.5a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2Zm6 0a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2Z"/></svg>
+      </span>
+      <span class="ai-launcher-copy"><strong>AI Assistance</strong><small>Ask about AviT Solutions</small></span>
+      <span class="ai-online" aria-hidden="true"></span>
+    </button>
+
+    <section class="ai-panel" id="avit-ai-panel" role="dialog" aria-modal="false" aria-label="AviT Solutions AI Assistance" hidden>
+      <header class="ai-header">
+        <div class="ai-identity">
+          <span class="ai-mini-orb" aria-hidden="true">AI</span>
+          <div><strong>AviT AI Assistance</strong><small><span></span>Company knowledge online</small></div>
+        </div>
+        <button class="ai-close" type="button" aria-label="Close AI Assistance">×</button>
+      </header>
+
+      <div class="ai-messages" role="log" aria-live="polite" aria-relevant="additions"></div>
+
+      <div class="ai-suggestions" aria-label="Suggested questions">
+        <button type="button">What does AviT Solutions do?</button>
+        <button type="button">Tell me about the Founder and CEO</button>
+        <button type="button">Can you build ERP and logistics software?</button>
+        <button type="button">What AV systems can you deliver?</button>
+      </div>
+
+      <form class="ai-contact-card" data-ai-contact hidden>
+        <div class="ai-contact-heading">
+          <strong>Request a human follow-up</strong>
+          <small>Sales or support can contact you.</small>
+        </div>
+        <div class="ai-contact-grid">
+          <label><span>Name</span><input name="name" type="text" autocomplete="name" required /></label>
+          <label><span>Email</span><input name="email" type="email" autocomplete="email" required /></label>
+          <label class="ai-contact-full"><span>Phone / WhatsApp</span><input name="phone" type="tel" autocomplete="tel" /></label>
+          <label class="ai-contact-full"><span>Message</span><textarea name="message" rows="3" required></textarea></label>
+        </div>
+        <input type="hidden" name="source" value="AviT AI Assistance" />
+        <button class="ai-contact-submit" type="submit">Send to sales & support</button>
+        <p class="ai-contact-status" aria-live="polite"></p>
+      </form>
+
+      <form class="ai-composer" data-ai-form>
+        <label class="sr-only" for="avit-ai-input">Ask AviT Solutions a question</label>
+        <textarea id="avit-ai-input" rows="1" maxlength="500" placeholder="Ask about AV, IT, ERP, the Founder…" required></textarea>
+        <button type="submit" aria-label="Send question">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 20 18-8L3 4v6l13 2-13 2v6Z"/></svg>
+        </button>
+      </form>
+      <p class="ai-disclaimer">Company-information assistant. For quotations and commitments, contact the AviT team.</p>
+    </section>
+  </aside>
+)}
+
+<script>
+  import { companyKnowledge, assistantWelcome, assistantFallback } from '../data/companyKnowledge.js';
+  import { findBestKnowledgeResponse } from '../utils/assistantEngine.js';
+
+  const roots = document.querySelectorAll('[data-ai-assistant]');
+
+  roots.forEach((root) => {
+    if (!(root instanceof HTMLElement) || root.dataset.ready === 'true') return;
+    root.dataset.ready = 'true';
+
+    const launcher = root.querySelector('.ai-launcher');
+    const panel = root.querySelector('.ai-panel');
+    const close = root.querySelector('.ai-close');
+    const messages = root.querySelector('.ai-messages');
+    const form = root.querySelector('[data-ai-form]');
+    const input = root.querySelector('#avit-ai-input');
+    const suggestions = root.querySelectorAll('.ai-suggestions button');
+    const contactCard = root.querySelector('[data-ai-contact]');
+
+    if (!(launcher instanceof HTMLButtonElement) || !(panel instanceof HTMLElement) || !(messages instanceof HTMLElement) || !(form instanceof HTMLFormElement) || !(input instanceof HTMLTextAreaElement) || !(contactCard instanceof HTMLFormElement)) return;
+
+    const addMessage = (text, role = 'assistant') => {
+      const item = document.createElement('div');
+      item.className = `ai-message ai-message-${role}`;
+      const bubble = document.createElement('p');
+      bubble.textContent = text;
+      item.appendChild(bubble);
+      messages.appendChild(item);
+      messages.scrollTop = messages.scrollHeight;
+    };
+
+    const setOpen = (open) => {
+      panel.hidden = !open;
+      launcher.setAttribute('aria-expanded', String(open));
+      root.classList.toggle('is-open', open);
+      if (open) {
+        if (!messages.children.length) addMessage(assistantWelcome);
+        window.setTimeout(() => input.focus(), 80);
+      }
+    };
+
+    const answerQuestion = (question) => {
+      const result = findBestKnowledgeResponse(question, companyKnowledge);
+      window.setTimeout(() => {
+        if (result.match) {
+          addMessage(result.match.answer);
+          contactCard.hidden = true;
+        } else {
+          addMessage(assistantFallback);
+          contactCard.hidden = false;
+          const messageField = contactCard.querySelector('textarea[name="message"]');
+          if (messageField instanceof HTMLTextAreaElement && !messageField.value) messageField.value = question;
+        }
+      }, 260);
+    };
+
+    launcher.addEventListener('click', () => setOpen(panel.hidden));
+    close?.addEventListener('click', () => setOpen(false));
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const question = input.value.trim();
+      if (!question) return;
+      addMessage(question, 'user');
+      input.value = '';
+      input.style.height = '';
+      answerQuestion(question);
+    });
+
+    input.addEventListener('input', () => {
+      input.style.height = 'auto';
+      input.style.height = `${Math.min(input.scrollHeight, 120)}px`;
+    });
+
+    input.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault();
+        form.requestSubmit();
+      }
+    });
+
+    suggestions.forEach((button) => {
+      button.addEventListener('click', () => {
+        if (!(button instanceof HTMLButtonElement)) return;
+        const question = button.textContent?.trim() || '';
+        addMessage(question, 'user');
+        answerQuestion(question);
+      });
+    });
+
+    contactCard.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const submit = contactCard.querySelector('.ai-contact-submit');
+      const status = contactCard.querySelector('.ai-contact-status');
+      if (!(submit instanceof HTMLButtonElement) || !(status instanceof HTMLElement)) return;
+
+      submit.disabled = true;
+      status.textContent = 'Sending…';
+      try {
+        const response = await fetch('https://formspree.io/f/mlgkdwen', {
+          method: 'POST',
+          body: new FormData(contactCard),
+          headers: { Accept: 'application/json' }
+        });
+        if (!response.ok) throw new Error('Request failed');
+        status.textContent = 'Thank you. Your details were sent to the AviT sales and support team.';
+        contactCard.reset();
+      } catch (error) {
+        status.innerHTML = 'The form could not send automatically. Please email <a href="mailto:info@avitsolutions.tech">info@avitsolutions.tech</a>.';
+      } finally {
+        submit.disabled = false;
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !panel.hidden) setOpen(false);
+    });
+  });
+</script>
+
+<style>
+  .ai-assistant { position: fixed; right: max(1rem, env(safe-area-inset-right)); bottom: max(1rem, env(safe-area-inset-bottom)); z-index: 1400; font-family: var(--font-sans); }
+  .ai-launcher { display:flex; align-items:center; gap:.72rem; min-width:218px; padding:.62rem .8rem .62rem .62rem; color:var(--text-primary); border:1px solid rgba(255,255,255,.16); border-radius:999px; background:linear-gradient(145deg,rgba(35,37,40,.97),rgba(10,11,12,.96)); box-shadow:0 18px 55px rgba(0,0,0,.42),inset 0 1px rgba(255,255,255,.1); cursor:pointer; text-align:left; }
+  .ai-launcher:hover { transform:translateY(-2px); border-color:rgba(99,213,255,.45); }
+  .ai-launcher-orb,.ai-mini-orb { display:grid; place-items:center; flex:0 0 auto; border-radius:50%; color:#f7fbff; background:radial-gradient(circle at 35% 25%,#5d6670,#1a1d21 58%,#08090a); border:1px solid rgba(255,255,255,.18); box-shadow:0 0 0 5px rgba(255,255,255,.035); }
+  .ai-launcher-orb { width:42px;height:42px; }
+  .ai-launcher-orb svg { width:23px; fill:currentColor; }
+  .ai-launcher-copy { display:grid; line-height:1.18; }
+  .ai-launcher-copy strong { font-size:.82rem; letter-spacing:.04em; text-transform:uppercase; }
+  .ai-launcher-copy small { color:var(--text-secondary); font-size:.68rem; margin-top:.2rem; }
+  .ai-online { width:8px;height:8px;border-radius:50%;background:#46e18a;box-shadow:0 0 12px #46e18a;margin-left:auto; }
+  .ai-panel { position:absolute; right:0; bottom:calc(100% + .8rem); width:min(390px,calc(100vw - 2rem)); max-height:min(690px,calc(100dvh - 7rem)); overflow:hidden; border:1px solid rgba(255,255,255,.14); border-radius:24px; color:var(--text-primary); background:linear-gradient(180deg,rgba(28,30,33,.985),rgba(8,9,10,.99)); box-shadow:0 28px 90px rgba(0,0,0,.58); display:grid; grid-template-rows:auto minmax(140px,1fr) auto auto auto; }
+  .ai-panel[hidden] { display:none; }
+  .ai-header { display:flex;align-items:center;justify-content:space-between;padding:.9rem 1rem;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025); }
+  .ai-identity { display:flex;align-items:center;gap:.7rem; }
+  .ai-mini-orb { width:36px;height:36px;font-size:.66rem;font-weight:900;letter-spacing:.08em; }
+  .ai-identity div { display:grid;line-height:1.2; }
+  .ai-identity strong { font-size:.88rem; }
+  .ai-identity small { display:flex;align-items:center;gap:.35rem;color:var(--text-secondary);font-size:.67rem;margin-top:.22rem; }
+  .ai-identity small span { width:6px;height:6px;border-radius:50%;background:#46e18a; }
+  .ai-close { width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.1);background:transparent;color:var(--text-secondary);font-size:1.35rem;cursor:pointer; }
+  .ai-messages { overflow:auto;padding:1rem;display:flex;flex-direction:column;gap:.7rem;min-height:180px;scrollbar-width:thin; }
+  .ai-message { display:flex; }
+  .ai-message p { max-width:88%;margin:0;padding:.72rem .82rem;border-radius:16px;font-size:.82rem;line-height:1.55;white-space:pre-wrap; }
+  .ai-message-assistant p { color:rgba(239,244,249,.9);background:rgba(255,255,255,.065);border:1px solid rgba(255,255,255,.075);border-bottom-left-radius:5px; }
+  .ai-message-user { justify-content:flex-end; }
+  .ai-message-user p { color:#081015;background:linear-gradient(135deg,#8eeaff,#50bbdf);border-bottom-right-radius:5px; }
+  .ai-suggestions { display:flex;gap:.45rem;overflow-x:auto;padding:0 1rem .8rem;scrollbar-width:none; }
+  .ai-suggestions::-webkit-scrollbar { display:none; }
+  .ai-suggestions button { flex:0 0 auto;border:1px solid rgba(99,213,255,.2);border-radius:999px;padding:.48rem .65rem;background:rgba(77,179,219,.07);color:#bfeeff;font-size:.68rem;cursor:pointer; }
+  .ai-contact-card { margin:0 .8rem .8rem;padding:.8rem;border:1px solid rgba(99,213,255,.2);border-radius:16px;background:rgba(40,142,183,.07); }
+  .ai-contact-card[hidden] { display:none; }
+  .ai-contact-heading { display:grid;margin-bottom:.65rem; }
+  .ai-contact-heading strong { font-size:.8rem; }
+  .ai-contact-heading small { color:var(--text-secondary);font-size:.67rem; }
+  .ai-contact-grid { display:grid;grid-template-columns:1fr 1fr;gap:.5rem; }
+  .ai-contact-grid label { display:grid;gap:.2rem; }
+  .ai-contact-grid label span { font-size:.63rem;color:var(--text-secondary); }
+  .ai-contact-grid input,.ai-contact-grid textarea { width:100%;border:1px solid rgba(255,255,255,.1);border-radius:9px;background:rgba(0,0,0,.25);color:var(--text-primary);padding:.52rem;font-size:.72rem;outline:none; }
+  .ai-contact-grid input:focus,.ai-contact-grid textarea:focus { border-color:rgba(99,213,255,.55); }
+  .ai-contact-full { grid-column:1/-1; }
+  .ai-contact-submit { width:100%;margin-top:.6rem;padding:.6rem;border:0;border-radius:10px;background:#68d9ff;color:#071014;font-size:.72rem;font-weight:800;cursor:pointer; }
+  .ai-contact-submit:disabled { opacity:.55;cursor:wait; }
+  .ai-contact-status { margin:.45rem 0 0;color:var(--text-secondary);font-size:.67rem;line-height:1.4; }
+  .ai-composer { display:flex;align-items:flex-end;gap:.55rem;padding:.75rem;border-top:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.18); }
+  .ai-composer textarea { flex:1;min-height:42px;max-height:120px;resize:none;border:1px solid rgba(255,255,255,.11);border-radius:14px;padding:.68rem .72rem;background:rgba(255,255,255,.045);color:var(--text-primary);font-size:.8rem;line-height:1.35;outline:none; }
+  .ai-composer textarea:focus { border-color:rgba(99,213,255,.55);box-shadow:0 0 0 3px rgba(99,213,255,.07); }
+  .ai-composer button { width:42px;height:42px;display:grid;place-items:center;flex:0 0 auto;border:0;border-radius:13px;background:#68d9ff;color:#071014;cursor:pointer; }
+  .ai-composer button svg { width:19px;fill:currentColor; }
+  .ai-disclaimer { margin:0;padding:0 .85rem .7rem;color:var(--text-tertiary);font-size:.58rem;text-align:center;background:rgba(0,0,0,.18); }
+  .sr-only { position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important; }
+  [data-theme="light"] .ai-launcher,[data-theme="light"] .ai-panel { color:#13171c;background:linear-gradient(180deg,rgba(255,255,255,.99),rgba(236,239,242,.99));border-color:rgba(0,0,0,.13);box-shadow:0 24px 70px rgba(0,0,0,.18); }
+  [data-theme="light"] .ai-message-assistant p { color:#26313b;background:rgba(0,0,0,.055);border-color:rgba(0,0,0,.07); }
+  [data-theme="light"] .ai-composer textarea,[data-theme="light"] .ai-contact-grid input,[data-theme="light"] .ai-contact-grid textarea { color:#17202a;background:rgba(255,255,255,.9);border-color:rgba(0,0,0,.13); }
+  @media (max-width:640px) {
+    .ai-assistant { right:.5rem;bottom:max(.5rem,env(safe-area-inset-bottom)); }
+    .ai-launcher { min-width:0;width:54px;height:54px;padding:6px; }
+    .ai-launcher-orb { width:40px;height:40px; }
+    .ai-launcher-copy,.ai-online { display:none; }
+    .ai-panel { position:fixed;right:.5rem;left:.5rem;bottom:calc(.5rem + env(safe-area-inset-bottom));width:auto;max-height:78dvh;border-radius:22px; }
+    .is-open .ai-launcher { opacity:0;pointer-events:none; }
+    .ai-contact-grid { grid-template-columns:1fr; }
+    .ai-contact-full { grid-column:auto; }
+  }
+  @media (prefers-reduced-motion:reduce) { .ai-launcher { transition:none; } }
+</style>

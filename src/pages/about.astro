@@ -2,204 +2,210 @@
 import Layout from '../layouts/Layout.astro';
 import CTASection from '../components/CTASection.astro';
 
-const disciplines = [
-  { label: 'Control', value: 'Crestron · AMX · Extron', note: 'Room logic, UI flows, presets, automation, relays, touch panels, and user-first control.' },
-  { label: 'Networked AV', value: 'AV-over-IP · Cisco-level networking', note: 'Signal paths designed with IP discipline, VLAN thinking, addressing, and serviceability.' },
-  { label: 'Audio + VC', value: 'DSP · Mics · Cameras · Teams Rooms', note: 'Boardrooms, classrooms, lecture theatres, and collaboration spaces engineered for clarity.' },
-  { label: 'Software', value: 'Web · Mobile · Admin systems', note: 'Custom portals, dashboards, community platforms, and operational tools that extend the AV layer.' },
+const journey = [
+  {
+    phase: 'Foundation',
+    title: 'Computer graphics and computer systems',
+    copy: 'The journey began with computer graphics, computer systems, digital creativity and web technologies—building an early understanding of how software, interfaces and hardware work together.'
+  },
+  {
+    phase: 'Creative technology',
+    title: 'Audio, sound engineering and film production',
+    copy: 'That foundation expanded into Audio-Visual technology, audio engineering, sound mixing, production workflows and film production, developing both technical discipline and creative judgement.'
+  },
+  {
+    phase: 'Programming',
+    title: 'Teaching and developing software skills',
+    copy: 'Experience also included teaching computer-programming courses and developing software capability, strengthening the ability to explain complex systems clearly and build practical digital tools.'
+  },
+  {
+    phase: 'Professional delivery',
+    title: 'AV installation, control and commissioning',
+    copy: 'The work progressed into professional AV installation, rack integration, signal-flow planning, control-system programming, networking, troubleshooting, commissioning and long-term technical support.'
+  },
+  {
+    phase: 'Today',
+    title: 'Advanced AV, IT, ERP and systems integration',
+    copy: 'AviT Solutions now combines AV engineering, IT infrastructure, UI/UX, websites, mobile apps, advanced ERP, logistics, tracking, automation and custom business platforms in one integrated capability.'
+  }
 ];
 
-const timeline = [
-  { year: '2008+', title: 'AV foundation', copy: 'Formal audiovisual training, installation discipline, site standards, rack work, projection, display, cabling, and commissioning.' },
-  { year: '2011+', title: 'Enterprise field delivery', copy: 'Service, support, commissioning, and project work across corporate, education, healthcare, events, and public venue environments.' },
-  { year: '2012+', title: 'Control systems', copy: 'Manufacturer training and hands-on programming across AMX, Crestron, Extron, touch panels, source routing, and room automation.' },
-  { year: '2017+', title: 'Networked collaboration', copy: 'AV/IT convergence: Cisco-style infrastructure thinking, video conferencing, DSP, multi-room support, and campus-scale reliability.' },
-  { year: '2023+', title: 'Software product layer', copy: 'Full-stack websites, mobile apps, admin panels, ERP-style workflows, AI-assisted tooling, and custom interfaces for real businesses.' },
-  { year: 'Now', title: 'AviT Solutions', copy: 'A combined AV, IT, UI/UX, and software studio built for clients who want one partner from hardware to interface.' },
-];
-
-const credentials = [
-  'Crestron DigitalMedia / design background',
-  'AMX ACE installer and programming foundation',
-  'Extron XTP and professional AV systems exposure',
-  'Q-SYS / audio DSP workflow understanding',
-  'Cisco networking fundamentals at CCNA level',
-  'Hikvision CCTV and security system experience',
-  'Photoshop, UI/UX design, and front-end product design',
-  '15+ years across service, projects, support, and commissioning',
+const industryTraining = [
+  'Crestron DigitalMedia engineering and design training',
+  'Crestron system design and installation training',
+  'AMX Programming Level 1 certification',
+  'AMX ACE Control Installer certification',
+  'Extron XTP systems certification',
+  'Q-SYS product and system training',
+  'Cisco and Tandberg video-conferencing experience',
+  'Tandberg Management Suite training',
+  'Hikvision CCTV installation and configuration certification',
+  'Black Diamond Video product training',
+  'Construction-industry safety certification',
+  'Advanced electronics and board-level diagnostic training',
+  'Computer systems and web-technology certification'
 ];
 
 const sectors = [
-  'Corporate boardrooms',
-  'Smart classrooms',
-  'Lecture theatres',
-  'Healthcare facilities',
-  'Public venues',
-  'Retail signage',
-  'Government-style environments',
-  'Residential automation',
+  'Defence and high-security environments',
+  'Parliamentary, judicial and civic facilities',
+  'Government departments and council chambers',
+  'Universities, classrooms and lecture theatres',
+  'Hospitals and specialist healthcare spaces',
+  'Banking and financial institutions',
+  'Global information and professional-services organisations',
+  'Automotive and imaging companies',
+  'Corporate headquarters and executive boardrooms',
+  'Galleries, museums and public exhibition spaces',
+  'Sporting and entertainment venues',
+  'Federation Square and landmark civic precincts',
+  'Stadiums, arenas and large public facilities'
 ];
 
-const principles = [
-  { n: '01', title: 'Engineer the invisible', copy: 'A great room feels simple because the hard work is hidden: network, audio, routing, control, and fail-safe logic.' },
-  { n: '02', title: 'UI is part of the system', copy: 'The touch panel, website, admin console, and mobile app are not decoration. They decide whether people can actually use the technology.' },
-  { n: '03', title: 'Design for the technician too', copy: 'Documentation, labels, signal flow, predictable logic, and remote support matter after the handover.' },
-  { n: '04', title: 'Be honest about experience', copy: 'We present professional background and industry exposure clearly, without implying direct client ownership where work came through previous employers.' },
+const avCapabilities = [
+  'AV system design and engineering',
+  'Rack building and equipment integration',
+  'Cable infrastructure and signal-flow planning',
+  'Projectors and motorised-screen installations',
+  'Audio processing and loudspeaker systems',
+  'Video distribution and switching',
+  'Corporate video conferencing',
+  'Lecture capture and recording platforms',
+  'Digital signage and display systems',
+  'CCTV and security technology',
+  'Control-system programming',
+  'Network-connected AV systems',
+  'Testing, calibration and final commissioning',
+  'Preventive maintenance and technical support'
+];
+
+const softwareCapabilities = [
+  { icon: 'ERP', title: 'Advanced ERP', copy: 'Modular business platforms for accounts, staff, attendance, payroll, orders, inventory, reporting, approvals and role-based operations.' },
+  { icon: 'LOG', title: 'Logistics & supply chain', copy: 'Warehouse movement, delivery workflows, fleet or field visibility, status tracking, alerts and operational dashboards.' },
+  { icon: 'TRK', title: 'Tracking systems', copy: 'Custom tracking for projects, assets, teams, incidents, orders, service activity and multi-location operations.' },
+  { icon: 'APP', title: 'Web & mobile products', copy: 'Responsive websites, admin portals, ecommerce, PWAs, Android and iOS-ready interfaces and internal software.' },
+  { icon: 'AUT', title: 'Workflow automation', copy: 'Approvals, notifications, document flows, business rules and repeatable processes that reduce manual work.' },
+  { icon: 'UX', title: 'User-centred interfaces', copy: 'Clear dashboards, touch-panel experiences and mobile controls designed around real users and real tasks.' }
+];
+
+const scale = [
+  'Homes and smart residences',
+  'Retail and hospitality venues',
+  'Schools and training centres',
+  'Corporate meeting rooms',
+  'Executive boardrooms',
+  'Government facilities',
+  'Council and parliamentary chambers',
+  'Courtrooms',
+  'Universities and lecture theatres',
+  'Hospitals and specialist healthcare spaces',
+  'Music and production studios',
+  'Auditoriums and performance venues',
+  'Stadiums and major public facilities',
+  'Enterprise-wide AV and IT infrastructure'
+];
+
+const approach = [
+  'What the client needs to achieve',
+  'Who will use the system',
+  'How frequently it will be used',
+  'What infrastructure is already available',
+  'What level of reliability and security is required',
+  'How the system may expand in the future',
+  'What budget is realistic',
+  'Who will maintain and support it'
 ];
 ---
 
-<Layout title="About the Founder" description="Meet the AviT Solutions founder: 15+ years across AV systems, control programming, networked AV, UI/UX design, websites, apps and custom software delivery." canonical="/about" image="/og-image.svg">
-  <section class="founder-hero section">
-    <div class="founder-orbit founder-orbit-a"></div>
-    <div class="founder-orbit founder-orbit-b"></div>
-
-    <div class="container founder-hero-grid">
-      <div class="founder-copy reveal-up">
-        <div class="section-label">About AviT Solutions</div>
-        <h1 class="founder-title" data-text-key="about-page-title">
-          Built by an AV engineer who also designs the interface.
-        </h1>
-        <p class="founder-lead" data-text-key="about-page-subtitle">
-          AviT Solutions brings together audiovisual engineering, networking, UI/UX design, and custom software development — so the room, the rack, the network, and the screen interface feel like one complete system.
+<Layout
+  title="Founder & CEO — AviT Solutions"
+  description="The story, technical experience, industry training and integrated AV, IT, ERP, software and user-experience capability behind AviT Solutions."
+  canonical="/about"
+  image="/images/about/avit-founder-ceo-visual-board.png"
+>
+  <section class="about-hero">
+    <div class="about-grid-lines" aria-hidden="true"></div>
+    <div class="container about-hero-grid">
+      <div class="about-hero-copy reveal-up">
+        <div class="section-label">Founder & CEO</div>
+        <h1 data-text-key="about-page-title">From computer graphics and sound engineering to advanced systems integration.</h1>
+        <p data-text-key="about-page-subtitle">
+          AviT Solutions is led by an Audio-Visual, IT and User Experience specialist with close to two decades of combined technical development and more than 14 years of full-time professional Audio-Visual experience.
         </p>
-        <div class="founder-actions">
-          <a class="btn btn-primary magnetic" href="/projects">View Case Studies</a>
+        <div class="about-hero-actions">
+          <a class="btn btn-primary magnetic" href="#visual-story">Explore the Journey</a>
           <a class="btn btn-secondary magnetic" href="/contact">Start a Project</a>
         </div>
+        <div class="about-stat-row" aria-label="Company profile highlights">
+          <div><strong>14+</strong><span>Years professional AV</span></div>
+          <div><strong>AV + IT</strong><span>Integrated engineering</span></div>
+          <div><strong>ERP</strong><span>Business software capability</span></div>
+        </div>
       </div>
 
-      <div class="founder-console reveal-up" aria-label="Founder capability console">
-        <img class="founder-console-photo" src="/portfolio-media/avit-portfolio-admin.webp" alt="AviT realistic engineering workspace" loading="lazy" />
-        <div class="founder-console-grade"></div>
-        <div class="console-topbar">
-          <span></span><span></span><span></span>
-          <strong>AviT_ENGINEERING_PROFILE</strong>
-        </div>
-        <div class="console-stage">
-          <div class="console-ring"></div>
-          <div class="console-core">
-            <span>AV</span>
-            <small>IT</small>
-          </div>
-          <div class="console-beam beam-one"></div>
-          <div class="console-beam beam-two"></div>
-          <div class="console-node node-a">DSP</div>
-          <div class="console-node node-b">UX</div>
-          <div class="console-node node-c">IP</div>
-          <div class="console-node node-d">CTRL</div>
-        </div>
-        <div class="console-metrics">
-          <div><strong>15+</strong><span>Years field experience</span></div>
-          <div><strong>4</strong><span>Core disciplines</span></div>
-          <div><strong>1</strong><span>Integrated delivery mindset</span></div>
+      <div class="about-hero-media reveal-up">
+        <img src="/service-media/control-room.webp" alt="Integrated AV, IT and control environment" width="1280" height="853" fetchpriority="high" />
+        <div class="media-overlay"></div>
+        <div class="media-console">
+          <span>DESIGN</span><span>CODE</span><span>INTEGRATE</span><span>SUPPORT</span>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="authority-band">
-    <div class="container authority-strip reveal-up">
-      <span>AV Integration</span>
-      <span>Control Systems</span>
-      <span>Networking</span>
-      <span>DSP Audio</span>
-      <span>UI/UX</span>
-      <span>Web + Mobile Apps</span>
-      <span>Admin Platforms</span>
-    </div>
-  </section>
-
-  <section class="section founder-story-section">
-    <div class="container story-grid">
-      <div class="story-sticky reveal-up">
-        <div class="section-label">Founder Authority</div>
-        <h2 class="section-title story-title">Not a normal portfolio. A systems mindset.</h2>
-        <p class="story-intro">
-          Most AV companies stop at hardware. Most web studios stop at screens. AviT Solutions is built in the gap between both.
-        </p>
-      </div>
-      <div class="story-body reveal-up">
-        <p>
-          The foundation comes from more than <strong>15 years of AV and IT field work</strong>: service calls, rack rooms, projector installs, commissioning, control programming, user support, and live environments where the system has to work when people walk into the room.
-        </p>
-        <p>
-          That background now extends into <strong>custom software and interface design</strong>: websites, mobile apps, admin portals, business dashboards, community platforms, and workflow tools. The goal is not to make technology look complicated. The goal is to make complex systems feel calm, reliable, and easy to control.
-        </p>
-        <p>
-          AviT Solutions can speak to the equipment side and the software side in the same conversation: microphones, DSP, cameras, displays, control processors, network design, user interface, admin workflow, and the final client experience.
-        </p>
-        <div class="safe-note">
-          <strong>Experience note:</strong> Some enterprise and public-sector exposure was delivered through previous employers and integration partners. AviT Solutions presents this as professional experience, not as direct client endorsement or direct brand ownership.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section discipline-section">
+  <section class="visual-story-section section" id="visual-story">
     <div class="container">
-      <div class="section-label">Capability Stack</div>
-      <h2 class="section-title">Four disciplines, one delivery language.</h2>
-      <p class="section-subtitle">This is what makes AviT different from a standard website studio or a standard AV contractor.</p>
-      <div class="discipline-grid reveal-up">
-        {disciplines.map((item) => (
-          <article class="discipline-card tilt-card">
-            <span>{item.label}</span>
-            <h3>{item.value}</h3>
-            <p>{item.note}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="section timeline-section">
-    <div class="container timeline-layout">
-      <div class="timeline-heading reveal-up">
-        <div class="section-label">Journey</div>
-        <h2 class="section-title">From field engineering to product design.</h2>
-        <p class="section-subtitle">A career path shaped by practical installation work, support pressure, control logic, and modern software delivery.</p>
-      </div>
-      <div class="timeline-rail reveal-up">
-        {timeline.map((item) => (
-          <article class="timeline-item">
-            <div class="timeline-year">{item.year}</div>
-            <div class="timeline-card tilt-card">
-              <h3>{item.title}</h3>
-              <p>{item.copy}</p>
-            </div>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="section proof-section">
-    <div class="container proof-grid">
-      <div class="proof-panel reveal-up">
-        <div class="section-label">Technical Proof</div>
-        <h2>Credentials and working exposure.</h2>
-        <div class="credential-list">
-          {credentials.map((item) => <span>{item}</span>)}
+      <div class="visual-story-heading reveal-up">
+        <div>
+          <div class="section-label">The Complete Visual Story</div>
+          <h2 class="section-title">A single visual board of the journey, capability and vision.</h2>
         </div>
+        <p>
+          This presentation is installed as a high-resolution website visual and supported by accessible text sections below, so it remains sharp and readable across desktop, tablet and mobile.
+        </p>
       </div>
-      <div class="proof-panel reveal-up">
-        <div class="section-label">Environment Exposure</div>
-        <h2>Built for real spaces, not just slides.</h2>
-        <div class="sector-cloud">
-          {sectors.map((item) => <span>{item}</span>)}
-        </div>
+      <figure class="visual-board reveal-up">
+        <picture>
+          <source srcset="/images/about/avit-founder-ceo-visual-board.webp" type="image/webp" />
+          <img src="/images/about/avit-founder-ceo-visual-board.png" alt="AviT Solutions Founder and CEO visual story covering AV, IT, programming, ERP, project capability, approach and vision" width="941" height="1672" loading="eager" />
+        </picture>
+        <figcaption>
+          <span>Founder & CEO · Integrated AV + IT + Programming</span>
+          <a href="/images/about/avit-founder-ceo-visual-board.png" target="_blank" rel="noopener">Open full-resolution visual</a>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section narrative-section">
+    <div class="container narrative-grid">
+      <div class="narrative-heading reveal-up">
+        <div class="section-label">The Foundation</div>
+        <h2 class="section-title">Technology understood from the creative layer to the engineered system.</h2>
+      </div>
+      <div class="narrative-copy reveal-up">
+        <p>
+          The foundation of AviT Solutions is broader than equipment installation. It combines computer graphics, computer systems, Audio-Visual technology, sound engineering, film production, programming, infrastructure, networking, user experience and software development.
+        </p>
+        <p>
+          The Founder also taught computer-programming courses, developing the ability to translate technical ideas into clear, practical instruction. That experience now supports the way AviT Solutions designs interfaces, documents systems, trains users and develops custom platforms.
+        </p>
+        <p>
+          The result is an understanding of how people, spaces, networks, hardware and software must work together—from the sound-mixing console and equipment rack to the final touch panel, web dashboard or mobile application.
+        </p>
       </div>
     </div>
   </section>
 
-  <section class="section principles-section">
+  <section class="section journey-section">
     <div class="container">
-      <div class="section-label">Working Principles</div>
-      <h2 class="section-title">How AviT Solutions thinks.</h2>
-      <div class="principles-grid reveal-up">
-        {principles.map((item) => (
-          <article class="principle-card tilt-card">
-            <span>{item.n}</span>
+      <div class="section-label">The Journey</div>
+      <h2 class="section-title">A progression through every layer of technology.</h2>
+      <div class="journey-grid reveal-up">
+        {journey.map((item, index) => (
+          <article class="journey-card tilt-card">
+            <span class="journey-number">{String(index + 1).padStart(2, '0')}</span>
+            <small>{item.phase}</small>
             <h3>{item.title}</h3>
             <p>{item.copy}</p>
           </article>
@@ -208,469 +214,306 @@ const principles = [
     </div>
   </section>
 
+  <section class="section experience-section">
+    <div class="container experience-grid">
+      <div class="experience-copy reveal-up">
+        <div class="section-label">Complex Environments</div>
+        <h2 class="section-title">Experience shaped in spaces where reliability matters.</h2>
+        <p>
+          Across Australia and India, the Founder has contributed to technology environments ranging from small meeting rooms and specialist studios to enterprise headquarters, hospitals, universities, government facilities and major public venues.
+        </p>
+        <div class="confidentiality-note">
+          Many projects were delivered through established Audio-Visual integrators, infrastructure contractors and specialist service organisations. Client confidentiality and contractual obligations are respected.
+        </div>
+      </div>
+      <div class="sector-grid reveal-up">
+        {sectors.map((item) => <span>{item}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section av-section">
+    <div class="container av-grid">
+      <div class="av-media reveal-up">
+        <img src="/service-media/boardroom.webp" alt="Professional integrated boardroom with displays, conferencing and control" width="1280" height="853" loading="lazy" />
+        <div class="av-media-caption"><strong>AV + IT</strong><span>Engineered as one system</span></div>
+      </div>
+      <div class="av-copy reveal-up">
+        <div class="section-label">Advanced Systems Integration</div>
+        <h2 class="section-title">From signal flow and sound mixing to control, networks and commissioning.</h2>
+        <p>
+          Modern Audio-Visual systems are part of the wider IT infrastructure. They depend on networks, software, authentication, data, cloud services, control processors, mobile devices and user interfaces.
+        </p>
+        <div class="capability-list">
+          {avCapabilities.map((item) => <span>{item}</span>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section training-section">
+    <div class="container training-grid">
+      <div class="training-heading reveal-up">
+        <div class="section-label">Industry Training</div>
+        <h2 class="section-title">Control, AV and infrastructure expertise.</h2>
+        <p>
+          This website profile focuses on manufacturer, platform and industry training. Academic and formal educational qualifications are intentionally kept separate.
+        </p>
+      </div>
+      <div class="training-list reveal-up">
+        {industryTraining.map((item) => <span>{item}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section software-section">
+    <div class="container">
+      <div class="software-heading reveal-up">
+        <div>
+          <div class="section-label">Advanced Software & ERP</div>
+          <h2 class="section-title">Business platforms designed around how the organisation actually works.</h2>
+        </div>
+        <p>
+          AviT Solutions can create advanced ERP, tracking, logistics, warehouse and operations platforms for businesses of different sizes—without forcing every client into the same fixed system.
+        </p>
+      </div>
+      <div class="software-grid reveal-up">
+        {softwareCapabilities.map((item) => (
+          <article class="software-card tilt-card">
+            <span>{item.icon}</span>
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+      <div class="software-visual reveal-up">
+        <img src="/service-media/warehouse-software.webp" alt="Custom ERP, warehouse, tracking and logistics software dashboard" width="1280" height="853" loading="lazy" />
+        <div class="software-visual-copy">
+          <span>Modular · Scalable · Role-based</span>
+          <strong>ERP, logistics, tracking, dashboards, workflow automation and custom management tools.</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section scale-section">
+    <div class="container">
+      <div class="section-label">Capability at Every Scale</div>
+      <h2 class="section-title">From one room to multi-site and enterprise deployment.</h2>
+      <div class="scale-cloud reveal-up">
+        {scale.map((item) => <span>{item}</span>)}
+      </div>
+      <p class="scale-note reveal-up">
+        AviT Solutions is supported by a wider professional network of programmers, network engineers, installation technicians, commissioning specialists, designers, contractors and industry colleagues. The right team can be assembled for each project.
+      </p>
+    </div>
+  </section>
+
+  <section class="section approach-section">
+    <div class="container approach-grid">
+      <div class="approach-copy reveal-up">
+        <div class="section-label">Our Approach</div>
+        <h2 class="section-title">Technology should solve a problem, support the user and continue delivering value.</h2>
+        <p>
+          Recommendations are based on what the project genuinely requires—not simply on selling the most expensive equipment. Solutions can range from practical, budget-conscious systems to premium enterprise platforms.
+        </p>
+      </div>
+      <div class="approach-list reveal-up">
+        {approach.map((item, index) => (
+          <div><span>{String(index + 1).padStart(2, '0')}</span><p>{item}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section user-section">
+    <div class="container user-grid">
+      <div class="user-media reveal-up">
+        <img src="/portfolio-media/avit-portfolio-admin.webp" alt="User-centred control and software interface designed by AviT Solutions" width="1280" height="853" loading="lazy" />
+      </div>
+      <div class="user-copy reveal-up">
+        <div class="section-label">Engineering with the User in Mind</div>
+        <h2 class="section-title">Sophisticated technology should feel natural.</h2>
+        <p>
+          Controls must be clearly labelled. Important functions must be easy to find. System status must be visible. Errors must be understandable. Common tasks should require as few steps as possible.
+        </p>
+        <p>
+          When engineering, interface and workflow are designed together, the technology falls naturally into place.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="vision-section section">
+    <div class="container vision-card reveal-up">
+      <div>
+        <div class="section-label">Our Vision</div>
+        <h2>Making advanced AV and IT technology more accessible across North East India.</h2>
+        <p>
+          The objective is not simply to introduce high-end technology. It is to provide the right level of technology for each client—whether that means a locally developed solution, a carefully selected budget-conscious system or a globally recognised enterprise platform.
+        </p>
+      </div>
+      <div class="vision-principles">
+        <span>Every project should be reliable.</span>
+        <span>Every interface should be understandable.</span>
+        <span>Every investment should have a clear purpose.</span>
+      </div>
+      <blockquote>
+        AviT Solutions designs the system, engineers the infrastructure, programs the experience and supports the people who use it.
+      </blockquote>
+    </div>
+  </section>
+
   <CTASection
-    title="Need a room, platform, or system that feels properly engineered?"
-    subtitle="Tell us what you want to build. We can help shape the AV scope, software workflow, interface direction, and delivery plan."
+    title="Need an AV, IT, ERP, tracking or software system built around your real requirements?"
+    subtitle="Share your objective, users, infrastructure, timescale and budget. AviT Solutions can help shape the right technical and user-experience direction."
     ctaText="Start a Project"
     ctaLink="/contact"
   />
 </Layout>
 
 <style>
-  .founder-hero {
-    position: relative;
-    overflow: hidden;
-    padding-top: clamp(5rem, 10vw, 9rem);
-    padding-bottom: clamp(4rem, 8vw, 8rem);
+  :global(body) {
     background:
-      radial-gradient(circle at 15% 10%, rgba(0, 184, 212, 0.18), transparent 34%),
-      radial-gradient(circle at 80% 20%, rgba(98, 68, 255, 0.16), transparent 32%),
-      linear-gradient(180deg, var(--bg-primary), var(--bg-secondary));
-  }
-
-  .founder-orbit {
-    position: absolute;
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 999px;
-    pointer-events: none;
-    opacity: 0.6;
-  }
-
-  .founder-orbit-a {
-    width: 520px;
-    height: 520px;
-    right: -180px;
-    top: 8%;
-    animation: slow-spin 34s linear infinite;
-  }
-
-  .founder-orbit-b {
-    width: 380px;
-    height: 380px;
-    left: -170px;
-    bottom: -120px;
-    animation: slow-spin 42s linear infinite reverse;
-  }
-
-  @keyframes slow-spin {
-    to { transform: rotate(360deg); }
-  }
-
-  .founder-hero-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
-    gap: clamp(2rem, 5vw, 5rem);
-    align-items: center;
-    position: relative;
-    z-index: 1;
-  }
-
-  .founder-title {
-    font-size: clamp(2.8rem, 7vw, 6.8rem);
-    line-height: 0.92;
-    letter-spacing: -0.08em;
-    max-width: 870px;
-    margin-bottom: 1.5rem;
-  }
-
-  .founder-lead {
-    max-width: 720px;
-    color: var(--text-secondary);
-    font-size: clamp(1rem, 1.7vw, 1.25rem);
-    line-height: 1.8;
-    margin-bottom: 2rem;
-  }
-
-  .founder-actions {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .founder-console {
-    position: relative;
-    border: 1px solid rgba(255,255,255,0.1);
-    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.025));
-    border-radius: 30px;
-    box-shadow: 0 30px 90px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.12);
-    overflow: hidden;
-    min-height: 560px;
-  }
-
-  .console-topbar {
-    display: flex;
-    align-items: center;
-    gap: 0.55rem;
-    padding: 1rem 1.2rem;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    color: var(--text-tertiary);
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
-  }
-
-  .console-topbar span {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.28);
-  }
-
-  .console-topbar strong {
-    margin-left: auto;
-    font-size: 0.65rem;
-    font-weight: 700;
-    color: var(--accent);
-  }
-
-  .console-stage {
-    position: relative;
-    height: 390px;
-    display: grid;
-    place-items: center;
-    background:
-      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-    background-size: 34px 34px;
-    overflow: hidden;
-  }
-
-  .console-stage::after {
-    content: '';
-    position: absolute;
-    inset: 14%;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 184, 212, 0.18), transparent 60%);
-    filter: blur(20px);
-  }
-
-  .console-ring {
-    position: absolute;
-    width: 260px;
-    height: 260px;
-    border-radius: 50%;
-    border: 1px dashed rgba(0, 184, 212, 0.38);
-    animation: slow-spin 22s linear infinite;
-  }
-
-  .console-core {
-    position: relative;
-    z-index: 2;
-    width: 150px;
-    height: 150px;
-    border-radius: 36px;
-    display: grid;
-    place-items: center;
-    background: linear-gradient(135deg, rgba(0,184,212,0.98), rgba(91,115,255,0.82));
-    color: #061014;
-    font-weight: 950;
-    font-size: 3.3rem;
-    letter-spacing: -0.12em;
-    box-shadow: 0 0 60px rgba(0,184,212,0.28);
-  }
-
-  .console-core small {
-    position: absolute;
-    right: 22px;
-    bottom: 18px;
-    font-size: 0.95rem;
-    letter-spacing: 0.08em;
-  }
-
-  .console-beam {
-    position: absolute;
-    height: 1px;
-    width: 72%;
-    background: linear-gradient(90deg, transparent, rgba(0,184,212,0.72), transparent);
-    z-index: 1;
-  }
-
-  .beam-one { transform: rotate(28deg); }
-  .beam-two { transform: rotate(-31deg); }
-
-  .console-node {
-    position: absolute;
-    z-index: 3;
-    padding: 0.55rem 0.75rem;
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 999px;
-    background: rgba(10, 11, 12, 0.72);
-    backdrop-filter: blur(14px);
-    color: var(--text-primary);
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-  }
-
-  .node-a { top: 20%; left: 15%; }
-  .node-b { top: 23%; right: 12%; }
-  .node-c { bottom: 22%; left: 18%; }
-  .node-d { bottom: 18%; right: 14%; }
-
-  .console-metrics {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid rgba(255,255,255,0.08);
-  }
-
-  .console-metrics div {
-    padding: 1.35rem 1rem;
-    border-right: 1px solid rgba(255,255,255,0.08);
-  }
-
-  .console-metrics div:last-child { border-right: 0; }
-  .console-metrics strong { display:block; font-size: 1.65rem; line-height:1; color: var(--accent); }
-  .console-metrics span { display:block; color: var(--text-secondary); font-size: 0.78rem; line-height:1.35; margin-top:0.45rem; }
-
-  .authority-band {
-    padding: 0 0 2.5rem;
-    background: var(--bg-secondary);
-  }
-
-  .authority-strip {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    justify-content: center;
-  }
-
-  .authority-strip span,
-  .sector-cloud span,
-  .credential-list span {
-    border: 1px solid rgba(255,255,255,0.1);
-    background: rgba(255,255,255,0.045);
-    border-radius: 999px;
-    color: var(--text-secondary);
-  }
-
-  .authority-strip span {
-    padding: 0.8rem 1rem;
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-  }
-
-  .story-grid {
-    display: grid;
-    grid-template-columns: 0.75fr 1.25fr;
-    gap: clamp(2rem, 6vw, 5rem);
-    align-items: start;
-  }
-
-  .story-sticky { position: sticky; top: 110px; }
-  .story-title { text-align: left; margin-bottom: 1.25rem; }
-  .story-intro { color: var(--text-secondary); line-height: 1.8; font-size: 1.05rem; }
-
-  .story-body {
-    color: var(--text-secondary);
-    font-size: clamp(1rem, 1.4vw, 1.15rem);
-    line-height: 1.9;
-  }
-
-  .story-body p { margin-bottom: 1.35rem; }
-  .story-body strong { color: var(--text-primary); }
-
-  .safe-note {
-    padding: 1.35rem;
-    border-radius: 20px;
-    background: rgba(0,184,212,0.08);
-    border: 1px solid rgba(0,184,212,0.18);
-    color: var(--text-secondary);
-  }
-
-  .safe-note strong { color: var(--accent); }
-
-  .discipline-section,
-  .principles-section { background: var(--bg-secondary); }
-
-  .discipline-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    margin-top: 3rem;
-  }
-
-  .discipline-card,
-  .principle-card,
-  .timeline-card,
-  .proof-panel {
-    border: 1px solid rgba(255,255,255,0.08);
-    background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.025));
-    border-radius: 24px;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
-  }
-
-  .discipline-card {
-    padding: 1.5rem;
-    min-height: 260px;
-  }
-
-  .discipline-card span,
-  .principle-card span {
-    display: inline-flex;
-    color: var(--accent);
-    font-size: 0.78rem;
-    font-weight: 900;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-  }
-
-  .discipline-card h3,
-  .principle-card h3,
-  .timeline-card h3 {
-    font-size: 1.08rem;
-    line-height: 1.25;
-    margin-bottom: 0.75rem;
-  }
-
-  .discipline-card p,
-  .principle-card p,
-  .timeline-card p {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    line-height: 1.7;
-  }
-
-  .timeline-section {
-    background:
-      radial-gradient(circle at 20% 20%, rgba(0,184,212,0.1), transparent 34%),
+      radial-gradient(circle at 18% 0%, rgba(94, 111, 124, .15), transparent 32rem),
+      radial-gradient(circle at 86% 12%, rgba(45, 139, 186, .11), transparent 30rem),
       var(--bg-primary);
   }
 
-  .timeline-layout {
-    display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    gap: clamp(2rem, 5vw, 4rem);
+  .about-hero { position:relative; overflow:hidden; padding:clamp(7rem,12vw,11rem) 0 clamp(4rem,8vw,7rem); background:linear-gradient(180deg,#111315 0%,#090a0b 72%,var(--bg-secondary) 100%); }
+  .about-grid-lines { position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(to bottom,black,transparent 88%); }
+  .about-hero-grid { position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.03fr) minmax(340px,.97fr);gap:clamp(2rem,5vw,5rem);align-items:center; }
+  .about-hero h1 { font-size:clamp(2.8rem,6.7vw,6.5rem);line-height:.95;letter-spacing:-.07em;margin-bottom:1.5rem;max-width:950px;text-wrap:balance; }
+  .about-hero-copy>p { max-width:780px;color:var(--text-secondary);font-size:clamp(1rem,1.7vw,1.22rem);line-height:1.78; }
+  .about-hero-actions { display:flex;flex-wrap:wrap;gap:1rem;margin-top:2rem; }
+  .about-stat-row { display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:2.2rem; }
+  .about-stat-row div { padding:1rem;border:1px solid rgba(255,255,255,.09);border-radius:16px;background:rgba(255,255,255,.035); }
+  .about-stat-row strong,.about-stat-row span { display:block; }
+  .about-stat-row strong { color:#86dcff;font-size:1.05rem; }
+  .about-stat-row span { color:var(--text-secondary);font-size:.73rem;margin-top:.25rem; }
+  .about-hero-media { position:relative;min-height:560px;border-radius:30px;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 35px 100px rgba(0,0,0,.55); }
+  .about-hero-media img { width:100%;height:100%;position:absolute;inset:0;object-fit:cover;filter:saturate(.72) contrast(1.08) brightness(.72); }
+  .media-overlay { position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,7,9,.04),rgba(5,7,9,.72)),linear-gradient(90deg,rgba(3,4,5,.48),transparent 60%); }
+  .media-console { position:absolute;left:1rem;right:1rem;bottom:1rem;display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem; }
+  .media-console span { padding:.75rem .4rem;border:1px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(6,8,10,.72);backdrop-filter:blur(10px);font-size:.64rem;text-align:center;letter-spacing:.08em;color:#c7eefe; }
+
+  .visual-story-section { background:linear-gradient(180deg,var(--bg-secondary),#0d0f11); }
+  .visual-story-heading,.software-heading { display:grid;grid-template-columns:1.15fr .85fr;gap:2rem;align-items:end;margin-bottom:2.5rem; }
+  .visual-story-heading p,.software-heading>p { color:var(--text-secondary);line-height:1.75; }
+  .visual-board { width:min(100%,980px);margin:0 auto;border-radius:28px;overflow:hidden;border:1px solid rgba(255,255,255,.13);background:#07090b;box-shadow:0 35px 100px rgba(0,0,0,.5); }
+  .visual-board picture,.visual-board img { display:block;width:100%;height:auto; }
+  .visual-board figcaption { display:flex;justify-content:space-between;gap:1rem;align-items:center;padding:1rem 1.2rem;border-top:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.035);font-size:.78rem; }
+  .visual-board figcaption span { color:var(--text-secondary); }
+  .visual-board figcaption a { color:#8bddff; }
+
+  .narrative-section { background:#0c0d0f; }
+  .narrative-grid,.experience-grid,.training-grid,.approach-grid,.user-grid,.av-grid { display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(2rem,6vw,5.5rem);align-items:start; }
+  .narrative-copy { color:var(--text-secondary);font-size:clamp(1rem,1.5vw,1.16rem);line-height:1.9; }
+  .narrative-copy p+p { margin-top:1.4rem; }
+
+  .journey-section { background:linear-gradient(180deg,#111315,#090a0b); }
+  .journey-grid { display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:2.7rem; }
+  .journey-card { position:relative;min-height:320px;padding:1.4rem;border:1px solid rgba(255,255,255,.09);border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.018));overflow:hidden; }
+  .journey-card::after { content:'';position:absolute;inset:auto -20% -35% 20%;height:55%;background:radial-gradient(circle,rgba(78,183,226,.13),transparent 70%); }
+  .journey-number { display:block;color:rgba(255,255,255,.2);font-size:2.4rem;font-weight:900;line-height:1;margin-bottom:1.3rem; }
+  .journey-card small { color:#82dcff;text-transform:uppercase;letter-spacing:.12em;font-size:.64rem;font-weight:800; }
+  .journey-card h3 { font-size:1.05rem;line-height:1.3;margin:.8rem 0; }
+  .journey-card p { color:var(--text-secondary);font-size:.86rem;line-height:1.7; }
+
+  .experience-section { background:radial-gradient(circle at 80% 20%,rgba(43,133,177,.12),transparent 30rem),#0b0c0e; }
+  .experience-copy>p,.training-heading>p,.approach-copy>p,.user-copy>p { color:var(--text-secondary);line-height:1.8; }
+  .confidentiality-note { margin-top:1.5rem;padding:1.2rem;border-left:3px solid #72d7ff;background:rgba(74,181,224,.07);color:var(--text-secondary);font-size:.9rem;line-height:1.65; }
+  .sector-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:.65rem; }
+  .sector-grid span,.training-list span,.capability-list span,.scale-cloud span { border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.035);color:var(--text-secondary); }
+  .sector-grid span { padding:.85rem;border-radius:13px;font-size:.8rem;line-height:1.45; }
+
+  .av-section { background:#111315; }
+  .av-grid { grid-template-columns:.9fr 1.1fr;align-items:center; }
+  .av-media { position:relative;min-height:620px;border-radius:28px;overflow:hidden;border:1px solid rgba(255,255,255,.12); }
+  .av-media img { position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.8) brightness(.72); }
+  .av-media::after { content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(4,5,6,.9)); }
+  .av-media-caption { position:absolute;z-index:2;left:1.2rem;bottom:1.2rem;display:grid; }
+  .av-media-caption strong { font-size:2.1rem;letter-spacing:-.05em; }
+  .av-media-caption span { color:#94dfff;font-size:.78rem; }
+  .av-copy>p { color:var(--text-secondary);line-height:1.8;margin-bottom:1.4rem; }
+  .capability-list { display:grid;grid-template-columns:repeat(2,1fr);gap:.55rem; }
+  .capability-list span { padding:.72rem;border-radius:11px;font-size:.76rem; }
+
+  .training-section { background:#0b0c0e; }
+  .training-grid { grid-template-columns:.75fr 1.25fr; }
+  .training-list { display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem; }
+  .training-list span { padding:.9rem;border-radius:13px;font-size:.8rem;line-height:1.45; }
+
+  .software-section { background:radial-gradient(circle at 20% 0%,rgba(46,137,182,.15),transparent 34rem),#101214; }
+  .software-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:1rem; }
+  .software-card { min-height:250px;padding:1.35rem;border:1px solid rgba(255,255,255,.09);border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02)); }
+  .software-card>span { display:grid;place-items:center;width:48px;height:48px;border-radius:13px;background:rgba(89,198,241,.09);border:1px solid rgba(89,198,241,.2);color:#85dfff;font-size:.7rem;font-weight:900;letter-spacing:.08em;margin-bottom:1.1rem; }
+  .software-card h3 { font-size:1.05rem;margin-bottom:.65rem; }
+  .software-card p { color:var(--text-secondary);font-size:.84rem;line-height:1.65; }
+  .software-visual { position:relative;min-height:500px;margin-top:1.2rem;border-radius:26px;overflow:hidden;border:1px solid rgba(255,255,255,.1); }
+  .software-visual img { position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.82) brightness(.62); }
+  .software-visual::after { content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,7,9,.9),rgba(5,7,9,.12)); }
+  .software-visual-copy { position:absolute;z-index:2;left:clamp(1.3rem,4vw,3.5rem);top:50%;transform:translateY(-50%);max-width:600px;display:grid;gap:.7rem; }
+  .software-visual-copy span { color:#80dcff;text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;font-weight:800; }
+  .software-visual-copy strong { font-size:clamp(1.7rem,3.8vw,3.5rem);line-height:1.05;letter-spacing:-.05em; }
+
+  .scale-section { background:#090a0b; }
+  .scale-cloud { display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2rem; }
+  .scale-cloud span { padding:.75rem .95rem;border-radius:999px;font-size:.8rem; }
+  .scale-note { max-width:920px;color:var(--text-secondary);line-height:1.8;margin-top:2rem; }
+
+  .approach-section { background:linear-gradient(180deg,#111315,#0a0b0c); }
+  .approach-list { display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem; }
+  .approach-list div { display:flex;align-items:flex-start;gap:.7rem;padding:.9rem;border:1px solid rgba(255,255,255,.09);border-radius:14px;background:rgba(255,255,255,.035); }
+  .approach-list span { color:#7fddff;font-size:.7rem;font-weight:900;padding-top:.1rem; }
+  .approach-list p { color:var(--text-secondary);font-size:.8rem;line-height:1.45; }
+
+  .user-section { background:#0a0b0c; }
+  .user-grid { grid-template-columns:1fr 1fr;align-items:center; }
+  .user-media { min-height:500px;border-radius:26px;overflow:hidden;border:1px solid rgba(255,255,255,.1); }
+  .user-media img { width:100%;height:100%;object-fit:cover; }
+  .user-copy p+p { margin-top:1rem; }
+
+  .vision-section { background:radial-gradient(circle at 80% 20%,rgba(79,179,222,.13),transparent 30rem),#101214; }
+  .vision-card { padding:clamp(1.5rem,5vw,4rem);border:1px solid rgba(255,255,255,.11);border-radius:30px;background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.018)); }
+  .vision-card h2 { font-size:clamp(2rem,5vw,4.5rem);line-height:1.03;letter-spacing:-.06em;max-width:1000px; }
+  .vision-card p { max-width:900px;color:var(--text-secondary);line-height:1.8;margin-top:1.2rem; }
+  .vision-principles { display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin:2rem 0; }
+  .vision-principles span { padding:1rem;border:1px solid rgba(255,255,255,.09);border-radius:14px;background:rgba(255,255,255,.035);font-size:.82rem;color:#c9eefe; }
+  .vision-card blockquote { margin:0;padding:1.3rem 1.5rem;border-left:3px solid #78dfff;background:rgba(78,181,223,.07);font-size:clamp(1.05rem,2vw,1.4rem);line-height:1.55;color:#effaff; }
+
+  [data-theme="light"] .about-hero,[data-theme="light"] .journey-section,[data-theme="light"] .av-section,[data-theme="light"] .software-section,[data-theme="light"] .approach-section,[data-theme="light"] .vision-section,[data-theme="light"] .visual-story-section,[data-theme="light"] .narrative-section,[data-theme="light"] .experience-section,[data-theme="light"] .training-section,[data-theme="light"] .scale-section,[data-theme="light"] .user-section { background:var(--bg-primary); }
+  [data-theme="light"] .journey-card,[data-theme="light"] .software-card,[data-theme="light"] .vision-card { border-color:rgba(0,0,0,.09);background:rgba(255,255,255,.85);box-shadow:0 15px 45px rgba(0,0,0,.06); }
+  [data-theme="light"] .sector-grid span,[data-theme="light"] .training-list span,[data-theme="light"] .capability-list span,[data-theme="light"] .scale-cloud span,[data-theme="light"] .approach-list div,[data-theme="light"] .about-stat-row div { border-color:rgba(0,0,0,.09);background:rgba(255,255,255,.78); }
+
+  @media (max-width:1100px) {
+    .about-hero-grid,.narrative-grid,.experience-grid,.training-grid,.approach-grid,.user-grid,.av-grid,.visual-story-heading,.software-heading { grid-template-columns:1fr; }
+    .about-hero-media { min-height:520px; }
+    .journey-grid { grid-template-columns:repeat(2,1fr); }
+    .software-grid { grid-template-columns:repeat(2,1fr); }
+    .av-media { min-height:500px; }
   }
 
-  .timeline-heading .section-title,
-  .timeline-heading .section-subtitle { text-align: left; margin-left: 0; }
-
-  .timeline-rail {
-    position: relative;
-    padding-left: 1.5rem;
+  @media (max-width:720px) {
+    .about-hero { padding-top:6.3rem; }
+    .about-hero h1 { font-size:clamp(2.55rem,13vw,4.2rem); }
+    .about-hero-actions { flex-direction:column; }
+    .about-hero-actions .btn { width:100%;justify-content:center; }
+    .about-stat-row { grid-template-columns:1fr; }
+    .about-hero-media { min-height:390px;border-radius:22px; }
+    .media-console { grid-template-columns:repeat(2,1fr); }
+    .visual-board { border-radius:18px; }
+    .visual-board figcaption { align-items:flex-start;flex-direction:column; }
+    .journey-grid,.software-grid,.sector-grid,.training-list,.capability-list,.approach-list,.vision-principles { grid-template-columns:1fr; }
+    .journey-card { min-height:auto; }
+    .av-media,.software-visual,.user-media { min-height:360px; }
+    .software-visual::after { background:linear-gradient(180deg,rgba(5,7,9,.3),rgba(5,7,9,.92)); }
+    .software-visual-copy { top:auto;bottom:1.4rem;transform:none;right:1.4rem; }
+    .software-visual-copy strong { font-size:1.7rem; }
   }
 
-  .timeline-rail::before {
-    content: '';
-    position: absolute;
-    left: 5px;
-    top: 0.5rem;
-    bottom: 0.5rem;
-    width: 1px;
-    background: linear-gradient(var(--accent), rgba(255,255,255,0.08));
+  @media (max-width:420px) {
+    .about-hero-media { min-height:330px; }
+    .av-media,.software-visual,.user-media { min-height:310px; }
   }
-
-  .timeline-item {
-    display: grid;
-    grid-template-columns: 90px 1fr;
-    gap: 1rem;
-    margin-bottom: 1rem;
-    position: relative;
-  }
-
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -1.74rem;
-    top: 1.1rem;
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 22px rgba(0,184,212,0.8);
-  }
-
-  .timeline-year {
-    color: var(--accent);
-    font-weight: 900;
-    font-size: 0.85rem;
-    padding-top: 1rem;
-  }
-
-  .timeline-card { padding: 1.25rem; }
-
-  .proof-section { background: var(--bg-tertiary); }
-
-  .proof-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
-  }
-
-  .proof-panel { padding: clamp(1.5rem, 3vw, 2.5rem); }
-  .proof-panel h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); line-height: 1.05; letter-spacing: -0.05em; margin-bottom: 1.5rem; }
-
-  .credential-list,
-  .sector-cloud {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.7rem;
-  }
-
-  .credential-list span,
-  .sector-cloud span {
-    padding: 0.7rem 0.9rem;
-    font-size: 0.82rem;
-  }
-
-  .principles-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    margin-top: 3rem;
-  }
-
-  .principle-card { padding: 1.5rem; min-height: 245px; }
-
-  @media (max-width: 1060px) {
-    .founder-hero-grid,
-    .story-grid,
-    .timeline-layout,
-    .proof-grid { grid-template-columns: 1fr; }
-    .story-sticky { position: static; }
-    .discipline-grid,
-    .principles-grid { grid-template-columns: repeat(2, 1fr); }
-    .founder-console { min-height: auto; }
-  }
-
-  @media (max-width: 640px) {
-    .founder-hero { padding-top: 4rem; }
-    .founder-title { font-size: clamp(2.5rem, 16vw, 4rem); }
-    .founder-actions { flex-direction: column; }
-    .founder-actions .btn { width: 100%; justify-content: center; }
-    .console-stage { height: 330px; }
-    .console-metrics { grid-template-columns: 1fr; }
-    .console-metrics div { border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .console-metrics div:last-child { border-bottom: 0; }
-    .discipline-grid,
-    .principles-grid { grid-template-columns: 1fr; }
-    .timeline-item { grid-template-columns: 1fr; gap: 0.25rem; }
-    .timeline-year { padding-top: 0; }
-  }
-
-  .founder-console-photo {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: saturate(.94) contrast(.98) brightness(.96);
-    z-index: 0;
-  }
-
-  .founder-console-grade {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(4,8,14,.22), rgba(4,8,14,.82));
-    z-index: 1;
-  }
-
-  .founder-console .console-topbar,
-  .founder-console .console-stage,
-  .founder-console .console-metrics {
-    position: relative;
-    z-index: 2;
-  }
-
 </style>

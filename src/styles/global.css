@@ -769,3 +769,41 @@ figure img {
   height: 100%;
   object-fit: cover;
 }
+
+/* Phase 16 gunmetal theme — preserves all original page content and media */
+:root {
+  --bg-primary: #090a0a;
+  --bg-secondary: #111313;
+  --bg-tertiary: #1b1d1d;
+  --bg-elevated: #222424;
+  --accent: #c6aa78;
+  --accent-dim: #8e7954;
+  --accent-glow: rgba(198, 170, 120, 0.11);
+  --accent-glow-strong: rgba(198, 170, 120, 0.24);
+  --text-primary: #f3f3ef;
+  --text-secondary: #a9aaa6;
+  --text-tertiary: #747672;
+  --glass-bg: rgba(18, 20, 20, 0.82);
+  --glass-border: rgba(233, 222, 202, 0.12);
+  --glass-shadow: rgba(0, 0, 0, 0.48);
+  --border-color: rgba(233, 222, 202, 0.09);
+}
+[data-theme="light"] {
+  --bg-primary: #e8e8e4;
+  --bg-secondary: #f4f4f1;
+  --bg-tertiary: #d5d6d2;
+  --bg-elevated: #fafaf7;
+  --accent: #78623f;
+  --accent-dim: #5f4d32;
+  --accent-glow: rgba(120, 98, 63, 0.10);
+  --accent-glow-strong: rgba(120, 98, 63, 0.20);
+  --text-primary: #151616;
+  --text-secondary: #4f5250;
+  --text-tertiary: #7b7d79;
+  --glass-bg: rgba(238, 238, 234, 0.86);
+  --glass-border: rgba(24, 25, 25, 0.11);
+  --glass-shadow: rgba(0, 0, 0, 0.10);
+  --border-color: rgba(24, 25, 25, 0.09);
+}
+body { background-image: radial-gradient(circle at 50% -10%, rgba(255,255,255,.07), transparent 34rem); }
+img { color: transparent; }
