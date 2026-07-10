@@ -1,0 +1,13 @@
+{
+  "phase": "12-fast-light-complete",
+  "purpose": "Compressed full image integration, brand wording fix, hero clipping fix.",
+  "brand_rule": "Use AviT Solutions with lowercase red i and visible red i dot; keep a space between AviT and Solutions.",
+  "processed_images": 120,
+  "total_image_size_mb": 4.81,
+  "target": "Fast website with all AV Solutions, IT Solutions, Projects, and case-study visuals installed locally.",
+  "notes": [
+    "Large AI images converted to optimized WebP.",
+    "No people/faces intentionally required in website media.",
+    "Images are local website assets and can be pushed to GitHub/Vercel."
+  ]
+}

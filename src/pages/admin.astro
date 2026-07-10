@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout>
+<Layout title="Admin" description="Private AviT Solutions admin area." canonical="/admin" noindex={true}>
   <section class="section page-hero">
     <div class="container" style="text-align: center;">
       <div class="admin-tabs">
@@ -69,40 +69,40 @@ const groups = [
   {
     name: 'AV Solutions',
     items: [
-      { key: 'av-business', label: 'Business', default: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop&q=80' },
-      { key: 'av-government', label: 'Government', default: 'https://images.unsplash.com/photo-1577412647305-991150c7d163?w=800&h=600&fit=crop&q=80' },
-      { key: 'av-education', label: 'Education', default: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&h=600&fit=crop&q=80' },
-      { key: 'av-healthcare', label: 'Healthcare', default: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop&q=80' },
-      { key: 'av-entertainment', label: 'Entertainment', default: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop&q=80' },
-      { key: 'av-hospitality', label: 'Hospitality', default: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop&q=80' },
+      { key: 'av-business', label: 'Business', default: '/portfolio-media/corporate-hq-card.webp' },
+      { key: 'av-government', label: 'Government', default: '/portfolio-media/gov-building-card.webp' },
+      { key: 'av-education', label: 'Education', default: '/portfolio-media/lecture-theatre-kit-card.webp' },
+      { key: 'av-healthcare', label: 'Healthcare', default: '/portfolio-media/clinic-system-card.webp' },
+      { key: 'av-entertainment', label: 'Entertainment', default: '/portfolio-media/wwii-museum-card.webp' },
+      { key: 'av-hospitality', label: 'Hospitality', default: '/portfolio-media/gaaiso-shop-card.webp' },
     ],
   },
   {
     name: 'IT Solutions',
     items: [
-      { key: 'it-mobile-apps', label: 'Mobile Apps', default: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop&q=80' },
-      { key: 'it-hybrid-software', label: 'Hybrid Software', default: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop&q=80' },
-      { key: 'it-erp', label: 'Custom ERP', default: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&q=80' },
-      { key: 'it-ai-ecommerce', label: 'AI for Business', default: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop&q=80' },
-      { key: 'it-warehouse', label: 'Warehouse', default: 'https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&h=600&fit=crop&q=80' },
-      { key: 'it-digital-signage', label: 'Digital Signage', default: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=600&fit=crop&q=80' },
+      { key: 'it-mobile-apps', label: 'Mobile Apps', default: '/portfolio-media/syncstation-mobile.webp' },
+      { key: 'it-hybrid-software', label: 'Hybrid Software', default: '/portfolio-media/syncstation-admin.webp' },
+      { key: 'it-erp', label: 'Custom ERP', default: '/portfolio-media/syncstation-card.webp' },
+      { key: 'it-ai-ecommerce', label: 'AI for Business', default: '/portfolio-media/buzztown-card.webp' },
+      { key: 'it-warehouse', label: 'Warehouse', default: '/portfolio-media/commandtrack-card.webp' },
+      { key: 'it-digital-signage', label: 'Digital Signage', default: '/portfolio-media/gaaiso-shop-card.webp' },
     ],
   },
   {
     name: 'Project Case Studies',
     items: [
-      { key: 'project-corporate-hq', label: 'Corporate HQ', default: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=600&fit=crop&q=80' },
-      { key: 'project-smart-home', label: 'Smart Home', default: 'https://images.pexels.com/photos/8583821/pexels-photo-8583821.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600' },
-      { key: 'project-gov-building', label: 'Government Chambers', default: 'https://images.unsplash.com/photo-1577412647305-991150c7d163?w=1200&h=600&fit=crop&q=80' },
+      { key: 'project-corporate-hq', label: 'Corporate HQ', default: '/portfolio-media/corporate-hq-hero.webp' },
+      { key: 'project-smart-home', label: 'Smart Home', default: '/portfolio-media/smart-home-hero.webp' },
+      { key: 'project-gov-building', label: 'Government Chambers', default: '/portfolio-media/gov-building-hero.webp' },
     ],
   },
   {
     name: 'About Page',
     items: [
-      { key: 'about-hero', label: 'Hero / Team', default: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&h=500&fit=crop&q=80' },
-      { key: 'cert-amx', label: 'AMX Certification', default: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=300&fit=crop&q=80' },
-      { key: 'cert-crestron', label: 'Crestron Certification', default: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=300&fit=crop&q=80' },
-      { key: 'cert-extron', label: 'Extron Certification', default: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=400&h=300&fit=crop&q=80' },
+      { key: 'about-hero', label: 'Hero / Team', default: '/portfolio-media/avit-portfolio-admin.webp' },
+      { key: 'cert-amx', label: 'AMX Certification', default: '/portfolio-media/avit-portfolio-card.webp' },
+      { key: 'cert-crestron', label: 'Crestron Certification', default: '/portfolio-media/syncstation-card.webp' },
+      { key: 'cert-extron', label: 'Extron Certification', default: '/portfolio-media/lecture-theatre-kit-card.webp' },
     ],
   },
 ];

@@ -10,6 +10,7 @@ const digitalServices = [
     text: 'Mobile experiences for communities, businesses, schools, service teams, and local platforms — built with clean navigation, fast loading, and practical admin control.',
     outputs: ['Android APK direction', 'Responsive mobile UX', 'Push-ready architecture', 'Profile and account flows', 'Offline-friendly layouts'],
     icon: '▱',
+    image: '/service-media/mobile-app.webp',
   },
   {
     id: 'hybrid-software',
@@ -18,6 +19,7 @@ const digitalServices = [
     text: 'For many businesses, the best system is not only an app or only a website. It is a shared platform with role-based dashboards, data, forms, workflows, and mobile access.',
     outputs: ['React / Astro frontends', 'Capacitor app packaging', 'Admin portals', 'Member directories', 'Realtime data flows'],
     icon: '◇',
+    image: '/service-media/hybrid-software.webp',
   },
   {
     id: 'erp',
@@ -26,6 +28,7 @@ const digitalServices = [
     text: 'Reception, billing, lab, inventory, attendance, orders, approvals, reports, and dashboards can be built as focused modules instead of forcing a generic ERP.',
     outputs: ['Role-based dashboards', 'Daily reports', 'Billing and records', 'Inventory workflows', 'Approval systems'],
     icon: '▦',
+    image: '/service-media/hybrid-software.webp',
   },
   {
     id: 'ai-ecommerce',
@@ -34,6 +37,7 @@ const digitalServices = [
     text: 'Product catalogues, gallery shops, UPI/GPay-ready flows, content drafting, recommendations, and shop owner tools for local businesses moving online.',
     outputs: ['Shop pages', 'Product admin', 'AI content drafts', 'Category filters', 'Payment-link flows'],
     icon: '✦',
+    image: '/service-media/ecommerce-signage.webp',
   },
   {
     id: 'warehouse',
@@ -42,6 +46,7 @@ const digitalServices = [
     text: 'Lightweight warehouse software can track items, reduce paperwork, connect sales and stock, and create reports that owners can understand immediately.',
     outputs: ['Stock records', 'Barcode-ready flows', 'Dispatch tracking', 'Purchase entries', 'Owner dashboard'],
     icon: '▤',
+    image: '/service-media/warehouse-software.webp',
   },
   {
     id: 'digital-signage',
@@ -50,14 +55,15 @@ const digitalServices = [
     text: 'Digital signage works best when the screen, player, content schedule, admin control, and physical display location are designed together.',
     outputs: ['Screen layouts', 'Media library', 'Schedule control', 'Retail display UI', 'AV display integration'],
     icon: '◫',
+    image: '/service-media/ecommerce-signage.webp',
   },
 ];
 
 const productExamples = [
-  { name: 'Community Platform', details: 'News, chat, classifieds, admin, member features, and mobile app path.' },
-  { name: 'Clinic System', details: 'Reception, lab, manager controls, billing rules, and LAN-friendly workflow.' },
-  { name: 'Cafe KDS', details: 'Mobile ordering, counter approval, kitchen display, rewards, and owner console.' },
-  { name: 'Business Directory', details: 'Member profiles, calendar, notices, approval queue, and admin tools.' },
+  { name: 'Community Platform', image: '/portfolio-media/buzztown-card.webp', details: 'News, chat, classifieds, admin, member features, and mobile app path.' },
+  { name: 'Clinic System', image: '/portfolio-media/clinic-system-card.webp', details: 'Reception, lab, manager controls, billing rules, and LAN-friendly workflow.' },
+  { name: 'Cafe KDS', image: '/portfolio-media/brews-bites-card.webp', details: 'Mobile ordering, counter approval, kitchen display, rewards, and owner console.' },
+  { name: 'Business Directory', image: '/portfolio-media/ambi-card.webp', details: 'Member profiles, calendar, notices, approval queue, and admin tools.' },
 ];
 
 const buildStages = [
@@ -69,7 +75,7 @@ const buildStages = [
 ];
 ---
 
-<Layout>
+<Layout title="IT Solutions, Websites, Apps & Software" description="Custom software, websites, mobile apps, dashboards, ERP-style workflows, ecommerce, AI-assisted tools and AV-over-IP network-aware digital systems." canonical="/it-solutions" image="/og-image.svg">
   <section class="it-hero">
     <div class="it-noise"></div>
     <div class="container it-hero-grid">
@@ -77,16 +83,18 @@ const buildStages = [
         <div class="services-kicker">IT Solutions</div>
         <h1>Software that connects the business, the user, and the physical space.</h1>
         <p>
-          AVIT Solutions builds websites, apps, admin panels, dashboards, automation tools, and business systems with the same discipline used in AV integration: clean signal flow, clear control, and reliable handover.
+          AviT Solutions builds websites, apps, admin panels, dashboards, automation tools, and business systems with the same discipline used in AV integration: clean signal flow, clear control, and reliable handover.
         </p>
         <div class="hero-actions">
           <a href="/contact" class="btn btn-primary">Start a Software Project</a>
           <a href="/projects#software" class="btn btn-secondary">View Software Work</a>
         </div>
       </div>
-      <div class="product-console" aria-label="Software system visual">
+      <div class="product-console software-photo-console" aria-label="Software system visual">
+        <img src="/portfolio-media/syncstation-hero.webp" alt="Realistic office dashboard and workflow screens" loading="eager" />
+        <div class="software-photo-grade"></div>
         <div class="console-top"><span></span><span></span><span></span></div>
-        <div class="console-title">AVIT OPERATIONS UI</div>
+        <div class="console-title">AviT OPERATIONS UI</div>
         <div class="console-grid">
           <div class="console-card large"><strong>Dashboard</strong><i></i><i></i><i></i></div>
           <div class="console-card"><strong>Admin</strong><em>Live</em></div>
@@ -112,6 +120,9 @@ const buildStages = [
       <div class="digital-grid">
         {digitalServices.map((service) => (
           <article id={service.id} class="digital-card">
+            <div class="digital-photo">
+              <img src={service.image} alt={`${service.label} example`} loading="lazy" />
+            </div>
             <div class="digital-icon">{service.icon}</div>
             <span>{service.label}</span>
             <h3>{service.title}</h3>
@@ -137,6 +148,7 @@ const buildStages = [
       <div class="example-list">
         {productExamples.map((example) => (
           <article>
+            <img class="example-photo" src={example.image} alt={`${example.name} project visual`} loading="lazy" />
             <h3>{example.name}</h3>
             <p>{example.details}</p>
           </article>
@@ -298,7 +310,7 @@ const buildStages = [
 
   .digital-card {
     position: relative;
-    min-height: 390px;
+    min-height: 560px;
     padding: 1.35rem;
     border-radius: 28px;
     border: 1px solid rgba(255,255,255,0.09);
@@ -311,6 +323,24 @@ const buildStages = [
   .digital-card:hover {
     transform: translateY(-5px);
     border-color: rgba(80,217,255,0.3);
+  }
+
+
+  .digital-photo {
+    position: relative;
+    margin: -0.2rem -0.2rem 1.15rem;
+    height: 210px;
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.04);
+  }
+
+  .digital-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   .digital-icon {
@@ -398,5 +428,97 @@ const buildStages = [
     .digital-grid,
     .example-list,
     .pipeline-track { grid-template-columns: 1fr; }
+    .digital-photo { height: 220px; }
   }
+
+  .software-photo-console {
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .software-photo-console > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(.92) contrast(.96) brightness(.98);
+    z-index: 0;
+  }
+
+  .software-photo-grade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(6,8,14,.35), rgba(6,8,14,.86));
+    z-index: 1;
+  }
+
+  .software-photo-console .console-top,
+  .software-photo-console .console-title,
+  .software-photo-console .console-grid {
+    position: relative;
+    z-index: 2;
+  }
+
+
+  .digital-card-photo {
+    position: relative;
+    height: 150px;
+    margin: -0.35rem -0.35rem 1rem;
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.04);
+  }
+  .digital-card-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(.96) contrast(.98) brightness(1.03);
+    transition: transform 260ms ease;
+  }
+  .digital-card:hover .digital-card-photo img { transform: scale(1.045); }
+  .example-photo {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+    border-radius: 18px;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255,255,255,.08);
+  }
+
+
+
+  /* Phase 14 controlled image path fix: show installed images without resizing layout */
+  .realistic-service-visual {
+    background: #10131a;
+  }
+
+  .realistic-service-visual > img,
+  .digital-service-media > img,
+  .service-visual-block > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    opacity: 0.72;
+    filter: saturate(0.94) contrast(1.02);
+  }
+
+  .service-photo-grade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(4, 7, 12, 0.38), rgba(4, 7, 12, 0.08));
+    pointer-events: none;
+  }
+
+  .service-photo-label {
+    z-index: 2;
+  }
+
 </style>

@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout>
+<Layout title="Contact AviT Solutions" description="Start an AV, IT, website, mobile app, custom software, control-system or automation project with AviT Solutions." canonical="/contact" image="/og-image.svg">
   <section class="contact-hero">
     <div class="contact-orbit" aria-hidden="true">
       <span class="orbit-ring ring-one"></span>
@@ -21,7 +21,7 @@ import Layout from '../layouts/Layout.astro';
           Tell us what you want to <span>control, connect, automate or launch.</span>
         </h1>
         <p class="contact-lede" data-text-key="contact-page-subtitle">
-          Use the project intake below to brief AVIT Solutions properly. It is built for AV rooms, websites, mobile apps, custom software, automation systems and hybrid AV + IT projects.
+          Use the project intake below to brief AviT Solutions properly. It is built for AV rooms, websites, mobile apps, custom software, automation systems and hybrid AV + IT projects.
         </p>
         <div class="contact-hero-actions">
           <a href="#project-intake" class="btn btn-primary">Build My Brief</a>
@@ -30,6 +30,7 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <div class="response-panel glass">
+        <div class="response-photo"><img src="/portfolio-media/avit-portfolio-card.webp" alt="Modern meeting room project planning visual" loading="lazy" /></div>
         <span class="panel-kicker">Response Flow</span>
         <h2>From inquiry to clear scope.</h2>
         <div class="response-timeline">
@@ -208,7 +209,7 @@ import Layout from '../layouts/Layout.astro';
           <div class="form-success" id="formSuccess">
             <span class="success-mark">✓</span>
             <h3>Project brief received.</h3>
-            <p>Thank you. AVIT Solutions will review your inquiry and reply with the next step.</p>
+            <p>Thank you. AviT Solutions will review your inquiry and reply with the next step.</p>
             <a class="btn btn-secondary" href="/projects">View Case Studies</a>
           </div>
         </div>
@@ -829,6 +830,23 @@ import Layout from '../layouts/Layout.astro';
       min-height: 46px;
     }
   }
+
+  .response-photo {
+    height: 170px;
+    border-radius: 22px;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+    border: 1px solid rgba(255,255,255,.10);
+    background: #070a10;
+  }
+
+  .response-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(.96) contrast(.98) brightness(1.02);
+  }
+
 </style>
 
 <script>
@@ -942,7 +960,7 @@ import Layout from '../layouts/Layout.astro';
       btn.disabled = false;
       btn.innerHTML = original;
       formStatus.textContent = 'Email Directly';
-      const mailSubject = encodeURIComponent('AVIT Solutions Project Inquiry');
+      const mailSubject = encodeURIComponent('AviT Solutions Project Inquiry');
       const mailBody = encodeURIComponent(`Project Brief:\n${briefSummary.value}\n\nPlease describe your project here.`);
       window.location.href = `mailto:info@avitsolutions.tech?subject=${mailSubject}&body=${mailBody}`;
     }

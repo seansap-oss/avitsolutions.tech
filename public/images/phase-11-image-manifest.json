@@ -1,0 +1,258 @@
+[
+  {
+    "file": "images/services/service-av-business.webp",
+    "size_mb": 2.57
+  },
+  {
+    "file": "images/services/service-av-education.webp",
+    "size_mb": 2.24
+  },
+  {
+    "file": "images/services/service-av-entertainment.webp",
+    "size_mb": 2.59
+  },
+  {
+    "file": "images/services/service-av-government.webp",
+    "size_mb": 2.67
+  },
+  {
+    "file": "images/services/service-av-healthcare.webp",
+    "size_mb": 2.17
+  },
+  {
+    "file": "images/services/service-av-hospitality.webp",
+    "size_mb": 2.54
+  },
+  {
+    "file": "images/services/service-it-ai-ecommerce.webp",
+    "size_mb": 2.2
+  },
+  {
+    "file": "images/services/service-it-digital-signage.webp",
+    "size_mb": 2.27
+  },
+  {
+    "file": "images/services/service-it-erp.webp",
+    "size_mb": 2.21
+  },
+  {
+    "file": "images/services/service-it-hybrid-software.webp",
+    "size_mb": 2.57
+  },
+  {
+    "file": "images/services/service-it-mobile-apps.webp",
+    "size_mb": 2.22
+  },
+  {
+    "file": "images/services/service-it-warehouse.webp",
+    "size_mb": 2.22
+  },
+  {
+    "file": "portfolio-media/ambi-admin.webp",
+    "size_mb": 2.05
+  },
+  {
+    "file": "portfolio-media/ambi-card.webp",
+    "size_mb": 2.04
+  },
+  {
+    "file": "portfolio-media/ambi-hero.webp",
+    "size_mb": 2.04
+  },
+  {
+    "file": "portfolio-media/ambi-mobile.webp",
+    "size_mb": 1.69
+  },
+  {
+    "file": "portfolio-media/avit-portfolio-admin.webp",
+    "size_mb": 2.05
+  },
+  {
+    "file": "portfolio-media/avit-portfolio-card.webp",
+    "size_mb": 2.04
+  },
+  {
+    "file": "portfolio-media/avit-portfolio-hero.webp",
+    "size_mb": 2.05
+  },
+  {
+    "file": "portfolio-media/avit-portfolio-mobile.webp",
+    "size_mb": 2.04
+  },
+  {
+    "file": "portfolio-media/brews-bites-admin.webp",
+    "size_mb": 2.04
+  },
+  {
+    "file": "portfolio-media/brews-bites-card.webp",
+    "size_mb": 2.03
+  },
+  {
+    "file": "portfolio-media/brews-bites-hero.webp",
+    "size_mb": 2.02
+  },
+  {
+    "file": "portfolio-media/brews-bites-mobile.webp",
+    "size_mb": 1.68
+  },
+  {
+    "file": "portfolio-media/buzztown-admin.webp",
+    "size_mb": 2.05
+  },
+  {
+    "file": "portfolio-media/buzztown-card.webp",
+    "size_mb": 2.02
+  },
+  {
+    "file": "portfolio-media/buzztown-hero.webp",
+    "size_mb": 2.03
+  },
+  {
+    "file": "portfolio-media/buzztown-mobile.webp",
+    "size_mb": 1.68
+  },
+  {
+    "file": "portfolio-media/clinic-system-admin.webp",
+    "size_mb": 1.64
+  },
+  {
+    "file": "portfolio-media/clinic-system-card.webp",
+    "size_mb": 1.65
+  },
+  {
+    "file": "portfolio-media/clinic-system-hero.webp",
+    "size_mb": 1.65
+  },
+  {
+    "file": "portfolio-media/clinic-system-mobile.webp",
+    "size_mb": 1.7
+  },
+  {
+    "file": "portfolio-media/commandtrack-admin.webp",
+    "size_mb": 2.13
+  },
+  {
+    "file": "portfolio-media/commandtrack-card.webp",
+    "size_mb": 2.13
+  },
+  {
+    "file": "portfolio-media/commandtrack-hero.webp",
+    "size_mb": 2.14
+  },
+  {
+    "file": "portfolio-media/commandtrack-mobile.webp",
+    "size_mb": 1.68
+  },
+  {
+    "file": "portfolio-media/corporate-hq-admin.webp",
+    "size_mb": 1.92
+  },
+  {
+    "file": "portfolio-media/corporate-hq-card.webp",
+    "size_mb": 1.97
+  },
+  {
+    "file": "portfolio-media/corporate-hq-hero.webp",
+    "size_mb": 2.04
+  },
+  {
+    "file": "portfolio-media/corporate-hq-mobile.webp",
+    "size_mb": 2.04
+  },
+  {
+    "file": "portfolio-media/gaaiso-shop-admin.webp",
+    "size_mb": 2.06
+  },
+  {
+    "file": "portfolio-media/gaaiso-shop-card.webp",
+    "size_mb": 2.06
+  },
+  {
+    "file": "portfolio-media/gaaiso-shop-hero.webp",
+    "size_mb": 2.06
+  },
+  {
+    "file": "portfolio-media/gaaiso-shop-mobile.webp",
+    "size_mb": 1.7
+  },
+  {
+    "file": "portfolio-media/gov-building-admin.webp",
+    "size_mb": 2.09
+  },
+  {
+    "file": "portfolio-media/gov-building-card.webp",
+    "size_mb": 2.0
+  },
+  {
+    "file": "portfolio-media/gov-building-hero.webp",
+    "size_mb": 2.11
+  },
+  {
+    "file": "portfolio-media/gov-building-mobile.webp",
+    "size_mb": 1.57
+  },
+  {
+    "file": "portfolio-media/lecture-theatre-kit-admin.webp",
+    "size_mb": 1.7
+  },
+  {
+    "file": "portfolio-media/lecture-theatre-kit-card.webp",
+    "size_mb": 1.72
+  },
+  {
+    "file": "portfolio-media/lecture-theatre-kit-hero.webp",
+    "size_mb": 1.71
+  },
+  {
+    "file": "portfolio-media/lecture-theatre-kit-mobile.webp",
+    "size_mb": 1.71
+  },
+  {
+    "file": "portfolio-media/smart-home-admin.webp",
+    "size_mb": 2.0
+  },
+  {
+    "file": "portfolio-media/smart-home-card.webp",
+    "size_mb": 2.06
+  },
+  {
+    "file": "portfolio-media/smart-home-hero.webp",
+    "size_mb": 1.93
+  },
+  {
+    "file": "portfolio-media/smart-home-mobile.webp",
+    "size_mb": 1.92
+  },
+  {
+    "file": "portfolio-media/syncstation-admin.webp",
+    "size_mb": 2.05
+  },
+  {
+    "file": "portfolio-media/syncstation-card.webp",
+    "size_mb": 2.05
+  },
+  {
+    "file": "portfolio-media/syncstation-hero.webp",
+    "size_mb": 2.04
+  },
+  {
+    "file": "portfolio-media/syncstation-mobile.webp",
+    "size_mb": 2.06
+  },
+  {
+    "file": "portfolio-media/wwii-museum-admin.webp",
+    "size_mb": 2.07
+  },
+  {
+    "file": "portfolio-media/wwii-museum-card.webp",
+    "size_mb": 2.06
+  },
+  {
+    "file": "portfolio-media/wwii-museum-hero.webp",
+    "size_mb": 2.1
+  },
+  {
+    "file": "portfolio-media/wwii-museum-mobile.webp",
+    "size_mb": 2.09
+  }
+]

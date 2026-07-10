@@ -9,6 +9,7 @@ const avServices = [
     title: 'Boardrooms, meeting rooms, and executive AV that people can actually use.',
     summary: 'Clean communication spaces with display, camera, audio, switching, control, and support designed together from day one.',
     visual: 'Boardroom',
+    image: '/service-media/boardroom.webp',
     accent: 'blue',
     for: ['Corporate offices', 'Meeting rooms', 'Training rooms', 'Executive suites'],
     solves: ['Confusing remotes and cables', 'Poor microphone pickup', 'Unreliable video calls', 'Hard-to-support room systems'],
@@ -20,6 +21,7 @@ const avServices = [
     title: 'Reliable AV and control rooms for serious operational environments.',
     summary: 'Systems designed around uptime, documentation, clear operation, and long-term maintainability for public and mission-focused spaces.',
     visual: 'Control Room',
+    image: '/service-media/control-room.webp',
     accent: 'cyan',
     for: ['Council chambers', 'Command rooms', 'Briefing rooms', 'Public facilities'],
     solves: ['Complex multi-source routing', 'Operator confusion', 'Poor visibility', 'Weak documentation'],
@@ -31,6 +33,7 @@ const avServices = [
     title: 'Smart classrooms and lecture theatres built for teachers first.',
     summary: 'Teaching spaces that combine projection, display, audio, lecture capture, simple control, and remote learning support.',
     visual: 'Smart Classroom',
+    image: '/service-media/classroom.webp',
     accent: 'purple',
     for: ['Schools', 'Colleges', 'Universities', 'Training centres'],
     solves: ['Teachers wasting class time', 'Bad classroom audio', 'Messy source selection', 'Hard hybrid teaching'],
@@ -42,6 +45,7 @@ const avServices = [
     title: 'Clear communication and display systems for healthcare spaces.',
     summary: 'AV for consultation, training, waiting areas, collaboration rooms, and medical communication environments where reliability matters.',
     visual: 'Clinical AV',
+    image: '/service-media/healthcare.webp',
     accent: 'green',
     for: ['Clinics', 'Hospitals', 'Training labs', 'Waiting areas'],
     solves: ['Poor teleconsultation quality', 'Noisy rooms', 'Weak patient information display', 'Difficult staff communication'],
@@ -53,6 +57,7 @@ const avServices = [
     title: 'Immersive screens, sound, lighting, and show-control experiences.',
     summary: 'High-impact spaces for stages, auditoriums, museums, events, restaurants, and venues that need atmosphere and reliability.',
     visual: 'Immersive Venue',
+    image: '/service-media/home-theater.webp',
     accent: 'pink',
     for: ['Auditoriums', 'Museums', 'Event venues', 'Performance spaces'],
     solves: ['Flat presentation impact', 'Weak sound coverage', 'Hard show operation', 'Unplanned signal flow'],
@@ -64,6 +69,7 @@ const avServices = [
     title: 'Premium AV, control, and automation for guest experiences.',
     summary: 'Elegant technology for hotels, cafés, restaurants, premium homes, and retail spaces where the system should feel invisible until needed.',
     visual: 'Guest Experience',
+    image: '/service-media/hospitality-lounge.webp',
     accent: 'gold',
     for: ['Hotels', 'Restaurants', 'Retail spaces', 'Premium homes'],
     solves: ['Inconsistent guest experience', 'Manual switching', 'Poor background music zoning', 'Unreliable signage'],
@@ -79,7 +85,7 @@ const workflow = [
 ];
 ---
 
-<Layout>
+<Layout title="AV Solutions" description="Professional AV integration for boardrooms, video conferencing, smart classrooms, lecture theatres, control rooms, digital signage, audio, displays and automation." canonical="/av-solutions" image="/og-image.svg">
   <section class="services-hero av-hero">
     <div class="services-bg-grid"></div>
     <div class="container services-hero-inner">
@@ -101,7 +107,7 @@ const workflow = [
         <div class="section-label">Service System</div>
         <h2 class="section-title">Not just equipment. Complete room logic.</h2>
         <p class="section-subtitle">
-          A professional AV system succeeds when the person using the room does not need to understand the technology behind it. That is the design standard for every AVIT Solutions project.
+          A professional AV system succeeds when the person using the room does not need to understand the technology behind it. That is the design standard for every AviT Solutions project.
         </p>
       </div>
       <div class="command-panel">
@@ -129,15 +135,13 @@ const workflow = [
       <div class="service-stack">
         {avServices.map((service) => (
           <article id={service.id} class={`service-system-card ${service.accent}`}>
-            <div class="service-visual-block">
-              <div class="visual-grid"></div>
-              <div class="screen-frame">
+            <div class="service-visual-block realistic-service-visual">
+              <img src={service.image} alt={`${service.eyebrow} AV environment`} loading="lazy" />
+              <div class="service-photo-grade"></div>
+              <div class="screen-frame service-photo-label">
                 <span>{service.visual}</span>
                 <div class="screen-lines"><i></i><i></i><i></i></div>
               </div>
-              <div class="floating-chip chip-one">AV</div>
-              <div class="floating-chip chip-two">CTRL</div>
-              <div class="floating-chip chip-three">IP</div>
             </div>
             <div class="service-body">
               <span class="service-eyebrow">{service.eyebrow}</span>
@@ -472,4 +476,131 @@ const workflow = [
     .panel-row { flex-direction: column; }
     .panel-row strong { text-align: left; }
   }
+
+  .realistic-service-visual {
+    isolation: isolate;
+  }
+
+  .realistic-service-visual img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(.96) contrast(.98) brightness(1.02);
+    transform: scale(1.02);
+  }
+
+  .service-photo-grade {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(5,8,14,.06), rgba(5,8,14,.82));
+  }
+
+  .service-photo-label {
+    z-index: 2;
+    background: rgba(6, 10, 18, .58);
+    backdrop-filter: blur(12px);
+  }
+
+
+
+  /* Phase 14 controlled image path fix: show installed images without resizing layout */
+  .realistic-service-visual {
+    background: #10131a;
+  }
+
+  .realistic-service-visual > img,
+  .digital-service-media > img,
+  .service-visual-block > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    opacity: 0.72;
+    filter: saturate(0.94) contrast(1.02);
+  }
+
+  .service-photo-grade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(4, 7, 12, 0.38), rgba(4, 7, 12, 0.08));
+    pointer-events: none;
+  }
+
+  .service-photo-label {
+    z-index: 2;
+  }
+
+
+
+  /* Phase 15 controlled fix: AV image label is a small badge, not a large overlay */
+  .service-system-card .realistic-service-visual > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    opacity: 0.92;
+    filter: saturate(0.98) contrast(1.02) brightness(1.02);
+    transform: none;
+  }
+
+  .service-system-card .service-photo-grade {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(180deg, rgba(5, 8, 14, 0.02) 0%, rgba(5, 8, 14, 0.10) 58%, rgba(5, 8, 14, 0.48) 100%);
+    pointer-events: none;
+  }
+
+  .service-system-card .service-photo-label {
+    position: absolute;
+    inset: auto 18px 18px 18px;
+    width: auto;
+    min-height: 0;
+    max-height: 30%;
+    padding: 0.9rem 1rem;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    place-items: unset;
+    background: rgba(6, 10, 18, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.24);
+    z-index: 2;
+  }
+
+  .service-system-card .service-photo-label span {
+    font-size: clamp(1.05rem, 1.8vw, 1.55rem);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    text-align: left;
+    opacity: 1;
+  }
+
+  .service-system-card .service-photo-label .screen-lines {
+    display: none;
+  }
+
+  @media (max-width: 760px) {
+    .service-system-card .service-photo-label {
+      inset: auto 14px 14px 14px;
+      max-height: 30%;
+      padding: 0.75rem 0.85rem;
+      border-radius: 14px;
+    }
+
+    .service-system-card .service-photo-label span {
+      font-size: 1rem;
+    }
+  }
+
 </style>

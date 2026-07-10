@@ -1,12 +1,13 @@
 ---
-
-
 ---
 <header class="nav-wrapper" id="navbar">
   <div class="container nav-inner">
-    <a href="/" class="logo" aria-label="AvITSolutions Home">
+    <a href="/" class="logo" aria-label="AviT Solutions">
       <img src="/logo-mark.svg" alt="" width="36" height="36" class="logo-mark-img" />
-      <span class="logo-text"><span class="logo-a">A</span><span class="logo-v">v</span><span class="logo-i">I</span><span class="logo-t">T</span><span class="logo-accent">Solutions</span></span>
+      <span class="logo-text" aria-hidden="true">
+        <span class="logo-avit">Av<span class="logo-i">i</span>T</span>
+        <span class="logo-solutions">Solutions</span>
+      </span>
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="/" class="nav-link">Home</a>
@@ -657,6 +658,26 @@
     .nav-dropdown-menu {
       transition: none !important;
     }
+  }
+
+  .logo-text {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.36rem;
+    white-space: nowrap;
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    line-height: 1;
+  }
+
+  .logo-avit { color: #ffffff; }
+  .logo-solutions { color: #62d7ff; }
+
+  .logo-i {
+    color: #ff3545;
+    position: relative;
+    display: inline-block;
+    margin-inline: 0.01em;
   }
 
 </style>

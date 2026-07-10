@@ -13,7 +13,28 @@ const mainMedia = mediaItems[0];
 const supportMedia = mediaItems.slice(1);
 ---
 
-<Layout>
+<Layout
+  title={`${project.title} Case Study`}
+  description={project.subtitle}
+  canonical={`/projects/${project.slug ?? project.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`}
+  image={mainMedia.src || '/og-image.svg'}
+  type="article"
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: project.title,
+    headline: `${project.title} Case Study`,
+    description: project.subtitle,
+    image: mainMedia.src ? `https://www.avitsolutions.tech${mainMedia.src}` : 'https://www.avitsolutions.tech/og-image.svg',
+    datePublished: `${project.year}-01-01`,
+    creator: {
+      '@type': 'Organization',
+      name: 'AviT Solutions',
+      url: 'https://www.avitsolutions.tech',
+    },
+    about: project.category,
+  }}
+>
   <div class="case-wrap" style={`--case-bg: ${project.gradient}; --case-accent: ${project.accent}`}>
   <section class="case-hero">
     <div class="case-grid-bg" aria-hidden="true"></div>
@@ -35,7 +56,7 @@ const supportMedia = mediaItems.slice(1);
         <div class="media-screen">
           <img src={mainMedia.src} alt={`${project.title} ${mainMedia.label}`} loading="eager" />
           <div class="media-glass">
-            <span>Portfolio media system</span>
+            <span>Project visual</span>
             <strong>{project.title}</strong>
           </div>
         </div>
@@ -121,9 +142,9 @@ const supportMedia = mediaItems.slice(1);
       <div class="gallery-head">
         <div>
           <div class="section-label">Portfolio Media</div>
-          <h2>Visual evidence system ready for real screenshots and AV photos.</h2>
+          <h2>Project visuals installed for every case study.</h2>
         </div>
-        <p>Phase Seven adds structured media slots to every case study. The current visuals are clean branded placeholders, ready to be replaced with project screenshots, installation photos, wiring diagrams, UI mockups, and mobile captures.</p>
+        <p>Each case study now includes installed local visuals, so the portfolio never looks empty while real screenshots and installation photos can be added later.</p>
       </div>
       <div class="gallery-grid media-gallery-grid">
         <figure class="gallery-card media-card large">
@@ -138,8 +159,8 @@ const supportMedia = mediaItems.slice(1);
         ))}
       </div>
       <div class="media-note">
-        <strong>Next replacement rule:</strong>
-        <span>Use real screenshots at 1400×900 for hero media and 900×700 for support media. Keep names consistent inside <code>public/portfolio-media</code> so the case-study data remains simple.</span>
+        <strong>Production note:</strong>
+        <span>All media is stored locally in <code>public/portfolio-media</code>. All production media for this portfolio build is stored locally and versioned with the website.</span>
       </div>
     </div>
   </section>
@@ -147,7 +168,7 @@ const supportMedia = mediaItems.slice(1);
   <CTASection
     title="Ready to Turn This Into a Full Project Page?"
     subtitle="Send screenshots, photos, or notes, and we can turn this case-study structure into a polished portfolio presentation."
-    ctaText="Contact AVIT Solutions"
+    ctaText="Contact AviT Solutions"
     ctaLink="/contact"
   />
   </div>
@@ -368,7 +389,7 @@ const supportMedia = mediaItems.slice(1);
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 45%, rgba(0,0,0,.56));
+    background: linear-gradient(180deg, transparent 58%, rgba(0,0,0,.42));
     pointer-events: none;
   }
 
@@ -384,7 +405,7 @@ const supportMedia = mediaItems.slice(1);
     align-items: center;
     padding: .85rem 1rem;
     border-radius: 22px;
-    background: rgba(0,0,0,.42);
+    background: rgba(0,0,0,.36);
     border: 1px solid rgba(255,255,255,.14);
     backdrop-filter: blur(18px);
   }
@@ -552,7 +573,7 @@ const supportMedia = mediaItems.slice(1);
     gap: .35rem;
     padding: .85rem .95rem;
     border-radius: 20px;
-    background: rgba(0,0,0,.48);
+    background: rgba(0,0,0,.38);
     border: 1px solid rgba(255,255,255,.12);
     backdrop-filter: blur(18px);
   }

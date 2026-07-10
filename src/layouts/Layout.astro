@@ -3,6 +3,77 @@ import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import MotionSystem from '../components/MotionSystem.astro';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+  jsonLd?: Record<string, any> | Record<string, any>[];
+}
+
+const siteUrl = 'https://www.avitsolutions.tech';
+const defaultTitle = 'AviT Solutions — AV Integration & IT Software Development';
+const defaultDescription = 'AviT Solutions delivers audiovisual integration, control systems, IT networking, custom software, websites, mobile apps, and automation solutions from design to completion.';
+
+const {
+  title = defaultTitle,
+  description = defaultDescription,
+  canonical,
+  image = '/og-image.svg',
+  type = 'website',
+  noindex = false,
+  jsonLd = [],
+} = Astro.props;
+
+const pageTitle = title.includes('AviT Solutions') ? title : `${title} | AviT Solutions`;
+const pageDescription = description || defaultDescription;
+const canonicalUrl = canonical
+  ? new URL(canonical, siteUrl).toString()
+  : new URL(Astro.url.pathname, siteUrl).toString();
+const imageUrl = new URL(image, siteUrl).toString();
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'AviT Solutions',
+  url: siteUrl,
+  logo: `${siteUrl}/logo-mark.svg`,
+  image: imageUrl,
+  description: defaultDescription,
+  areaServed: ['India', 'Manipur', 'North East India', 'Remote'],
+  knowsAbout: [
+    'Audiovisual integration',
+    'Control systems',
+    'Video conferencing',
+    'Smart classrooms',
+    'Digital signage',
+    'AV over IP networking',
+    'Custom software development',
+    'Website design',
+    'Mobile app development',
+    'Automation systems',
+  ],
+  sameAs: [siteUrl],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'AviT Solutions',
+  url: siteUrl,
+  description: defaultDescription,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${siteUrl}/projects?search={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
+};
+
+const extraSchemas = Array.isArray(jsonLd) ? jsonLd : [jsonLd];
+const schemaPayload = JSON.stringify([organizationSchema, websiteSchema, ...extraSchemas].filter(Boolean)).replace(/</g, '\\u003c');
 ---
 
 <!DOCTYPE html>
@@ -10,12 +81,37 @@ import MotionSystem from '../components/MotionSystem.astro';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="theme-color" content="#03060b" />
+    <meta name="description" content={pageDescription} />
+    <meta name="author" content="AviT Solutions" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <title>{pageTitle}</title>
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="description" content="AVIT Solutions — Audiovisual Integration & IT Software Development. From design to completion, we deliver AV solutions for corporate, residential, and government projects." />
-    <meta name="theme-color" content="#0a0b0c" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="apple-touch-icon" href="/logo-mark.svg" />
+
+    <meta property="og:site_name" content="AviT Solutions" />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:alt" content="AviT Solutions — AV + IT integration and custom software" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={imageUrl} />
+
+    <script type="application/ld+json" set:html={schemaPayload}></script>
     <script is:inline>
       (function() {
         var saved = localStorage.getItem('avit-theme');
@@ -76,7 +172,6 @@ import MotionSystem from '../components/MotionSystem.astro';
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <title>AVIT Solutions — AV Integration & IT Software Development</title>
   </head>
   <body>
     <Nav />

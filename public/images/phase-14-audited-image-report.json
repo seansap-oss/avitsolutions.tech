@@ -1,0 +1,78 @@
+{
+  "version": "Phase 14 Audited Image Fix",
+  "status": "ready_for_local_testing",
+  "changed_files": [
+    "src/pages/av-solutions.astro",
+    "src/pages/it-solutions.astro",
+    "public/logo-mark.svg",
+    "public/favicon.svg",
+    "public/service-media/*.webp",
+    "public/images/phase-14-audited-image-report.json"
+  ],
+  "image_paths_checked": true,
+  "missing_paths_in_patch_context": [],
+  "images_installed": [
+    {
+      "image": "/service-media/boardroom.webp",
+      "size_kb": 93.2,
+      "dimensions": "1448x1086",
+      "format": "WEBP"
+    },
+    {
+      "image": "/service-media/control-room.webp",
+      "size_kb": 84.0,
+      "dimensions": "1448x1086",
+      "format": "WEBP"
+    },
+    {
+      "image": "/service-media/classroom.webp",
+      "size_kb": 76.6,
+      "dimensions": "1448x1086",
+      "format": "WEBP"
+    },
+    {
+      "image": "/service-media/healthcare.webp",
+      "size_kb": 66.8,
+      "dimensions": "1448x1086",
+      "format": "WEBP"
+    },
+    {
+      "image": "/service-media/home-theater.webp",
+      "size_kb": 73.0,
+      "dimensions": "1448x1086",
+      "format": "WEBP"
+    },
+    {
+      "image": "/service-media/hospitality-lounge.webp",
+      "size_kb": 100.7,
+      "dimensions": "1448x1086",
+      "format": "WEBP"
+    },
+    {
+      "image": "/service-media/mobile-app.webp",
+      "size_kb": 37.1,
+      "dimensions": "1448x1086",
+      "format": "WEBP"
+    },
+    {
+      "image": "/service-media/hybrid-software.webp",
+      "size_kb": 64.4,
+      "dimensions": "1448x1086",
+      "format": "WEBP"
+    },
+    {
+      "image": "/service-media/ecommerce-signage.webp",
+      "size_kb": 87.6,
+      "dimensions": "1448x1086",
+      "format": "WEBP"
+    },
+    {
+      "image": "/service-media/warehouse-software.webp",
+      "size_kb": 71.2,
+      "dimensions": "1448x1086",
+      "format": "WEBP"
+    }
+  ],
+  "layout_scope": "Only image paths and local image visibility CSS inside AV/IT pages. No header, footer, menu, route, or animation logic changes.",
+  "desktop_mobile_note": "CSS keeps existing card dimensions and uses object-fit: cover; local browser test still required after install."
+}

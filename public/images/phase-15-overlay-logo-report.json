@@ -1,0 +1,23 @@
+{
+  "version": "Phase 15 AV Overlay + AviT Header i Fix",
+  "files_changed": [
+    "src/pages/av-solutions.astro",
+    "src/components/Nav.astro"
+  ],
+  "image_overlay_fix": "Scoped CSS override makes the AV image title a small bottom badge with max-height 30%; image remains object-fit: cover and visible.",
+  "header_fix": "Removed the CSS pseudo-element dot from .logo-i::before. Header uses the real English letter i only: AviT Solutions.",
+  "image_paths_checked_in_av_page": {
+    "count": 6,
+    "missing": []
+  },
+  "not_touched": [
+    "routes",
+    "footer",
+    "menu logic",
+    "animation logic",
+    "project pages",
+    "IT Solutions page",
+    "image compression",
+    "image files"
+  ]
+}

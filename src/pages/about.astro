@@ -15,7 +15,7 @@ const timeline = [
   { year: '2012+', title: 'Control systems', copy: 'Manufacturer training and hands-on programming across AMX, Crestron, Extron, touch panels, source routing, and room automation.' },
   { year: '2017+', title: 'Networked collaboration', copy: 'AV/IT convergence: Cisco-style infrastructure thinking, video conferencing, DSP, multi-room support, and campus-scale reliability.' },
   { year: '2023+', title: 'Software product layer', copy: 'Full-stack websites, mobile apps, admin panels, ERP-style workflows, AI-assisted tooling, and custom interfaces for real businesses.' },
-  { year: 'Now', title: 'AVIT Solutions', copy: 'A combined AV, IT, UI/UX, and software studio built for clients who want one partner from hardware to interface.' },
+  { year: 'Now', title: 'AviT Solutions', copy: 'A combined AV, IT, UI/UX, and software studio built for clients who want one partner from hardware to interface.' },
 ];
 
 const credentials = [
@@ -48,19 +48,19 @@ const principles = [
 ];
 ---
 
-<Layout>
+<Layout title="About the Founder" description="Meet the AviT Solutions founder: 15+ years across AV systems, control programming, networked AV, UI/UX design, websites, apps and custom software delivery." canonical="/about" image="/og-image.svg">
   <section class="founder-hero section">
     <div class="founder-orbit founder-orbit-a"></div>
     <div class="founder-orbit founder-orbit-b"></div>
 
     <div class="container founder-hero-grid">
       <div class="founder-copy reveal-up">
-        <div class="section-label">About AVIT Solutions</div>
+        <div class="section-label">About AviT Solutions</div>
         <h1 class="founder-title" data-text-key="about-page-title">
           Built by an AV engineer who also designs the interface.
         </h1>
         <p class="founder-lead" data-text-key="about-page-subtitle">
-          AVIT Solutions brings together audiovisual engineering, networking, UI/UX design, and custom software development — so the room, the rack, the network, and the screen interface feel like one complete system.
+          AviT Solutions brings together audiovisual engineering, networking, UI/UX design, and custom software development — so the room, the rack, the network, and the screen interface feel like one complete system.
         </p>
         <div class="founder-actions">
           <a class="btn btn-primary magnetic" href="/projects">View Case Studies</a>
@@ -69,9 +69,11 @@ const principles = [
       </div>
 
       <div class="founder-console reveal-up" aria-label="Founder capability console">
+        <img class="founder-console-photo" src="/portfolio-media/avit-portfolio-admin.webp" alt="AviT realistic engineering workspace" loading="lazy" />
+        <div class="founder-console-grade"></div>
         <div class="console-topbar">
           <span></span><span></span><span></span>
-          <strong>AVIT_ENGINEERING_PROFILE</strong>
+          <strong>AviT_ENGINEERING_PROFILE</strong>
         </div>
         <div class="console-stage">
           <div class="console-ring"></div>
@@ -113,7 +115,7 @@ const principles = [
         <div class="section-label">Founder Authority</div>
         <h2 class="section-title story-title">Not a normal portfolio. A systems mindset.</h2>
         <p class="story-intro">
-          Most AV companies stop at hardware. Most web studios stop at screens. AVIT Solutions is built in the gap between both.
+          Most AV companies stop at hardware. Most web studios stop at screens. AviT Solutions is built in the gap between both.
         </p>
       </div>
       <div class="story-body reveal-up">
@@ -124,10 +126,10 @@ const principles = [
           That background now extends into <strong>custom software and interface design</strong>: websites, mobile apps, admin portals, business dashboards, community platforms, and workflow tools. The goal is not to make technology look complicated. The goal is to make complex systems feel calm, reliable, and easy to control.
         </p>
         <p>
-          AVIT Solutions can speak to the equipment side and the software side in the same conversation: microphones, DSP, cameras, displays, control processors, network design, user interface, admin workflow, and the final client experience.
+          AviT Solutions can speak to the equipment side and the software side in the same conversation: microphones, DSP, cameras, displays, control processors, network design, user interface, admin workflow, and the final client experience.
         </p>
         <div class="safe-note">
-          <strong>Experience note:</strong> Some enterprise and public-sector exposure was delivered through previous employers and integration partners. AVIT Solutions presents this as professional experience, not as direct client endorsement or direct brand ownership.
+          <strong>Experience note:</strong> Some enterprise and public-sector exposure was delivered through previous employers and integration partners. AviT Solutions presents this as professional experience, not as direct client endorsement or direct brand ownership.
         </div>
       </div>
     </div>
@@ -137,7 +139,7 @@ const principles = [
     <div class="container">
       <div class="section-label">Capability Stack</div>
       <h2 class="section-title">Four disciplines, one delivery language.</h2>
-      <p class="section-subtitle">This is what makes AVIT different from a standard website studio or a standard AV contractor.</p>
+      <p class="section-subtitle">This is what makes AviT different from a standard website studio or a standard AV contractor.</p>
       <div class="discipline-grid reveal-up">
         {disciplines.map((item) => (
           <article class="discipline-card tilt-card">
@@ -193,7 +195,7 @@ const principles = [
   <section class="section principles-section">
     <div class="container">
       <div class="section-label">Working Principles</div>
-      <h2 class="section-title">How AVIT Solutions thinks.</h2>
+      <h2 class="section-title">How AviT Solutions thinks.</h2>
       <div class="principles-grid reveal-up">
         {principles.map((item) => (
           <article class="principle-card tilt-card">
@@ -286,6 +288,7 @@ const principles = [
   }
 
   .founder-console {
+    position: relative;
     border: 1px solid rgba(255,255,255,0.1);
     background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.025));
     border-radius: 30px;
@@ -645,4 +648,29 @@ const principles = [
     .timeline-item { grid-template-columns: 1fr; gap: 0.25rem; }
     .timeline-year { padding-top: 0; }
   }
+
+  .founder-console-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(.94) contrast(.98) brightness(.96);
+    z-index: 0;
+  }
+
+  .founder-console-grade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(4,8,14,.22), rgba(4,8,14,.82));
+    z-index: 1;
+  }
+
+  .founder-console .console-topbar,
+  .founder-console .console-stage,
+  .founder-console .console-metrics {
+    position: relative;
+    z-index: 2;
+  }
+
 </style>

@@ -1,0 +1,1 @@
+Emergency restore fixes broken Nav. Keeps compressed images. Applies AviT Solutions wordmark with red lowercase i and dot.

@@ -13,10 +13,10 @@ const serviceTiles = [
 ];
 
 const projectCards = [
-  { type: 'WEBSITE + BRAND', title: 'AVIT Solutions Portfolio', meta: 'Cinematic portfolio · Astro · premium UI/UX', image: '/portfolio-media/avit-portfolio-hero.svg', href: '/projects' },
-  { type: 'NEWS PLATFORM', title: 'BUZZTOWN Community', meta: 'Local news · chat UX · classifieds · admin tools', image: '/portfolio-media/buzztown-hero.svg', href: '/projects/buzztown' },
-  { type: 'BUSINESS APP', title: 'AMBI Member Platform', meta: 'Directory · calendar · notice board · mobile direction', image: '/portfolio-media/ambi-hero.svg', href: '/projects/ambi' },
-  { type: 'SOFTWARE SYSTEM', title: 'Clinic + Business Tools', meta: 'LAN software · dashboards · workflow automation', image: '/portfolio-media/clinic-system-hero.svg', href: '/projects/clinic-system' },
+  { type: 'WEBSITE + BRAND', title: 'AviT Solutions Portfolio', meta: 'Cinematic portfolio · Astro · premium UI/UX', image: '/portfolio-media/avit-portfolio-hero.webp', href: '/projects' },
+  { type: 'NEWS PLATFORM', title: 'BUZZTOWN Community', meta: 'Local news · chat UX · classifieds · admin tools', image: '/portfolio-media/buzztown-hero.webp', href: '/projects/buzztown' },
+  { type: 'BUSINESS APP', title: 'AMBI Member Platform', meta: 'Directory · calendar · notice board · mobile direction', image: '/portfolio-media/ambi-hero.webp', href: '/projects/ambi' },
+  { type: 'SOFTWARE SYSTEM', title: 'Clinic + Business Tools', meta: 'LAN software · dashboards · workflow automation', image: '/portfolio-media/clinic-system-hero.webp', href: '/projects/clinic-system' },
 ];
 
 const credentials = [
@@ -31,7 +31,7 @@ const credentials = [
 ];
 ---
 
-<Layout>
+<Layout title="AviT Solutions — AV Integration & IT Software Development" description="End-to-end audiovisual integration, IT networking, control systems, websites, mobile apps, custom software and automation solutions from design to completion." canonical="/" image="/og-image.svg">
   <Hero
     title1="We Design."
     title2="We Integrate."
@@ -43,7 +43,7 @@ const credentials = [
     secondaryLink="/projects"
   />
 
-  <section class="signature-strip" aria-label="AVIT strengths">
+  <section class="signature-strip" aria-label="AviT strengths">
     <div class="container signature-grid">
       <div class="signature-card main-card">
         <span>Phase One Direction</span>
@@ -64,7 +64,7 @@ const credentials = [
         <div class="section-label">What We Do</div>
         <h2 class="section-title">Integrated Solutions. <span>Limitless Possibilities.</span></h2>
         <p class="section-subtitle">
-          AVIT Solutions sits between professional AV engineering and custom software development, so your spaces and digital tools work together instead of feeling separate.
+          AviT Solutions sits between professional AV engineering and custom software development, so your spaces and digital tools work together instead of feeling separate.
         </p>
       </div>
       <div class="service-grid">
@@ -86,7 +86,7 @@ const credentials = [
         <div class="section-label">Professional Experience</div>
         <h2 class="section-title">Serious field exposure, presented legally and honestly.</h2>
         <p class="section-subtitle">
-          Instead of using past employer client logos, we show the sectors and environments our founder has worked across. This keeps the website credible without implying those organizations directly hired AVIT Solutions.
+          Instead of using past employer client logos, we show the sectors and environments our founder has worked across. This keeps the website credible without implying those organizations directly hired AviT Solutions.
         </p>
         <a href="/about" class="text-link">Read the founder profile →</a>
       </div>
@@ -388,21 +388,21 @@ const credentials = [
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: saturate(0.9) contrast(1.05) brightness(0.76);
+    filter: saturate(0.98) contrast(1.02) brightness(1.02);
     transform: scale(1.04);
     transition: transform 500ms ease, filter 500ms ease;
   }
 
   .premium-project-card:hover img {
     transform: scale(1.11);
-    filter: saturate(1.1) contrast(1.1) brightness(0.9);
+    filter: saturate(1.03) contrast(1.04) brightness(1.08);
   }
 
   .project-overlay {
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(180deg, rgba(2,5,10,0.08), rgba(2,5,10,0.78) 72%, rgba(2,5,10,0.94)),
+      linear-gradient(180deg, rgba(2,5,10,0.02), rgba(2,5,10,0.38) 74%, rgba(2,5,10,0.82)),
       radial-gradient(circle at 80% 80%, rgba(122, 94, 255, 0.28), transparent 45%);
   }
 

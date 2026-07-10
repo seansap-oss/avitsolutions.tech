@@ -1,0 +1,6 @@
+{
+  "phase": "13-final-working",
+  "purpose": "Single install build: restores header, keeps images, compresses assets, fixes AviT Solutions wordmark and hero scaling.",
+  "converted_large_images_to_webp": 10,
+  "zip_size_mb": null
+}
