@@ -1,0 +1,167 @@
+---
+
+
+---
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo">
+          <img src="/logo-mark.svg" alt="" width="34" height="34" class="footer-logo-mark" />
+          <span class="logo-text"><span class="logo-a">A</span><span class="logo-v">v</span><span class="logo-i">I</span><span class="logo-t">T</span><span class="logo-accent">Solutions</span></span>
+        </a>
+        <p class="footer-tagline">
+          Audiovisual integration & IT software development — from design to full completion.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Solutions</h4>
+        <a href="/av-solutions" class="footer-link">AV Solutions</a>
+        <a href="/av-solutions#corporate" class="footer-link">Corporate</a>
+        <a href="/av-solutions#residential" class="footer-link">Residential</a>
+        <a href="/av-solutions#government" class="footer-link">Government</a>
+        <a href="/it-solutions" class="footer-link">IT Solutions</a>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Company</h4>
+        <a href="/about" class="footer-link">About Us</a>
+        <a href="/projects" class="footer-link">Portfolio</a>
+        <a href="/contact" class="footer-link">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Contact</h4>
+        <p class="footer-text">info@avitsolutions.tech</p>
+          <p class="footer-text">support@avitsolutions.tech</p>
+        <p class="footer-text" style="margin-top: 0.5rem; color: var(--text-tertiary); font-size: 0.85rem;">
+          Founder & CEO
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 AviT Solutions. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 4rem 0 2rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer-logo-mark {
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .footer-logo .logo-text {
+    font-weight: 800;
+  }
+
+  .footer-logo .logo-a { color: #ffffff; }
+  .footer-logo .logo-v { font-weight: 500; color: #ffffff; }
+  .footer-logo .logo-i { color: #FF3366; }
+  .footer-logo .logo-t { color: #ffffff; }
+  .footer-logo .logo-accent {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .footer-tagline {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-width: 280px;
+  }
+
+  .footer-heading {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: 1.25rem;
+  }
+
+  .footer-link {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    padding: 0.35rem 0;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .footer-link:hover {
+    color: var(--accent);
+  }
+
+  .footer-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-bottom p {
+    color: var(--text-tertiary);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 768px) {
+    .footer {
+      padding: 3rem 0 1.5rem;
+    }
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .footer-tagline {
+      max-width: 100%;
+    }
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+      gap: 0.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .footer-heading {
+      margin-bottom: 0.85rem;
+    }
+  }
+</style>

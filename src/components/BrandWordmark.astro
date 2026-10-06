@@ -1,0 +1,43 @@
+---
+export interface Props {
+  class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+<span class={`avit-wordmark ${className}`} aria-label="AviT Solutions">
+  <span class="avit-name">Av<span class="avit-i" aria-hidden="true">ı</span>T</span><span class="avit-solutions">Solutions</span>
+</span>
+
+<style>
+  .avit-wordmark {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35em;
+    color: currentColor;
+    font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.045em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .avit-name,
+  .avit-solutions { color: currentColor; }
+  .avit-i {
+    position: relative;
+    display: inline-block;
+    color: currentColor;
+  }
+  .avit-i::after {
+    content: '';
+    position: absolute;
+    width: 0.16em;
+    height: 0.16em;
+    min-width: 3px;
+    min-height: 3px;
+    border-radius: 999px;
+    background: #e32636;
+    left: 50%;
+    top: -0.04em;
+    transform: translateX(-50%);
+  }
+</style>

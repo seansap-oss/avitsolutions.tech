@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css';
-import '../styles/editorial.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import MotionSystem from '../components/MotionSystem.astro';
@@ -17,8 +16,8 @@ export interface Props {
 }
 
 const siteUrl = 'https://www.avitsolutions.tech';
-const defaultTitle = 'AviT Solutions — Audiovisual, IT & Software';
-const defaultDescription = 'AviT Solutions designs audiovisual systems, IT infrastructure, websites, apps and custom software from planning to delivery.';
+const defaultTitle = 'AviT Solutions — AV Integration & IT Software Development';
+const defaultDescription = 'AviT Solutions delivers audiovisual integration, control systems, IT networking, custom software, websites, mobile apps, and automation solutions from design to completion.';
 
 const {
   title = defaultTitle,
@@ -50,14 +49,15 @@ const organizationSchema = {
     'Audiovisual integration',
     'Control systems',
     'Video conferencing',
+    'Smart classrooms',
+    'Digital signage',
     'AV over IP networking',
-    'IT infrastructure',
     'Custom software development',
     'Website design',
     'Mobile app development',
-    'Learning management systems',
     'Automation systems',
   ],
+  sameAs: [siteUrl],
 };
 
 const websiteSchema = {
@@ -66,11 +66,17 @@ const websiteSchema = {
   name: 'AviT Solutions',
   url: siteUrl,
   description: defaultDescription,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${siteUrl}/projects?search={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
 };
 
 const extraSchemas = Array.isArray(jsonLd) ? jsonLd : [jsonLd];
 const schemaPayload = JSON.stringify([organizationSchema, websiteSchema, ...extraSchemas].filter(Boolean)).replace(/</g, '\\u003c');
 ---
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -78,40 +84,64 @@ const schemaPayload = JSON.stringify([organizationSchema, websiteSchema, ...extr
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
     <meta name="generator" content={Astro.generator} />
     <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
-    <meta name="theme-color" content="#f5f3ee" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="theme-color" content="#03060b" />
     <meta name="description" content={pageDescription} />
     <meta name="author" content="AviT Solutions" />
+    <meta name="format-detection" content="telephone=no" />
+
     <title>{pageTitle}</title>
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/site.webmanifest" />
+    <link rel="apple-touch-icon" href="/logo-mark.svg" />
+
     <meta property="og:site_name" content="AviT Solutions" />
     <meta property="og:type" content={type} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={imageUrl} />
-    <meta property="og:image:alt" content="AviT Solutions — Audiovisual, IT and Software" />
+    <meta property="og:image:alt" content="AviT Solutions — AV + IT integration and custom software" />
+    <meta property="og:locale" content="en_US" />
+
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
     <meta name="twitter:image" content={imageUrl} />
-    <script type="application/ld+json" set:html={schemaPayload}></script>
 
+    <script type="application/ld+json" set:html={schemaPayload}></script>
     <script is:inline>
       (function() {
-        document.documentElement.setAttribute('data-theme', 'editorial');
+        var saved = localStorage.getItem('avit-theme');
+        var theme = saved || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+    <script is:inline>
+      (function() {
         try {
           var data = JSON.parse(localStorage.getItem('avit-custom-images'));
-          if (!data) return;
-          var run = function() {
-            Object.keys(data).forEach(function(key) {
-              document.querySelectorAll('img[data-image-key="' + key + '"]').forEach(function(img) {
-                img.src = data[key];
-              });
-            });
-          };
-          document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', run) : run();
+          if (data) {
+            var keys = Object.keys(data);
+            if (keys.length) {
+              var run = function() {
+                keys.forEach(function(key) {
+                  var imgs = document.querySelectorAll('img[data-image-key="' + key + '"]');
+                  for (var i = 0; i < imgs.length; i++) {
+                    imgs[i].src = data[key];
+                  }
+                });
+              };
+              if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', run);
+              } else {
+                run();
+              }
+            }
+          }
         } catch(e) {}
       })();
     </script>
@@ -119,18 +149,30 @@ const schemaPayload = JSON.stringify([organizationSchema, websiteSchema, ...extr
       (function() {
         try {
           var data = JSON.parse(localStorage.getItem('avit-custom-texts'));
-          if (!data) return;
-          var run = function() {
-            Object.keys(data).forEach(function(key) {
-              document.querySelectorAll('[data-text-key="' + key + '"]').forEach(function(el) {
-                el.innerHTML = data[key];
-              });
-            });
-          };
-          document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', run) : run();
+          if (data) {
+            var keys = Object.keys(data);
+            if (keys.length) {
+              var run = function() {
+                keys.forEach(function(key) {
+                  var els = document.querySelectorAll('[data-text-key="' + key + '"]');
+                  for (var i = 0; i < els.length; i++) {
+                    els[i].innerHTML = data[key];
+                  }
+                });
+              };
+              if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', run);
+              } else {
+                run();
+              }
+            }
+          }
         } catch(e) {}
       })();
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   </head>
   <body>
     <Nav />

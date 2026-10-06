@@ -1,0 +1,527 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import CTASection from '../components/CTASection.astro';
+
+const serviceTiles = [
+  { icon: '▣', title: 'AV Integration', href: '/av-solutions', text: 'Boardrooms, auditoriums, classrooms, displays, audio, projection, and control systems engineered as one complete experience.' },
+  { icon: '◉', title: 'Video Conferencing', href: '/av-solutions#business', text: 'Crystal-clear Teams, Zoom, and hybrid meeting spaces with reliable cameras, DSP audio, microphones, and room control.' },
+  { icon: '⌂', title: 'Smart Classrooms', href: '/av-solutions#education', text: 'Teaching spaces with projector/LED systems, lecture capture, wireless presentation, and simple teacher-first controls.' },
+  { icon: '⚙', title: 'Control Systems', href: '/av-solutions#business', text: 'Crestron, AMX, Extron-style logic, touch panel UX, lighting, screens, DSP, VC, and automation workflows.' },
+  { icon: '⟐', title: 'IT & Networking', href: '/it-solutions', text: 'AV-over-IP, switching, VLAN-aware design, device management, structured cabling, and resilient infrastructure.' },
+  { icon: '</>', title: 'Custom Software', href: '/it-solutions#hybrid-software', text: 'Websites, mobile apps, dashboards, admin panels, ERP-style tools, and interfaces built around real business operations.' },
+];
+
+const projectCards = [
+  { type: 'WEBSITE + BRAND', title: 'AviT Solutions Portfolio', meta: 'Cinematic portfolio · Astro · premium UI/UX', image: '/portfolio-media/avit-portfolio-hero.webp', href: '/projects' },
+  { type: 'NEWS PLATFORM', title: 'BUZZTOWN Community', meta: 'Local news · chat UX · classifieds · admin tools', image: '/portfolio-media/buzztown-hero.webp', href: '/projects/buzztown' },
+  { type: 'BUSINESS APP', title: 'AMBI Member Platform', meta: 'Directory · calendar · notice board · mobile direction', image: '/portfolio-media/ambi-hero.webp', href: '/projects/ambi' },
+  { type: 'SOFTWARE SYSTEM', title: 'Clinic + Business Tools', meta: 'LAN software · dashboards · workflow automation', image: '/portfolio-media/clinic-system-hero.webp', href: '/projects/clinic-system' },
+];
+
+const credentials = [
+  'Enterprise AV environments',
+  'Education and lecture theatres',
+  'Healthcare and clinical spaces',
+  'Government and command rooms',
+  'Public venue and event systems',
+  'Banking and corporate fit-outs',
+  'Residential automation',
+  'Custom web and app products',
+];
+---
+
+<Layout title="AviT Solutions — AV Integration & IT Software Development" description="End-to-end audiovisual integration, IT networking, control systems, websites, mobile apps, custom software and automation solutions from design to completion." canonical="/" image="/og-image.svg">
+  <Hero
+    title1="We Design."
+    title2="We Integrate."
+    title3="We Elevate."
+    subtitle="End-to-end audiovisual, IT, control-system, and custom software solutions that transform spaces, connect people, and elevate everyday operations."
+    ctaText="Let's Build Together"
+    ctaLink="/contact"
+    secondaryText="Explore Our Work"
+    secondaryLink="/projects"
+  />
+
+  <section class="signature-strip" aria-label="AviT strengths">
+    <div class="container signature-grid">
+      <div class="signature-card main-card">
+        <span>Phase One Direction</span>
+        <h2>Premium portfolio, not generic SaaS.</h2>
+        <p>
+          The homepage now leads with cinematic AV atmosphere, elite interaction, and clear proof of expertise without using third-party client logos or implying direct endorsement.
+        </p>
+      </div>
+      <div class="signature-card"><strong>15+</strong><span>Years across AV, IT, control, networking, and user interface engineering.</span></div>
+      <div class="signature-card"><strong>AV + UX</strong><span>Hardware systems designed with clean, intuitive user experiences.</span></div>
+      <div class="signature-card"><strong>Build + Support</strong><span>From design and installation to commissioning, programming, and long-term support.</span></div>
+    </div>
+  </section>
+
+  <section class="craft-section section" id="what-we-do">
+    <div class="container craft-layout">
+      <div class="section-intro">
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">Integrated Solutions. <span>Limitless Possibilities.</span></h2>
+        <p class="section-subtitle">
+          AviT Solutions sits between professional AV engineering and custom software development, so your spaces and digital tools work together instead of feeling separate.
+        </p>
+      </div>
+      <div class="service-grid">
+        {serviceTiles.map((item) => (
+          <a class="service-tile" href={item.href}>
+            <div class="service-icon">{item.icon}</div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <span class="tile-link">Explore service →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="experience-section section">
+    <div class="container experience-layout">
+      <div class="experience-copy">
+        <div class="section-label">Professional Experience</div>
+        <h2 class="section-title">Serious field exposure, presented legally and honestly.</h2>
+        <p class="section-subtitle">
+          Instead of using past employer client logos, we show the sectors and environments our founder has worked across. This keeps the website credible without implying those organizations directly hired AviT Solutions.
+        </p>
+        <a href="/about" class="text-link">Read the founder profile →</a>
+      </div>
+      <div class="credential-cloud" aria-label="Experience sectors">
+        {credentials.map((item) => <span>{item}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="projects-showcase section">
+    <div class="container">
+      <div class="showcase-head">
+        <div>
+          <div class="section-label">Selected Direction</div>
+          <h2 class="section-title">Real Projects. Real Impact.</h2>
+          <p class="section-subtitle">
+            A cleaner preview of the project studio: websites, apps, AV systems, dashboards, and business tools. Each selected card can now open into a case-study style detail page.
+          </p>
+        </div>
+        <a href="/projects" class="text-link">View all projects →</a>
+      </div>
+      <div class="project-rail">
+        {projectCards.map((project) => (
+          <a class="premium-project-card" href={project.href}>
+            <img src={project.image} alt="" loading="lazy" />
+            <div class="project-overlay"></div>
+            <div class="project-content">
+              <span>{project.type}</span>
+              <h3>{project.title}</h3>
+              <p>{project.meta}</p>
+            </div>
+            <div class="project-arrow">→</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="method-section section">
+    <div class="container method-grid">
+      <div class="method-card">
+        <span>01</span>
+        <h3>Design the Experience</h3>
+        <p>Room flow, user journey, signal flow, network architecture, and interface logic are planned before hardware or code is finalized.</p>
+      </div>
+      <div class="method-card">
+        <span>02</span>
+        <h3>Integrate the System</h3>
+        <p>AV hardware, software, network infrastructure, and automation are connected into one reliable operational environment.</p>
+      </div>
+      <div class="method-card">
+        <span>03</span>
+        <h3>Commission and Support</h3>
+        <p>Testing, documentation, handover, training, and support are treated as part of the build, not an afterthought.</p>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Ready to Build a Better Space or Digital Product?"
+    subtitle="Tell us what you want to control, connect, automate, or launch. We will turn it into a practical AV + IT solution."
+    ctaText="Start Your Project"
+    ctaLink="/contact"
+  />
+</Layout>
+
+<style>
+  :global(body) {
+    background:
+      radial-gradient(circle at 50% 0%, rgba(42, 117, 255, 0.11), transparent 34rem),
+      var(--bg-primary);
+  }
+
+  .signature-strip {
+    position: relative;
+    padding: 0 0 5rem;
+    margin-top: -2.5rem;
+    z-index: 5;
+  }
+
+  .signature-grid {
+    display: grid;
+    grid-template-columns: 1.6fr repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .signature-card {
+    min-height: 154px;
+    padding: 1.35rem;
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0.025));
+    box-shadow: 0 30px 70px rgba(0,0,0,0.22);
+    backdrop-filter: blur(22px);
+  }
+
+  .signature-card span {
+    display: block;
+    color: rgba(226, 237, 248, 0.62);
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  .signature-card > span:first-child,
+  .main-card > span {
+    color: #50d9ff;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 800;
+    margin-bottom: 0.7rem;
+  }
+
+  .signature-card strong {
+    display: block;
+    color: #fff;
+    font-size: clamp(1.45rem, 2vw, 2.1rem);
+    letter-spacing: -0.04em;
+    margin-bottom: 0.55rem;
+  }
+
+  .main-card h2 {
+    font-size: clamp(1.45rem, 2.1vw, 2.25rem);
+    line-height: 1.1;
+    letter-spacing: -0.045em;
+    margin-bottom: 0.8rem;
+  }
+
+  .main-card p {
+    color: rgba(226, 237, 248, 0.7);
+    line-height: 1.7;
+  }
+
+  .craft-section,
+  .projects-showcase {
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.02), transparent 40%),
+      var(--bg-primary);
+  }
+
+  .craft-layout {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.66fr) minmax(0, 1.34fr);
+    gap: clamp(2rem, 4vw, 4.5rem);
+    align-items: start;
+  }
+
+  .section-title span {
+    background: linear-gradient(110deg, #36dfff, #7a86ff 50%, #b35cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .service-tile {
+    position: relative;
+    overflow: hidden;
+    min-height: 232px;
+    padding: 1.4rem;
+    border-radius: 26px;
+    border: 1px solid rgba(255,255,255,0.09);
+    background:
+      radial-gradient(circle at 18% 0%, rgba(0, 216, 255, 0.13), transparent 42%),
+      linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.018));
+    transition: transform 260ms ease, border-color 260ms ease, background 260ms ease;
+  }
+
+  .service-tile::after {
+    content: '';
+    position: absolute;
+    inset: auto 20% -46% 20%;
+    height: 52%;
+    background: radial-gradient(ellipse at center, rgba(98, 117, 255, 0.22), transparent 70%);
+    transition: transform 260ms ease, opacity 260ms ease;
+    opacity: 0;
+  }
+
+  .service-tile:hover {
+    transform: translateY(-8px);
+    border-color: rgba(77, 218, 255, 0.34);
+  }
+
+  .service-tile:hover::after {
+    opacity: 1;
+    transform: translateY(-18px);
+  }
+
+  .service-icon {
+    width: 54px;
+    height: 54px;
+    display: grid;
+    place-items: center;
+    border-radius: 17px;
+    margin-bottom: 1.2rem;
+    color: #70e7ff;
+    font-weight: 900;
+    background: rgba(0, 184, 212, 0.11);
+    box-shadow: inset 0 0 0 1px rgba(91, 225, 255, 0.18), 0 0 30px rgba(0, 184, 212, 0.08);
+  }
+
+  .service-tile h3,
+  .method-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .service-tile p,
+  .method-card p {
+    position: relative;
+    z-index: 1;
+    color: rgba(226, 237, 248, 0.62);
+    font-size: 0.91rem;
+    line-height: 1.65;
+  }
+
+  .experience-section {
+    background:
+      radial-gradient(circle at 82% 12%, rgba(174, 80, 255, 0.12), transparent 24rem),
+      linear-gradient(180deg, #070a10, #04060b);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .experience-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+  }
+
+  .text-link {
+    display: inline-flex;
+    margin-top: 1.6rem;
+    font-weight: 800;
+    color: #5fe7ff;
+  }
+
+  .credential-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 30px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015));
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .credential-cloud span {
+    padding: 0.78rem 1rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.055);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: rgba(236, 245, 255, 0.76);
+    font-size: 0.9rem;
+  }
+
+  .showcase-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2.4rem;
+  }
+
+  .project-rail {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .premium-project-card {
+    display: block;
+    color: white;
+    text-decoration: none;
+    position: relative;
+    min-height: 360px;
+    overflow: hidden;
+    border-radius: 28px;
+    border: 1px solid rgba(255,255,255,0.11);
+    background: #10131a;
+    box-shadow: 0 35px 80px rgba(0,0,0,0.25);
+    transition: transform 300ms ease, border-color 300ms ease;
+  }
+
+  .premium-project-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(117, 207, 255, 0.35);
+  }
+
+  .premium-project-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.98) contrast(1.02) brightness(1.02);
+    transform: scale(1.04);
+    transition: transform 500ms ease, filter 500ms ease;
+  }
+
+  .premium-project-card:hover img {
+    transform: scale(1.11);
+    filter: saturate(1.03) contrast(1.04) brightness(1.08);
+  }
+
+  .project-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(2,5,10,0.02), rgba(2,5,10,0.38) 74%, rgba(2,5,10,0.82)),
+      radial-gradient(circle at 80% 80%, rgba(122, 94, 255, 0.28), transparent 45%);
+  }
+
+  .project-content {
+    position: absolute;
+    left: 1.15rem;
+    right: 1.15rem;
+    bottom: 1.15rem;
+  }
+
+  .project-content span {
+    color: #69e3ff;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    font-weight: 900;
+  }
+
+  .project-content h3 {
+    margin: 0.45rem 0 0.35rem;
+    font-size: 1.15rem;
+    line-height: 1.12;
+  }
+
+  .project-content p {
+    color: rgba(236,245,255,0.64);
+    font-size: 0.84rem;
+    line-height: 1.45;
+  }
+
+  .project-arrow {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #3adcff, #875fff);
+    color: white;
+    font-weight: 900;
+  }
+
+  .method-section {
+    padding-top: 2rem;
+    background: linear-gradient(180deg, transparent, rgba(255,255,255,0.02));
+  }
+
+  .method-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .method-card {
+    padding: 1.6rem;
+    border-radius: 28px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.018));
+  }
+
+  .method-card span {
+    display: inline-flex;
+    margin-bottom: 1.4rem;
+    color: #6ee6ff;
+    font-size: 0.85rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+  }
+
+  @media (max-width: 1050px) {
+    .signature-grid,
+    .craft-layout,
+    .experience-layout,
+    .showcase-head {
+      grid-template-columns: 1fr;
+    }
+    .signature-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .main-card {
+      grid-column: 1 / -1;
+    }
+    .project-rail,
+    .service-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 700px) {
+    .signature-strip {
+      margin-top: 0;
+      padding: 2rem 0 3rem;
+    }
+    .signature-grid,
+    .project-rail,
+    .service-grid,
+    .method-grid {
+      grid-template-columns: 1fr;
+    }
+    .service-tile,
+    .premium-project-card {
+      min-height: 250px;
+    }
+    .showcase-head {
+      display: block;
+    }
+  }
+
+  .service-tile {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .tile-link {
+    display: inline-flex;
+    margin-top: 1rem;
+    color: #69dfff;
+    font-size: 0.8rem;
+    font-weight: 800;
+  }
+</style>

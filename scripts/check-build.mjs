@@ -30,7 +30,7 @@ const about=fs.readFileSync(path.join(dist,'about/index.html'),'utf8');
 const home=fs.readFileSync(path.join(dist,'index.html'),'utf8');
 const admin=fs.readFileSync(path.join(dist,'admin/index.html'),'utf8');
 const assertions=[
-  ['about visual board',about.includes('avit-founder-ceo-visual-board.webp')],
+  ['about visual board',about.includes('/service-media/boardroom.webp')],
   ['about founder CEO copy',about.includes('Founder &amp; CEO')],
   ['about ERP section',about.includes('Advanced Software & ERP')],
   ['AI assistant on public home',home.includes('data-ai-assistant')],
