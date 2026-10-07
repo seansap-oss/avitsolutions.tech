@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../layouts/Layout.astro';
 
 const services = [
@@ -27,7 +27,7 @@ const selectedWork = [
     eyebrow: 'Audiovisual',
     title: 'Connected meeting spaces',
     description: 'Modern AV experiences for education and business.',
-    image: '/images/services/service-av-business.webp',
+    image: '/images/home/connected-meeting-spaces.png',
     href: '/av-solutions#business',
   },
   {
@@ -41,7 +41,7 @@ const selectedWork = [
 ---
 
 <Layout
-  title="AviT Solutions — Audiovisual, IT & Software"
+  title="AviT Solutions â€” Audiovisual, IT & Software"
   description="AviT Solutions designs connected audiovisual spaces, IT infrastructure and custom software from planning to delivery."
   canonical="/"
   image="/service-media/boardroom.webp"
@@ -52,7 +52,7 @@ const selectedWork = [
         <h1>Spaces connected.<br />Software made simple<span class="red-dot">.</span></h1>
         <p>Audiovisual, IT and custom software.<br />From planning to delivery.</p>
         <div class="hero-actions">
-          <a href="/contact" class="editorial-button">Start a conversation <span>→</span></a>
+          <a href="/contact" class="editorial-button">Start a conversation <span>â†’</span></a>
           <a href="/projects" class="editorial-link">View our work</a>
         </div>
       </div>
@@ -63,7 +63,7 @@ const selectedWork = [
     <div class="editorial-shell">
       <div class="section-head">
         <h2>Selected work</h2>
-        <a href="/projects">View all work <span>→</span></a>
+        <a href="/projects">View all work <span>â†’</span></a>
       </div>
       <div class="work-grid">
         {selectedWork.map((project) => (
@@ -91,7 +91,7 @@ const selectedWork = [
             <span class="service-number">{service.number}</span>
             <h3>{service.title}</h3>
             <p>{service.description}</p>
-            <span class="service-arrow">→</span>
+            <span class="service-arrow">â†’</span>
           </a>
         ))}
       </div>
@@ -279,3 +279,4 @@ const selectedWork = [
     .about-grid > p { font-size: 0.78rem; max-width: 22rem; }
   }
 </style>
+
