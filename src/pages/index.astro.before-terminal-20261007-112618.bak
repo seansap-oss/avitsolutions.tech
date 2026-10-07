@@ -1,6 +1,5 @@
----
+﻿---
 import Layout from '../layouts/Layout.astro';
-import HeroSystemTerminal from '../components/HeroSystemTerminal.astro';
 
 const services = [
   {
@@ -42,7 +41,7 @@ const selectedWork = [
 ---
 
 <Layout
-  title="AviT Solutions &#8212; Audiovisual, IT & Software"
+  title="AviT Solutions â€” Audiovisual, IT & Software"
   description="AviT Solutions designs connected audiovisual spaces, IT infrastructure and custom software from planning to delivery."
   canonical="/"
   image="/service-media/boardroom.webp"
@@ -53,11 +52,10 @@ const selectedWork = [
         <h1>Spaces connected.<br />Software made simple<span class="red-dot">.</span></h1>
         <p>Audiovisual, IT and custom software.<br />From planning to delivery.</p>
         <div class="hero-actions">
-          <a href="/contact" class="editorial-button">Start a conversation <span>&#8594;</span></a>
+          <a href="/contact" class="editorial-button">Start a conversation <span>â†’</span></a>
           <a href="/projects" class="editorial-link">View our work</a>
         </div>
       </div>
-      <HeroSystemTerminal />
     </div>
   </section>
 
@@ -65,7 +63,7 @@ const selectedWork = [
     <div class="editorial-shell">
       <div class="section-head">
         <h2>Selected work</h2>
-        <a href="/projects">View all work <span>&#8594;</span></a>
+        <a href="/projects">View all work <span>â†’</span></a>
       </div>
       <div class="work-grid">
         {selectedWork.map((project) => (
@@ -93,7 +91,7 @@ const selectedWork = [
             <span class="service-number">{service.number}</span>
             <h3>{service.title}</h3>
             <p>{service.description}</p>
-            <span class="service-arrow">&#8594;</span>
+            <span class="service-arrow">â†’</span>
           </a>
         ))}
       </div>
@@ -280,11 +278,5 @@ const selectedWork = [
     .about-grid h2 { font-size: 2rem; max-width: 13ch; }
     .about-grid > p { font-size: 0.78rem; max-width: 22rem; }
   }
-  /* Approved editorial hero enhancement: terminal + 25%-smaller orbital globe. */
-  @media (min-width: 761px) {
-    .hero-grid { grid-template-columns: minmax(0, .96fr) minmax(0, 1.04fr); gap: clamp(2rem, 3vw, 4rem); align-items: center; }
-    .hero-copy h1 { font-size: clamp(3.35rem, 4.75vw, 6.3rem); }
-  }
-  @media (max-width: 760px) { .hero-grid { display: block; } }
 </style>
 

@@ -1,0 +1,173 @@
+<div class="avit-system-visual" id="avit-system-visual" aria-label="AviT Solutions animated system introduction">
+  <div class="avit-system-layout">
+    <div class="avit-system-copy">
+      <div class="avit-system-accent" aria-hidden="true"></div>
+      <div class="avit-terminal-lines" id="avit-terminal-lines" role="status" aria-live="off">
+        <span class="avit-terminal-static">&gt; Initialising systems...</span>
+      </div>
+      <span class="avit-terminal-caret" id="avit-terminal-caret" aria-hidden="true"></span>
+      <div class="avit-terminal-actions" id="avit-terminal-actions" hidden>
+        <button type="button" id="avit-terminal-replay" aria-label="Replay introduction animation">↻ <span>Replay</span></button>
+        <span class="avit-action-divider" aria-hidden="true"></span>
+        <button type="button" id="avit-terminal-close" aria-label="Close introduction animation">× <span>Close</span></button>
+      </div>
+    </div>
+    <div class="avit-globe-holder" aria-hidden="true"><canvas id="avit-globe" width="440" height="440"></canvas></div>
+  </div>
+</div>
+<button class="avit-terminal-restore" id="avit-terminal-restore" type="button" hidden>↗ Show system animation</button>
+
+<style>
+  .avit-system-visual { width: 100%; min-width: 0; color: #222; }
+  .avit-system-layout { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); align-items: center; gap: 0; }
+  .avit-system-copy { min-width: 0; position: relative; z-index: 2; padding: .8rem 0; }
+  .avit-system-accent { width: 21px; height: 3px; background: #e32636; margin-bottom: 1.2rem; }
+  .avit-terminal-lines { min-height: 18.6em; white-space: pre-wrap; overflow-wrap: anywhere; font: 500 clamp(10px, .76vw, 13px)/1.58 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; letter-spacing: -.022em; color: #242424; font-variant-ligatures: none; }
+  .avit-terminal-lines .terminal-ok { color: #ce2939; }
+  .avit-terminal-caret { display: inline-block; vertical-align: -.17em; width: 7px; height: 14px; margin-top: 2px; background: #d42d3b; animation: avit-caret .85s steps(1,end) infinite; }
+  @keyframes avit-caret { 50% { opacity: 0; } }
+  .avit-terminal-actions { margin-top: 1.35rem; display: flex; gap: 1rem; align-items: center; font: 500 12px/1.3 'Inter', Arial, sans-serif; }
+  .avit-terminal-actions[hidden], .avit-terminal-restore[hidden] { display: none !important; }
+  .avit-terminal-actions button, .avit-terminal-restore { border: 0; padding: .45rem 0; background: transparent; color: #222; cursor: pointer; font: inherit; }
+  .avit-terminal-actions button:hover, .avit-terminal-restore:hover { color: #c32b39; }
+  .avit-terminal-actions button:focus-visible, .avit-terminal-restore:focus-visible { outline: 2px solid #e32636; outline-offset: 4px; }
+  .avit-action-divider { height: 15px; border-left: 1px solid #b9b6b1; }
+  .avit-terminal-restore { font: 500 12px/1.4 'Inter', Arial, sans-serif; }
+  .avit-globe-holder { width: 100%; max-width: 270px; aspect-ratio: 1; justify-self: center; transform: translateX(-.25rem); }
+  .avit-globe-holder canvas { display: block; width: 100%; height: 100%; }
+  @media (min-width: 1600px) { .avit-terminal-lines { font-size: 13px; } .avit-globe-holder { max-width: 285px; } }
+  @media (max-width: 1100px) { .avit-system-layout { grid-template-columns: minmax(0,1fr) minmax(130px,.72fr); } .avit-globe-holder { max-width: 205px; } .avit-terminal-lines { font-size: 10px; } }
+  @media (max-width: 760px) {
+    .avit-system-visual { margin-top: 2rem; }
+    .avit-system-layout { display: grid; grid-template-columns: minmax(0,1fr) minmax(100px,.65fr); align-items: start; }
+    .avit-terminal-lines { font-size: clamp(9px, 2.4vw, 11px); line-height: 1.5; min-height: 18.5em; }
+    .avit-system-accent { margin-bottom: .8rem; }
+    .avit-globe-holder { width: 100%; max-width: 175px; align-self: center; }
+  }
+  @media (max-width: 420px) { .avit-system-layout { grid-template-columns: minmax(0,1fr); } .avit-globe-holder { max-width: 155px; margin-top: -1rem; justify-self: end; } .avit-terminal-lines { min-height: 0; } .avit-terminal-actions { margin-top: 1rem; } }
+  @media (prefers-reduced-motion: reduce) { .avit-terminal-caret { animation: none; } }
+</style>
+
+<script>
+  const terminal = document.querySelector<HTMLElement>('#avit-system-visual');
+  if (terminal) {
+    const linesEl = terminal.querySelector<HTMLElement>('#avit-terminal-lines')!;
+    const caret = terminal.querySelector<HTMLElement>('#avit-terminal-caret')!;
+    const actions = terminal.querySelector<HTMLElement>('#avit-terminal-actions')!;
+    const restore = document.querySelector<HTMLButtonElement>('#avit-terminal-restore')!;
+    const replay = terminal.querySelector<HTMLButtonElement>('#avit-terminal-replay')!;
+    const close = terminal.querySelector<HTMLButtonElement>('#avit-terminal-close')!;
+    const canvas = terminal.querySelector<HTMLCanvasElement>('#avit-globe')!;
+    const ctx = canvas.getContext('2d');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Terminal content describes services; it deliberately does not repeat the homepage headline.
+    const entries = [
+      '> Initialising systems...',
+      '> Loading AviT Solutions...',
+      '> Connecting technology and people...',
+      '',
+      '[✓] Audiovisual environments',
+      '[✓] IT infrastructure & networks',
+      '[✓] Collaboration spaces',
+      '[✓] Custom software & web applications',
+      '[✓] Design → Engineering → Installation',
+      '[✓] Support → Maintain → Scale',
+      '',
+      '> Checking system status...',
+      '[✓] All systems operational.',
+      '> Ready to build what comes next.'
+    ];
+    const fullText = entries.join('\n');
+    let timer: number | undefined;
+    let cursor = 0;
+    let frame = 0;
+    let alive = true;
+    let pausedAt = 0;
+    let lastFrameTime = 0;
+    const escapeHtml = (s: string) => s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
+    function renderText(s: string) {
+      linesEl.innerHTML = s.split('\n').map(line => line.startsWith('[✓]') ? `<span class="terminal-ok">[✓]</span>${escapeHtml(line.slice(3))}` : escapeHtml(line)).join('\n');
+    }
+    function finish() { renderText(fullText); caret.style.display = ''; actions.hidden = false; }
+    function stopTyping() { if (timer) window.clearTimeout(timer); timer = undefined; }
+    function startTyping() {
+      stopTyping(); cursor = 0; actions.hidden = true; caret.style.display = ''; renderText('');
+      if (reducedMotion) { finish(); return; }
+      // ~10 seconds including natural pauses at line breaks.
+      const tick = () => {
+        if (!alive) return;
+        if (document.hidden) { timer = window.setTimeout(tick, 150); return; }
+        if (cursor >= fullText.length) { finish(); return; }
+        cursor++;
+        renderText(fullText.slice(0, cursor));
+        const ch = fullText[cursor - 1];
+        timer = window.setTimeout(tick, ch === '\n' ? 125 : 17);
+      };
+      tick();
+    }
+    function hide() {
+      stopTyping(); terminal.hidden = true; terminal.style.display = 'none'; restore.hidden = false;
+      try { sessionStorage.setItem('avit-terminal-hidden','1'); } catch {}
+    }
+    function show() {
+      terminal.hidden = false; terminal.style.display = ''; restore.hidden = true;
+      try { sessionStorage.removeItem('avit-terminal-hidden'); } catch {}
+      startTyping();
+    }
+    replay.addEventListener('click', startTyping);
+    close.addEventListener('click', hide);
+    restore.addEventListener('click', show);
+
+    // Lightweight procedural dotted globe. No WebGL or external animation library.
+    const dots: {lat:number; lon:number}[] = [];
+    for (let lat = -82; lat <= 82; lat += 8) {
+      const count = Math.max(8, Math.round(58 * Math.cos(lat * Math.PI / 180)));
+      for (let j = 0; j < count; j++) dots.push({lat:lat*Math.PI/180, lon:j*2*Math.PI/count});
+    }
+    function globe(t:number) {
+      if (!ctx || !alive) return;
+      if (document.hidden || terminal.hidden) { frame = requestAnimationFrame(globe); return; }
+      const dpr = Math.min(devicePixelRatio || 1, 2);
+      const box = canvas.getBoundingClientRect();
+      if (box.width === 0 || box.height === 0) { frame = requestAnimationFrame(globe); return; }
+      const size = Math.round(box.width * dpr);
+      if (canvas.width !== size || canvas.height !== size) { canvas.width = size; canvas.height = size; }
+      ctx.clearRect(0,0,size,size);
+      ctx.save(); ctx.scale(size/440, size/440);
+      const rot = reducedMotion ? .7 : t * .000055;
+      const cx = 220, cy = 220, radius = 119;
+      ctx.strokeStyle = 'rgba(40,40,40,.18)'; ctx.lineWidth = 1;
+      const rings = [{rx:182,ry:69,ang:.35},{rx:176,ry:86,ang:-.68},{rx:178,ry:96,ang:1.1}];
+      for (let i=0;i<rings.length;i++) {
+        const ring = rings[i];
+        ctx.save(); ctx.translate(cx,cy); ctx.rotate(ring.ang); ctx.beginPath(); ctx.ellipse(0,0,ring.rx,ring.ry,0,0,Math.PI*2); ctx.stroke();
+        const a = (reducedMotion ? (i*2.1+.6) : rot*(i%2 ? -1.1 : 1.45)+i*2.1+.6);
+        const x = ring.rx*Math.cos(a), y = ring.ry*Math.sin(a);
+        ctx.beginPath(); ctx.fillStyle = '#e32636'; ctx.arc(x,y,4.7,0,Math.PI*2); ctx.fill(); ctx.restore();
+      }
+      ctx.save(); ctx.beginPath(); ctx.arc(cx,cy,radius,0,Math.PI*2); ctx.clip();
+      for (const dot of dots) {
+        const x = Math.cos(dot.lat)*Math.sin(dot.lon+rot);
+        const y = Math.sin(dot.lat);
+        const z = Math.cos(dot.lat)*Math.cos(dot.lon+rot);
+        if (z < -.12) continue;
+        ctx.beginPath(); ctx.fillStyle = `rgba(25,25,25,${.12+.42*Math.max(0,z)})`;
+        ctx.arc(cx+x*radius,cy-y*radius, z>.35?1.12:.78,0,Math.PI*2); ctx.fill();
+      }
+      ctx.restore();
+      ctx.fillStyle = 'rgba(20,20,20,.48)';
+      for (let i=0;i<22;i++) {
+        const x = 30 + (i*121.7)%380, y = 24 + (i*83.3)%380;
+        const dx = x-cx, dy=y-cy;
+        if (dx*dx+dy*dy < 16500) continue;
+        ctx.beginPath(); ctx.arc(x,y,i%5===0?1.6:1,0,Math.PI*2); ctx.fill();
+      }
+      ctx.restore();
+      if (!reducedMotion) frame = requestAnimationFrame(globe);
+    }
+    if (ctx) frame = requestAnimationFrame(globe);
+    const wasHidden = (() => { try { return sessionStorage.getItem('avit-terminal-hidden') === '1'; } catch { return false; }})();
+    if (wasHidden) hide(); else startTyping();
+    window.addEventListener('pagehide', () => { alive = false; stopTyping(); cancelAnimationFrame(frame); }, { once: true });
+  }
+</script>
